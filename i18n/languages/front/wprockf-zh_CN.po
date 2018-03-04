@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Rocket form\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: softdiscover <info@softdiscover.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"X-Generator: Poedit 1.7.5\n"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "From"
+msgstr "从"
+
+msgid "To"
+msgstr "到"
+
+msgid "Item ID"
+msgstr "项目ID："
+
+msgid "Quantity"
+msgstr "数量"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Amount"
+msgstr "金额"
+
+msgid "Invoice Total"
+msgstr "发票总额"
+
+msgid "Total"
+msgstr "总计"
+
+msgid "Choose Payment Method"
+msgstr "选择支付方式"
+
+msgid "Payment Option"
+msgstr "付款选项"
+
+msgid "Order Summary"
+msgstr "订单汇总"
+
+msgid "See summary"
+msgstr "见摘要"
+
+msgid "See invoice"
+msgstr "见发票"
+
+msgid "Agree To The"
+msgstr "同意"
+
+msgid "Complete Order"
+msgstr "完成交易"
+
+msgid "Select Payment"
+msgstr "选择付款方式"
+
+msgid "Invoice"
+msgstr "发票"
+
+msgid "Order summary"
+msgstr "订单汇总："
+
+msgid "Total cost"
+msgstr "总成本"
+
+msgid "Error! something went wrong."
+msgstr "错误！出了些问题。"
+
+msgid "warning! Form was not submitted"
+msgstr "警告 ！不提交表单"
+
+msgid "Error! The file exceeds the allowed size of"
+msgstr "错误！该文件超出了允许的大小"
+
+msgid "Error! Type of file is not allowed to upload"
+msgstr "错误！文件的类型是不允许载"
+
+msgid "quantity"
+msgstr "数量"
+
+msgid "New form request"
+msgstr "新的形式要求"
+
+msgid "Success! your form was submitted"
+msgstr "成功 ！提交您的窗体"

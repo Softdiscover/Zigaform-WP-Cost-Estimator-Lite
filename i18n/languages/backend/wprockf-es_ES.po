@@ -1,0 +1,1680 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"Project-Id-Version: my translation\n"
+"Language: es\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+msgid "Order summary"
+msgstr "Resumen del pedido"
+
+msgid "List by form"
+msgstr "Lista de forma"
+
+msgid "Records"
+msgstr "Archivos"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Charts"
+msgstr "Gráficas"
+
+msgid "Settings"
+msgstr "Ajustes"
+
+msgid "U.S. Dollar"
+msgstr "Dolar americano"
+
+msgid "Australian Dollar"
+msgstr "Dólar australiano"
+
+msgid "Brazilian Real"
+msgstr "Real brasileño"
+
+msgid "Canadian Dollar"
+msgstr "Dolar canadiense"
+
+msgid "Czech Koruna"
+msgstr "Corona checa"
+
+msgid "Danish Krone"
+msgstr "Corona danesa"
+
+msgid "Euro"
+msgstr "Euro"
+
+msgid "Hong Kong Dollar"
+msgstr "Dolar de Hong Kong"
+
+msgid "Hungarian Forint"
+msgstr "Florín húngaro"
+
+msgid "Israeli New Sheqel"
+msgstr "Nuevo Shekel israelí"
+
+msgid "Japanese Yen"
+msgstr "Yen japonés"
+
+msgid "Malaysian Ringgit"
+msgstr "Ringgit malayo"
+
+msgid "Mexican Peso"
+msgstr "Peso mexicano"
+
+msgid "Norwegian Krone"
+msgstr "Corona noruega"
+
+msgid "New Zealand Dollar"
+msgstr "Dólar de Nueva Zelanda"
+
+msgid "Philippine Peso"
+msgstr "Peso filipino"
+
+msgid "Polish Zloty"
+msgstr "Zloty polaco"
+
+msgid "Pound Sterling"
+msgstr "Libra esterlina"
+
+msgid "Singapore Dollar"
+msgstr "Dolar de Singapur"
+
+msgid "Swedish Krona"
+msgstr "Corona sueca"
+
+msgid "Swiss Franc"
+msgstr "Franco suizo"
+
+msgid "Taiwan New Dollar"
+msgstr "Taiwán Dólar"
+
+msgid "Thai Baht"
+msgstr "Baht tailandés"
+
+msgid "Turkish Liras"
+msgstr "Liras turcas"
+
+msgid "Styles Font Menu requires WordPress 3.4 or newer."
+msgstr "Estilos Menú Fuente requiere WordPress 3.4 o más reciente."
+
+msgid "Please update."
+msgstr "Por favor actualice."
+
+msgid "Invoice"
+msgstr "Factura"
+
+msgid "Export to PDF"
+msgstr "Exportar a PDF"
+
+msgid "Total cost"
+msgstr "Coste total"
+
+msgid "Error! something went wrong."
+msgstr "¡Error! algo salió mal."
+
+msgid "Success! your form was submitted"
+msgstr "¡Éxito! Se presentó el formulario"
+
+msgid "warning! Form was not submitted"
+msgstr "¡advertencia! La forma no se presentó"
+
+msgid "Error! The file exceeds the allowed size of"
+msgstr "¡Error! El archivo supera el tamaño permitido de"
+
+msgid "Error! Type of file is not allowed to upload"
+msgstr "¡Error! Tipo de archivo no está permitido subir"
+
+msgid "quantity "
+msgstr "cantidad"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "New form request"
+msgstr "Nueva solicitud de forma"
+
+msgid "Entry information"
+msgstr "Información de entrada"
+
+msgid "Submitted form data"
+msgstr "Datos del formulario Enviado"
+
+msgid "Additional info"
+msgstr "información adicional"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "Client PC info"
+msgstr "Info PC Cliente"
+
+msgid "Form URL"
+msgstr "URL Form"
+
+msgid "Form name"
+msgstr "Nombre del formulario"
+
+msgid "Select language"
+msgstr "Seleccione idioma"
+
+msgid "english"
+msgstr "Inglés"
+
+msgid "spanish"
+msgstr "Español"
+
+msgid "french"
+msgstr "francés"
+
+msgid "german"
+msgstr "alemán"
+
+msgid "italian"
+msgstr "italiano"
+
+msgid "portuguese"
+msgstr "portugués"
+
+msgid "russian"
+msgstr "ruso"
+
+msgid "chinese"
+msgstr "chino"
+
+msgid "Close"
+msgstr "Cerca"
+
+msgid "Required only letters"
+msgstr "Sólo letras obligatorios"
+
+msgid "Required only Letters and Numbers"
+msgstr "Requerido sólo letras y números"
+
+msgid "Required only numbers"
+msgstr "Sólo números obligatorios"
+
+msgid "Required a valid mail"
+msgstr "Se requiere un mail válida"
+
+msgid "this is required"
+msgstr "esto es necesario"
+
+msgid "CAPTCHA Code"
+msgstr "Código CAPTCHA"
+
+msgid "Select file"
+msgstr "Seleccione Archivo"
+
+msgid "Change"
+msgstr "Cambiar"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Select image"
+msgstr "Seleccionar imagen"
+
+msgid "Sending"
+msgstr "Enviando"
+
+msgid "Textbox label"
+msgstr "Etiqueta del cuadro de texto"
+
+msgid "Textbox sublabel"
+msgstr "Subsello Textbox"
+
+msgid "Help block text"
+msgstr "Texto del bloque Ayuda"
+
+msgid "option"
+msgstr "opción"
+
+msgid "Type your heading H1 here"
+msgstr "Llene H1 encabezado aquí"
+
+msgid "Type your heading H2 here"
+msgstr "Llene H2 título aquí"
+
+msgid "Type your heading H3 here"
+msgstr "Llene H3 título aquí"
+
+msgid "Type your heading H4 here"
+msgstr "Escriba su H4 título aquí"
+
+msgid "Type your heading H5 here"
+msgstr "Escriba su H5 título aquí"
+
+msgid "Type your heading H6 here"
+msgstr "Escriba su H6 título aquí"
+
+msgid "Multiple select"
+msgstr "Múltiple seleccione"
+
+msgid "Move field block"
+msgstr "Bloqueo de campo Move"
+
+msgid "Block"
+msgstr "Bloquear"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Duplicate"
+msgstr "Duplicado"
+
+msgid "Textarea label"
+msgstr "Etiqueta Textarea"
+
+msgid "Textarea sublabel"
+msgstr "Subsello Textarea"
+
+msgid "Prev"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Siguiente"
+
+msgid "Form editor"
+msgstr "Editor de formularios"
+
+msgid "email section. you can set mail options. e.g. the recipient mail"
+msgstr "la sección de correo electrónico. puede configurar las opciones de correo. por ejemplo el destinatario de correo"
+
+msgid "Email Settings"
+msgstr "Ajustes del correo electrónico"
+
+msgid "submission section. you can modify the success message and other messages"
+msgstr "sección de presentación. se puede modificar el mensaje de éxito y otros mensajes"
+
+msgid "On Submission"
+msgstr "En Envío"
+
+msgid "configure your invoice"
+msgstr "configurar su factura"
+
+msgid "main settings"
+msgstr "ajustes principales"
+
+msgid "Main settings"
+msgstr "Ajustes principales"
+
+msgid "test"
+msgstr "prueba"
+
+msgid "Show data"
+msgstr "Mostrar datos"
+
+msgid "preview"
+msgstr "avance"
+
+msgid "Save form"
+msgstr "Guardar formulario"
+
+msgid "Fields section. Drag and Drop or just click to add to the preview section"
+msgstr "Sección Campos. Arrastrar y soltar o simplemente haga clic para agregar a la sección de vista previa"
+
+msgid "preview section. you can view how the fields will look like and you can change the settings on live mode  "
+msgstr "sección de vista previa. usted puede ver cómo los campos se verá así y usted puede cambiar la configuración de modo directo"
+
+msgid "Tab title"
+msgstr "Título Tab"
+
+msgid "Form"
+msgstr "Formar"
+
+msgid "Selected Field"
+msgstr "El campo seleccionado"
+
+msgid "Form settings. you can set all options related to the form"
+msgstr "Ajustes de formulario. puede configurar todas las opciones relacionadas con la forma"
+
+msgid "setting section. you can change the submit mode between ajax and post"
+msgstr "la sección de configuración. usted puede cambiar el modo de presentar entre ajax y post"
+
+msgid "skin section. you can change skin options of your form"
+msgstr "sección de la piel. puede cambiar las opciones de la piel de su formulario"
+
+msgid "Skin"
+msgstr "Piel"
+
+msgid "wizard section. you can enable the wizard form and add many forms"
+msgstr "sección asistente. puede habilitar el formulario asistente y agregar muchas formas"
+
+msgid "Wizard"
+msgstr "Mago"
+
+msgid "Summary Box"
+msgstr "Resumen Box"
+
+msgid "Unknown"
+msgstr "Desconocido"
+
+msgid "Field name"
+msgstr "Nombre del campo"
+
+msgid "This is important to identify the field on reports and conditional logic"
+msgstr "Esto es importante para identificar el campo de los informes y la lógica condicional"
+
+msgid "Type field name"
+msgstr "Tipo de nombre de campo"
+
+msgid "Options"
+msgstr "Opciones"
+
+msgid "Label"
+msgstr "Etiqueta"
+
+msgid "Input"
+msgstr "Entrada"
+
+msgid "Help Block"
+msgstr "Ayuda Bloquear"
+
+msgid "Validators"
+msgstr "Validadores"
+
+msgid "Images"
+msgstr "Imágenes"
+
+msgid "C.Logic"
+msgstr "C.Logic"
+
+msgid "Misc"
+msgstr "Otra información"
+
+msgid "You need to save the form before seeing the preview"
+msgstr "Usted necesita guardar el formulario antes de ver la vista previa"
+
+msgid "Preview for desktops"
+msgstr "Vista previa para equipos de sobremesa"
+
+msgid "Preview for tablets"
+msgstr "Vista previa para las tabletas"
+
+msgid "Preview for smartphone"
+msgstr "Vista preliminar para el smartphone"
+
+msgid "Import form"
+msgstr "Formulario de Importación"
+
+msgid "The import has failed. press the accept button"
+msgstr "La importación ha fallado. pulse el botón aceptar"
+
+msgid "Desktop"
+msgstr "De oficina"
+
+msgid "Tablet"
+msgstr "Tableta"
+
+msgid "Smartphone"
+msgstr "Smartphone"
+
+msgid "Load form"
+msgstr "Forma de carga"
+
+msgid "Accept"
+msgstr "Aceptar"
+
+msgid "Set Form name"
+msgstr "Ajuste Nombre del formulario"
+
+msgid "e.g. My custom form"
+msgstr "por ejemplo Mi formulario personalizado"
+
+msgid "Drag and Drop the fields to this area "
+msgstr "Arrastrar y soltar los campos de esta área"
+
+msgid "or just click the button fields to add it here "
+msgstr "o simplemente haga clic en los campos de botón añadir aquí"
+
+msgid "Code to export"
+msgstr "Código para exportar"
+
+msgid "the exporting code is used for backuping your custom form"
+msgstr "el código de exportación se utiliza para backuping el formulario personalizado"
+
+msgid "Main fields"
+msgstr "Campos principales"
+
+msgid "More fields"
+msgstr "+ Líneas"
+
+msgid "Standard Fields"
+msgstr "Los campos estándar"
+
+msgid "Text Box"
+msgstr "Caja de texto"
+
+msgid "Text Area"
+msgstr "Área de texto"
+
+msgid "Radio Button"
+msgstr "Boton de radio"
+
+msgid "Check Box"
+msgstr "Caja"
+
+msgid "Select List"
+msgstr "Seleccione Lista"
+
+msgid "Select Multiple "
+msgstr "Seleccione Múltiple"
+
+msgid "Submit Button"
+msgstr "Botón de enviar"
+
+msgid "Spinner"
+msgstr "Hilandero"
+
+msgid "Slider"
+msgstr "Deslizador"
+
+msgid "Range"
+msgstr "Alcance"
+
+msgid "Grid System"
+msgstr "Sistema de red"
+
+msgid "1 Col"
+msgstr "1 Col"
+
+msgid "2 Cols"
+msgstr "2 Cols"
+
+msgid "3 Cols"
+msgstr "3 Cols"
+
+msgid "4 Cols"
+msgstr "4 Cols"
+
+msgid "6 Cols"
+msgstr "6 Cols"
+
+msgid "Additional Fields"
+msgstr "Los campos adicionales"
+
+msgid "Star rating"
+msgstr "Numero de estrellas"
+
+msgid "ReCaptcha"
+msgstr "ReCaptcha"
+
+msgid "Custom Html"
+msgstr "Custom Html"
+
+msgid "Hidden Input"
+msgstr "Entrada oculta"
+
+msgid "Password"
+msgstr "Clave"
+
+msgid "Captcha"
+msgstr "Captcha"
+
+msgid "Date Picker"
+msgstr "Selector de fechas"
+
+msgid "Prepend"
+msgstr "Anteponer"
+
+msgid "Layout Elements"
+msgstr "Diseño de Elementos"
+
+msgid "Divider"
+msgstr "Divisor"
+
+msgid "Heading H1"
+msgstr "Encabezamiento E1"
+
+msgid "Upload Fields"
+msgstr "Subir Campos"
+
+msgid "File Upload"
+msgstr "Subir archivo"
+
+msgid "Image Upload"
+msgstr "Imagen Subir"
+
+msgid "Picker Fields"
+msgstr "Selector de campos"
+
+msgid "Color Picker"
+msgstr "Selector de color"
+
+msgid "Time Picker"
+msgstr "Time Picker"
+
+msgid "Date and Time"
+msgstr "fecha y hora"
+
+msgid "Prepend/Append Fields - Text Box"
+msgstr "Anteponer / Anexar campos - Cuadro de texto"
+
+msgid "Append"
+msgstr "Añadir"
+
+msgid "Prepend/Append"
+msgstr "Anteponer / Append"
+
+msgid "Headings"
+msgstr "Encabezamientos"
+
+msgid "Heading H2"
+msgstr "La partida H2"
+
+msgid "Heading H3"
+msgstr "La partida H3"
+
+msgid "Heading H4"
+msgstr "La partida H4"
+
+msgid "Heading H5"
+msgstr "La partida H5"
+
+msgid "Heading H6"
+msgstr "La partida H6"
+
+msgid "Wizard elements"
+msgstr "Elementos Wizard"
+
+msgid "Wizard buttons"
+msgstr "Botones Wizard"
+
+msgid "Others"
+msgstr "Otros"
+
+msgid "Switch"
+msgstr "Cambiar"
+
+msgid "Dyn Checkbox"
+msgstr "Dyn Checkbox"
+
+msgid "Dyn RadioBtn"
+msgstr "Dyn RadioBtn"
+
+msgid "Summary"
+msgstr "Resumen"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "List forms."
+msgstr "Formularios de lista."
+
+msgid "Add new form"
+msgstr "Añadir nueva forma"
+
+msgid "Disable"
+msgstr "Inhabilitar"
+
+msgid "Enable"
+msgstr "Habilitar"
+
+msgid "Delete"
+msgstr "Borrar"
+
+msgid "Name Form"
+msgstr "Nombre del formulario"
+
+msgid "Copy and paste the shortcode to your desired page"
+msgstr "Copie y pegue el código corto a su página deseada"
+
+msgid "Shortcode"
+msgstr "Código corto"
+
+msgid "Created"
+msgstr "Creado"
+
+msgid "Status"
+msgstr "Estado"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Inactive"
+msgstr "Inactivo"
+
+msgid "Edit and load your custom form"
+msgstr "Editar y cargar el formulario personalizado"
+
+msgid "Delete form"
+msgstr "Eliminar formulario"
+
+msgid "there is not forms. Add new one"
+msgstr "no hay formas. Añadir nuevo"
+
+msgid "List form information"
+msgstr "Información de formulario Lista"
+
+msgid "there is no forms selected. select one at least"
+msgstr "no hay formas seleccionadas. seleccionar uno, al menos,"
+
+msgid "Show help block"
+msgstr "Mostrar ayuda bloque"
+
+msgid "Text Font"
+msgstr "Fuentes de texto"
+
+msgid "Help block position"
+msgstr "Ayuda posición del bloque"
+
+msgid "At bottom"
+msgstr "En el fondo"
+
+msgid "At Top"
+msgstr "En Top"
+
+msgid "Tooltip"
+msgstr "Tooltip"
+
+msgid "Pop up"
+msgstr "Surgir"
+
+msgid "Price"
+msgstr "Precio"
+
+msgid "Price Format"
+msgstr "Formato del precio"
+
+msgid "Enable Cost estimation"
+msgstr "Habilitar la estimación de costos"
+
+msgid "show price label"
+msgstr "etiqueta demostración del precio"
+
+msgid "it will allow to show price label of the field"
+msgstr "que permitirá mostrar la etiqueta de precio del campo"
+
+msgid "Price label format"
+msgstr "Precio formato de etiqueta"
+
+msgid "Text Color"
+msgstr "Color de texto"
+
+msgid "Pick the color"
+msgstr "Elige el color"
+
+msgid "Add"
+msgstr "Añadir"
+
+msgid "Clean"
+msgstr "Limpio"
+
+msgid "Text"
+msgstr "Texto"
+
+msgid "Place holder"
+msgstr "Lugar titular"
+
+msgid "Color"
+msgstr "Color"
+
+msgid "Font family"
+msgstr "Familia tipográfica"
+
+msgid "Input value alignment"
+msgstr "Alineación Valor de entrada"
+
+msgid "Left"
+msgstr "Izquierda"
+
+msgid "Center"
+msgstr "Centrar"
+
+msgid "Right"
+msgstr "Correcto"
+
+msgid "Button alignment"
+msgstr "Alineación Botón"
+
+msgid "Background"
+msgstr "Fondo"
+
+msgid "Background color"
+msgstr "Color de fondo"
+
+msgid "Type"
+msgstr "Escribe"
+
+msgid "Solid"
+msgstr "Sólido"
+
+msgid "Gradient"
+msgstr "Gradiente"
+
+msgid "Start color"
+msgstr "Comience el color"
+
+msgid "End color"
+msgstr "Fin de color"
+
+msgid "Border"
+msgstr "Frontera"
+
+msgid "Border radius"
+msgstr "Radio Frontera"
+
+msgid "Color (focus)"
+msgstr "Color (enfoque)"
+
+msgid "border style"
+msgstr "estilo de borde"
+
+msgid "Dotted"
+msgstr "Punteado"
+
+msgid "Border width"
+msgstr "Ancho del borde"
+
+msgid "Divider bar Color"
+msgstr "Barra divisora ​​en color"
+
+msgid "Next Button"
+msgstr "Siguiente Botón"
+
+msgid "Text for last button"
+msgstr "Texto para último botón"
+
+msgid "you can check this on frontend page or preview"
+msgstr "usted puede comprobar esto en la página frontend o vista previa"
+
+msgid "Prev Button"
+msgstr "Botón Anterior"
+
+msgid "Buttons alignment"
+msgstr "Botones de alineación"
+
+msgid "label Yes"
+msgstr "etiqueta Sí"
+
+msgid "label no"
+msgstr "sin etiquetar"
+
+msgid "allowed extensions"
+msgstr "extensiones permitidas"
+
+msgid "Put the extensions between commas"
+msgstr "Ponga las extensiones entre comas"
+
+msgid "Maximum size"
+msgstr "Tamaño máximo"
+
+msgid "Attach files to mail notification"
+msgstr "Adjuntar archivos a los mensajes de notificación"
+
+msgid "if you enable attachment option, make sure your web server (hosting) and mail server support your maximum size file"
+msgstr "si habilita la opción de archivo adjunto, asegúrese de que su servidor web (hosting) y servidor de correo compatible con el archivo de tamaño máximo"
+
+msgid "Add new option"
+msgstr "Añadir nueva opción"
+
+msgid "Remove all options"
+msgstr "Eliminar todas las opciones"
+
+msgid "Price per unit"
+msgstr "Precio por unidad"
+
+msgid "Enable quantity"
+msgstr "Habilitar cantidad"
+
+msgid "Maximum quantity"
+msgstr "Cantidad máxima"
+
+msgid "Add new"
+msgstr "Añadir nuevo"
+
+msgid "Settings label option"
+msgstr "Opción etiqueta Configuración"
+
+msgid "Selected"
+msgstr "Seleccionado"
+
+msgid "Block alignment"
+msgstr "Bloque de alineación"
+
+msgid "Inline"
+msgstr "En línea"
+
+msgid "Type label"
+msgstr "Placa de tipos"
+
+msgid "Custom html content"
+msgstr "Contenido HTML personalizada"
+
+msgid "Minimum"
+msgstr "Mínimo"
+
+msgid "Maximum"
+msgstr "Máximo"
+
+msgid "Default value"
+msgstr "Valor por defecto"
+
+msgid "Step"
+msgstr "Paso"
+
+msgid "Range 1"
+msgstr "Rango 1"
+
+msgid "Range 2"
+msgstr "Rango 2"
+
+msgid "Custom width"
+msgstr "Anchura personalizada"
+
+msgid "Max width"
+msgstr "anchura máxima"
+
+msgid "Public key"
+msgstr "Llave pública"
+
+msgid "Secret key"
+msgstr "Llave secreta"
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "Light"
+msgstr "Ligero"
+
+msgid "Dark"
+msgstr "Oscuro"
+
+msgid "Custom text color"
+msgstr "Color del texto de encargo"
+
+msgid "Custom Background color"
+msgstr "El color de fondo de encargo"
+
+msgid "Custom Behind lines"
+msgstr "Custom Detrás de las líneas"
+
+msgid "Lines"
+msgstr "Líneas"
+
+msgid "Custom front lines"
+msgstr "Frente personalizada"
+
+msgid "Distortion"
+msgstr "Distorsión"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "English"
+msgstr "Inglés"
+
+msgid "Spanish"
+msgstr "Español"
+
+msgid "French"
+msgstr "francés"
+
+msgid "Italian"
+msgstr "italiano"
+
+msgid "Japanese"
+msgstr "japonés"
+
+msgid "Portuguese"
+msgstr "portugués"
+
+msgid "Russian"
+msgstr "ruso"
+
+msgid "Chinese"
+msgstr "chino"
+
+msgid "Format"
+msgstr "Formato"
+
+msgid "Default"
+msgstr "Defecto"
+
+msgid "Text star 1"
+msgstr "Texto estrellas 1"
+
+msgid "Text star 2"
+msgstr "Texto 2 estrellas"
+
+msgid "Text star 3"
+msgstr "Texto 3 estrellas"
+
+msgid "Text star 4"
+msgstr "Texto 4 estrellas"
+
+msgid "Text star 5"
+msgstr "Texto 5 estrellas"
+
+msgid "Not rated text"
+msgstr "El texto se ha clasificado"
+
+msgid "Label text"
+msgstr "Texto Etiqueta"
+
+msgid "Text Shadow"
+msgstr "Sombra de texto"
+
+msgid "horizontal"
+msgstr "horizontal"
+
+msgid "vertical"
+msgstr "vertical"
+
+msgid "blur"
+msgstr "Mancha"
+
+msgid "Sub label"
+msgstr "Sello Sub"
+
+msgid "Sublabel text"
+msgstr "Texto subsello"
+
+msgid "Text font"
+msgstr "Fuente del texto"
+
+msgid "Text shadow"
+msgstr "Sombra de texto"
+
+msgid "x"
+msgstr "X"
+
+msgid "y"
+msgstr "y"
+
+msgid "Text Block"
+msgstr "Bloque de texto"
+
+msgid "Block position"
+msgstr "Posición Bloquear"
+
+msgid "Top"
+msgstr "Cima"
+
+msgid "Bottom"
+msgstr "Fondo"
+
+msgid "Show Block"
+msgstr "Mostrar Bloquear"
+
+msgid "Help block"
+msgstr "Bloque de Ayuda"
+
+msgid "Help block alignment (temp - delete)"
+msgstr "Alineación de bloques Ayuda (temp - eliminar)"
+
+msgid "Required"
+msgstr "Necesario"
+
+msgid "Allow whitespace"
+msgstr "Permitir espacios en blanco"
+
+msgid "Add validator"
+msgstr "Añadir validador"
+
+msgid "Validator configuration: "
+msgstr "Validador de configuración:"
+
+msgid "Less than"
+msgstr "Menos que"
+
+msgid "Default Message"
+msgstr "Mensaje predeterminado"
+
+msgid "Custom Error Message"
+msgstr "Mensaje de error personalizado"
+
+msgid "Alert position"
+msgstr "Posición de Alerta"
+
+msgid "Set required icon"
+msgstr "Establecer icono deseado"
+
+msgid "Choose required icon"
+msgstr "Elija el icono requerido"
+
+msgid "Required icon position"
+msgstr "Requerido posición de icono"
+
+msgid "Before label"
+msgstr "Antes de etiqueta"
+
+msgid "After label"
+msgstr "Después de etiqueta"
+
+msgid "Letters"
+msgstr "Letras"
+
+msgid "Letter & Numbers"
+msgstr "Carta y Números"
+
+msgid "Only numbers"
+msgstr "Sólo los números"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Greater than"
+msgstr "Mas grande que"
+
+msgid "Identical"
+msgstr "Idéntico"
+
+msgid "Length"
+msgstr "Largo"
+
+msgid "Validator: "
+msgstr "Validador:"
+
+msgid "Translate error message "
+msgstr "Traducir mensaje de error"
+
+msgid "Letters and Numbers"
+msgstr "Letras y números"
+
+msgid "Background Color"
+msgstr "Color de fondo"
+
+msgid "Required icon"
+msgstr "Icono Necesario"
+
+msgid "Enable Conditional logic"
+msgstr "Habilitar la lógica condicional"
+
+msgid "Show"
+msgstr "mostrar"
+
+msgid "Hide"
+msgstr "Esconder"
+
+msgid "this field if"
+msgstr "este campo si"
+
+msgid "All"
+msgstr "Todas"
+
+msgid "Any"
+msgstr "Alguna"
+
+msgid "of the following rule match"
+msgstr "del siguiente partido de gobierno"
+
+msgid "Add new conditional Logic"
+msgstr "Añadir nueva lógica condicional"
+
+msgid "Remove all"
+msgstr "Eliminar todo"
+
+msgid "is"
+msgstr "es"
+
+msgid "is not"
+msgstr "no es"
+
+msgid "greater than"
+msgstr "mas grande que"
+
+msgid "less than"
+msgstr "menos que"
+
+msgid "You are receiving a new form request"
+msgstr "Usted está recibiendo una nueva solicitud de forma"
+
+msgid "Form information"
+msgstr "Información Forma"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Subject mail"
+msgstr "Asunto electrónico"
+
+msgid "it is the title of the message. do not leave blank"
+msgstr "es el título del mensaje. no dejar en blanco"
+
+msgid "Here goes your subject mail"
+msgstr "Aquí va el asunto del correo"
+
+msgid "Type subject"
+msgstr "Tipo tema"
+
+msgid "Recipient mail"
+msgstr "Destinatario de correo"
+
+msgid "This is the recipient mail. if you leave it blank, admin mail will be taken"
+msgstr "Este es el destinatario de correo. Si lo deja en blanco, se tomará electrónico de administración"
+
+msgid "Type email address"
+msgstr "Dirección de correo electrónico Tipo"
+
+msgid "this mail will receive a copy of the email"
+msgstr "este correo recibirá una copia del email"
+
+msgid "Type CC mail"
+msgstr "Mail Tipo CC"
+
+msgid "this mail will receive a copy of the email without letting the others notice it"
+msgstr "este correo recibirá una copia del correo electrónico sin que los demás lo notan"
+
+msgid "Type BCC mail"
+msgstr "Escriba electrónico BCC"
+
+msgid "Email Template"
+msgstr "Plantilla de correo electrónico"
+
+msgid "From - text 1"
+msgstr "De - Texto 1"
+
+msgid "this field will be located in the FROM zone"
+msgstr "este campo se encuentra en la zona de DE"
+
+msgid "Here goes your text"
+msgstr "Aquí va el texto"
+
+msgid "To - text 1"
+msgstr "Para - Texto 1"
+
+msgid "this field will be located in the TO zone"
+msgstr "este campo se encuentra en el a la zona"
+
+msgid "From - text 2"
+msgstr "De - Texto 2"
+
+msgid "To - text 2"
+msgstr "Para - Texto 2"
+
+msgid "From - text 3"
+msgstr "De - Texto 3"
+
+msgid "To - text 3"
+msgstr "Para - Texto 3"
+
+msgid "From - text 4"
+msgstr "De - Texto 4"
+
+msgid "To - text 4"
+msgstr "Para - Texto 4"
+
+msgid "From - text 5"
+msgstr "De - Texto 5"
+
+msgid "To - text 5"
+msgstr "Para - Texto 5"
+
+msgid "estimation"
+msgstr "estimación"
+
+msgid "this will enable cost estimation for the whole form."
+msgstr "esto permitirá la estimación de costos para todo el formulario."
+
+msgid "Enable Payment"
+msgstr "Habilitar Pago"
+
+msgid "it will allow to show a payment page after submitting form"
+msgstr "que permitirá mostrar una página de pago después de la presentación de la forma"
+
+msgid "Currency code"
+msgstr "Código de moneda"
+
+msgid "it allow you choose currency code"
+msgstr "que permite que usted elija código de moneda"
+
+msgid "Currency symbol"
+msgstr "Símbolo de moneda"
+
+msgid "it allow you choose currency symbol"
+msgstr "que le permite elegir el símbolo de moneda"
+
+msgid "Submit mode"
+msgstr "Modo Presentar"
+
+msgid "Ajax mode when submitting form"
+msgstr "Modo Ajax cuando presente formulario"
+
+msgid "You can switch the submit mode between POST and AJAX"
+msgstr "Puede cambiar el modo de presentar entre POST y AJAX"
+
+msgid "Import the backuped form"
+msgstr "Importe el formulario backuped"
+
+msgid "Custom css"
+msgstr "Css personalizado"
+
+msgid "Additional css"
+msgstr "Css adicional"
+
+msgid "This is not required. You can add extra css to your form. this will be added to css file "
+msgstr "Esto no es necesario. Puede agregar css adicional a su forma. este se añadirá al archivo css"
+
+msgid "Just put the selectors. e.g. #id_form .control-label {color:red} "
+msgstr "Sólo hay que poner los selectores. por ejemplo #id_form .El control-label {color: red}"
+
+msgid "Additional javascript"
+msgstr "Javascript adicional"
+
+msgid "This is not required. You can add extra javascript code or some script to your form."
+msgstr "Esto no es necesario. Puede añadir código JavaScript adicional o una secuencia de comandos a su formulario."
+
+msgid "proceed with caution. if you put a wrong javascript code, the form will not work properly e.g. "
+msgstr "proceda con precaución. si pones un mal código javascript, la forma no funcionará correctamente por ejemplo,"
+
+msgid "More options"
+msgstr "Mas opciones"
+
+msgid "Refresh preview editor panel"
+msgstr "Actualizar panel del editor de previsualización"
+
+msgid "Refresh"
+msgstr "Refrescar"
+
+msgid "this is used in order to fix if something is not showing fine on the preview editor panel"
+msgstr "esto se utiliza para fijar si algo no aparece bien en el panel de vista previa editor"
+
+msgid "Text font size"
+msgstr "Tamaño de la fuente del texto"
+
+msgid "Select font size"
+msgstr "Seleccione el tamaño de la fuente"
+
+msgid "Custom padding"
+msgstr "Padding personalizada"
+
+msgid "Padding top"
+msgstr "Acolchado superior"
+
+msgid "Padding right"
+msgstr "Relleno derecho"
+
+msgid "Padding bottom"
+msgstr "Fondo acolchado"
+
+msgid "Padding left"
+msgstr "Relleno izquierdo"
+
+msgid "Background image"
+msgstr "Imagen de fondo"
+
+msgid "Update Image"
+msgstr "Actualizar imagen"
+
+msgid "Box Shadow"
+msgstr "Shadow Box"
+
+msgid "Success! Form was sent successfully."
+msgstr "¡Éxito! Formulario se ha enviado correctamente."
+
+msgid "Success Message"
+msgstr "Éxito Mensaje"
+
+msgid "Enable summary box"
+msgstr "Habilitar cuadro de resumen"
+
+msgid "Layout"
+msgstr "Diseño"
+
+msgid "Select Position"
+msgstr "Seleccione Posición"
+
+msgid "Top out"
+msgstr "Arriba a cabo"
+
+msgid "Bottom out"
+msgstr "Tocar fondo"
+
+msgid "Side Box Width"
+msgstr "Side Box Ancho"
+
+msgid "Content"
+msgstr "Contenido"
+
+msgid "Text content"
+msgstr "El contenido del texto"
+
+msgid "Enable wizard forms"
+msgstr "Habilitar formularios del asistente"
+
+msgid "Tabs management"
+msgstr "Gestión más aquí"
+
+msgid "Clean Tabs"
+msgstr "Aquí limpias"
+
+msgid "Tab"
+msgstr "Lengüeta"
+
+msgid "Type tab title"
+msgstr "Tipo título de la pestaña"
+
+msgid "Skin tab"
+msgstr "Pestaña piel"
+
+msgid "Theme 1"
+msgstr "Tema 1"
+
+msgid "Theme 2"
+msgstr "Tema 2"
+
+msgid "Inactive mode"
+msgstr "El modo Inactivo"
+
+msgid "Text color"
+msgstr "Color de texto"
+
+msgid "Number text color"
+msgstr "Número de color de texto"
+
+msgid "Active Mode"
+msgstr "Modo Activo"
+
+msgid "Title color"
+msgstr "Título del color"
+
+msgid "Background for number container"
+msgstr "Antecedentes para el número de contenedor"
+
+msgid "Done mode"
+msgstr "Modo de Hecho"
+
+msgid "this when the tab is completed. this will be shown on frontend"
+msgstr "esto cuando se complete la ficha. este se mostrará en frontend"
+
+msgid "Tab container "
+msgstr "Contenedor Tab"
+
+msgid "From"
+msgstr "De"
+
+msgid "To"
+msgstr "A"
+
+msgid "Item ID"
+msgstr "Identificación del artículo"
+
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Amount"
+msgstr "Cantidad"
+
+msgid "Invoice Total"
+msgstr "Total de la factura"
+
+msgid "Choose Payment Method"
+msgstr "Elige el método de pago"
+
+msgid "Payment Option"
+msgstr "Opción de pago"
+
+msgid "Order Summary"
+msgstr "Resumen del pedido"
+
+msgid "See summary"
+msgstr "Ver resumen"
+
+msgid "See invoice"
+msgstr "Ver factura"
+
+msgid "Agree To The"
+msgstr "Acepto los"
+
+msgid "Terms &amp; Conditions"
+msgstr "Términos y amp; Condiciones"
+
+msgid "Complete Order"
+msgstr "Orden completa"
+
+msgid "Select Payment"
+msgstr "Seleccione Pago"
+
+msgid "Custom report"
+msgstr "Informe personalizado"
+
+msgid "Select your custom fields to be shown on list report"
+msgstr "Seleccione sus campos personalizados que deberá aparecer en la lista de informe"
+
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+msgid "URL page"
+msgstr "URL de la página"
+
+msgid "List Records."
+msgstr "Lista de Registros."
+
+msgid "Export to csv"
+msgstr "Exportar a csv"
+
+msgid "Show detail"
+msgstr "Mostrar detalle"
+
+msgid "View chart"
+msgstr "Ver tabla"
+
+msgid "Select your form in order to see the chart"
+msgstr "Seleccione su formulario con el fin de ver el gráfico"
+
+msgid "Backup"
+msgstr "Apoyo"
+
+msgid "Name backup"
+msgstr "Nombre de copia de seguridad"
+
+msgid "Enter a backup name or leave blank, current date will be assigned to backup name"
+msgstr "Introduzca un nombre de copia de seguridad o deje en blanco, la fecha actual se asigna al nombre de copia de seguridad"
+
+msgid "Create backup"
+msgstr "Crear copia de seguridad"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Download"
+msgstr "Descargar"
+
+msgid "Restore Backup"
+msgstr "Restaurar copia de seguridad"
+
+msgid "there is not backup stored. Create new one"
+msgstr "no hay copia de seguridad almacenada. Crear nuevo"
+
+msgid "Upload Backup"
+msgstr "Cargar copia de seguridad"
+
+msgid "Save changes"
+msgstr "Guardar Cambios"
+
+msgid "Database backup success"
+msgstr "Éxito copia de seguridad"
+
+msgid "Delete File selected"
+msgstr "Eliminar archivo seleccionado"
+
+msgid "Global Settings"
+msgstr "Ajustes globales"
+
+msgid "List Invoices."
+msgstr "Lista de las facturas."
+
+msgid "Payment Status"
+msgstr "Estado de pago"
+
+msgid "Currency"
+msgstr "Moneda"
+
+msgid "there are not invoices."
+msgstr "no hay facturas."
+
+msgid "Payment gateway"
+msgstr "Pasarela de pago"
+
+msgid "Type name payment gateway"
+msgstr "Tipo de pago el nombre de puerta de enlace"
+
+msgid "Return URL"
+msgstr "URL Volver"
+
+msgid "Type return URL"
+msgstr "Tipo URL de retorno"
+
+msgid "Enabled"
+msgstr "Activado"
+
+msgid "Disabled"
+msgstr "Incapacitado"
+
+msgid "Payment order"
+msgstr "Orden de pago"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Paypal mail"
+msgstr "Electrónico de Paypal"
+
+msgid "Type Paypal mail"
+msgstr "Escriba electrónico PayPal"
+
+msgid "Cancel URL"
+msgstr "Cancelar URL"
+
+msgid "Type cancel URL"
+msgstr "Escriba cancelar URL"
+
+msgid "Test mode"
+msgstr "Modo de prueba"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "No"
+msgstr "No"
+
+msgid "List payments gateways."
+msgstr "Pasarelas de pagos lista."
+
+msgid "Gateway payment"
+msgstr "El pago de puerta de enlace"
+
+msgid "there is not payment gateways."
+msgstr "no hay pasarelas de pago."
+
+msgid "Removing"
+msgstr "Extracción"
+
+msgid "Processing"
+msgstr "Tratamiento"
+
+msgid "Loading"
+msgstr "Cargando"
+
+msgid "Saving"
+msgstr "Ahorro"
+
+msgid "Tour guide info"
+msgstr "Info La guía turística"
+
+msgid "there is not tour guide for this page. press the accept button"
+msgstr "no hay guía de esta página. pulse el botón aceptar"
+
+msgid "Success! Updated successfully"
+msgstr "¡Éxito! Actualizado correctamente"
+
+msgid "Form was created"
+msgstr "Formulario fue creado"
+
+msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
+msgstr "¡Éxito! Se creó el formulario. Ahora sólo tienes que copiar y pegar el código corto a su contenido"
+
+msgid "Delete field selected"
+msgstr "Eliminar campo seleccionado"
+
+msgid "Are you sure?"
+msgstr "¿Estas seguro?"
+
+msgid "Toggle navigation"
+msgstr "Navegación de palanca"
+
+msgid "Forms"
+msgstr "Formas"
+
+msgid "New"
+msgstr "Nuevo"
+
+msgid "List forms"
+msgstr "Formularios de lista"
+
+msgid "Templates"
+msgstr "Plantillas"
+
+msgid "Online event registration"
+msgstr "Registro de eventos en línea"
+
+msgid "Reservation Request Form"
+msgstr "Formulario de Solicitud de Reserva"
+
+msgid "Purchase Order - Point Of Sale"
+msgstr "Orden de Compra - Punto de Venta"
+
+msgid "Website Design Request"
+msgstr "Diseño de páginas Web Solicitud"
+
+msgid "Order form"
+msgstr "Formulario de pedido"
+
+msgid "Wedding planner"
+msgstr "Planificador de la boda"
+
+msgid "Conditional Logic"
+msgstr "Lógica Condicional"
+
+msgid "Wizard form"
+msgstr "Forma Asistente"
+
+msgid "All fields"
+msgstr "Todos los campos"
+
+msgid "Preview"
+msgstr "Vista previa"
+
+msgid "desktop"
+msgstr "de oficina"
+
+msgid "smartphone"
+msgstr "teléfono inteligente"
+
+msgid "List all Forms"
+msgstr "Enumerar todas las Formas"
+
+msgid "List by Form"
+msgstr "Lista by Form"
+
+msgid "Custom Report"
+msgstr "Informe personalizado"
+
+msgid "Invoices"
+msgstr "Facturas"
+
+msgid "Payment Gateways"
+msgstr "Pasarelas de pago"
+
+msgid "Guided tour"
+msgstr "Tour guiado"

@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Rocket form\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: softdiscover <info@softdiscover.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"X-Generator: Poedit 1.7.5\n"
+
+msgid "Date"
+msgstr "Fecha"
+
+msgid "From"
+msgstr "De"
+
+msgid "To"
+msgstr "A"
+
+msgid "Item ID"
+msgstr "ID del elemento"
+
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "Amount"
+msgstr "Cantidad"
+
+msgid "Invoice Total"
+msgstr "Total Factura"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Choose Payment Method"
+msgstr "Elige tu forma de pago"
+
+msgid "Payment Option"
+msgstr "Opciones De Pago"
+
+msgid "Order Summary"
+msgstr "Resumen del pedido"
+
+msgid "See summary"
+msgstr "See resumen"
+
+msgid "See invoice"
+msgstr "Ver factura"
+
+msgid "Agree To The"
+msgstr "Acepto los"
+
+msgid "Complete Order"
+msgstr "Completar Pedido"
+
+msgid "Select Payment"
+msgstr "Seleccionar tipo de pago"
+
+msgid "Invoice"
+msgstr "Factura"
+
+msgid "Order summary"
+msgstr "Resumen del pedido"
+
+msgid "Total cost"
+msgstr "Coste total"
+
+msgid "Error! something went wrong."
+msgstr "¡Error! algo salió mal."
+
+msgid "warning! Form was not submitted"
+msgstr "advertencia! El formulario no pudo enviarse"
+
+msgid "Error! The file exceeds the allowed size of"
+msgstr "¡Error! El archivo supera el tamaño permitido de"
+
+msgid "Error! Type of file is not allowed to upload"
+msgstr "¡Error! Tipo de archivo no está permitido subir"
+
+msgid "quantity"
+msgstr "cantidad"
+
+msgid "New form request"
+msgstr "Nueva solicitud de formulario"
+
+msgid "Success! your form was submitted"
+msgstr "Éxito! El formulario se envió satisfactoriamente"

@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Rocket form\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: softdiscover <info@softdiscover.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"X-Generator: Poedit 1.7.5\n"
+
+msgid "Date"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "Item ID"
+msgstr ""
+
+msgid "Quantity"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "Invoice Total"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Choose Payment Method"
+msgstr ""
+
+msgid "Payment Option"
+msgstr ""
+
+msgid "Order Summary"
+msgstr ""
+
+msgid "See summary"
+msgstr ""
+
+msgid "See invoice"
+msgstr ""
+
+msgid "Agree To The"
+msgstr ""
+
+msgid "Complete Order"
+msgstr ""
+
+msgid "Select Payment"
+msgstr ""
+
+msgid "Invoice"
+msgstr ""
+
+msgid "Order summary"
+msgstr ""
+
+msgid "Total cost"
+msgstr ""
+
+msgid "Error! something went wrong."
+msgstr ""
+
+msgid "warning! Form was not submitted"
+msgstr ""
+
+msgid "Error! The file exceeds the allowed size of"
+msgstr ""
+
+msgid "Error! Type of file is not allowed to upload"
+msgstr ""
+
+msgid "quantity"
+msgstr ""
+
+msgid "New form request"
+msgstr ""
+
+msgid "Success! your form was submitted"
+msgstr ""
