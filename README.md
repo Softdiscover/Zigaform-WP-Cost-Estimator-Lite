@@ -1,27 +1,14 @@
 # Zigaform - Calculator & Cost Estimation Form Builder Lite
 
-Ultimate Calculator & Cost Estimation form builder . See more at https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/
-
-**Contributors:** softdiscover  
-**Donate link:** https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover  
-**License:** GPLv3  
-**License URI:** http://www.gnu.org/licenses/gpl.html  
-**Tags:** calculator, wizard, form builder, bootstrap, estimation, AJAX, Akismet, captcha, contact, contact form, email, feedback, form, multilingual  
-**Requires at least:** 3.6  
-**Tested up to:** 4.9  
-**Stable tag:** 3.9.4.2 
-
-Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
-
-## Description ## 
-
 **Zigaform - Calculator & Cost Estimation Form Builder**  is a real-time drag and drop form builder which makes you to build your estimation forms on few easy steps. it can estimate any service for your clients and you can proceed checkout using payment gateway.  Also it provides an advanced grid system and skin customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
 https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
 
+See more at https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/
+
 ## Installation ## 
 
-The latest version of the Zigaform plugin ZIP file can be [**downloaded**](https://downloads.wordpress.org/plugin/zigaform-calculator-cost-estimation-form-builder-lite.zip) from https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/
+The latest version of the Zigaform plugin ZIP file can be [**downloaded**](https://github.com/Softdiscover/Zigaform-WP-Cost-Estimator-Lite/zipball/master) from https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/
  
 There are 2 ways to install. Please follow the steps below: 
 
@@ -47,7 +34,7 @@ https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/installation/
 
 Please see https://wordpress-cost-estimator.zigaform.com/#contact for more details.
 
-### Features (Free Lite version):
+### Features :
 * real-time drag and drop form builder which makes to build estimation forms
 * Cost estimation and calculation feature (math formula)
 * Offline Payment Gateway included
