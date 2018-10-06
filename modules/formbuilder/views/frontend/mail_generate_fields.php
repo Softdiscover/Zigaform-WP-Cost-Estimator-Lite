@@ -39,8 +39,24 @@ ob_start();
                                 case 9:
                                 case 10:
                                 case 11:
-                                    /*checkbox, radiobutton, select, multiselect*/
-                                
+                                      /*checkbox, radiobutton, select, multiselect*/
+                                     $tmp_output_st ='';
+                                        $tmp_output_st.=$value2['value'];
+
+                                        if(isset($value['price_st'])
+                                             && intval($current_cost_st)===1
+                                             && intval($value['price_st'])===1  
+                                             && isset($value2['cost'])  
+                                                ){
+                                            
+                                            if( isset($form_data_calc_enable)   
+                                             && intval($form_data_calc_enable)===1  ){
+                                                $tmp_output_st.=' - amount:  '.Uiform_Form_Helper::cformat_numeric($format_price_conf,$value2['cost']); 
+                                            }else{
+                                                $tmp_output_st.=' - amount: '.$current_cost_symbol.' '.Uiform_Form_Helper::cformat_numeric($format_price_conf,$value2['cost']).' '.$current_cost_cur;  
+                                            }
+                                        } 
+                                    break;
                                 case 40:
                                     /*switch*/        
                                       $tmp_output_st ='';

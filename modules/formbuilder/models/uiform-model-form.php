@@ -40,7 +40,45 @@ class Uiform_Model_Form {
         $this->wpdb = $wpdb;
         $this->table = $wpdb->prefix . "cest_uiform_form";
     }
+    
+    
+    /**
+     * formsmodel::getListForms()
+     * List form estimator
+     * 
+     * @param int $per_page max number of form estimators
+     * @param int $segment  Number of pagination
+     * 
+     * @return array
+     */
+    function getListFormsFiltered($data) {
+        
+        $per_page = $data['per_page'];
+        $segment = $data['segment'];
+        $search_txt = $data['search_txt'];
+        $orderby = $data['orderby'];
+        
+        $query = sprintf('
+            select c.*
+            from %s c
+            where c.flag_status>0 ', $this->table);
 
+        if(!empty($search_txt)){
+            $query.=" and  c.fmb_name like '%".$search_txt."%' ";
+        }
+        
+        $orderby=($orderby==='asc')?'asc':'desc';
+        
+        $query.=sprintf(" ORDER BY c.updated_date %s ",$orderby);
+        
+        if ($per_page != '' || $segment != '') {
+            $segment=(!empty($segment))?$segment:0;
+            $query.=sprintf(' limit %s,%s', (int)$segment, (int)$per_page);
+        }
+        
+        return $this->wpdb->get_results($query);
+    }
+    
     /**
      * formsmodel::getListForms()
      * List form estimator

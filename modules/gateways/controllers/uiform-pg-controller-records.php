@@ -81,7 +81,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module {
         $offset = (isset($_GET['offset']) && $_GET['offset']) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         //list all forms
         $data = $config = array();
-        $config['base_url'] = admin_url() . '?page=zgfm_cost_estimate&mod=gateways&controller=records&action=list_records';
+        $config['base_url'] = admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records';
         $config['total_rows'] = $this->model_gateways_records->CountRecords();
         $config['per_page'] = $this->per_page;
         $config['first_link'] = 'First';

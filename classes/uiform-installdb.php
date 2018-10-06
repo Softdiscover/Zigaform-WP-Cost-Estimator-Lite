@@ -56,10 +56,10 @@ class Uiform_InstallDB {
             `flag_status` SMALLINT(5) DEFAULT '1',
             `created_date` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' ,
             `updated_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-            `created_ip` VARCHAR(20) NULL ,
-            `updated_ip` VARCHAR(20) NULL ,
-            `created_by` INT(6) NULL ,
-            `updated_by` INT(6) NULL ,
+            `created_ip` VARCHAR(50) NULL ,
+            `updated_ip` VARCHAR(50) NULL ,
+            `created_by` VARCHAR(50) NULL ,
+            `updated_by` VARCHAR(50) NULL ,
             `fmb_html_css` longtext NULL ,
             `fmb_default` TINYINT(1) NULL DEFAULT 0 ,
             `fmb_skin_status` TINYINT(1) NULL DEFAULT 0 ,
@@ -85,7 +85,7 @@ class Uiform_InstallDB {
                 `fbh_data_user` longtext,
                 `form_fmb_id` int(6) NOT NULL,
                 `fbh_data_rec_xml` longtext,
-                `fbh_user_agent` varchar(200) DEFAULT NULL,
+                `fbh_user_agent` text,
                 `fbh_page` longtext,
                 `fbh_referer` longtext,
                 `fbh_params` longtext,
@@ -100,8 +100,8 @@ class Uiform_InstallDB {
         `flag_status` SMALLINT(5) NULL ,
         `created_date` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' ,
         `updated_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-        `created_ip` VARCHAR(20) NULL ,
-        `updated_ip` VARCHAR(20) NULL ,
+        `created_ip` VARCHAR(50) NULL ,
+        `updated_ip` VARCHAR(50) NULL ,
         `created_by` INT(6) NULL ,
         `updated_by` INT(6) NULL ,
         PRIMARY KEY (`fby_id`) )" . $charset . ";";
@@ -165,10 +165,10 @@ class Uiform_InstallDB {
         `flag_status` smallint(5) DEFAULT NULL,
         `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
         `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        `created_ip` varchar(20) DEFAULT NULL,
-        `updated_ip` varchar(20) DEFAULT NULL,
-        `created_by` int(6) DEFAULT NULL,
-        `updated_by` int(6) DEFAULT NULL,
+        `created_ip` varchar(50) DEFAULT NULL,
+        `updated_ip` varchar(50) DEFAULT NULL,
+        `created_by` VARCHAR(50) NULL ,
+        `updated_by` VARCHAR(50) NULL ,
         `fmf_status_qu` smallint(5) NOT NULL DEFAULT '0',
         `type_fby_id` int(6) NOT NULL,
         `form_fmb_id` int(6) NOT NULL,
@@ -195,7 +195,7 @@ class Uiform_InstallDB {
         //insert data
         $uifm_check_total = $wpdb->get_row("SELECT COUNT(*) AS total FROM ".$this->settings, ARRAY_A );
        if( isset($uifm_check_total['total']) && intval($uifm_check_total['total'])===0 ){
-           $sql="INSERT INTO $this->settings VALUES ('3.7.6', null, null, null, null, null, null, '', '1');";
+           $sql="INSERT INTO $this->settings VALUES ('3.9.1.9', null, null, null, null, null, null, '', '1');";
         $wpdb->query($sql);
        }
         
@@ -243,10 +243,10 @@ class Uiform_InstallDB {
         `flag_status` smallint(5) DEFAULT NULL,
         `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
         `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        `created_ip` varchar(20) DEFAULT NULL,
-        `updated_ip` varchar(20) DEFAULT NULL,
-        `created_by` int(6) DEFAULT NULL,
-        `updated_by` int(6) DEFAULT NULL,
+        `created_ip` varchar(50) DEFAULT NULL,
+        `updated_ip` varchar(50) DEFAULT NULL,
+        `created_by` VARCHAR(50) NULL ,
+        `updated_by` VARCHAR(50) NULL ,
         `fbh_id` int(10) NOT NULL ,
         PRIMARY KEY (`pgr_id`)
         ) " . $charset . ";";
@@ -315,8 +315,8 @@ class Uiform_InstallDB {
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             `created_ip` varchar(50) DEFAULT NULL,
             `updated_ip` varchar(50) DEFAULT NULL,
-            `created_by` int(6) DEFAULT NULL,
-            `updated_by` int(6) DEFAULT NULL,
+            `created_by` VARCHAR(50) NULL ,
+            `updated_by` VARCHAR(50) NULL ,
             PRIMARY KEY (`log_id`)
         ) " . $charset . ";";
         
@@ -342,8 +342,8 @@ class Uiform_InstallDB {
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             `created_ip` varchar(50)  DEFAULT NULL,
             `updated_ip` varchar(50)  DEFAULT NULL,
-            `created_by` int(6) DEFAULT NULL,
-            `updated_by` int(6) DEFAULT NULL,
+            `created_by` VARCHAR(50) NULL ,
+            `updated_by` VARCHAR(50) NULL ,
             `add_xml` text ,
             `add_load_back` smallint(5) DEFAULT NULL,
             `add_load_front` smallint(5) DEFAULT NULL,
@@ -371,10 +371,10 @@ class Uiform_InstallDB {
             `flag_status` smallint(5) DEFAULT 1,
             `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(20) DEFAULT NULL,
-            `updated_ip` varchar(20) DEFAULT NULL,
-            `created_by` int(6) DEFAULT NULL,
-            `updated_by` int(6) DEFAULT NULL,
+            `created_ip` varchar(50) DEFAULT NULL,
+            `updated_ip` varchar(50) DEFAULT NULL,
+            `created_by` VARCHAR(50) NULL ,
+            `updated_by` VARCHAR(50) NULL ,
             PRIMARY KEY (`add_name`, `fmb_id`) 
         ) " . $charset . ";";
         
@@ -392,10 +392,10 @@ class Uiform_InstallDB {
             `flag_status` smallint(5) DEFAULT 1,
             `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(20) DEFAULT NULL,
-            `updated_ip` varchar(20) DEFAULT NULL,
-            `created_by` int(6) DEFAULT NULL,
-            `updated_by` int(6) DEFAULT NULL,
+            `created_ip` varchar(50) DEFAULT NULL,
+            `updated_ip` varchar(50) DEFAULT NULL,
+            `created_by` VARCHAR(50) NULL ,
+            `updated_by` VARCHAR(50) NULL ,
             `log_id` int(5) NOT NULL,
             PRIMARY KEY (`add_log_id`) 
         ) " . $charset . ";";

@@ -2,12 +2,11 @@
 /*
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
- * Description: The ZigaForm Calculator & Cost Estimation makes you build estimation forms in few steps.
- * Version: 3.7.6.5
+ * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for Wordpress.
+ * Version: 3.9.4.8
  * Author: ZigaForm.Com
- * Author URI: http://wordpress-cost-estimator.zigaform.com/
+ * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
-
 if (!defined('ABSPATH')) {
     die('Access denied.');
 }
@@ -29,7 +28,7 @@ if (!class_exists('UiformCostEst')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.7.6.5';
+        public $version = '3.9.4.8';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -166,17 +165,18 @@ if (!class_exists('UiformCostEst')) {
             $this->define('UIFORM_FORMS_DIR', dirname(__FILE__));
             $this->define('UIFORM_FORMS_URL', plugins_url() . '/'.UIFORM_FOLDER);
             $this->define('UIFORM_FORMS_LIBS', UIFORM_FORMS_DIR . '/libraries');
-            $this->define('UIFORM_DEBUG', 0);
             $this->define('UIFORM_DEMO', 0);
             $this->define('UIFORM_DEV', 0);
+            
+            
+            $this->define('ZIGAFORM_C_LITE', 1);
+            $this->define('UIFORM_DEBUG', 0);
             if (UIFORM_DEBUG == 1) {
                 error_reporting(E_ALL);
                 ini_set('display_errors', 1);
                 ini_set("memory_limit","850M");
                 set_time_limit(0);
             }
-            
-            $this->define('ZIGAFORM_C_LITE', 1);
         }
 
         /**
@@ -426,8 +426,8 @@ if (!class_exists('UiformCostEst')) {
                                 `flag_status` smallint(5) DEFAULT 1,
                                 `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                `created_ip` varchar(20) DEFAULT NULL,
-                                `updated_ip` varchar(20) DEFAULT NULL,
+                                `created_ip` varchar(50) DEFAULT NULL,
+                                `updated_ip` varchar(50) DEFAULT NULL,
                                 `created_by` int(6) DEFAULT NULL,
                                 `updated_by` int(6) DEFAULT NULL,
                                 PRIMARY KEY (`add_name`, `fmb_id`) 
@@ -450,8 +450,8 @@ if (!class_exists('UiformCostEst')) {
                             `flag_status` smallint(5) DEFAULT 1,
                             `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
                             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            `created_ip` varchar(20) DEFAULT NULL,
-                            `updated_ip` varchar(20) DEFAULT NULL,
+                            `created_ip` varchar(50) DEFAULT NULL,
+                            `updated_ip` varchar(50) DEFAULT NULL,
                             `created_by` int(6) DEFAULT NULL,
                             `updated_by` int(6) DEFAULT NULL,
                             `log_id` int(5) NOT NULL,
@@ -470,9 +470,14 @@ if (!class_exists('UiformCostEst')) {
                    
                     if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
                         
-                        $row= @$wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE `add_id`");
+                        try {
+                            $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'add_id'");
+                        } catch (Exception $e) {
+                            $row = array();
+                        }
+                        
                         if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " DROP COLUMN `add_id`;";
+                            $sql = "ALTER TABLE " . $tbname . " DROP COLUMN 'add_id';";
                             $wpdb->query($sql);
                         }
                     }

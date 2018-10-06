@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
@@ -188,7 +188,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
          </fieldset> 
           
           
-          <fieldset style="display:none;">
+          <fieldset >
                     <legend><?php echo __('Additional','FRocket_admin'); ?> </legend>
                     <div class="zgpb-modal-body-tab-inner">
                        
@@ -202,7 +202,9 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                     <div class="sfdc-col-md-6">
                                       <input type="text" 
                                               data-field-store="skin-custom_css-ctm_id"
-                                             id="zgpb_fld_col_ctmid" name="zgpb_fld_col_ctmid" placeholder="" class="zgpb-field-col-event-txt sfdc-form-control">
+                                             id="zgpb_fld_col_ctmid"
+                                             name="zgpb_fld_col_ctmid"
+                                             placeholder="" class="uifm-f-setoption sfdc-form-control">
                                         
                                     </div>    
 
@@ -220,29 +222,33 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                     <div class="sfdc-col-md-6">
                                       <input type="text" 
                                              data-field-store="skin-custom_css-ctm_class"
-                                             id="zgpb_fld_col_ctmclass" name="zgpb_fld_col_ctmclass" placeholder="" class="zgpb-field-col-event-txt sfdc-form-control">
+                                             id="zgpb_fld_col_ctmclass"
+                                             name="zgpb_fld_col_ctmclass"
+                                             placeholder="" class="uifm-f-setoption sfdc-form-control">
                                         
                                     </div>    
 
                                 </div>
                             </div>
                         </div>
-                        <div class="zgpb-opt-divider-stl1"></div>
-                        <div class="sfdc-row ">
-                            <div class="sfdc-col-md-12">
-                                <div class="sfdc-form-group">
-                                    <div class="sfdc-col-md-6">
-                                        <label for=""><?php echo __('Additional css','FRocket_admin'); ?></label> 
-                                        <a data-original-title="<?php echo __('Additional css','FRocket_admin'); ?>" data-placement="right" data-toggle="tooltip" href="javascript:void(0);"><span class="fa fa-question-circle"></span></a>
-                                    </div>
-                                    <div class="sfdc-col-md-6">
-                                      <textarea class="zgpb-field-col-event-txt sfdc-form-control " 
-                                                data-field-store="skin-custom_css-ctm_additional"
-                                                style="width: 100%; height: 200px;" name="zgpb_fld_ctmaddt" id="zgpb_fld_ctmaddt"></textarea> 
-                                    </div>    
+                        <div style="display:none;">
+                               <div class="zgpb-opt-divider-stl1"></div>
+                                <div class="sfdc-row ">
+                                    <div class="sfdc-col-md-12">
+                                        <div class="sfdc-form-group">
+                                            <div class="sfdc-col-md-6">
+                                                <label for=""><?php echo __('Additional css','FRocket_admin'); ?></label> 
+                                                <a data-original-title="<?php echo __('Additional css','FRocket_admin'); ?>" data-placement="right" data-toggle="tooltip" href="javascript:void(0);"><span class="fa fa-question-circle"></span></a>
+                                            </div>
+                                            <div class="sfdc-col-md-6">
+                                              <textarea class="zgpb-field-col-event-txt sfdc-form-control " 
+                                                        data-field-store="skin-custom_css-ctm_additional"
+                                                        style="width: 100%; height: 200px;" name="zgpb_fld_ctmaddt" id="zgpb_fld_ctmaddt"></textarea> 
+                                            </div>    
 
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                        <div class="space5"></div>
                     </div>

@@ -153,10 +153,45 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         
         //records to show
-        $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id);
+        $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id,true);
         $data = array();
         $data['datatable_head'] = $name_fields;
-        $data['datatable_body'] = $this->model_record->getDetailRecord($name_fields,$form_id);
+        //process record
+        $flag_types=array();
+        foreach ($name_fields as $key=>$value) {
+            
+            $flag_types[$key] = $value->fby_id;
+           
+        }
+       
+        $pre_datatable_body= (array) $this->model_record->getDetailRecord($name_fields,$form_id);
+        $new_record=array();
+        foreach ($pre_datatable_body as $key => $value) {
+            $count1=0;
+            foreach ($value as $key2 => $value2) {
+                
+                 $new_record[$key][$key2]=$value2;
+                 
+                if(isset($flag_types[$count1])){
+                    switch (intval($flag_types[$count1])) {
+                        case 12:
+                        case 13:    
+                            //checking if image exists
+                            if(@is_array(getimagesize($value2))){
+                                 $new_record[$key][$key2]='<img width="100px" src="'.$value2.'"/>';
+                            }  
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                $count1++;
+               
+            }
+            
+        }
+                        
+        $data['datatable_body'] = $new_record;
         
         $textfield_tmp = self::render_template('formbuilder/views/records/list_records_getdatatable.php', $data);
         echo $textfield_tmp;
@@ -216,7 +251,24 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
                 $key_det = $name_fields_check[$key];
             }
             if (isset($fields_type_check[$key])) {
-                $new_record_user[] = array('field' => $key_det,'type'=>$fields_type_check[$key],'value' => $value);
+                switch (intval($value['type'])) {
+                    case 9:case 11:
+                        $new_record_user[] = array('field' => $key_det,'type'=>$fields_type_check[$key],'value' => $value['input_value']);
+                        break;
+                    case 12:case 13:
+                    
+                    $value_new=$value['input'];
+                    //checking if image exists
+                            if(@is_array(getimagesize($value_new))){
+                                 $value_new='<img width="100px" src="'.$value_new.'"/>';
+                            }
+                    
+                      $new_record_user[] = array('field' => $value['label'],'type'=>$fields_type_check[$key], 'value' => $value_new);
+                    break;
+                    default:
+                        $new_record_user[] = array('field' => $key_det,'type'=>$fields_type_check[$key],'value' => $value['input']);
+                        break;
+                }
             } 
             
         }
@@ -275,7 +327,30 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
                             
                     $tmp_form_info.='<b>'.$value['field'].'</b>';
                    
-                        switch (intval($value['type'])) {
+                         switch (intval($value['type'])) {
+                            case 8:
+                            case 9:
+                            case 10:
+                            case 11:
+                              $tmp_form_info.='<ul>';
+                                        foreach ($value['value'] as $key3 => $value3) {
+                                            $tmp_form_info.='<li>';
+                                           
+                                                if(isset($value3['label'])){
+                                                    $tmp_form_info.=$value3['label'];
+                                                 }
+                                                 if(isset($value3['qty']) && floatval($value3['qty'])>0){
+                                                        $tmp_form_info.=' - '.__('qty','frocket_front').': '.$value3['qty'].' '.__('Units','FRocket_admin');   
+                                                 }
+                                                 if( (isset($value3['amount']) && floatval($value3['amount'])>0) && intval($data['form_calculation'])===0 ){ 
+                                                    $tmp_form_info.=' - '.__('Amount','frocket_front').': '.Uiform_Form_Helper::cformat_numeric($data['price_format'],$value3['amount']).' '.$data['form_currency']; 
+                                                  } 
+                                                 
+                                            
+                                            $tmp_form_info.='</li>';
+                                        }
+                                    $tmp_form_info.='</ul>'; 
+                                break;
                             case 16:
                                 //slider
                             case 18:
@@ -296,9 +371,9 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
                                 $tmp_form_info.='</ul>';
                                 break;
                             default:
-                                if(isset($value['value']['input']) && is_array($value['value']['input'])){
+                                if(isset($value['value']) && is_array($value['value'])){
                                     $tmp_form_info.='<ul>';
-                                        foreach ($value['value']['input'] as $key3 => $value3) {
+                                        foreach ($value['value']as $key3 => $value3) {
                                             $tmp_form_info.='<li>';
                                             if( (isset($value['value']['input_cost_amt']) && floatval($value['value']['input_cost_amt'])>0) && intval($data['form_calculation'])===1 ){ 
                                                 $tmp_form_info.=$value['value']['input_cost_amt'];
@@ -318,7 +393,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
                                         }
                                     $tmp_form_info.='</ul>';    
                                 }else{
-                                    $tmp_form_info.=' : '.$value['value']['input'];
+                                    $tmp_form_info.=' : '.$value['value'];
                                 }
                                 
                                 break;
@@ -326,7 +401,24 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
                     
                     
                 }else{
-                    $tmp_form_info.='<b>'.$value['field'].'</b>'.' : '.$value['input'];
+                    switch (intval($value['type'])) {
+                            case 8:
+                            case 9:
+                            case 10:
+                            case 11:
+                                $tmp_form_info.='<b>'.$value['field'].'</b>';
+                                if(!empty($value['value'])){
+                                    $tmp_form_info.=' : '.$value['value'];
+                                }
+                                
+                                break;
+                            default:
+                                $tmp_form_info.='<b>'.$value['field'].'</b>';
+                                if(!empty($value['value'])){
+                                    $tmp_form_info.=' : '.$value['value'];
+                                }
+                                break;
+                        }
                 }
             $tmp_form_info.='</li>';
         }
@@ -344,7 +436,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
         $offset = (isset($_GET['offset']) && $_GET['offset']) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         //list all forms
         $data = $config = array();
-        $config['base_url'] = admin_url() . '?page=zgfm_cost_estimate&mod=formbuilder&controller=records&action=list_records';
+        $config['base_url'] = admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records';
         $config['total_rows'] = $this->model_record->CountRecords();
         $config['per_page'] = $this->per_page;
         $config['first_link'] = 'First';
@@ -378,7 +470,11 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
     
     public function csv_showAllForms($form_id){
         require_once(UIFORM_FORMS_DIR . '/helpers/exporttocsv.php');
-        $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id);
+         if(false){
+            $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id,true);
+        }else{
+            $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id,false);
+        }
         $tmp_data = array();
         $tmp_data['datatable_head'] = $name_fields;
         $tmp_data['datatable_body'] = $this->model_record->getDetailRecord($name_fields,$form_id);

@@ -69,7 +69,7 @@ if (intval($mod_test) == 1) {
         
     <?php }?>
     <input name="custom" type="hidden" value="<?php echo $vis_uniqueid; ?>" />
-    <input name="notify_url" type="hidden"  value="<?php echo site_url('?uifm_costestimator_api_handler&action=uifm_est_api_handler&paygat=2&uifm_mode=ipn'); ?>" />
+    <input name="notify_url" type="hidden"  value="<?php echo site_url('?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&paygat=2&uifm_mode=ipn'); ?>" />
     <input name="return" type="hidden" value="<?php echo $paypal_return_url; ?>" />
     <input name="cancel_return" type="hidden" value="<?php echo $paypal_cancel_url; ?>" />
 </form>

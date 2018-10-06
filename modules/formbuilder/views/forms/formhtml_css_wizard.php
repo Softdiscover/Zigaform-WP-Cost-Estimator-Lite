@@ -244,6 +244,8 @@ switch($theme_type){
         #rockfm_form_<?php echo $idform;?> .rockfm-wiztheme1 .uiform-steps li .uifm-number {
             <?php if(!empty($wizard['theme'][$theme_type]['skin_tab_cur_bg_numtxt'])){?>
              background-color: <?php echo $wizard['theme'][$theme_type]['skin_tab_cur_bg_numtxt'];?>;
+            <?php }else{ ?>
+             background-color: #ffffff;
             <?php } ?>
             <?php if(!empty($wizard['theme'][$theme_type]['skin_tab_inac_bgcolor'])){?>
              border: 5px solid <?php echo $wizard['theme'][$theme_type]['skin_tab_inac_bgcolor'];?>;

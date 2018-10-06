@@ -66,7 +66,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     </div>
     <div class="sfdc-row">
         <div class="sfdc-col-md-12">
-           <div id="uifm-show-conditional-logic" style="display:none;">
+           <div id="uifm-show-conditional-logic" class="clearfix" style="display:none;">
     <div class="sfdc-form-group">
         
         <div class="">

@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, wizard, form builder, bootstrap, estimation, AJAX, Akismet, captcha, contact, contact form, email, feedback, form, multilingual, 
 Requires at least: 3.6
-Tested up to: 4.9
-Stable tag: 3.7.6.5
+Tested up to: 4.9.6
+Stable tag: 3.9.4.8
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -69,7 +69,7 @@ https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
 >
 >Try out [Zigaform - Cost Estimation & Payment Form Builder Premium](http://goo.gl/C261zv)
 
-More info in http://wordpress-cost-estimator.zigaform.com/
+More info in https://wordpress-cost-estimator.zigaform.com/
 
  
 ** OVERALL FEATURES
@@ -243,6 +243,8 @@ Their support is immaculate and the zigaform is one of the best you’ll find fo
 * It saves your time and increases form completions by preloading data in your forms. 	
 * Build complex forms with conditional logic. You can automatically hide or show fields or entire pages in your form based on selections your users make. [PRO VERSION]
 
+== Tags ==
+ajax forms, responsive, form generator, form creator, form, forms, simple forms, professional forms, quick forms, form builder, form designs, contact form, validation, form builder, contact form builder, form manager, form creator, form generator, contact us, contact forms plugin, contact form plugin, bootstrap forms, jquery forms, ajax, confirmation mail, template, captcha, redirect, mailchimp, recaptcha, html, avada, bootstrap, builder, design, database, divi, email, embed, email template, elementor, conditional email, layout, marketing, validation, visual composer, bootstrap layout, magento, bootstrap with validation, bootstrap example, laravel, drupal, codeigniter, codecanyon, drag and drop, commerce, for word, in salesforce, oracle, salesforce, with conditional logic, builder form, news, maps
 
 
 == Installation ==
@@ -300,6 +302,32 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
 * some issues
 = 3.7.6.5 =
 * minor changes
+= 3.7.9.9 =
+* minor changes
+= 3.8 =
+* minor changes
+= 3.8.4 =
+* ip issue when it has more than 20 character
+= 3.8.9.7 = 
+* minor changes
+= 3.8.9.9 = 
+* minor changes
+= 3.9.1 =
+* fast load of field options
+= 3.9.1.2 = 
+* minor changes
+= 3.9.1.6 = 
+* minor changes
+= 3.9.1.7 = 
+* minor changes
+= 3.9.1.9 = 
+* minor changes
+= 3.9.2.2 = 
+ *added custom reply to mail messages
+= 3.9.2.8 = 
+* minor changes
+= 3.9.4.8 = 
+ * minor changes
 
 == Upgrade Notice ==
 
@@ -315,3 +343,29 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
 * some issues
 = 3.7.6.5 =
 * minor changes
+= 3.7.9.9 =
+* minor changes
+= 3.8 =
+* minor changes
+= 3.8.4 =
+* ip issue when it has more than 20 character
+= 3.8.9.7 = 
+* minor changes
+= 3.8.9.9 = 
+* minor changes
+= 3.9.1 =
+* fast load of field options
+= 3.9.1.2 = 
+* minor changes
+= 3.9.1.6 = 
+* minor changes
+= 3.9.1.7 = 
+* minor changes
+= 3.9.1.9 = 
+* minor changes
+= 3.9.2.2 = 
+ *added custom reply to mail messages
+= 3.9.2.8 = 
+* minor changes
+= 3.9.4.8 = 
+ * minor changes

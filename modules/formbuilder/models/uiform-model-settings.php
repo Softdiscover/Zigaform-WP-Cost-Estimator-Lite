@@ -65,6 +65,9 @@ class Uiform_Model_Settings {
        return $this->wpdb->get_results("SHOW TABLES", ARRAY_N);
     }
     
+    function getColsFromTable($table) {
+       return $this->wpdb->get_results("SHOW COLUMNS FROM ".$table);
+    }
 
 }
 

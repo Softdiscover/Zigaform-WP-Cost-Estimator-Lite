@@ -92,7 +92,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                             <a 
                                                 class="guidetour-flist-edit sfdc-btn sfdc-btn-sm sfdc-btn-info"
                                                 data-intro="<?php echo __('Edit and load your custom form','FRocket_admin');?>"
-                                                href="<?php echo admin_url().'?page=zgfm_cost_estimate&mod=gateways&controller=settings&action=edit_gateway&id='.$row->pg_id;?>">
+                                                href="<?php echo admin_url().'?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=edit_gateway&id='.$row->pg_id;?>">
                                                 <i class="fa fa-pencil-square-o"></i> <?php echo __('Edit','FRocket_admin')?></a>
 
                                             <?php } ?>
@@ -103,7 +103,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                          <a 
                                             class="guidetour-flist-edit sfdc-btn sfdc-btn-sm sfdc-btn-info"
                                             data-intro="<?php echo __('Edit and load your custom form','FRocket_admin');?>"
-                                            href="<?php echo admin_url().'?page=zgfm_cost_estimate&mod=gateways&controller=settings&action=edit_gateway&id='.$row->pg_id;?>">
+                                            href="<?php echo admin_url().'?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=edit_gateway&id='.$row->pg_id;?>">
                                             <i class="fa fa-pencil-square-o"></i> <?php echo __('Edit','FRocket_admin')?></a>
                                         
                                     <?php } ?>    

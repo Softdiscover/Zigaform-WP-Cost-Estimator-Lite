@@ -148,7 +148,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                     <label class=" col-md-2 control-label" style="padding-top:0px;">IPN URL</label>
                     <div class="sfdc-col-md-10">
                       <label class="label label-default">
-                       <?php echo site_url('?uifm_costestimator_api_handler&action=uifm_est_api_handler&paygat=2&uifm_mode=ipn'); ?>
+                       <?php echo site_url('?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&paygat=2&uifm_mode=ipn'); ?>
                       </label> 
                       
                     </div>
