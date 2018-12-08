@@ -1994,7 +1994,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     $pg_data = json_decode($value->pg_data, true);
                     $data2 = array();
                     $data2['amount'] = (isset($this->form_response['amount']))?$this->form_response['amount']:0;
-                    $data2['amount'] = number_format(round($data2['amount'],2,PHP_ROUND_HALF_EVEN),2);
+                    $data2['amount'] = number_format(round($data2['amount'],2,PHP_ROUND_HALF_EVEN),2,'.', '');
                     $data2['vis_uniqueid'] = (isset($this->form_response['vis_uniqueid']))?$this->form_response['vis_uniqueid']:'';
                     $data2['pg_name'] = (isset($value->pg_name))?$value->pg_name:'';
                     $data2['mod_test'] = (isset($value->pg_modtest))?$value->pg_modtest:0;
@@ -2422,8 +2422,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 $hash = hash('crc32', md5($ip . $user_agent));
                 setcookie(UIFORM_FOLDER, $hash, time() + (60 * 60 * 24 * 30), '/');
                 
+            }else{
+                $hash = $_COOKIE[UIFORM_FOLDER];
             }
-            $hash = $_COOKIE[UIFORM_FOLDER];
+            
             $referer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
             $data['vis_uniqueid'] = $hash;
             $data['vis_user_agent'] = $user_agent;

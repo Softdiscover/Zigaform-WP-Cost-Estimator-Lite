@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, wizard, form builder, bootstrap, estimation, AJAX, Akismet, captcha, contact, contact form, email, feedback, form, multilingual, 
 Requires at least: 3.6
-Tested up to: 4.9.8
-Stable tag: 3.9.6.4
+Tested up to: 5
+Stable tag: 3.9.6.8
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -326,7 +326,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 3.9.6.4 = 
+= 3.9.6.8 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -367,5 +367,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 3.9.6.4 = 
+= 3.9.6.8 = 
  * minor changes

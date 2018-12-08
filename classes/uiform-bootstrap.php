@@ -783,12 +783,14 @@ JS;
         
           if ($pos_coincidencia !== false) {
                 $plugin_page = admin_url('admin.php?page=zgfm_form_builder');
-                $meta[] = "<a href='https://wordpress-cost-estimator.zigaform.com//#contact' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
+                $meta[] = "<a href='https://wordpress-cost-estimator.zigaform.com//#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __('Support', 'FRocket_admin') . "</a>";
             if (ZIGAFORM_C_LITE===1) {
-                $meta[] = "<a href='https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover' target='_blank'>" . __('Get Premium', 'FRocket_admin') . "</a>";
+                $meta[] = "<a href='https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __('Get Premium', 'FRocket_admin') . "</a>";
                // $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
-            } 
-            $meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/' target='_blank'>" . __('Documentation', 'FRocket_admin') . "</a>";
+            }
+            
+            $meta[] = "<a href='https://wordpress-cost-estimator.zigaform.com/#demo-samples' target='_blank'><span class='dashicons  dashicons-laptop'></span>" . __('Live Demo', 'FRocket_admin') . "</a>";
+            $meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/' target='_blank'><span class='dashicons  dashicons-search'></span>" . __('Documentation', 'FRocket_admin') . "</a>";
             
             
             if(ZIGAFORM_C_LITE===1){
