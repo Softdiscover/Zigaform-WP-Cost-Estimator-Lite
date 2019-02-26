@@ -684,10 +684,11 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             
             $data = array();
             $fmb_data = (isset($_POST['form_data']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])):'';
+            
             //$fmb_data = str_replace("\'", "'",$fmb_data);
             $fmb_data = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
             $data['fmb_data'] = json_encode($fmb_data);
-                                    
+            
             //addon data
             $fmb_addon_data = (isset($_POST['addon_data']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['addon_data'])):'';
             $fmb_addon_data = str_replace("\'", "'",$fmb_addon_data);
