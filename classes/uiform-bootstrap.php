@@ -978,6 +978,7 @@ JS;
             wp_enqueue_style('rockefform-codemirror-foldgutter', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/fold/foldgutter.css');
             wp_enqueue_style('rockefform-codemirror-monokai', UIFORM_FORMS_URL . '/assets/common/js/codemirror/theme/monokai.css');
             
+                    
             //load rocketform
             wp_enqueue_style(self::PREFIX . 'admin');
 
@@ -1070,7 +1071,7 @@ JS;
             wp_enqueue_script('rockefform-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/js/jquery.checkradios.js', array('jquery'), '2.2.2', true);
             
             //iframe
-            wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/3.5.11/iframeResizer.min.js');
+            wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/3.5.5/iframeResizer.min.js');
             
             //codemirror
             wp_enqueue_script('rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.js', array(), '1.0', true);
@@ -1086,7 +1087,8 @@ JS;
             wp_enqueue_script('rockefform-codemirror-closebrackets', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/edit/closebrackets.js', array(), '1.0', true);
             wp_enqueue_script('rockefform-codemirror-matchbrackets', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/edit/matchbrackets.js', array(), '1.0', true);
             wp_enqueue_script('rockefform-codemirror-autorefresh', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/display/autorefresh.js', array(), '1.0', true);
-
+            
+                    
             
                if(UIFORM_DEV===1){
             
@@ -1170,17 +1172,16 @@ JS;
             
             wp_localize_script(self::PREFIX . 'admin', 'uiform_vars', $zgfm_vars);
             
-           // wp_enqueue_script(self::PREFIX . 'rockfm_js_global_frontend');
-            
-            
             //load form variables
-           /* $form_variables=array();
-            $form_variables['url_site']=site_url();
-            $form_variables['ajaxurl']=admin_url('admin-ajax.php');
+            $form_variables=array();
+            $form_variables['ajaxurl']='';
+            $form_variables['uifm_baseurl']=UIFORM_FORMS_URL;
+            $form_variables['uifm_siteurl']=UIFORM_FORMS_URL;
+            
+            $form_variables['uifm_sfm_baseurl']=UIFORM_FORMS_URL . "/libraries/styles-font-menu/styles-fonts/png/";
             $form_variables['imagesurl']=UIFORM_FORMS_URL . "/assets/frontend/images";
-            $form_variables['_uifmvar']['fm_onload_scroll']="0";
 
-            wp_localize_script(self::PREFIX . 'rockfm_js_global_frontend', 'rockfm_vars', $form_variables);*/
+            wp_localize_script('rockefform-prev-jquery', 'rockfm_vars', $form_variables);
          
             
         

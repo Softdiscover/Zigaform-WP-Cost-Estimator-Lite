@@ -2556,7 +2556,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $data = array();
         $data['form_id'] = (isset($_GET['form_id']) && $_GET['form_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_GET['form_id'])) : 0;
         $data['currency']= Uiform_Form_Helper::getCurrency();
-        
+        $data['obj_sfm'] = Uiform_Form_Helper::get_font_library();
         echo self::loadPartial('layout_editform.php', 'formbuilder/views/forms/create_form.php', $data);
     }
     
