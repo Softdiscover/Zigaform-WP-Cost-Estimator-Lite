@@ -680,6 +680,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
         
         try{
+            if(!Uiform_Form_Helper::check_User_Access()){
+                throw new Exception(__('Error! User has no permission to edit this form','FRocket_admin'));
+            } 
+            
             ob_start();
             
             $data = array();
