@@ -48,7 +48,7 @@ class Uiform_InstallDB {
         }
         //forms
         $sql = "CREATE  TABLE IF NOT EXISTS $this->form (
-            `fmb_id` INT(6) NOT NULL AUTO_INCREMENT ,
+            `fmb_id` INT(10) NOT NULL AUTO_INCREMENT ,
             `fmb_data` longtext ,
             `fmb_name` VARCHAR(255) NULL ,
             `fmb_html` longtext NULL ,
@@ -56,10 +56,10 @@ class Uiform_InstallDB {
             `flag_status` SMALLINT(5) DEFAULT '1',
             `created_date` TIMESTAMP NULL ,
             `updated_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-            `created_ip` VARCHAR(50) NULL ,
-            `updated_ip` VARCHAR(50) NULL ,
-            `created_by` VARCHAR(50) NULL ,
-            `updated_by` VARCHAR(50) NULL ,
+            `created_ip` VARCHAR(100) NULL ,
+            `updated_ip` VARCHAR(100) NULL ,
+            `created_by` VARCHAR(100) NULL ,
+            `updated_by` VARCHAR(100) NULL ,
             `fmb_html_css` longtext NULL ,
             `fmb_default` TINYINT(1) NULL DEFAULT 0 ,
             `fmb_skin_status` TINYINT(1) NULL DEFAULT 0 ,
@@ -79,11 +79,11 @@ class Uiform_InstallDB {
                 `fbh_data_rec2_xml` longtext,
                 `fbh_total_amount` varchar(45) DEFAULT NULL,
                 `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                `created_ip` varchar(20) DEFAULT NULL,
-                `created_by` int(6) DEFAULT NULL,
+                `created_ip` varchar(100) DEFAULT NULL,
+                `created_by` VARCHAR(100) DEFAULT NULL,
                 `flag_status` smallint(5) DEFAULT '1',
                 `fbh_data_user` longtext,
-                `form_fmb_id` int(6) NOT NULL,
+                `form_fmb_id` int(10) NOT NULL,
                 `fbh_data_rec_xml` longtext,
                 `fbh_user_agent` text,
                 `fbh_page` longtext,
@@ -96,14 +96,14 @@ class Uiform_InstallDB {
         //fields type
         $sql="CREATE  TABLE IF NOT EXISTS $this->form_fields_type (
         `fby_id` INT(6) NOT NULL AUTO_INCREMENT ,
-        `fby_name` VARCHAR(25) NULL ,
+        `fby_name` VARCHAR(100) NULL ,
         `flag_status` SMALLINT(5) NULL ,
         `created_date` TIMESTAMP NULL ,
         `updated_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-        `created_ip` VARCHAR(50) NULL ,
-        `updated_ip` VARCHAR(50) NULL ,
-        `created_by` INT(6) NULL ,
-        `updated_by` INT(6) NULL ,
+        `created_ip` VARCHAR(100) NULL ,
+        `updated_ip` VARCHAR(100) NULL ,
+        `created_by` VARCHAR(100) NULL ,
+        `updated_by` VARCHAR(100) NULL ,
         PRIMARY KEY (`fby_id`) )" . $charset . ";";
        $wpdb->query($sql);
        //insert types
@@ -159,20 +159,20 @@ class Uiform_InstallDB {
        
         //fields
         $sql="CREATE  TABLE IF NOT EXISTS $this->form_fields (
-        `fmf_id` int(6) NOT NULL AUTO_INCREMENT,
+        `fmf_id` int(10) NOT NULL AUTO_INCREMENT,
         `fmf_uniqueid` varchar(255) DEFAULT NULL,
         `fmf_data` longtext NULL ,
         `fmf_fieldname` varchar(255) DEFAULT NULL,
         `flag_status` smallint(5) DEFAULT NULL,
         `created_date` timestamp NULL,
         `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        `created_ip` varchar(50) DEFAULT NULL,
-        `updated_ip` varchar(50) DEFAULT NULL,
-        `created_by` VARCHAR(50) NULL ,
-        `updated_by` VARCHAR(50) NULL ,
+        `created_ip` varchar(100) DEFAULT NULL,
+        `updated_ip` varchar(100) DEFAULT NULL,
+        `created_by` VARCHAR(100) NULL ,
+        `updated_by` VARCHAR(100) NULL ,
         `fmf_status_qu` smallint(5) NOT NULL DEFAULT '0',
         `type_fby_id` int(6) NOT NULL,
-        `form_fmb_id` int(6) NOT NULL,
+        `form_fmb_id` int(10) NOT NULL,
         `order_frm` smallint(5) DEFAULT NULL,
         `order_rec` smallint(5) DEFAULT NULL, 
         PRIMARY KEY (`fmf_id`,`form_fmb_id`) ) " . $charset . ";";
@@ -184,8 +184,8 @@ class Uiform_InstallDB {
         `type_email` SMALLINT(1) NULL ,
         `smtp_host` VARCHAR(255) NULL ,
         `smtp_port` SMALLINT(6) NULL ,
-        `smtp_user` VARCHAR(50) NULL ,
-        `smtp_pass` VARCHAR(50) NULL ,
+        `smtp_user` VARCHAR(100) NULL ,
+        `smtp_pass` VARCHAR(100) NULL ,
         `sendmail_path` VARCHAR(255) NULL ,
         `language` VARCHAR(45) NULL,
          `id` INT(1) NOT NULL AUTO_INCREMENT ,
@@ -238,16 +238,16 @@ class Uiform_InstallDB {
         `pgr_id` int(10) NOT NULL AUTO_INCREMENT,
         `type_pg_id` int(6) NOT NULL,
         `pgr_payment_status` varchar(100) DEFAULT NULL,
-        `pgr_payment_amount` varchar(45) DEFAULT NULL,
+        `pgr_payment_amount` varchar(100) DEFAULT NULL,
         `pgr_currency` varchar(45) DEFAULT NULL,
         `pgr_data` longtext,
         `flag_status` smallint(5) DEFAULT NULL,
         `created_date` timestamp NULL,
         `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        `created_ip` varchar(50) DEFAULT NULL,
-        `updated_ip` varchar(50) DEFAULT NULL,
-        `created_by` VARCHAR(50) NULL ,
-        `updated_by` VARCHAR(50) NULL ,
+        `created_ip` varchar(100) DEFAULT NULL,
+        `updated_ip` varchar(100) DEFAULT NULL,
+        `created_by` VARCHAR(100) NULL ,
+        `updated_by` VARCHAR(100) NULL ,
         `fbh_id` int(10) NOT NULL ,
         PRIMARY KEY (`pgr_id`)
         ) " . $charset . ";";
@@ -293,7 +293,7 @@ class Uiform_InstallDB {
         `vis_page` longtext,
         `vis_referer` longtext,
         `vis_error` longtext CHARACTER SET latin1,
-        `vis_ip` varchar(40) DEFAULT NULL,
+        `vis_ip` varchar(100) DEFAULT NULL,
         `vis_last_date` timestamp NULL ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (`vis_id`)
         ) " . $charset . ";";
@@ -303,7 +303,7 @@ class Uiform_InstallDB {
         
    //form log
         $sql="CREATE  TABLE IF NOT EXISTS $this->form_log (
-            `log_id` int(6) NOT NULL AUTO_INCREMENT,
+            `log_id` bigint(20) NOT NULL AUTO_INCREMENT,
             `log_frm_data` longtext,
             `log_frm_name` varchar(255) DEFAULT NULL,
             `log_frm_html` longtext,
@@ -314,10 +314,10 @@ class Uiform_InstallDB {
             `flag_status` smallint(5) DEFAULT '1',
             `created_date` timestamp NULL,
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(50) DEFAULT NULL,
-            `updated_ip` varchar(50) DEFAULT NULL,
-            `created_by` VARCHAR(50) NULL ,
-            `updated_by` VARCHAR(50) NULL ,
+            `created_ip` varchar(100) DEFAULT NULL,
+            `updated_ip` varchar(100) DEFAULT NULL,
+            `created_by` VARCHAR(100) NULL ,
+            `updated_by` VARCHAR(100) NULL ,
             PRIMARY KEY (`log_id`)
         ) " . $charset . ";";
         
@@ -326,7 +326,7 @@ class Uiform_InstallDB {
          
          //addon
         $sql="CREATE  TABLE IF NOT EXISTS $this->core_addon (
-            `add_name` varchar(45) NOT NULL DEFAULT '',
+            `add_name` varchar(100) NOT NULL DEFAULT '',
             `add_title` text ,
             `add_info` text ,
             `add_system` smallint(5) DEFAULT NULL,
@@ -341,10 +341,10 @@ class Uiform_InstallDB {
             `flag_status` smallint(5)  DEFAULT 1,
             `created_date` timestamp NULL,
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(50)  DEFAULT NULL,
-            `updated_ip` varchar(50)  DEFAULT NULL,
-            `created_by` VARCHAR(50) NULL ,
-            `updated_by` VARCHAR(50) NULL ,
+            `created_ip` varchar(100)  DEFAULT NULL,
+            `updated_ip` varchar(100)  DEFAULT NULL,
+            `created_by` VARCHAR(100) NULL ,
+            `updated_by` VARCHAR(100) NULL ,
             `add_xml` text ,
             `add_load_back` smallint(5) DEFAULT NULL,
             `add_load_front` smallint(5) DEFAULT NULL,
@@ -367,15 +367,15 @@ class Uiform_InstallDB {
            //addon detail
         $sql="CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (
             `add_name` varchar(45)  NOT NULL,
-            `fmb_id` int(5) NOT NULL,
+            `fmb_id` int(10) NOT NULL,
             `adet_data` longtext ,
             `flag_status` smallint(5) DEFAULT 1,
             `created_date` timestamp NULL,
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(50) DEFAULT NULL,
-            `updated_ip` varchar(50) DEFAULT NULL,
-            `created_by` VARCHAR(50) NULL ,
-            `updated_by` VARCHAR(50) NULL ,
+            `created_ip` varchar(100) DEFAULT NULL,
+            `updated_ip` varchar(100) DEFAULT NULL,
+            `created_by` VARCHAR(100) NULL ,
+            `updated_by` VARCHAR(100) NULL ,
             PRIMARY KEY (`add_name`, `fmb_id`) 
         ) " . $charset . ";";
         
@@ -386,18 +386,18 @@ class Uiform_InstallDB {
          
         //addon log
         $sql="CREATE  TABLE IF NOT EXISTS $this->core_addon_log (
-            `add_log_id` int(5) NOT NULL AUTO_INCREMENT,
+            `add_log_id` bigint(20) NOT NULL AUTO_INCREMENT,
             `add_name` varchar(45)  NOT NULL,
             `fmb_id` int(5) NOT NULL,
             `adet_data` longtext  NULL,
             `flag_status` smallint(5) DEFAULT 1,
             `created_date` timestamp NULL,
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(50) DEFAULT NULL,
-            `updated_ip` varchar(50) DEFAULT NULL,
-            `created_by` VARCHAR(50) NULL ,
-            `updated_by` VARCHAR(50) NULL ,
-            `log_id` int(5) NOT NULL,
+            `created_ip` varchar(100) DEFAULT NULL,
+            `updated_ip` varchar(100) DEFAULT NULL,
+            `created_by` VARCHAR(100) NULL ,
+            `updated_by` VARCHAR(100) NULL ,
+            `log_id` bigint(20) NOT NULL,
             PRIMARY KEY (`add_log_id`) 
         ) " . $charset . ";";
         

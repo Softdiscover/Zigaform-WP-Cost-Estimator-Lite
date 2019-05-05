@@ -400,6 +400,8 @@ var zgfm_back_fld_options = function(){
                                         //show fields tabs
                                         //rocketform.enableSettingTabOption('uifm-label');
                                     }
+                                    
+                                   
     };
     
 };

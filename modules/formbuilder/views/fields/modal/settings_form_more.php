@@ -201,10 +201,9 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                     </div>
                                     <div class="sfdc-col-md-6">
                                       <input type="text" 
-                                              data-field-store="skin-custom_css-ctm_id"
                                              id="zgpb_fld_col_ctmid"
-                                             name="zgpb_fld_col_ctmid"
-                                             placeholder="" class="uifm-f-setoption sfdc-form-control">
+                                             readonly="readonly"
+                                             class="sfdc-form-control">
                                         
                                     </div>    
 
@@ -231,7 +230,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                 </div>
                             </div>
                         </div>
-                        <div style="display:none;">
+                        <div style='display:none;'>
                                <div class="zgpb-opt-divider-stl1"></div>
                                 <div class="sfdc-row ">
                                     <div class="sfdc-col-md-12">
@@ -261,4 +260,12 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     
     
 </div>
+ <script type="text/javascript">
  
+jQuery(function($) 
+	{     
+         /*add id to more tab*/
+         $('#zgpb_fld_col_ctmid').val('rockfm_'+$('#uifm-field-selected-id').val()); 
+        
+	});
+</script>

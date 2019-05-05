@@ -3,7 +3,7 @@
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for Wordpress.
- * Version: 3.9.8.9
+ * Version: 3.9.8.9.5
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
@@ -28,7 +28,7 @@ if (!class_exists('UiformCostEst')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.9.8.9';
+        public $version = '3.9.8.9.5';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -266,10 +266,10 @@ if (!class_exists('UiformCostEst')) {
                                 `flag_status` smallint(5) DEFAULT '1',
                                 `created_date` timestamp NULL,
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                `created_ip` varchar(50) DEFAULT NULL,
-                                `updated_ip` varchar(50) DEFAULT NULL,
-                                `created_by` int(6) DEFAULT NULL,
-                                `updated_by` int(6) DEFAULT NULL,
+                                `created_ip` varchar(100) DEFAULT NULL,
+                                `updated_ip` varchar(100) DEFAULT NULL,
+                                `created_by` varchar(100) DEFAULT NULL,
+                                `updated_by` varchar(100) DEFAULT NULL,
                                 PRIMARY KEY (`log_id`)
                             ) " . $charset . ";";
                         
@@ -395,10 +395,10 @@ if (!class_exists('UiformCostEst')) {
                             `flag_status` smallint(5)  DEFAULT 1,
                             `created_date` timestamp NULL,
                             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            `created_ip` varchar(50)  DEFAULT NULL,
-                            `updated_ip` varchar(50)  DEFAULT NULL,
-                            `created_by` int(6) DEFAULT NULL,
-                            `updated_by` int(6) DEFAULT NULL,
+                            `created_ip` varchar(100)  DEFAULT NULL,
+                            `updated_ip` varchar(100)  DEFAULT NULL,
+                            `created_by` varchar(100) DEFAULT NULL,
+                            `updated_by` varchar(100) DEFAULT NULL,
                             `add_xml` text ,
                             `add_load_back` smallint(5) DEFAULT NULL,
                             `add_load_front` smallint(5) DEFAULT NULL,
@@ -426,10 +426,10 @@ if (!class_exists('UiformCostEst')) {
                                 `flag_status` smallint(5) DEFAULT 1,
                                 `created_date` timestamp NULL,
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                `created_ip` varchar(50) DEFAULT NULL,
-                                `updated_ip` varchar(50) DEFAULT NULL,
-                                `created_by` int(6) DEFAULT NULL,
-                                `updated_by` int(6) DEFAULT NULL,
+                                `created_ip` varchar(100) DEFAULT NULL,
+                                `updated_ip` varchar(100) DEFAULT NULL,
+                                `created_by` varchar(100) DEFAULT NULL,
+                                `updated_by` varchar(100) DEFAULT NULL,
                                 PRIMARY KEY (`add_name`, `fmb_id`) 
                             ) " . $charset . ";";
 
@@ -450,10 +450,10 @@ if (!class_exists('UiformCostEst')) {
                             `flag_status` smallint(5) DEFAULT 1,
                             `created_date` timestamp NULL,
                             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            `created_ip` varchar(50) DEFAULT NULL,
-                            `updated_ip` varchar(50) DEFAULT NULL,
-                            `created_by` int(6) DEFAULT NULL,
-                            `updated_by` int(6) DEFAULT NULL,
+                            `created_ip` varchar(100) DEFAULT NULL,
+                            `updated_ip` varchar(100) DEFAULT NULL,
+                            `created_by` varchar(100) DEFAULT NULL,
+                            `updated_by` varchar(100) DEFAULT NULL,
                             `log_id` int(5) NOT NULL,
                             PRIMARY KEY (`add_log_id`) 
                         ) " . $charset . ";";
