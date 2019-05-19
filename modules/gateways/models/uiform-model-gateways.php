@@ -52,7 +52,7 @@ class Uiform_Model_Gateways {
      */
     function getListGateways() {
         $query = sprintf('
-            select c.*
+            select c.pg_id,c.pg_name,c.pg_modtest,c.pg_data,c.flag_status,c.pg_order,c.pg_description
             from %s c
             where c.flag_status>=0 
             ', $this->table);
@@ -62,7 +62,7 @@ class Uiform_Model_Gateways {
     
     function getAvailableGateways() {
         $query = sprintf('
-            select c.*
+            select c.pg_id,c.pg_name,c.pg_modtest,c.pg_data,c.flag_status,c.pg_order,c.pg_description
             from %s c
             where c.flag_status=1
             ORDER BY c.pg_order asc
@@ -73,9 +73,9 @@ class Uiform_Model_Gateways {
     
     function getGatewayById($id) {
         $query = sprintf('
-            select uf.*
-            from %s uf
-            where uf.pg_id=%s
+            select c.pg_id,c.pg_name,c.pg_modtest,c.pg_data,c.flag_status,c.pg_order,c.pg_description
+            from %s c
+            where c.pg_id=%s
             ', $this->table, $id);
 
         return $this->wpdb->get_row($query);
