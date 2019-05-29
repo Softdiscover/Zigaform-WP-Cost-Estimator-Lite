@@ -1267,8 +1267,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                 case 18:
                                     /*spinner*/    
                                    $tmp_fdata= json_decode($tmp_field_name->data,true);
-                                    
-                                    $tmp_options = array();
+                                
                                     $tmp_field_label=(!empty($tmp_fdata['label']['text']))?$tmp_fdata['label']['text']:$tmp_field_name->fieldname;
                                     $form_f_tmp[$key]['type']=$tmp_field_name->type;
                                     $form_f_tmp[$key]['fieldname']=$tmp_field_name->fieldname;
@@ -1284,7 +1283,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                            $tmp_options_row['cost']= floatval($tmp_fdata['price']['unit_price']);
                                            
                                            $tmp_options_row['qty']=  floatval($value);
-                                           $tmp_options_row['label']=floatval($value);
+                                           $tmp_options_row['value']=floatval($value);
                                            //for records
                                            $form_f_rec_tmp[$key] = $value;
                                            
@@ -1300,11 +1299,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                             }
                                 
                                         $tmp_options_row['amount']=  floatval($value)*floatval($tmp_fdata['price']['unit_price']);
-                                        
-                                        $tmp_options[] = $tmp_options_row;
+                                
                                    // }
                                     /*saving data to field array*/
-                                    $form_f_tmp[$key]['input'] = $tmp_options;
+                                    $form_f_tmp[$key]['input'] = $tmp_options_row;
                                     $form_f_tmp[$key]['input_cost_amt']= floatval($value)*floatval($tmp_fdata['price']['unit_price']);
                                    break;
                                case 40:
@@ -1321,7 +1319,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                     
                                     
                                     //foreach ($value as $key2=>$value2) {
-                                        $tmp_options_row=array();
+                                
                                         if($value==='on'){
                                          $tmp_options_row['label']=(!empty($tmp_fdata['input15']['txt_yes']))?$tmp_fdata['input15']['txt_yes']:$value;
                                          $form_f_rec_tmp[$key] = 1;  
@@ -1345,11 +1343,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                             }
                                 
                                         }
-                                        
-                                        $tmp_options[] = $tmp_options_row;
+                                
                                     //}
                                     /*saving data to field array*/
-                                    $form_f_tmp[$key]['input'] = $tmp_options;
+                                    $form_f_tmp[$key]['input'] = $tmp_options_row;
                                     $form_f_tmp[$key]['input_cost_amt']= floatval($tmp_fdata['price']['unit_price']);
                                    break;    
                                 case 41;
@@ -1895,26 +1892,32 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         
                         foreach ($value2 as $key3 => $value3) {
                             //values
-                            foreach ($value3 as $key4 => $value4) {
-                                switch ($key4) {
-                                        case 'label':
-                                           $temp_input[]=$value4;
-                                            break;
-                                        case 'cost':
-                                            $temp_cost[]=$value4;
-                                            break;
-                                        case 'qty':
-                                            $temp_qty[]=$value4;
-                                            break;
-                                        case 'amount':
-                                            $temp_amt[]=$value4;
-                                            break;
-                                        default:
-                                            
-                                    }
-                                $data3[$key.'_'.$key2.'_'.$key3.'_'.$key4]=$value4;
-                                
+                            
+                            if(is_array($value3)){
+                              foreach ($value3 as $key4 => $value4) {
+                                    switch ($key4) {
+                                            case 'label':
+                                               $temp_input[]=$value4;
+                                                break;
+                                            case 'cost':
+                                                $temp_cost[]=$value4;
+                                                break;
+                                            case 'qty':
+                                                $temp_qty[]=$value4;
+                                                break;
+                                            case 'amount':
+                                                $temp_amt[]=$value4;
+                                                break;
+                                            default:
+
+                                        }
+                                    $data3[$key.'_'.$key2.'_'.$key3.'_'.$key4]=$value4;
+
+                                }  
+                            }else{
+                                $data3[$key.'_'.$key2.'_'.$key3]=$value3;
                             }
+                            
                         }
                         
                         if(!empty($temp_input)){
@@ -2625,7 +2628,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     
     public function shortcode_show_version(){
           $output='<noscript>';
-          $output.='Powered by <a href="http://zigaform.com/?uifm_v='.UIFORM_VERSION.'&uifm_source=wpzce" title="Wordpress Calculator & Cost Estimation" >ZigaForm version '.UIFORM_VERSION.'</a>';
+          $output.='Powered by <a href="https://www.zigaform.com/?uifm_v='.UIFORM_VERSION.'&uifm_source=wpzce" title="Wordpress Calculator & Cost Estimation" >ZigaForm version '.UIFORM_VERSION.'</a>';
           $output.='</noscript>';
           echo $output;
     }
