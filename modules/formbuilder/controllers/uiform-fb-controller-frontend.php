@@ -122,13 +122,47 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         /*shortcode calc*/
         add_shortcode('zgfm_fvar', array(&$this, 'shortcode_uifm_form_fvar') );
         
+        //adding script for whole site
+        add_action( 'wp_enqueue_scripts', array( &$this, 'global_scripts') );
+        
         $modalmode = get_option( 'zgfm_c_modalmode', 0 );
         if(intval($modalmode)===1){
             //load resources
             add_action( 'wp_enqueue_scripts', array( &$this, 'load_form_resources') );
         }
+        
+        //add variables
+        add_filter('zgfm_front_initvar_load', array(&$this, 'front_initvar_load'));
     }
     
+    /**
+    * add script to whole site
+    *
+    */
+   public function global_scripts(){
+        //prev jquery
+       wp_register_script('rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array('jquery'));
+        wp_enqueue_script('rockefform-prev-jquery'); 
+       
+   }
+
+      /**
+    * create frontend init variables
+    *
+    */
+   public function front_initvar_load($form_variables){
+        //load form variables
+
+        $form_variables['url_site']=site_url();
+        $form_variables['ajax_nonce']=wp_create_nonce('zgfm_ajax_nonce');
+        $form_variables['ajaxurl']=site_url('wp-admin/admin-ajax.php');
+        $form_variables['url_plugin']=UIFORM_FORMS_URL;
+        $form_variables['imagesurl']=UIFORM_FORMS_URL . "/assets/frontend/images";
+        $form_variables['_uifmvar']['fm_loadmode']='';
+        $form_variables['_uifmvar']['fm_modalmode_st']=get_option( 'zgfm_c_modalmode',0);
+                
+        return $form_variables;
+   } 
      public function shortcode_uifm_tax($atts) {
                 
         ob_start();
@@ -988,6 +1022,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     public function process_form() {
         try {
                 $form_id = ($_POST['_rockfm_form_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['_rockfm_form_id'])) : 0;
+                $is_demo = ($_POST['zgfm_is_demo']) ? intval(Uiform_Form_Helper::sanitizeInput(trim($_POST['zgfm_is_demo']))) : 0;
                 $this->current_form_id=$form_id;
                 $form_fields = (isset($_POST['uiform_fields']) && $_POST['uiform_fields']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), $_POST['uiform_fields']) : array();
                 $form_avars = (isset($_POST['zgfm_avars']) && $_POST['zgfm_avars']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), $_POST['zgfm_avars']) : array();
@@ -1539,6 +1574,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
                 $this->flag_submitted = $idActivate;
                 
+                //is demo
+                if($is_demo === 0){
                 //preparing mail
                 $mail_from_email = (isset($form_data_onsubm['onsubm']['mail_from_email'])) ? $form_data_onsubm['onsubm']['mail_from_email'] : '';
                 $mail_from_name = (isset($form_data_onsubm['onsubm']['mail_from_name'])) ? $form_data_onsubm['onsubm']['mail_from_name'] : '';
@@ -1565,7 +1602,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 
                 
                 $data_mail=array();
-                $data_mail['from_mail']=$mail_from_email;
+                $data_mail['from_mail']=html_entity_decode(do_shortcode($mail_from_email));
                 $data_mail['from_name']=html_entity_decode(do_shortcode($mail_from_name));
                 $data_mail['message']=$mail_template_msg;
                 $data_mail['subject']=html_entity_decode($mail_subject);
@@ -1616,7 +1653,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     
                     
                     $data_mail=array();
-                    $data_mail['from_mail']=$mail_from_email;
+                    $data_mail['from_mail']=html_entity_decode(do_shortcode($mail_from_email));
                     $data_mail['from_name']=html_entity_decode(do_shortcode($mail_from_name));
                     $data_mail['message']=$mail_template_msg;
                     $data_mail['subject']=html_entity_decode(do_shortcode($mail_usr_subject));
@@ -1630,6 +1667,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         $data_mail['mail_replyto']=$mail_usr_replyto;
                     }
                     $mail_errors=$this->process_mail($data_mail);
+                }
                 }
                 
                
@@ -2121,11 +2159,16 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         
         //iframeResizer
         wp_enqueue_script('rockfm-iframeResizer', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.0.1/iframeResizer.contentWindow.min.js');
-       // wp_enqueue_script('jquery-core'); 
-       // wp_enqueue_script('jquery-ui-core'); 
+       
+        wp_register_script('rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array('jquery'));
+        wp_enqueue_script('rockefform-prev-jquery'); 
         
         //load resources
         $this->load_form_resources();
+        
+        //load rocket form
+        wp_enqueue_script(self::PREFIX . 'rockfm_js_global');
+        
         
         $data_addon_front = self::$_addons;
         if(!empty($data_addon_front)){
@@ -2230,10 +2273,16 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         //buffer 1   
         ob_start();    
          
+         if (is_admin()) 
+         {
+             return;
+         }
+        
         extract(shortcode_atts(array(
                     'id' => 1,
                     'ajax' => false,
                     'lmode'=>0,
+                    'is_demo'=>'0'
                         ), $attributes));
         
         switch (intval($lmode)) {
@@ -2314,8 +2363,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                 return;
                             }
                             $shortcode_string = stripslashes($data_form->fmb_html);
-                            //load resources
-                            $this->load_form_resources_alt($id);
+                            
                             
                             $modalmode = get_option( 'zgfm_c_modalmode', 0 );
                             if(intval($modalmode)===0){
@@ -2323,6 +2371,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                 $this->load_form_resources();
                             }
                             
+                            //load resources
+                            $this->load_form_resources_alt($id,$is_demo);
                             
                            //buffer 2
                             ob_start();
@@ -2448,13 +2498,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
     public function load_form_resources() {
         
-        //get form data
-        /*$form_data = $this->formsmodel->getFormById_2($id);
-        $form_data_onsubm = json_decode($form_data->fmb_data2, true);
-        $onload_scroll = (isset($form_data_onsubm['main']['onload_scroll'])) ? $form_data_onsubm['main']['onload_scroll'] : '0';
-        $preload_noconflict = (isset($form_data_onsubm['main']['preload_noconflict'])) ? $form_data_onsubm['main']['preload_noconflict'] : '0';
-        
-        */
+         if (is_admin()) 
+         {
+             return;
+         }
         
         wp_register_style(self::PREFIX . 'rockfm_global', UIFORM_FORMS_URL . '/assets/frontend/css/css.css', array(), UIFORM_VERSION, 'all');
 
@@ -2538,8 +2585,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         wp_enqueue_script('jquery-ui-button');
         //wp_enqueue_script('jquery-ui-tooltip');
         
-        //prev jquery
-        wp_enqueue_script('rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array('jquery'));
+                        
         
         //bootstrap
         wp_enqueue_script('rockfm-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array('jquery','rockefform-prev-jquery'),UIFORM_VERSION);
@@ -2576,20 +2622,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         wp_enqueue_script('rockfm-accounting', UIFORM_FORMS_URL . '/assets/common/js/accounting/accounting.min.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         //checkradio
         wp_enqueue_script('rockfm-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/js/jquery.checkradios.js', array('jquery'), '2.2.2', true);
-        
-        //load rocket form
-        wp_enqueue_script(self::PREFIX . 'rockfm_js_global');
-        
-        //load scripts in modal mode
-        $modalmode = get_option( 'zgfm_b_modalmode', 0 );
-        //if(intval($modalmode)===1){
-            //load resources
-            //add_action( 'wp_enqueue_scripts', array( &$this, 'load_form_resources') );
-            
-            //load resources
-           // $this->modules['formbuilder']['frontend']->load_form_resources();
-
-            $data_addon_front = self::$_addons;
+                        
+    }
+    
+    
+    public function load_form_resources_alt($id,$is_demo=0){
+                        
+                        
+        if (file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
+            wp_register_style(self::PREFIX . 'rockfm_form' . $id, UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $id . '.css?'. date("Ymdgis"), array(), UIFORM_VERSION, 'all');
+            wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
+        }
+         
+         //load form variables
+                   $data_addon_front = self::$_addons;
             if(!empty($data_addon_front)){
                 foreach ($data_addon_front as $key => $value) {
                     foreach ($value as $key2 => $value2) {
@@ -2598,32 +2644,17 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     }
                 }
             }
-        //}
+                        
         
         //load form variables
         $form_variables=array();
-        $form_variables['url_site']=site_url();
-        $form_variables['ajax_nonce']=wp_create_nonce('zgfm_ajax_nonce');
-        $form_variables['ajaxurl']=site_url('wp-admin/admin-ajax.php');
-        $form_variables['url_plugin']=UIFORM_FORMS_URL;
-        $form_variables['imagesurl']=UIFORM_FORMS_URL . "/assets/frontend/images";
-        $form_variables['_uifmvar']['fm_loadmode']='';
-        $form_variables['_uifmvar']['fm_modalmode_st']=get_option( 'zgfm_c_modalmode',0);
         $form_variables['_uifmvar']['addon']=$data_addon_front;
-        /*if (intval($onload_scroll) === 1) {
-            $form_variables['_uifmvar']['fm_onload_scroll']="1";
-        }else{
-            $form_variables['_uifmvar']['fm_onload_scroll']="0";
-        }*/
-        wp_localize_script(self::PREFIX . 'rockfm_js_global', 'rockfm_vars', $form_variables);
-    }
-    
-    
-    public function load_form_resources_alt($id){                    
-        if (file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
-            wp_register_style(self::PREFIX . 'rockfm_form' . $id, UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $id . '.css?'. date("Ymdgis"), array(), UIFORM_VERSION, 'all');
-            wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
-        }
+        $form_variables['_uifmvar']['is_demo']=$is_demo;
+                        
+        wp_localize_script(self::PREFIX . 'rockfm_js_global', 'rockfm_vars', apply_filters('zgfm_front_initvar_load',$form_variables));
+                        
+         //load rocket form
+        wp_enqueue_script(self::PREFIX . 'rockfm_js_global');
     }
     
     public function shortcode_show_version(){
