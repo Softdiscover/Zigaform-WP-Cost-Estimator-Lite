@@ -1071,7 +1071,7 @@ JS;
             wp_enqueue_script('rockefform-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/js/jquery.checkradios.js', array('jquery'), '2.2.2', true);
             
             //iframe
-            wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/3.5.5/iframeResizer.min.js');
+            wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js');
             
             //codemirror
             wp_enqueue_script('rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.js', array(), '1.0', true);
