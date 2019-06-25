@@ -2287,8 +2287,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         case 1:
                             /*iframe*/
                             //script
-                            wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(),UIFORM_VERSION,false);
-                            
+                            wp_register_script(self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(),UIFORM_VERSION,false);
+                        
+            
+                            //load form variables
+                           $form_variables=array();
+                           $form_variables['_uifmvar']['id']=$id;
+                           $form_variables['_uifmvar']['addon']='';
+                           $form_variables['_uifmvar']['is_demo']='';
+
+                           wp_localize_script(self::PREFIX . 'rockefform-iframe', 'rockfm_vars', $form_variables);
+                           wp_enqueue_script(self::PREFIX . 'rockefform-iframe'); 
+                           
+                           wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/loader-iframe.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);
+                           
                             $tmp_vars=array();
                             $tmp_vars['base_url']=UIFORM_FORMS_URL.'/';
                              $tmp_vars['form_id']=$id;
@@ -2651,6 +2663,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $form_variables=array();
         $form_variables['_uifmvar']['addon']=$data_addon_front;
         $form_variables['_uifmvar']['is_demo']=$is_demo;
+        $form_variables['_uifmvar']['is_dev']=UIFORM_DEV;
                         
         wp_localize_script(self::PREFIX . 'rockfm_js_global', 'rockfm_vars', apply_filters('zgfm_front_initvar_load',$form_variables));
                         
