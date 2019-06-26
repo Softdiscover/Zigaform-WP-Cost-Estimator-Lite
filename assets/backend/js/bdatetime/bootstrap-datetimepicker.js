@@ -42,13 +42,13 @@
         factory(require('jquery'), require('moment'));
     } else {
         // Neither AMD nor CommonJS used. Use global variables.
-        if (typeof jQuery === 'undefined') {
+        if (typeof $uifm === 'undefined') {
             throw 'bootstrap-datetimepicker requires jQuery to be loaded first';
         }
         if (typeof moment === 'undefined') {
             throw 'bootstrap-datetimepicker requires Moment.js to be loaded first';
         }
-        factory(jQuery, moment);
+        factory($uifm, moment);
     }
 }(function ($, moment) {
     'use strict';
@@ -515,9 +515,9 @@
                     monthsViewHeader.eq(2).addClass('disabled');
                 }
 
-                months.removeClass('sfdc-active');
+                months.removeClass('active');
                 if (date.isSame(viewDate, 'y')) {
-                    months.eq(date.month()).addClass('sfdc-active');
+                    months.eq(date.month()).addClass('active');
                 }
 
                 months.each(function (index) {
@@ -758,7 +758,7 @@
                     return picker;
                 }
                 if (component && component.hasClass('btn')) {
-                    component.toggleClass('sfdc-active');
+                    component.toggleClass('active');
                 }
                 widget.hide();
 
@@ -1015,7 +1015,7 @@
                 widget.on('mousedown', false);
 
                 if (component && component.hasClass('btn')) {
-                    component.toggleClass('sfdc-active');
+                    component.toggleClass('active');
                 }
                 widget.show();
                 place();
@@ -1266,7 +1266,7 @@
                 if (picker[key] !== undefined) {
                     picker[key](value);
                 } else {
-                    throw new TypeError('option ' + key + ' is not recognized!');
+                    //throw new TypeError('option ' + key + ' is not recognized!');
                 }
             });
             return picker;
