@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 }
 ob_start();
 
-if(intval($html_wholecont)===1){
+if(isset($html_wholecont) && intval($html_wholecont)===1){
     ?>
     <?php echo $content;?>
 <?php
@@ -31,6 +31,7 @@ if(intval($html_wholecont)===1){
         <?php } ?>
         <style type="text/css">
             <?php 
+            if(isset($font))
             switch (intval($font)) {
                 case 2:
                     //dejavu sans mono
@@ -98,6 +99,10 @@ if(intval($html_wholecont)===1){
           
         </style>
         <?php echo $head_extra;?>
+        <?php if(isset($is_html) && intval($is_html)===1){?>
+        <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.min.js"></script>
+        <?php } ?>
+        
     </head> 
     <body>
         <?php echo $content;?>

@@ -34,10 +34,11 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module {
 
     const VERSION = '0.1';
     private $pagination = "";
-    var $per_page = 5;
+    var $per_page = 50;
     private $wpdb = "";
     protected $modules;
     private $model_gateways_records = "";
+    private $model_record = "";
     
     /**
      * Constructor
@@ -48,6 +49,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module {
         global $wpdb;
         $this->wpdb = $wpdb;
         $this->model_gateways_records = self::$_models['gateways']['records'];
+        $this->model_record = self::$_models['formbuilder']['form_records'];
        // delete record
        add_action('wp_ajax_rocket_fbuilder_invoice_delete_records', array(&$this, 'ajax_delete_records'));
     }
@@ -70,7 +72,17 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module {
         $id_rec = (isset($_GET['id_rec']) && $_GET['id_rec']) ? Uiform_Form_Helper::sanitizeInput($_GET['id_rec']) : 0;
         $data = array();
         $data['record_id']=$id_rec;
-        $data['show_summary']=self::$_modules['formbuilder']['frontend']->get_summaryInvoice($id_rec);
+        
+        
+        $form_rec_data = $this->model_record->getFormDataById($id_rec);
+        
+        $data['fmb_inv_tpl_st'] = $form_rec_data->fmb_inv_tpl_st;
+        $data['base_url']=UIFORM_FORMS_URL.'/';
+        $data['form_id']=$form_rec_data->form_fmb_id;
+        $data['url_form']=site_url().'/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=show_invoice&uifm_mode=pdf&is_html=1&id='.$id_rec;
+        $data['show_summary'] = self::render_template('formbuilder/views/frontend/form_summary_custom.php',$data);
+        
+        
         echo self::loadPartial('layout.php', 'gateways/views/records/info_record.php', $data);
     }
     

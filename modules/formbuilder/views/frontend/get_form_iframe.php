@@ -47,6 +47,7 @@ if (!empty($script_head)) {
         }
     }
     </script>
+    <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js"></script>
     <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.min.js"></script>
      
     

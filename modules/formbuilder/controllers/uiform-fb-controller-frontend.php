@@ -142,8 +142,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
    public function global_scripts(){
         //prev jquery
        wp_register_script('rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array('jquery'));
-        wp_enqueue_script('rockefform-prev-jquery'); 
+       wp_enqueue_script('rockefform-prev-jquery'); 
        
+       wp_register_script(self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(),UIFORM_VERSION,false);
+       wp_enqueue_script(self::PREFIX . 'rockefform-iframe'); 
    }
 
       /**
@@ -273,6 +275,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
        $id_rec = (isset($_POST['form_r_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_r_id']) : '';
        
         $temp=$this->model_formrecords->getFormDataById($id_rec);
+        
         $form_id=$temp->form_fmb_id;
         $form_data = $this->formsmodel->getFormById_2($form_id);
         $form_data_onsubm = json_decode($form_data->fmb_data2, true);
@@ -280,13 +283,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 
        
         $resp = array();
-        $resp['show_summary']=Uiform_Form_Helper::encodeHex($this->get_summaryInvoice($id_rec));
+       
         
         $resp['show_summary_title']=__('Invoice', 'frocket_front');
         if(intval($pdf_show_onpage)===1){
         $resp['show_summary_title']='<a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_infoinvoice('.$id_rec.');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> '.__('Export to PDF', 'frocket_front').'</a>';
         }
         
+        
+          $data=array();
+         $data['base_url']=UIFORM_FORMS_URL.'/';
+         $data['form_id']=$form_id;
+        $data['url_form']=site_url().'/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=show_invoice&uifm_mode=pdf&is_html=1&id='.$id_rec;
+        
+        $resp['show_summary']=Uiform_Form_Helper::encodeHex(self::render_template('formbuilder/views/frontend/form_invoice_custom.php',$data));
         //return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
         echo json_encode($resp);
@@ -306,7 +316,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $pdf_show_onpage = (isset($form_data_onsubm['main']['pdf_show_onpage'])) ? $form_data_onsubm['main']['pdf_show_onpage'] : '0';
                 
         $resp = array();
-        $resp['show_summary']=Uiform_Form_Helper::encodeHex($this->get_summaryRecord($id_rec));
+        
         $resp['show_summary_title']=__('Order summary', 'frocket_front');
         if(intval($pdf_show_onpage)===1){
             
@@ -316,17 +326,29 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 $resp['show_summary_title'].=' <a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_inforecord('.$id_rec.');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> '.__('Export to PDF', 'frocket_front').'</a>';
             }
             
-            
-            
         }
+        
+        
+         if(isset($temp->fmb_rec_tpl_st) && intval($temp->fmb_rec_tpl_st)===1){
+            
+                 $data=array();
+                 $data['base_url']=UIFORM_FORMS_URL.'/';
+                 $data['form_id']=$form_id;
+                 $data['url_form']=site_url().'/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=show_record&uifm_mode=pdf&is_html=1&id='.$id_rec;
+            
+           $resp['show_summary']=Uiform_Form_Helper::encodeHex(self::render_template('formbuilder/views/frontend/form_summary_custom.php',$data));
+        }else{
+            $resp['show_summary']=Uiform_Form_Helper::encodeHex($this->get_summaryRecord($id_rec));
+        }
+             
         //return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
         echo json_encode($resp);
         wp_die();
     }
     
-    public function get_summaryInvoice($id_rec){
-         
+    public function get_summaryInvoice(){
+        $id_rec=isset($_GET['id']) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) :''; 
         $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : '';
         
         $name_fields = $this->model_formrecords->getNameInvoiceField($id_rec);
@@ -334,7 +356,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         if(empty($form_id)){
             $form_id=$form_rec_data->fmb_id;
         }
-                
         
         $form_data=json_decode($form_rec_data->fmb_data, true);
         $form_data_currency = (isset($form_data['main']['price_currency'])) ? $form_data['main']['price_currency'] : '';
@@ -444,7 +465,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $data['invoice_to_info4'] = isset($form_data_invoice['to_text4'])?urldecode($this->model_formrecords->getFieldOptRecord($id_rec,'',$form_data_invoice['to_text4'],'input')):'';
         $data['invoice_to_info5'] = isset($form_data_invoice['to_text5'])?urldecode($form_data_invoice['to_text5']):'';
         $form_summary=self::render_template('formbuilder/views/frontend/form_invoice.php',$data);
+        
         return $form_summary;
+        
     }
     
     public function get_summaryRecord($id_rec){
@@ -883,7 +906,25 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     
                     break;    
                 case "rec_summ":
-                     $output=$this->form_rec_msg_summ;
+                        
+                    $tmp_data=json_decode($data->fbh_data, true);
+                    $form_data_onsubm = json_decode($data->fmb_data2, true);
+                        
+                     //price numeric format
+                $format_price_conf=array();
+                $format_price_conf['price_format_st']=(isset($form_data_onsubm['main']['price_format_st']))?$form_data_onsubm['main']['price_format_st']:'0';
+                $format_price_conf['price_sep_decimal']=(isset($form_data_onsubm['main']['price_sep_decimal']))?$form_data_onsubm['main']['price_sep_decimal']:'.';
+                $format_price_conf['price_sep_thousand']=(isset($form_data_onsubm['main']['price_sep_thousand']))?$form_data_onsubm['main']['price_sep_thousand']:',';
+                $format_price_conf['price_sep_precision']=(isset($form_data_onsubm['main']['price_sep_precision']))?$form_data_onsubm['main']['price_sep_precision']:'2';
+                
+                    $data2=array();
+                    $data2['data']=$tmp_data;
+                    $data2['format_price_conf'] = $format_price_conf;
+                    $data2['form_cost_total'] = $data->fbh_total_amount;
+                    $data2['current_cost_st'] = (isset($form_data_onsubm['main']['price_st']))?$form_data_onsubm['main']['price_st']:'USD';
+                    $data2['current_cost_symbol'] = (isset($form_data_onsubm['main']['price_currency_symbol']))?$form_data_onsubm['main']['price_currency_symbol']:'$';
+                    $data2['current_cost_cur'] = (isset($form_data_onsubm['main']['price_currency']))?$form_data_onsubm['main']['price_currency']:'USD';
+                    $output = self::render_template('formbuilder/views/frontend/mail_generate_fields.php',$data2, 'always');
                     break;
                 case "rec_url_fm":
                      $output= isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
@@ -1746,11 +1787,15 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
    
     public function pdf_show_record() {
          $rec_id=isset($_GET['id']) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) :'';
+         $is_html=isset($_GET['is_html']) ? Uiform_Form_Helper::sanitizeInput($_GET['is_html']) :0;
+         
+         
          $form_data = $this->model_formrecords->getFormDataById($rec_id);
+                                
          if(intval($rec_id)>0){
              ob_start();
         ?>
-        <div style="width:600px;margin: 0 100px;">
+        
                     <!-- if p tag is removed, title will dissapear, idk -->
                     <h1><?php echo $form_data->fmb_name;?></h1>
                     <h4><?php echo __('Order summary','FRocket_admin');?></h4>
@@ -1758,31 +1803,68 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                    <?php
                         echo self::$_modules['formbuilder']['frontend']->get_summaryRecord($rec_id);
                 ?>
-                </div>
+                
         <?php
         $content = ob_get_contents();
         ob_end_clean();
+        
+        //update form id
+        $this->flag_submitted = $rec_id;
+        
+        //custom template
+        if(intval($form_data->fmb_rec_tpl_st)===1){
+             
+            $template_msg =do_shortcode($form_data->fmb_rec_tpl_html);
+            $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+            $content=$template_msg;
+         }
+        
+         
+        $pos = strpos($content,'</body>');
+        $pos2 = strpos($content,'</html>');
+        
+        if($pos === false && $pos2 === false){
+            $full_page=0;
+        }else{
+            $full_page=1;
+            if(intval($is_html)===1){
+                $content = str_replace("</head>", '<script type="text/javascript" src="'.UIFORM_FORMS_URL.'/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.min.js"></script></head>', $content);        
+            }
+            
+        }
+        
         $output = '';
         $data2=array();
         $data2['rec_id']=$rec_id;
-        //$data2['pdf_font']=$data['pdf_font'];
+        $data2['html_wholecont']=$full_page; 
         $data2['content']=$content;
+        $data2['is_html']=$is_html;
         $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
-         uifm_generate_pdf($tmp_html,'record_'.$rec_id, true);
+        
+        if(intval($is_html)===1){
+            header('Content-type: text/html');
+            
+            echo $tmp_html;
+        }else{
+            uifm_generate_pdf($tmp_html,'record_'.$rec_id, true);
+        }
+        
         die();
         
          }
     }
     
    public function pdf_show_invoice() {
-        
-        $rec_id=isset($_GET['id']) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) :'';
-          
+       
+       $rec_id=isset($_GET['id']) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) :'';
+       $form_data = $this->model_gateways_rec->getInvoiceDataByFormRecId($rec_id);
+       $is_html=isset($_GET['is_html']) ? Uiform_Form_Helper::sanitizeInput($_GET['is_html']) :0;
+       
        ob_start();
         ?>
         <link href="<?php echo UIFORM_FORMS_URL; ?>/assets/common/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" >
                
-         <style type="text/css">
+           <style type="text/css">
                     .uifm_invoice_container h3{
                         margin-left:-20px;
                     }
@@ -1793,6 +1875,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     .uifm_invoice_container{
                     margin: 10px 20px 20px;
                     }
+                    html,body{
+                        /*background:#eee;*/
+                    }
+                    table{
+                        background:#fff;
+                    }
                 </style>
 
         <?php
@@ -1802,17 +1890,42 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         
         ob_start();
         ?>
-        <div style="width:600px;margin: 0 100px;">
+       
                     <!-- if p tag is removed, title will dissapear, idk -->
                     <p>&nbsp;</p>
                    <?php
                 echo self::$_modules['formbuilder']['frontend']->get_summaryInvoice($rec_id);
                 ?>
-                </div>
-
+            
         <?php
         $content = ob_get_contents();
         ob_end_clean();
+        
+        
+        //update form id
+        $this->flag_submitted = $rec_id;
+        
+        //custom template
+        if(intval($form_data->fmb_inv_tpl_st)===1){
+             
+            $template_msg =do_shortcode($form_data->fmb_inv_tpl_html);
+            $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+            $content=$template_msg;
+         }
+        
+         
+        $pos = strpos($content,'</body>');
+        $pos2 = strpos($content,'</html>');
+       
+        if($pos === false && $pos2 === false){
+            $full_page=0;
+        }else{
+            $full_page=1;
+            if(intval($is_html)===1){
+                                $content = str_replace("</body>", '<script type="text/javascript" src="'.UIFORM_FORMS_URL.'/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.min.js"></script></body>', $content);        
+            }
+        }
+        
         
         
         $output = '';
@@ -1820,8 +1933,17 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $data2['rec_id']=$rec_id;
         $data2['head_extra']=$head_extra;
         $data2['content']=$content;
-        $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
-        uifm_generate_pdf($tmp_html,'invoice_'.$rec_id, true);
+        $data2['is_html']=$is_html;
+        //$tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
+        $tmp_html = self::render_template('formbuilder/views/forms/pdf_global_template.php', $data2);
+        if(intval($is_html)===1){
+            header('Content-type: text/html');
+            
+            echo $tmp_html;
+        }else{
+             uifm_generate_pdf($tmp_html,'invoice_'.$rec_id, true);
+        }
+       
         die();
     } 
     
@@ -1842,6 +1964,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $data2['head_extra']=isset($data['head_extra'])?$data['head_extra']:'';
         $data2['content']=$data['content'];
         $data2['html_wholecont']=isset($data['html_wholecont'])?$data['html_wholecont']:'0';
+        $data2['is_html']=isset($data['is_html'])?$data['is_html']:'0';
         $content= self::render_template('formbuilder/views/forms/pdf_global_template.php', $data2);
         return $content; 
    }
@@ -2287,7 +2410,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         case 1:
                             /*iframe*/
                             //script
-                            wp_register_script(self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(),UIFORM_VERSION,false);
                         
             
                             //load form variables
@@ -2297,7 +2419,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                            $form_variables['_uifmvar']['is_demo']='';
 
                            wp_localize_script(self::PREFIX . 'rockefform-iframe', 'rockfm_vars', $form_variables);
-                           wp_enqueue_script(self::PREFIX . 'rockefform-iframe'); 
+                           
                            
                            wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/loader-iframe.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);
                            

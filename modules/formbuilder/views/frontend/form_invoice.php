@@ -16,8 +16,7 @@ if (!defined('ABSPATH')) {
 }
 ob_start();
 ?>
-
-        <div class="sfdc-row">
+     <div class="sfdc-row">
     <div class="sfdc-col-sm-12">
         <div class="uifm_invoice_container">
             <h3><?php echo __('Invoice','frocket_front');?> #<?php echo $invoice_id; ?></h3>
@@ -207,7 +206,7 @@ ob_start();
     </div>
 
 </div>
-
+   
 <?php
 $cntACmp = ob_get_contents();
 $cntACmp = Uiform_Form_Helper::sanitize_output($cntACmp);

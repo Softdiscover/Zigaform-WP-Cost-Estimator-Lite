@@ -3,7 +3,7 @@
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for Wordpress.
- * Version: 3.9.9.5.9
+ * Version: 3.9.9.6.4
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
@@ -28,7 +28,7 @@ if (!class_exists('UiformCostEst')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.9.9.5.9';
+        public $version = '3.9.9.6.4';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -498,6 +498,38 @@ if (!class_exists('UiformCostEst')) {
                     }
                 } 
                 
+                          //below 3.9.9.6.1
+                 if (!$install_ver || version_compare($install_ver,"3.9.9.6.1", '<')) {
+                    $tbname = $wpdb->prefix . "cest_uiform_form";
+                   
+                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
+                        
+                        $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_rec_tpl_html'");
+                        if (empty($row)) {
+                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_rec_tpl_html longtext NULL;";
+                            $wpdb->query($sql);
+                        }
+
+                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_inv_tpl_html'");
+                        if (empty($row)) {
+                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_inv_tpl_html longtext NULL;";
+                            $wpdb->query($sql);
+                        }
+                        
+                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_rec_tpl_st'");
+                        if (empty($row)) {
+                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_rec_tpl_st TINYINT(1) NULL DEFAULT 0;";
+                            $wpdb->query($sql);
+                        }
+                        
+                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_inv_tpl_st'");
+                        if (empty($row)) {
+                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_inv_tpl_st TINYINT(1) NULL DEFAULT 0;";
+                            $wpdb->query($sql);
+                        }
+                    }
+                     
+                }
                 
                  update_option("uifmcostest_version", $version);
             }

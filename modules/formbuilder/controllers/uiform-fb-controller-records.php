@@ -38,7 +38,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
     private $model_fields = "";
     private $formsmodel = "";
     private $pagination = "";
-    var $per_page = 10;
+    var $per_page = 50;
     private $wpdb = "";
     protected $modules;
 
@@ -312,7 +312,14 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
             'form_name'=>__('Form name','FRocket_admin')
         );
         $data['info_export']= Uiform_Form_Helper::base64url_encode(json_encode($data2));
-        $data['record_info_str'] = $this->get_info_records($new_record_user,$data); 
+        $data['record_info_str'] = $this->get_info_records($new_record_user,$data);
+        
+        $data['fmb_rec_tpl_st'] = $form_rec_data->fmb_rec_tpl_st;
+        $data['base_url']=UIFORM_FORMS_URL.'/';
+            $data['form_id']=$form_rec_data->form_fmb_id;
+            $data['url_form']=site_url().'/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=show_record&uifm_mode=pdf&is_html=1&id='.$id_rec;
+            $data['custom_template'] = self::render_template('formbuilder/views/frontend/form_summary_custom.php',$data);
+        
         echo self::loadPartial('layout.php', 'formbuilder/views/records/info_record.php', $data);
     }
     
