@@ -833,7 +833,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $output='';
         
         $rec_id=$this->flag_submitted;
-        $data=$this->model_formrecords->getFormDataById($rec_id);
+        
                 
         if(!empty($vars['opt'])){
              switch ((string)$vars['opt']) {
@@ -906,7 +906,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     
                     break;    
                 case "rec_summ":
-                        
+                    $data=$this->model_formrecords->getFormDataById($rec_id);    
                     $tmp_data=json_decode($data->fbh_data, true);
                     $form_data_onsubm = json_decode($data->fmb_data2, true);
                         
@@ -930,10 +930,24 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                      $output= isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
                     break;
                 case "form_name":
+                    $data=$this->model_formrecords->getFormDataById($rec_id);
                     $output=$data->fmb_name;
                     break;
                 case "rec_id":
                     $output=$rec_id;
+                    break;    
+                case "form_inv_number":
+                    $data=$this->model_gateways_rec->getInvoiceDataByFormRecId($rec_id);
+                    $output=$data->pgr_id;
+                    break;    
+                case "form_inv_date":
+                    $data=$this->model_gateways_rec->getInvoiceDataByFormRecId($rec_id);
+                    if(!empty($vars['atr2'])){
+                        $temp_date=date($vars['atr2'], strtotime($data->created_date));
+                    }else{
+                        $temp_date=date('F j, Y', strtotime($data->created_date));
+                    }
+                    $output=$temp_date;
                     break;    
                 default:
                 
