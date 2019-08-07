@@ -1065,11 +1065,15 @@ var zgfm_back_calc = function(){
          tmp_field_detail['field']=value;
         
          var tmp_content_front=rocketform.getInnerVariable('calculation_cont_front');
-         
          //replace all function
         var replaceAll = function (str, find, replace) {
                 return str.replace(new RegExp(find, 'g'), replace);
-            }
+            };
+        var replaceAll2 = function (str, find, replace) {
+                return str.replace(new RegExp("\\b" +find+ "\\b", 'g'), replace);
+                
+            };    
+            
          var tmp_field_val = value.split("_");
          tmp_field_detail['unique_id']=tmp_field_val[1];
          
@@ -1138,7 +1142,7 @@ var zgfm_back_calc = function(){
            
                     tmp_str = "'"+tmp_params.join("','")+"'";
                     tmp_function = replaceAll(tmp_function,'%vars%',tmp_str);
-                    tmp_content_front = replaceAll(tmp_content_front,tmp_field_detail['field'],tmp_function);
+                    tmp_content_front = replaceAll2(tmp_content_front,tmp_field_detail['field'],tmp_function);
          }
         
         //store content front
