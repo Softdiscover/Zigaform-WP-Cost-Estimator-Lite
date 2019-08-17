@@ -128,7 +128,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $modalmode = get_option( 'zgfm_c_modalmode', 0 );
         if(intval($modalmode)===1){
             //load resources
-            add_action( 'wp_enqueue_scripts', array( &$this, 'load_form_resources') );
+            add_action( 'wp_enqueue_scripts', array( &$this, 'load_form_resources'),50, 1 );
         }
         
         //add variables
@@ -143,7 +143,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         //prev jquery
        wp_register_script('rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array('jquery'));
        wp_enqueue_script('rockefform-prev-jquery'); 
-       
+       //for summmary and invoices
        wp_register_script(self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(),UIFORM_VERSION,false);
        wp_enqueue_script(self::PREFIX . 'rockefform-iframe'); 
    }
@@ -2434,10 +2434,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                            $form_variables['_uifmvar']['addon']='';
                            $form_variables['_uifmvar']['is_demo']='';
 
-                           wp_localize_script(self::PREFIX . 'rockefform-iframe', 'rockfm_vars', $form_variables);
-                           
-                           
                            wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/loader-iframe.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);
+                           wp_localize_script('rockefform-iframe-script', 'rockfm_vars', $form_variables);
                            
                             $tmp_vars=array();
                             $tmp_vars['base_url']=UIFORM_FORMS_URL.'/';
