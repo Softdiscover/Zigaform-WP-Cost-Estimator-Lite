@@ -1245,6 +1245,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                     $form_f_tmp[$key]['type']=$tmp_field_name->type;
                                     $form_f_tmp[$key]['fieldname']=$tmp_field_name->fieldname;
                                     $form_f_tmp[$key]['label']=$tmp_field_label;
+                                    
                                     $form_f_tmp[$key]['chosen']=implode(",", array($value));
                                     $form_f_tmp[$key]['price_st']=isset($tmp_fdata['price']['enable_st'])?$tmp_fdata['price']['enable_st']:0;
                                     $form_f_tmp[$key]['lbl_show_st']=isset($tmp_fdata['price']['lbl_show_st'])?$tmp_fdata['price']['lbl_show_st']:0;
@@ -1278,6 +1279,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                            $tmp_options[$value] = $tmp_options_row;
                                         }
                                     //}
+                                        
+                                    $form_f_tmp[$key]['input_label'] = $tmp_options_row['label'];
+                                    $form_f_tmp[$key]['input_value'] = $tmp_options_row['value'];    
                                     /*saving data to field array*/
                                     $form_f_tmp[$key]['input'] = $tmp_options;
                                 
