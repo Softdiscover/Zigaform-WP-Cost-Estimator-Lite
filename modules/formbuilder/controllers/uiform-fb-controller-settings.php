@@ -140,6 +140,14 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
             update_option( 'zgfm_c_modalmode', 0);
         }
         
+        $opt_fields_fastload = (isset($_POST['uifm_frm_fields_fastload']) && $_POST['uifm_frm_fields_fastload']) ? Uiform_Form_Helper::sanitizeInput($_POST['uifm_frm_fields_fastload']) : 0;
+        if((string)$opt_fields_fastload ==='on'){
+            update_option( 'zgfm_fields_fastload', 1);
+        }else{
+            update_option( 'zgfm_fields_fastload', 0);
+        }
+        
+        
         $data = array();
         $data['language'] = $opt_language;
         $where = array(
@@ -175,6 +183,8 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         $data['language'] = $query->language;
         $data['lang_list'] = $list_lang;
         $data['modalmode'] = get_option( 'zgfm_c_modalmode', 0 );
+        $data['fields_fastload'] = get_option( 'zgfm_fields_fastload', 0 );
+        
         echo self::loadPartial('layout.php', 'formbuilder/views/settings/view_settings.php', $data);
     }
     

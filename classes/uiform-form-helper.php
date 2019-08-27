@@ -730,6 +730,7 @@ if(ZIGAFORM_C_LITE == 1){
 
     }else{
    require_once(UIFORM_FORMS_DIR . '/helpers/dompdf/autoload.inc.php');
+   
     $dompdf = new Dompdf();
     $dompdf->loadHtml($html);
     $dompdf->setPaper($papersize, $paperorien);
