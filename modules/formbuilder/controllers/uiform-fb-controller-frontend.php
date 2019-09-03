@@ -2203,93 +2203,124 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         //get data from invoice
                         $form_rec_data = $this->model_gateways_rec->getInvoiceDataByFormRecId($data['fbh_id']);
                         $form_data=json_decode($form_rec_data->fmb_data, true);
+                        
+                        $form_data_calc_st = (isset($form_data['calculation']['enable_st'])) ? $form_data['calculation']['enable_st'] : '0';
+                        
+                        if(intval($form_data_calc_st)===1){
+                            //math calculation
+                            
+                            $tmp_invoice_row=array();
+                            $tmp_invoice_row['item_uniqueid']=0;
+                            $tmp_invoice_row['item_id']=0;
+                            $tmp_invoice_row['item_qty']=1;
+                            $tmp_invoice_row['item_num']=1;
+                            $tmp_invoice_row['item_name']= (isset($form_data['calculation']['variables'][0]['tab_title'])) ? $form_data['calculation']['variables'][0]['tab_title'] : 'Main Calc Variable';
+                            $tmp_invoice_row['item_amount']=$form_rec_data->fbh_total_amount;
+                            $new_record_user[] = $tmp_invoice_row; 
+                        }else{
                         //processs tax
-                        $form_data_tax_st = (isset($form_data['main']['price_tax_st'])) ? $form_data['main']['price_tax_st'] : '0';
-                        $form_data_tax_val = (isset($form_data['main']['price_tax_val'])) ? $form_data['main']['price_tax_val'] : '';
+                            $form_data_tax_st = (isset($form_data['main']['price_tax_st'])) ? $form_data['main']['price_tax_st'] : '0';
+                            $form_data_tax_val = (isset($form_data['main']['price_tax_val'])) ? $form_data['main']['price_tax_val'] : '';
 
-                        $tmp_amount_total=  floatval($this->form_response['amount']);
-                        if(isset($form_data_tax_st) && intval($form_data_tax_st)===1){
-                            $tmp_tax=(floatval($form_data_tax_val)/100);
-                            $tmp_sub_total=($tmp_amount_total)*(100 / (100 + (100 * $tmp_tax)));
-                             $data['form_subtotal_amount'] = $tmp_sub_total;
-                             $data['form_tax'] = $tmp_amount_total - $tmp_sub_total;
-                        }
-                        
-                        
-                        //process individuals
-                         $name_fields = $this->model_formrecords->getNameInvoiceField($data['fbh_id']);
-                        $name_fields_check = array();
-                        foreach ($name_fields as $value) {
-                            $name_fields_check[$value->fmf_uniqueid]['fieldname'] = $value->fieldname;
-                            $name_fields_check[$value->fmf_uniqueid]['id'] = $value->fmf_id;
-                        }
-                        
-                        
-                        $data_record = $this->model_formrecords->getRecordById($data['fbh_id']);
-                        $record_user = json_decode($data_record->fbh_data, true);
-                        $new_record_user = array();
-                        $item_count=1;
-                        foreach ($record_user as $key2 => $value) {
+                            $tmp_amount_total=  floatval($this->form_response['amount']);
+                            if(isset($form_data_tax_st) && intval($form_data_tax_st)===1){
+                                $tmp_tax=(floatval($form_data_tax_val)/100);
+                                $tmp_sub_total=($tmp_amount_total)*(100 / (100 + (100 * $tmp_tax)));
+                                 $data['form_subtotal_amount'] = $tmp_sub_total;
+                                 $data['form_tax'] = $tmp_amount_total - $tmp_sub_total;
+                            }
 
-                            if (isset($name_fields_check[$key2]) && isset($value['price_st']) && intval($value['price_st'])===1) {
-                                $field_name='';
-                                $field_id='';
-                                $tmp_invoice_row=array();
 
-                                $field_name = $name_fields_check[$key2]['fieldname'];
-                                $field_id = $name_fields_check[$key2]['id'];
+                            //process individuals
+                             $name_fields = $this->model_formrecords->getNameInvoiceField($data['fbh_id']);
+                            $name_fields_check = array();
+                            foreach ($name_fields as $value) {
+                                $name_fields_check[$value->fmf_uniqueid]['fieldname'] = $value->fieldname;
+                                $name_fields_check[$value->fmf_uniqueid]['id'] = $value->fmf_id;
+                            }
 
-                                $tmp_invoice_row['item_uniqueid']=$key2;
-                                $tmp_invoice_row['item_id']=$field_id;
 
-                                if(is_array($value['input'])){
-                                    foreach ($value['input'] as $key3 => $value2) {
+                            $data_record = $this->model_formrecords->getRecordById($data['fbh_id']);
+                            $record_user = json_decode($data_record->fbh_data, true);
+                            $new_record_user = array();
+                            $item_count=1;
+                            foreach ($record_user as $key2 => $value) {
 
-                                        $tmp_invoice_row['item_qty']=1;
-                                        $tmp_invoice_row['item_name']='';
-                                        $tmp_invoice_row['item_num']=$item_count;
-                                        if(isset($value2['cost'])){
-                                            if(isset($value2['qty'])){
-                                                $tmp_invoice_row['item_qty']=$value2['qty'];
-                                                $tmp_invoice_row['item_amount']=$value2['cost'];
+                                if (isset($name_fields_check[$key2]) && isset($value['price_st']) && intval($value['price_st'])===1) {
+                                    $field_name='';
+                                    $field_id='';
+                                    $tmp_invoice_row=array();
+
+                                    $field_name = $name_fields_check[$key2]['fieldname'];
+                                    $field_id = $name_fields_check[$key2]['id'];
+
+                                    $tmp_invoice_row['item_uniqueid']=$key2;
+                                    $tmp_invoice_row['item_id']=$field_id;
+
+                                    if(isset($value['price_st'])  && intval($value['price_st'])===1){
+                                        if(is_array($value['input'])){
+
+                                            if(isset($value['input']['amount'])){
+                                                $tmp_invoice_row['item_qty']=1;
+                                                $tmp_invoice_row['item_num']=$item_count;
+                                                $tmp_invoice_row['item_name']= $value['label'];
+                                                $tmp_invoice_row['item_amount']=$value['input']['amount'];
+                                                $new_record_user[] = $tmp_invoice_row; 
+                                                $item_count++;
                                             }else{
-                                                $tmp_invoice_row['item_amount']=$value2['cost'];
+                                                foreach ($value['input'] as $key3 => $value2) {
+                                                    $tmp_invoice_row['item_qty']=1;
+                                                    $tmp_invoice_row['item_name']='';
+                                                    $tmp_invoice_row['item_num']=$item_count;
+                                                    if(isset($value2['cost'])){
+                                                        if(isset($value2['qty'])){
+                                                            $tmp_invoice_row['item_qty']=$value2['qty'];
+                                                            $tmp_invoice_row['item_amount']=$value2['cost'];
+                                                        }else{
+                                                            $tmp_invoice_row['item_amount']=$value2['cost'];
+                                                        }
+                                                    }
+
+
+                                                    $tmp_inp_label=$value['label'];
+                                                    if(!empty($value2['label'])){
+                                                    $tmp_inp_label.=' - '.$value2['label'];   
+                                                    }
+                                                    $tmp_invoice_row['item_name']=$tmp_inp_label;
+
+                                                    $new_record_user[] = $tmp_invoice_row;
+                                                    $item_count++;
+                                                }
                                             }
+
+
+                                        }else{
+                                            $tmp_invoice_row['item_qty']=0;
+                                            $tmp_invoice_row['item_num']=$item_count;
+                                            $tmp_invoice_row['item_name'].=' '.$value['input'];
+                                            $tmp_invoice_row['item_amount']=0;
+                                            $new_record_user[] = $tmp_invoice_row; 
+                                            $item_count++;
                                         }
-
-
-                                        $tmp_inp_label=$value['label'];
-                                        if(!empty($value2['label'])){
-                                        $tmp_inp_label.=' - '.$value2['label'];   
-                                        }
-                                        $tmp_invoice_row['item_name']=$tmp_inp_label;
-
-                                        $new_record_user[] = $tmp_invoice_row;
-                                        $item_count++;
                                     }
-                                }else{
-                                    $tmp_invoice_row['item_qty']=0;
-                                    $tmp_invoice_row['item_num']=$item_count;
-                                    $tmp_invoice_row['item_name'].=' '.$value['input'];
-                                    $tmp_invoice_row['item_amount']=0;
-                                    $new_record_user[] = $tmp_invoice_row; 
-                                    $item_count++;
+
                                 }
 
                             }
 
+
+                            //add tax
+                             if(isset($form_data_tax_st) && intval($form_data_tax_st)===1){
+                                $tmp_invoice_row=array();
+                                $tmp_invoice_row['item_qty']=1;
+                                $tmp_invoice_row['item_num']=$item_count;
+                                $tmp_invoice_row['item_name']='TAX';
+                                $tmp_invoice_row['item_amount']=$data['form_tax'];
+                                $new_record_user[] = $tmp_invoice_row; 
+                            }
                         }
                         
                         
-                        //add tax
-                         if(isset($form_data_tax_st) && intval($form_data_tax_st)===1){
-                            $tmp_invoice_row=array();
-                            $tmp_invoice_row['item_qty']=1;
-                            $tmp_invoice_row['item_num']=$item_count;
-                            $tmp_invoice_row['item_name']='TAX';
-                            $tmp_invoice_row['item_amount']=$data['form_tax'];
-                            $new_record_user[] = $tmp_invoice_row; 
-                        }
                         
                         $data2['paypal_individuals'] = $new_record_user;
                     }
@@ -2698,7 +2729,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         wp_enqueue_style('rockfm-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/4.7.14/bootstrap-datetimepicker.css');
         
         // bootstrap datetimepicker2
-        wp_enqueue_style('rockfm-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.min.css');
+        wp_enqueue_style('rockfm-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.6.2/flatpickr.min.css');
         
         //color picker
         wp_enqueue_style('rockfm-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css');
@@ -2758,8 +2789,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         wp_enqueue_script('rockfm-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/4.7.14/bootstrap-datetimepicker.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         
         //bootstrap datetimepicker
-        wp_enqueue_script('rockfm-bootstrap-dtpicker-locales2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
-        wp_enqueue_script('rockfm-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/l10n/all-lang.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
+        wp_enqueue_script('rockfm-bootstrap-dtpicker-locales2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.6.2/flatpickr.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
+        wp_enqueue_script('rockfm-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.6.2/l10n/all-lang.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         
         //star rating
         wp_enqueue_script('rockfm-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
