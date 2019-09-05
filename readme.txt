@@ -3,10 +3,10 @@ Contributors: softdiscover
 Donate link: https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: calculator, wizard, form builder, bootstrap, estimation, AJAX, Akismet, captcha, contact, contact form, email, feedback, form, multilingual, 
+Tags: calculator, wizard, form builder, bootstrap, estimation, AJAX, calculated, captcha, contact, contact form, email, feedback, form, multilingual, 
 Requires at least: 3.6
 Tested up to: 5.2.2
-Stable tag: 3.9.9.8.5
+Stable tag: 3.9.9.8.7
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -15,6 +15,18 @@ Create estimation forms using this powerful drag and drop estimation form builde
 **Zigaform - Calculator & Cost Estimation Form Builder**  is a real-time drag and drop form builder which makes you to build your estimation forms on few easy steps. it can estimate any service for your clients and you can proceed checkout using payment gateway.  Also it provides an advanced grid system and skin customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
 https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
+
+    ♦ Creating forms with automatically calculated fields
+    ♦ Finance calculators
+    ♦ Quote calculators
+    ♦ Booking cost calculators
+    ♦ Date calculators
+    ♦ Health / fitness calculators
+    ♦ Form builder for adding input fields on the form
+    ♦ Add one or more calculated fields
+    ♦ Predefined forms templates
+	♦ Check other calculators made with zigaform : https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/examples/
+
 
 ### Features (Free Lite version):
 * real-time drag and drop form builder which makes to build estimation forms
@@ -71,7 +83,7 @@ https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
 
 More info in https://wordpress-cost-estimator.zigaform.com/
 
- 
+  
 ** OVERALL FEATURES
 ------------------------------------------------------------
 
@@ -243,8 +255,57 @@ Their support is immaculate and the zigaform is one of the best you’ll find fo
 * It saves your time and increases form completions by preloading data in your forms. 	
 * Build complex forms with conditional logic. You can automatically hide or show fields or entire pages in your form based on selections your users make. [PRO VERSION]
 
-== Tags ==
-ajax forms, responsive, form generator, form creator, form, forms, simple forms, professional forms, quick forms, form builder, form designs, contact form, validation, form builder, contact form builder, form manager, form creator, form generator, contact us, contact forms plugin, contact form plugin, bootstrap forms, jquery forms, ajax, confirmation mail, template, captcha, redirect, mailchimp, recaptcha, html, avada, bootstrap, builder, design, database, divi, email, embed, email template, elementor, conditional email, layout, marketing, validation, visual composer, bootstrap layout, magento, bootstrap with validation, bootstrap example, laravel, drupal, codeigniter, codecanyon, drag and drop, commerce, for word, in salesforce, oracle, salesforce, with conditional logic, builder form, news, maps
+  
+
+= Calculated "hidden" Fields =
+
+The calculated fields can be "hidden" fields. This way the calculated values of those "hidden" fields won't be displayed in the form. This is useful for using intermediate calculated values or for showing the calculated values only into the email.
+
+
+= Equations / formulas Format =
+
+Here are some sample formulas that can be used in the math formula feature:
+
+* With simple mathematical operations:
+
+
+    `fieldname1 + fieldname2`
+
+    `fieldname1 * fieldname2`
+
+    `fieldname1 / fieldname2`
+
+    `fieldname1 - fieldname2`
+
+
+
+* With multiple fields and fields grouping included:
+
+
+    `fieldname1 * ( fieldname2 + fieldname3 )`
+
+
+ 
+
+
+* There is a huge number of equations that can't be recreated with simple mathematical operators, or the operations listed above, requiring "IF" conditions, here is a sample of the formula that can be used in that case:
+
+    ```
+            if(fieldname3 > 100) return fieldname1+fieldname2;
+            if(fieldname3 <= 100) return fieldname1*fieldname2;
+    ```
+
+
+* For complex equations where is required to define blocks of JavaScript code, you should use the following format:
+
+ 
+        `    var calculatedValue = 0;`
+        `    //Your code here`
+        `    return calculatedValue;`
+ 
+
+
+.... and note that the **return** value of that function will be the value assigned to the calculated field. More info here: https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/create-form/math-calculation/
 
 
 == Installation ==
@@ -326,7 +387,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 3.9.9.8.5 = 
+= 3.9.9.8.7 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -367,5 +428,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 3.9.9.8.5 = 
+= 3.9.9.8.7 = 
  * minor changes
