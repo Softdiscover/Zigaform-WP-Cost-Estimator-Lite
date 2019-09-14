@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     </div>
     <div class="zgfm-blocked-message-box-btn">
         <a 
-            href="https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover"
+            href="https://1.envato.market/DdzY2"
              target="_blank"
             class="sfdc-btn sfdc-btn-success sfdc-btn-lg"> <span><?php echo __('UPGRADE TO PRO VERSION', 'FRocket_admin');?></span></a>
     </div>

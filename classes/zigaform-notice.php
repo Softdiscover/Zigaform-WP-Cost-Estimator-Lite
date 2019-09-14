@@ -124,7 +124,7 @@ class Zigaform_c_notice {
                 $button_content2 = esc_html__( "Nope, maybe later", "FRocket_admin" );
                 $button_content3 = esc_html__( "I already did", "FRocket_admin" );
         }else{
-            $notice_url = 'https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682';
+            $notice_url = 'https://1.envato.market/DdzY2';
                 $notice_heading = esc_html__( "Thanks for using Zigaform!", "FRocket_admin" );
                 $notice_content = __( 'Hey, I noticed you created an estimation form with Zigaform - that’s awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'FRocket_admin' );
                 $button_content1 = esc_html__( "Ok. you deserve it", "FRocket_admin" );

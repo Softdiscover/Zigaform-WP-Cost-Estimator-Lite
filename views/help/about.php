@@ -48,7 +48,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                                src="<?php echo UIFORM_FORMS_URL;?>/assets/backend/image/about/zigaform-rate-icon.png">
                                             </a>
                                             <div id="zgfm-page-about-leavestars" >
-                                                    <a href="https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover"
+                                                    <a href="https://1.envato.market/DdzY2"
                                                        target="_blank"><?php echo __('Leave 5 Stars', 'FRocket_admin');?></a>
                                             </div>
                                     </div>

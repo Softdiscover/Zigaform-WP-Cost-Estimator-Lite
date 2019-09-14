@@ -1,12 +1,12 @@
 === Zigaform - Price Calculator & Cost Estimation Form Builder Lite ===
 Contributors: softdiscover
-Donate link: https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover
+Donate link: https://1.envato.market/DdzY2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, wizard, form builder, bootstrap, estimation, AJAX, calculated, captcha, contact, contact form, email, feedback, form, multilingual, 
 Requires at least: 3.6
 Tested up to: 5.2.2
-Stable tag: 3.9.9.8.7
+Stable tag: 3.9.9.9.1
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -387,7 +387,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 3.9.9.8.7 = 
+= 3.9.9.9.1 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -428,5 +428,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 3.9.9.8.7 = 
+= 3.9.9.9.1 = 
  * minor changes

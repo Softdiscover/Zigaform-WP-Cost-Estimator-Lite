@@ -148,11 +148,11 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     <div class="col-sm-12">
      
       <p>
-          <a href="https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover"
+          <a href="https://1.envato.market/DdzY2"
              target="_blank"
              class="btn btn-info btn-lg"><i class="fa fa-cloud-download"></i> <span><?php echo __('DOWNLOAD', 'FRocket_admin');?></span></a>
         <a 
-            href="https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/13663682?ref=Softdiscover"
+            href="https://1.envato.market/DdzY2"
              target="_blank"
             class="btn btn-success btn-lg"><i class="fa fa-eye" aria-hidden="true"></i> <span><?php echo __('GET STARTED', 'FRocket_admin');?></span></a>
       </p>
