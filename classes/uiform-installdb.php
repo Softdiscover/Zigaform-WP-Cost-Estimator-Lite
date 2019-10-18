@@ -422,7 +422,8 @@ class Uiform_InstallDB {
     }
     
     public function uninstall(){
-        global $wpdb;
+
+                    global $wpdb;
         $wpdb->query('DROP TABLE IF EXISTS '. $this->form_history);
         $wpdb->query('DROP TABLE IF EXISTS '. $this->form_fields);
         $wpdb->query('DROP TABLE IF EXISTS '. $this->form_log);
@@ -437,6 +438,12 @@ class Uiform_InstallDB {
         $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon);
         $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon_detail);
         $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon_log);
+        
+        
+        
+         //removing options
+        delete_option('uifmcostest_version' );
+                
     }
 }
 ?>

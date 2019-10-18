@@ -2370,7 +2370,6 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
        
         //generating
 
-                            
         $str_output_tab = '';
         $tab_cont_num = $fmb_data['num_tabs'];
         

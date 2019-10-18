@@ -1233,35 +1233,7 @@ JS;
         }
     }
 
-    /*
-     * Instance methods
-     */
-
-    /**
-     * Prepares sites to use the plugin during single or network-wide activation
-     *
-     * @mvc Controller
-     *
-     * @param bool $network_wide
-     */
-    public function activate($network_wide = false) {
-        require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php');
-        $installdb = new Uiform_InstallDB();
-        $installdb->install($network_wide);
-        return true;
-    }
-
-    /**
-     * Rolls back activation procedures when de-activating the plugin
-     *
-     * @mvc Controller
-     */
-    public function deactivate() {
-        
-        return true;
-    }
-    
-   
+                    
     
     /**
      * Checks if the plugin was recently updated and upgrades if necessary

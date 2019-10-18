@@ -1,16 +1,22 @@
 <div class="error">
-	<p>Uiform error: Your environment doesn't meet all of the system requirements listed below.</p>
+	<p>Zigaform error: Your environment doesn't meet all of the system requirements listed below.</p>
 
 	<ul class="ul-disc">
             <?php 
-            if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
+            $zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
+
+           if($zgfm_is_installed['result']){
+               
                ?>
             <li>
-			<strong>Rocket Form express activated </strong>
-			<em>(You need to deactivate this plugin)</em>
+			<strong><?php echo $zgfm_is_installed['message'];?></strong>
+			<em><?php echo $zgfm_is_installed['message2'];?></em>
 		</li>
 <?php
+            
             }
+
+            
             ?>
 		<li>
 			<strong>PHP <?php echo $this->php_version; ?>+</strong>

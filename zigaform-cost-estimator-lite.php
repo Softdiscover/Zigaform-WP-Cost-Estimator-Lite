@@ -3,16 +3,16 @@
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for Wordpress.
- * Version: 3.9.9.9.8
+ * Version: 4.0
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     die('Access denied.');
 }
-if (!class_exists('UiformCostEst')) {
+if (!class_exists('UiformCostEstLite')) {
 
-    final class UiformCostEst {
+    final class UiformCostEstLite {
 
         /**
          * The only instance of the class
@@ -28,7 +28,7 @@ if (!class_exists('UiformCostEst')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.9.9.9.8';
+        public $version = '4.0';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -45,7 +45,7 @@ if (!class_exists('UiformCostEst')) {
          * @since 1.0
          */
         public $php_version = '5.3';
-
+ 
         /**
          * Class name
          *
@@ -88,38 +88,126 @@ if (!class_exists('UiformCostEst')) {
              //
             //  Plug-in requirements
             //
-            if (!$this->check_requirements()) {
-                add_action('admin_notices', array(&$this, 'uiform_requirements_error'));
-                return;
+            $this->define_constants();
+            $this->load_dependencies();
+            
+            register_activation_hook(__FILE__, array(&$this, 'activate'));
+            register_deactivation_hook(__FILE__, array(&$this, 'deactivate'));
+            
+            if (is_admin()) {
+                if (!$this->check_requirements()) {
+                    add_action('admin_notices', array(&$this, 'uiform_requirements_error'));
+                    return;
+                }
             }
+            
             
             //
             // Declare constants and load dependencies
             //
-            $this->define_constants();
-            $this->load_dependencies();
+            
             $this->check_updateChanges();
 
             try {
 
                 if (class_exists('Uiform_Bootstrap')) {
-                    $GLOBALS['wprockf'] = Uiform_Bootstrap::get_instance();
-                    
-                   /* global $zgfm_f_addon;
-                    $zgfm_f_addon= new zgfm_core_addon();
-                    */
-                    
-                    register_activation_hook(__FILE__, array($GLOBALS['wprockf'], 'activate'));
-                    register_deactivation_hook(__FILE__, array($GLOBALS['wprockf'], 'deactivate'));
-                    
+                    $GLOBALS['wprockf'] = Uiform_Bootstrap::get_instance(); 
                 }
             } catch (exception $e) {
                 $error = $e->getMessage() . "\n";
                 echo $error;
             }
         }
+ 
+        /*
+        * Instance methods
+        */
 
-        
+       /**
+        * Prepares sites to use the plugin during single or network-wide activation
+        *
+        * @mvc Controller
+        *
+        * @param bool $network_wide
+        */
+       public function activate($network_wide = false) {
+
+           $zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
+
+           if($zgfm_is_installed['result']){
+               wp_die($zgfm_is_installed['message2']);
+           }
+
+           require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php');
+           $installdb = new Uiform_InstallDB();
+           $installdb->install($network_wide);
+           return true;
+       }
+
+       /**
+        * Rolls back activation procedures when de-activating the plugin
+        *
+        * @mvc Controller
+        */
+       public function deactivate() {
+
+           return true;
+       }
+ 
+       
+        /*
+        *  check if another wp zigaform is installed
+        */
+       public static function another_zgfm_isInstalled() {
+
+             /*if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
+                 return true;
+             }*/
+           $check_is_lite=true;
+           $check_slug="Zigaform - Calculator & Cost Estimation Form Builder Lite";
+           
+             $output=array();  
+             $output['result']=false;
+             $pluginList = get_option( 'active_plugins' );
+             
+             if(is_array($pluginList))
+             foreach ($pluginList as $key => $value) {
+                
+                 
+                 if($check_is_lite){
+                     if (strpos($value, 'zigaform-wp-estimator.php') !== false) {
+                        $output['message']=__('Zigaform alert', 'FRocket_admin');
+                        $output['message2']=__('Found zigaform cost estimation installed. Deactivate it before installing '.$check_slug, 'FRocket_admin');
+                        $output['result']=true;
+                        return $output;
+                    }
+                 }else{
+                      if (strpos($value, 'zigaform-cost-estimator-lite.php') !== false) {
+                        $output['message']=__('Zigaform alert', 'FRocket_admin');
+                        $output['message2']=__('Found zigaform Cost Estimator lite. Deactivate it before installing '.$check_slug, 'FRocket_admin');
+                        $output['result']=true;
+                        return $output;
+                    }
+                 }
+                 
+                 if (strpos($value, 'zigaform-wp-form-builder.php') !== false) {
+                       $output['message']=__('Zigaform alert', 'FRocket_admin');
+                       $output['message2']=__('Found zigaform form builder installed. Deactivate it before installing '.$check_slug, 'FRocket_admin');
+                       $output['result']=true;
+                  }
+
+                  if (strpos($value, 'zigaform-form-builder-lite.php') !== false) {
+                       $output['message']=__('Zigaform alert', 'FRocket_admin');
+                       $output['message2']=__('Found zigaform form builder lite installed. Deactivate it before installing '.$check_slug, 'FRocket_admin');
+                       $output['result']=true;
+                       return $output;
+                  }
+                 
+             }
+
+           return $output;
+       }
+       
         /**
         * check_requirements()
         * Checks that the WordPress setup meets the plugin requirements
@@ -137,15 +225,18 @@ if (!class_exists('UiformCostEst')) {
             if (version_compare(PHP_VERSION, $this->php_version, '<')) {
                 return false;
             }
+            
+            
             include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-            if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
+             $zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
+            if($zgfm_is_installed['result']){
                return false;
-            }
-	
+            }   
+
 
             return true;
         }
-
+        
         public function uiform_requirements_error() {
             global $wp_version;
             require_once dirname(__FILE__) . '/views/requirements-error.php';
@@ -160,7 +251,7 @@ if (!class_exists('UiformCostEst')) {
             $this->define('UIFORM_BASENAME', plugin_basename(__FILE__));
             $this->define('UIFORM_ABSFILE', __FILE__);
             $this->define('UIFORM_ADMINPATH', get_admin_url());
-            $this->define('UIFORM_APP_NAME', "Zigaform - Calculator & Cost Estimation Form Builder");
+            $this->define('UIFORM_APP_NAME', "Zigaform - Calculator & Cost Estimation Form Builder Lite");
             $this->define('UIFORM_VERSION', $this->version);
             $this->define('UIFORM_FORMS_DIR', dirname(__FILE__));
             $this->define('UIFORM_FORMS_URL', plugins_url() . '/'.UIFORM_FOLDER);
@@ -221,318 +312,8 @@ if (!class_exists('UiformCostEst')) {
             global $wpdb;
             $version=UIFORM_VERSION;
             $install_ver = get_option("uifmcostest_version");
-             
-            if (!$install_ver || version_compare($version,$install_ver, '>')) {
-                
-                if (!$install_ver || version_compare($install_ver,"1.6", '<')) {
-                    $tbname = $wpdb->prefix . "cest_uiform_fields";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'order_frm'");
-                        
-                        
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  order_frm smallint(5) DEFAULT NULL;";
-                            $wpdb->query($sql);
-                        }
-
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'order_rec'");
-                        
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  order_rec smallint(5) DEFAULT NULL;";
-                            $wpdb->query($sql);
-                        }
-                    }
-                     
-                }
-                
-                if (!$install_ver || version_compare($install_ver,"3", '<')) {
-                    
-                    $tbname = $wpdb->prefix . "cest_uiform_form_log";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") != $tbname) {
-                            $charset = '';
-                            //form log
-                            $sql="CREATE  TABLE IF NOT EXISTS $tbname (
-                                `log_id` int(6) NOT NULL AUTO_INCREMENT,
-                                `log_frm_data` longtext,
-                                `log_frm_name` varchar(255) DEFAULT NULL,
-                                `log_frm_html` longtext,
-                                `log_frm_html_backend` longtext,
-                                `log_frm_html_css` longtext,
-                                `log_frm_id` int(6) NOT NULL,
-                                `log_frm_hash` varchar(255) NOT NULL,
-                                `flag_status` smallint(5) DEFAULT '1',
-                                `created_date` timestamp NULL,
-                                `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                `created_ip` varchar(100) DEFAULT NULL,
-                                `updated_ip` varchar(100) DEFAULT NULL,
-                                `created_by` varchar(100) DEFAULT NULL,
-                                `updated_by` varchar(100) DEFAULT NULL,
-                                PRIMARY KEY (`log_id`)
-                            ) " . $charset . ";";
-                        
-                            
-                            $wpdb->query($sql);
-                        
-                    }
-                     
-                }
-                
-                //below 3.3.2
-                if (!$install_ver || version_compare($install_ver,"3.4", '<')) {
-                    $tbname = $wpdb->prefix . "cest_uiform_form_records";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fbh_data2'");
-                        
-                        
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fbh_data2 longtext;";
-                            $wpdb->query($sql);
-                        }
-
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fbh_data_rec2'");
-                        
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fbh_data_rec2 longtext;";
-                            $wpdb->query($sql);
-                        }
-                        
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fbh_data_rec2_xml'");
-                        
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fbh_data_rec2_xml longtext;";
-                            $wpdb->query($sql);
-                        }
-                    }
-                     
-                }
-                
-                
-                //below 3.4.3
-                if (!$install_ver || version_compare($install_ver,"3.4.3", '<')) {
-                    
-                    $tbname = $wpdb->prefix . "cest_uiform_form";
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_data2'");
-                        
-                        if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " MODIFY  fmb_data2 longtext;";
-                            $wpdb->query($sql);
-                        }  
-                    }
-                    
-                    $tbname = $wpdb->prefix . "cest_uiform_fields";
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmf_data'");
-                        
-                        if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " MODIFY  fmf_data longtext;";
-                            $wpdb->query($sql);
-                        }  
-                    }
-                    
-                    $tbname = $wpdb->prefix . "cest_uiform_form_records";
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fbh_error'");
-                        
-                        if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " MODIFY  fbh_error longtext;";
-                            $wpdb->query($sql);
-                        }  
-                    }
-                    
-                    $tbname = $wpdb->prefix . "cest_uiform_pay_logs";
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'pgl_message'");
-                        
-                        if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " MODIFY  pgl_message longtext;";
-                            $wpdb->query($sql);
-                        }  
-                    }
-                     
-                }
-                
-                 //below 3.7
-                if (!$install_ver || version_compare($install_ver,"3.7", '<')) {
-                    
-                    $charset = '';
-                    if( $wpdb->has_cap( 'collation' ) ){
-                        if( !empty($wpdb->charset) )
-                            $charset = "DEFAULT CHARACTER SET $wpdb->charset";
-                        if( !empty($wpdb->collate) )
-                            $charset .= " COLLATE $wpdb->collate";
-                    }
-                    
-                    
-                    $tbname = $wpdb->prefix . "cest_addon";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") != $tbname) {
-                       
-                         //addon
-                        $sql="CREATE  TABLE IF NOT EXISTS $tbname (
-                            `add_name` varchar(45) NOT NULL DEFAULT '',
-                            `add_title` text ,
-                            `add_info` text ,
-                            `add_system` smallint(5) DEFAULT NULL,
-                            `add_hasconfig` smallint(5) DEFAULT NULL,
-                            `add_version` varchar(45)  DEFAULT NULL,
-                            `add_icon` text ,
-                            `add_installed` smallint(5) DEFAULT NULL,
-                            `add_order` int(5) DEFAULT NULL,
-                            `add_params` text ,
-                            `add_log` text ,
-                            `addonscol` varchar(45) DEFAULT NULL,
-                            `flag_status` smallint(5)  DEFAULT 1,
-                            `created_date` timestamp NULL,
-                            `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            `created_ip` varchar(100)  DEFAULT NULL,
-                            `updated_ip` varchar(100)  DEFAULT NULL,
-                            `created_by` varchar(100) DEFAULT NULL,
-                            `updated_by` varchar(100) DEFAULT NULL,
-                            `add_xml` text ,
-                            `add_load_back` smallint(5) DEFAULT NULL,
-                            `add_load_front` smallint(5) DEFAULT NULL,
-                            `is_field` smallint(5) DEFAULT NULL,
-                            PRIMARY KEY (`add_name`) 
-                        ) " . $charset . ";";
-
-                         $wpdb->query($sql);
-                         
-                          if(ZIGAFORM_C_LITE!=1){
-                         $sql="INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
-                         $wpdb->query($sql);
-                          }
-                         
-                    }
-                    
-                    $tbname = $wpdb->prefix . "cest_addon_details";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") != $tbname) {
-                          //addon detail
-                            $sql="CREATE  TABLE IF NOT EXISTS $tbname (
-                                `add_name` varchar(45)  NOT NULL,
-                                `fmb_id` int(5) NOT NULL,
-                                `adet_data` longtext ,
-                                `flag_status` smallint(5) DEFAULT 1,
-                                `created_date` timestamp NULL,
-                                `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                `created_ip` varchar(100) DEFAULT NULL,
-                                `updated_ip` varchar(100) DEFAULT NULL,
-                                `created_by` varchar(100) DEFAULT NULL,
-                                `updated_by` varchar(100) DEFAULT NULL,
-                                PRIMARY KEY (`add_name`, `fmb_id`) 
-                            ) " . $charset . ";";
-
-                             $wpdb->query($sql);
-                        
-                    }
-                    
-                    $tbname = $wpdb->prefix . "cest_addon_details_log";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") != $tbname) {
-                        
-                        //addon log
-                        $sql="CREATE  TABLE IF NOT EXISTS $tbname (
-                            `add_log_id` int(5) NOT NULL AUTO_INCREMENT,
-                            `add_name` varchar(45)  NOT NULL,
-                            `fmb_id` int(5) NOT NULL,
-                            `adet_data` longtext  NULL,
-                            `flag_status` smallint(5) DEFAULT 1,
-                            `created_date` timestamp NULL,
-                            `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            `created_ip` varchar(100) DEFAULT NULL,
-                            `updated_ip` varchar(100) DEFAULT NULL,
-                            `created_by` varchar(100) DEFAULT NULL,
-                            `updated_by` varchar(100) DEFAULT NULL,
-                            `log_id` int(5) NOT NULL,
-                            PRIMARY KEY (`add_log_id`) 
-                        ) " . $charset . ";";
-
-                         $wpdb->query($sql);
-                    }
-                     
-                }
-                
-                //below 3.7.6.3
-                if (!$install_ver || version_compare($install_ver,"3.7.6.3", '<')) {
-                    
-                     $tbname = $wpdb->prefix . "cest_addon";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        try {
-                            $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'add_id'");
-                        } catch (Exception $e) {
-                            $row = array();
-                        }
-                        
-                        if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " DROP COLUMN 'add_id';";
-                            $wpdb->query($sql);
-                        }
-                    }
-                    
-                }
-                
-                        //below 3.7
-                if (!$install_ver || version_compare($install_ver,"3.9.5", '<')) {
-                   
-                    
-                    $tbname = $wpdb->prefix . "cest_uiform_fields_type";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") == $tbname) {
-                        
-                         $sql="INSERT INTO $tbname VALUES ('43', 'Date 2', '1', '1980-01-01 00:00:01', '2018-10-11 14:10:35', NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE flag_status = 1;";
-                         $wpdb->query($sql);
-                         
-                    }
-                } 
-                
-                          //below 3.9.9.6.1
-                 if (!$install_ver || version_compare($install_ver,"3.9.9.6.1", '<')) {
-                    $tbname = $wpdb->prefix . "cest_uiform_form";
-                   
-                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
-                        
-                        $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_rec_tpl_html'");
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_rec_tpl_html longtext NULL;";
-                            $wpdb->query($sql);
-                        }
-
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_inv_tpl_html'");
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_inv_tpl_html longtext NULL;";
-                            $wpdb->query($sql);
-                        }
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_rec_tpl_st'");
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_rec_tpl_st TINYINT(1) NULL DEFAULT 0;";
-                            $wpdb->query($sql);
-                        }
-                        
-                        $row = $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'fmb_inv_tpl_st'");
-                        if (empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " ADD  fmb_inv_tpl_st TINYINT(1) NULL DEFAULT 0;";
-                            $wpdb->query($sql);
-                        }
-                    }
-                     
-                }
-                
-                 update_option("uifmcostest_version", $version);
-            }
+            
+            require_once UIFORM_FORMS_DIR . '/libraries/updates.php';
             
             
         }
@@ -541,19 +322,25 @@ if (!class_exists('UiformCostEst')) {
 
 }
 
-function uiform_uninstall()
+function uiform_uninstallLite()
 {
-   require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php');
-   $installdb = new Uiform_InstallDB();
-   $installdb->uninstall();
-   //removing options
-    delete_option('uifmcostest_version' );
-   return true;
+$zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
+        if($zgfm_is_installed['result']){
+
+        } else{
+            require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php');
+            $installdb = new Uiform_InstallDB();
+            $installdb->uninstall();
+        }
+    return true;            
 }
-function wpRCEST() {
-    register_uninstall_hook(__FILE__, 'uiform_uninstall');
-    return UiformCostEst::instance();
+function wpRCESTLite() {
+    register_uninstall_hook(__FILE__, 'uiform_uninstallLite');
+    return UiformCostEstLite::instance();
 }
 
-wpRCEST();
+
+ 
+
+wpRCESTLite();
 ?>
