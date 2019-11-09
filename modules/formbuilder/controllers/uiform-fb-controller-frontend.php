@@ -1677,7 +1677,14 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 if(!empty($tmp_replyto)){
                     $data_mail['mail_replyto']=$tmp_replyto;
                 }
-                $mail_errors=$this->process_mail($data_mail);
+                
+                
+                if(isset($form_data_onsubm['main']['email_dissubm']) && intval($form_data_onsubm['main']['email_dissubm'])===1){
+                      $mail_errors=false;
+                    }else{
+                      $mail_errors=$this->process_mail($data_mail);  
+                    }
+                
                 
                 //customer 
                 //mail template
@@ -1735,7 +1742,13 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     if(!empty($mail_usr_replyto)){
                         $data_mail['mail_replyto']=$mail_usr_replyto;
                     }
-                    $mail_errors=$this->process_mail($data_mail);
+                    
+                    if(isset($form_data_onsubm['main']['email_dissubm']) && intval($form_data_onsubm['main']['email_dissubm'])===1){
+                      $mail_errors=false;
+                    }else{
+                      $mail_errors=$this->process_mail($data_mail);
+                    }
+                    
                 }
                 }
                 
