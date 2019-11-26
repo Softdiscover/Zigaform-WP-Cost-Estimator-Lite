@@ -395,6 +395,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Product' ) ) :
 		 * @return array Array of versions.
 		 */
 		private function get_api_versions() {
+			//it looks like it gets latest versions
+			return array();
 
 			$cache_key      = $this->get_key() . '_' . preg_replace( '/[^0-9a-zA-Z ]/m', '', $this->version ) . 'versions';
 			$cache_versions = get_transient( $this->get_key() . '_' . preg_replace( '/[^0-9a-zA-Z ]/m', '', $this->version ) . 'versions' );

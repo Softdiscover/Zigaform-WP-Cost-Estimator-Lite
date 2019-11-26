@@ -75,7 +75,7 @@ class Uiform_Model_Form_Records {
 
     function getDetailRecord($names,$form_id) {
         if(intval($form_id)>0){
-            
+           
             $unique_names=array();
             
             $sql = 'select ';

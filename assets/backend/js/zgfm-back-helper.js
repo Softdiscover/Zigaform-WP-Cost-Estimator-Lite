@@ -273,6 +273,8 @@ var zgfm_back_helper = function(){
                                                 $('body').find('.sfdc-tooltip').tooltip("hide");
                                             }
     };
+
+
     
 };
 window.zgfm_back_helper = zgfm_back_helper = $.zgfm_back_helper = new zgfm_back_helper();
