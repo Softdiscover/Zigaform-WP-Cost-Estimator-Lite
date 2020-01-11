@@ -37,6 +37,14 @@
  * The `lessc_formatter` takes a CSS tree, and dumps it to a formatted string,
  * handling things like indentation.
  */
+
+if (!defined('ABSPATH')) {
+    exit('No direct script access allowed');
+}
+if (class_exists('lessc')) {
+    return;
+}
+
 class lessc {
 	static public $VERSION = "v0.4.0";
 	static protected $TRUE = array("keyword", "true");

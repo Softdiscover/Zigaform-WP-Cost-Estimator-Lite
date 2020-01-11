@@ -1567,7 +1567,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     $data['form_error_msg']=Uiform_Form_Helper::encodeHex($data['form_error_msg']);
                     return $data;
                 }
-
+                
+                
+                
                 //generate mail html part
                 $tmp_data1=array();
                 $tmp_data1['data']=$form_f_tmp;
@@ -1635,7 +1637,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 $json['id'] = $idActivate;
 
                 $this->flag_submitted = $idActivate;
-                
+                self::$_form_data['form_id'] = $form_id;
+                self::$_form_data['record_id'] = $idActivate;
                 //is demo
                 if($is_demo === 0){
                 //preparing mail
@@ -1787,8 +1790,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     $data3['created_ip'] = $_SERVER['REMOTE_ADDR'];
                     $data3['created_by'] = 1;
                     $data3['created_date'] = date('Y-m-d h:i:s');
-                    $this->wpdb->insert($this->model_gateways_rec->table, $data3);
+                    $data3['type_pg_id']=1;
                     
+                    $this->wpdb->insert($this->model_gateways_rec->table, $data3);
+                
+                self::$_modules['addon']['frontend']->addons_doActions('onSubmitForm_pos');
                 
                 if(intval($data['payment_st'])===1){
                    $id_payrec = $this->wpdb->insert_id;
@@ -2014,7 +2020,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     
    public function process_mail($data) {
         $mail_errors=false;
-         
+        //disable mail function
+         if (defined('ZF_DISABLE_EMAIL') && ZF_DISABLE_EMAIL===true) {
+            return $mail_errors;
+        }
                 /*getting admin mail*/
                 $data['from_name']  = !empty($data['from_name']) ? $data['from_name'] : wp_specialchars_decode( get_option('blogname'), ENT_QUOTES );
                 
@@ -2843,7 +2852,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         }
          
          //load form variables
-                   $data_addon_front = self::$_addons;
+          /*         $data_addon_front = self::$_addons;
             if(!empty($data_addon_front)){
                 foreach ($data_addon_front as $key => $value) {
                     foreach ($value as $key2 => $value2) {
@@ -2851,12 +2860,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         call_user_func(array($data_addon_front[$key][$key2], 'loadStyleOnFront'));
                     }
                 }
-            }
+            }*/
                         
-        
+                        
         //load form variables
         $form_variables=array();
-        $form_variables['_uifmvar']['addon']=$data_addon_front;
+        $form_variables['_uifmvar']['addon']=self::$_addons_jsactions;
         $form_variables['_uifmvar']['is_demo']=$is_demo;
         $form_variables['_uifmvar']['is_dev']=UIFORM_DEV;
                         

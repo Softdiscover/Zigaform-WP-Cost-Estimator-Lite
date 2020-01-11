@@ -269,7 +269,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
         $json['field_block'] = $field_block;
             
         //addons
-        $json['addons'] = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack();
+        //$json['addons'] = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack();
         
         header('Content-Type: application/json');
         echo json_encode($json);
@@ -307,7 +307,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
                 
                 
                 
-                $data['modules_field_more']='hola amiguitos';
+                $data['modules_field_more']='';
                 
                 $output .= self::render_template('formbuilder/views/fields/modal/field_opt_column.php', $data, 'always');
                 break;
@@ -334,7 +334,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
                         break;
                 }
                 
-                $data['modules_field_more']= self::$_modules['addon']['backend']->get_modulesBySection('back_field_opt_more');
+                $data['modules_field_more']= self::$_modules['addon']['backend']->addons_doActions('back_field_opt_more');
                 $data['obj_sfm'] = Uiform_Form_Helper::get_font_library();
                 $output .= self::render_template('formbuilder/views/fields/modal/field_opt_text.php', $data, 'always');
                 break;
