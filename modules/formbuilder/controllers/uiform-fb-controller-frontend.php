@@ -1288,7 +1288,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                     /*saving data to field array*/
                                     $form_f_tmp[$key]['input'] = $tmp_options;
                                 
-                                    
                                     break;
                                 case 12;
                                     /*file input field*/
