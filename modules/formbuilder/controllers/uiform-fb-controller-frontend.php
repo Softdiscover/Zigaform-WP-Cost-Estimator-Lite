@@ -47,6 +47,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     private $current_form_id=array();
     private $form_rec_msg_summ = '';
     
+    private $format_price_conf=array();
+    
     protected $modules;
 
     const PREFIX = 'wprofmr_';
@@ -682,22 +684,61 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 
     
     public function shortcode_uifm_recvar($atts) {
+        
+        try {
+             $vars = shortcode_atts( array(
+                'id'=>"",
+                'atr1'=>'input',
+                'atr2'=>'',
+                 'atr3'=>''
+            ), $atts );
+
+            $f_data=$this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
+            if(!isset($f_data->type)){
+                throw new Exception(__('field data is not cound. field:'.$vars['id']));
+            }    
+            $output=$this->model_formrecords->getFieldOptRecord($this->flag_submitted,$f_data->type,$vars['id'],$vars['atr1'],$vars['atr2']);
                 
-        $vars = shortcode_atts( array(
-            'id'=>"",
-            'atr1'=>'input',
-            'atr2'=>''
-        ), $atts );
-        
-        $f_data=$this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
-        
-        $output=$this->model_formrecords->getFieldOptRecord($this->flag_submitted,$f_data->type,$vars['id'],$vars['atr1'],$vars['atr2']);
-        
-        if($output!=''){
-            return $output;
-        }else{
+            //apply price format
+            switch(strval($vars['atr3'])){
+                case 'price_format':
+                    /*
+                     * check if format price configuration is stored
+                     */
+                    if(empty($this->format_price_conf)){
+                         $form_rec_data = $this->model_formrecords->getFormDataById($this->flag_submitted);
+                        $form_data=json_decode($form_rec_data->fmb_data, true);
+                       //price numeric format
+                       $format_price_conf=array();
+                       $format_price_conf['price_format_st']=(isset($form_data['main']['price_format_st']))?$form_data['main']['price_format_st']:'0';
+                       $format_price_conf['price_sep_decimal']=(isset($form_data['main']['price_sep_decimal']))?$form_data['main']['price_sep_decimal']:'.';
+                       $format_price_conf['price_sep_thousand']=(isset($form_data['main']['price_sep_thousand']))?$form_data['main']['price_sep_thousand']:',';
+                       $format_price_conf['price_sep_precision']=(isset($form_data['main']['price_sep_precision']))?$form_data['main']['price_sep_precision']:'2';
+                       $this->format_price_conf=$format_price_conf;
+                    }
+                    
+                    
+                    $output=Uiform_Form_Helper::cformat_numeric($this->format_price_conf,$output);
+                    
+                    break;
+                    
+            }
+            
+            
+            
+            if($output!=''){
+                return $output;
+            }else{
+                return '';
+            }
+        } catch (Exception $exception) {
+            $data=array();
+            $data['vars']=$vars;
+            $data['error_debug']=__METHOD__ . ' error: ' . $exception->getMessage();
             return '';
         }
+                
+       
     }
     
     
@@ -952,6 +993,34 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                 default:
                 
             }
+            
+            
+                //apply price format
+            switch(strval($vars['atr3'])){
+                case 'price_format':
+                    /*
+                     * check if format price configuration is stored
+                     */
+                    if(empty($this->format_price_conf)){
+                         $form_rec_data = $this->model_formrecords->getFormDataById($rec_id);
+                        $form_data=json_decode($form_rec_data->fmb_data, true);
+                       //price numeric format
+                       $format_price_conf=array();
+                       $format_price_conf['price_format_st']=(isset($form_data['main']['price_format_st']))?$form_data['main']['price_format_st']:'0';
+                       $format_price_conf['price_sep_decimal']=(isset($form_data['main']['price_sep_decimal']))?$form_data['main']['price_sep_decimal']:'.';
+                       $format_price_conf['price_sep_thousand']=(isset($form_data['main']['price_sep_thousand']))?$form_data['main']['price_sep_thousand']:',';
+                       $format_price_conf['price_sep_precision']=(isset($form_data['main']['price_sep_precision']))?$form_data['main']['price_sep_precision']:'2';
+                       $this->format_price_conf=$format_price_conf;
+                    }
+                    
+                    
+                    $output=Uiform_Form_Helper::cformat_numeric($this->format_price_conf,$output);
+                    
+                    break;
+                    
+            }
+            
+            
         }else{
             
         }
