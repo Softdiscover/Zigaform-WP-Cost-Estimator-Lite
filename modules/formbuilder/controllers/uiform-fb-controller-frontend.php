@@ -2943,7 +2943,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     public function shortcode_show_version(){
         if(ZIGAFORM_C_LITE===1){
             $output='<noscript>';
-          $output.='Powered by <a href="https://zigaform.com/?uifm_v='.UIFORM_VERSION.'&uifm_source=wpzce" title="Wordpress Calculator & Cost Estimation" >ZigaForm version '.UIFORM_VERSION.'</a>';
+          $output.='<a href="https://zigaform.com/?uifm_v='.UIFORM_VERSION.'&uifm_source=wpzce" title="Wordpress Calculator & Cost Estimation" >ZigaForm </a> version '.UIFORM_VERSION;
           $output.='</noscript>';
           echo $output;
         }
