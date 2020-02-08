@@ -358,20 +358,27 @@ class Uiform_InstallDB {
         
          $wpdb->query($sql);
        
-         if(ZIGAFORM_C_LITE!=1){
+        
               //insert data
             $uifm_check_total = $wpdb->get_row("SELECT COUNT(*) AS total FROM ".$this->core_addon." where add_name='func_anim'", ARRAY_A );
            if( isset($uifm_check_total['total']) && intval($uifm_check_total['total'])===0 ){
-              $sql="INSERT INTO $this->core_addon VALUES ('func_anim', 'Animation effect', 'You can animate your fields adding many animation effects. Also you can set up the delay and other options.', 1, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, 0, '2018-01-31 10:35:14', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
+              $sql="INSERT INTO $this->core_addon VALUES ('func_anim', 'Animation effect', 'You can animate your fields adding many animation effects. Also you can set up the delay and other options.', 1, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, 0, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
                 $wpdb->query($sql);
             }
               //insert data
             $uifm_check_total = $wpdb->get_row("SELECT COUNT(*) AS total FROM ".$this->core_addon." where add_name='webhook'", ARRAY_A );
            if( isset($uifm_check_total['total']) && intval($uifm_check_total['total'])===0 ){
-              $sql="INSERT INTO $this->core_addon VALUES ('webhook', 'WebHooks Add-On', 'You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once.', 1, 1, NULL, NULL, 1, 2, NULL, NULL, NULL, 0, '2019-12-30 01:36:23', '2019-12-30 01:34:27', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
+              $sql="INSERT INTO $this->core_addon VALUES ('webhook', 'WebHooks Add-On', 'You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. e.g. you can connect with Webhook of Zapier - https%3A%2F%2Fzapier.com%2Fpage%2Fwebhooks%2F', 1, 1, NULL, NULL, 1, 2, NULL, NULL, NULL, 0, '2019-12-30 01:36:23', '2019-12-30 01:34:27', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
                 $wpdb->query($sql);
             }
-         }
+            
+            //insert data
+            $uifm_check_total = $wpdb->get_row("SELECT COUNT(*) AS total FROM ".$this->core_addon." where add_name='woocommerce'", ARRAY_A );
+            if( isset($uifm_check_total['total']) && intval($uifm_check_total['total'])===0 ){
+              $sql="INSERT INTO $this->core_addon VALUES ('woocommerce', 'Woocommerce Add-On', 'Integrate your estimation form into woocommerce.  Add custom summary to a product form and collect more data when it is added to the cart.', 1, 1, '1.0', NULL, 1, 3, NULL, NULL, NULL, 0, '2020-01-29 23:46:55', '2020-01-29 23:42:54', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
+                $wpdb->query($sql);
+            }
+         
             
          
            //addon detail

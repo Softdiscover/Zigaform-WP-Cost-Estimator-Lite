@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, form builder, estimation, calculated, form,  estimate, estimation, estimator, cost estimation, calculation, price calculator, wizard, bootstrap, AJAX, contact, contact form, email, feedback, multilingual
 Requires at least: 3.6
 Tested up to: 5.3
-Stable tag: 4.5.9.3
+Stable tag: 4.5.9.5
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -82,6 +82,13 @@ https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
 >Try out [Zigaform - Cost Estimation & Payment Form Builder Premium](http://goo.gl/C261zv)
 
 More info in https://wordpress-cost-estimator.zigaform.com/
+
+** EXTENSIONS
+------------------------------------------------------------
+
+>1. Animation effects Add-On: You can animate your fields adding many animation effects. Also you can set up the delay and other options (pro version)
+>2. WebHooks Add-On: You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. - https://zapier.com/page/webhooks/ (pro version)
+>3. Woocommerce Add-On: Add a custom WooCommerce form to your product pages. Create your WordPress form however you would like, add a calculation to generate the total, and set up the woocommerce options in zigaform, that's all. The product price used in your WooCommerce cart comes from the calculation of the form. (lite version)
 
   
 ** OVERALL FEATURES
@@ -387,7 +394,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 4.5.9.3 = 
+= 4.5.9.5 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -428,5 +435,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 4.5.9.3 = 
+= 4.5.9.5 = 
  * minor changes
