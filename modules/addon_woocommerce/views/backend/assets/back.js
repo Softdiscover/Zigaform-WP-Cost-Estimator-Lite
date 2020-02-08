@@ -102,7 +102,7 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
                                 var f_store = 'summ_content';
                                 var f_val = tmp_content;
-                                console.log('que esta psando');
+                                
                                 zgfm_back_addon_woocomm.update_settings(f_store, f_val);
             });
                
@@ -130,11 +130,13 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
              * receeive tinymce data
              */
             this.tinyMCE_onChange = function (args) {
-                 
-                    var f_store = 'summ_content';
+                 if(args['textarea_id']==='woocmc_summ_content'){
+                      var f_store = 'summ_content';
                     var f_val = args['textarea_content'];
                     
                     zgfm_back_addon_woocomm.update_settings(f_store, f_val);
+                 }
+                   
             }
 
 
