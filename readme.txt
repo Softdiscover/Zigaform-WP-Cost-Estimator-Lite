@@ -394,7 +394,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 4.5.9.6 = 
+= 4.5.9.7 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -435,5 +435,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 4.5.9.6 = 
+= 4.5.9.7 = 
  * minor changes
