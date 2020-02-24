@@ -256,12 +256,16 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		if (is_array($links) && (strpos($file, "zigaform-cost-estimator-lite.php") !== false)) {
 			$settings_link = '<a href="'.admin_url('admin.php').'?page=zgfm_cost_estimate">'.__("Settings", "FRocket_admin").'</a>';
 			array_unshift($links, $settings_link);
-			$settings_link = '<a style="color: #3db634" target="_blank" href="https://wordpress-cost-estimator.zigaform.com/">'.__("Add-Ons / Pro Support", "FRocket_admin").'</a>';
+			$settings_link = '<a target="_blank" href="https://wordpress-cost-estimator.zigaform.com/">'.__("Add-Ons / Pro Support", "FRocket_admin").'</a>';
+			array_unshift($links, $settings_link);
+                        $settings_link = '<a style="color: #08AA17;font-weight:bold;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=checkout@softdiscover.com&lc=US&item_name=Donation+to+Zigaform+wordpress+estimation+form+builder+plugin&no_note=0&cn=&currency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">'.__("Donate", "FRocket_admin").'</a>';
 			array_unshift($links, $settings_link);
 		} elseif (is_array($links) && (strpos($file, "zigaform-wp-estimator.php") !== false)) {
                         $settings_link = '<a href="'.admin_url('admin.php').'?page=zgfm_cost_estimate">'.__("Settings", "FRocket_admin").'</a>';
 			array_unshift($links, $settings_link);
-                        $settings_link = '<b><a style="color: #3db634" target="_blank" href="https://wordpress-cost-estimator.zigaform.com/#contact">'.__("Support", "FRocket_admin").'</a></b>';
+                        $settings_link = '<b><a target="_blank" href="https://wordpress-cost-estimator.zigaform.com/#contact">'.__("Support", "FRocket_admin").'</a></b>';
+			array_unshift($links, $settings_link);
+                        $settings_link = '<a style="color: #08AA17;font-weight:bold;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=checkout@softdiscover.com&lc=US&item_name=Donation+to+Zigaform+wordpress+estimation+form+builder+plugin&no_note=0&cn=&currency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">'.__("Donate", "FRocket_admin").'</a>';
 			array_unshift($links, $settings_link);
                 } else {
             
