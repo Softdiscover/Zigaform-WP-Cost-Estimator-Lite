@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, form builder, estimation, calculated, form,  estimate, estimation, estimator, cost estimation, calculation, price calculator, wizard, bootstrap, AJAX, contact, contact form, email, feedback, multilingual
 Requires at least: 3.6
 Tested up to: 5.3
-Stable tag: 4.5.9.6
+Stable tag: 4.6.1
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -14,7 +14,7 @@ Create estimation forms using this powerful drag and drop estimation form builde
 
 **Zigaform - Calculator & Cost Estimation Form Builder**  is a real-time drag and drop form builder which makes you to build your estimation forms on few easy steps. it can estimate any service for your clients and you can proceed checkout using payment gateway.  Also it provides an advanced grid system and skin customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
-https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
+https://www.youtube.com/watch?v=oGgk2FC0p90&w=532&rel=0
 
     ♦ Creating forms with automatically calculated fields
     ♦ Finance calculators
@@ -394,7 +394,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 4.5.9.7 = 
+= 4.6.1 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -435,5 +435,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 4.5.9.7 = 
+= 4.6.1 = 
  * minor changes

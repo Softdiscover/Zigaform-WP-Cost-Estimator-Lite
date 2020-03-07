@@ -270,7 +270,9 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
             // check active session
             if (!WC()->session->has_session()) {
                 WC()->session->set_customer_session_cookie(true);
-                $this->debug("adding custom session");
+                
+                $this->debug_issue("session issue");
+
             }
 
             //get product id
@@ -300,6 +302,14 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
             echo $e->getMessage();
             die();
         }
+    }
+
+
+    public function debug_issue($output) {
+        if (get_option("zgfm_debug_status", 0) == 0 )
+            return;
+
+       //insert debug to database
     }
 
     /*

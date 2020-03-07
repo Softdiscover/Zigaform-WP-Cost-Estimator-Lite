@@ -2715,7 +2715,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                 }else{
                                     $hash = $this->uifm_get_newuser_hash();
                                 }
-                                $hash = $_COOKIE[UIFORM_FOLDER];
+                                
                                 $referer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
                                 //there is not feature to manage log visit client
                                 if(false){
