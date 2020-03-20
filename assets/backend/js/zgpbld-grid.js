@@ -300,7 +300,6 @@
                 }
             
             this.offHover = function(e){
-                 
                 try{
                     
                     if (e) {
