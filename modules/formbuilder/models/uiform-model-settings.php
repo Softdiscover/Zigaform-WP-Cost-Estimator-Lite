@@ -13,10 +13,10 @@
  * @link      http://wordpress-cost-estimator.zigaform.com
  */
 if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
+	exit('No direct script access allowed');
 }
 if (class_exists('Uiform_Model_Settings')) {
-    return;
+	return;
 }
 
 /**
@@ -32,42 +32,42 @@ if (class_exists('Uiform_Model_Settings')) {
  */
 class Uiform_Model_Settings {
 
-    private $wpdb = "";
-    public $table = "";
+	private $wpdb = "";
+	public $table = "";
 
-    function __construct() {
-        global $wpdb;
-        $this->wpdb = $wpdb;
-        $this->table = $wpdb->prefix . "cest_uiform_settings";
-    }
+	function __construct() {
+		global $wpdb;
+		$this->wpdb = $wpdb;
+		$this->table = $wpdb->prefix . "cest_uiform_settings";
+	}
 
-    function getOptions() {
-        $query = sprintf('
-            select uf.version,uf.type_email,uf.smtp_host,uf.smtp_port,uf.smtp_user,uf.smtp_pass,uf.sendmail_path,uf.language
-            from %s uf
-            where uf.id=%s
-            ', $this->table, 1);
+	function getOptions() {
+		$query = sprintf('
+			select uf.version,uf.type_email,uf.smtp_host,uf.smtp_port,uf.smtp_user,uf.smtp_pass,uf.sendmail_path,uf.language
+			from %s uf
+			where uf.id=%s
+			', $this->table, 1);
 
-        return $this->wpdb->get_row($query);
-    }
+		return $this->wpdb->get_row($query);
+	}
 
-    function getLangOptions() {
-        $query = sprintf('
-            select uf.language
-            from %s uf
-            where uf.id=%s
-            ', $this->table, 1);
+	function getLangOptions() {
+		$query = sprintf('
+			select uf.language
+			from %s uf
+			where uf.id=%s
+			', $this->table, 1);
 
-        return $this->wpdb->get_row($query);
-    }
-    
-    function getAllDatabases() {
-       return $this->wpdb->get_results("SHOW TABLES", ARRAY_N);
-    }
-    
-    function getColsFromTable($table) {
-       return $this->wpdb->get_results("SHOW COLUMNS FROM ".$table);
-    }
+		return $this->wpdb->get_row($query);
+	}
+	
+	function getAllDatabases() {
+	   return $this->wpdb->get_results("SHOW TABLES", ARRAY_N);
+	}
+	
+	function getColsFromTable($table) {
+	   return $this->wpdb->get_results("SHOW COLUMNS FROM ".$table);
+	}
 
 }
 

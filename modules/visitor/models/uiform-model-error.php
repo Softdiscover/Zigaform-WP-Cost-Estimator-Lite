@@ -12,11 +12,11 @@
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link      http://wordpress-cost-estimator.zigaform.com
  */
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'No direct script access allowed' );
 }
-if (class_exists('Uiform_Model_Visitor_Error')) {
-    return;
+if ( class_exists( 'Uiform_Model_Visitor_Error' ) ) {
+	return;
 }
 
 /**
@@ -32,15 +32,15 @@ if (class_exists('Uiform_Model_Visitor_Error')) {
  */
 class Uiform_Model_Visitor_Error {
 
-    private $wpdb = "";
-    public $table = "";
+	private $wpdb = '';
+	public $table = '';
 
-    function __construct() {
-        global $wpdb;
-        $this->wpdb = $wpdb;
-        $this->table = $wpdb->prefix . "cest_uiform_visitor_error";
-    }
- 
+	function __construct() {
+		global $wpdb;
+		$this->wpdb  = $wpdb;
+		$this->table = $wpdb->prefix . 'cest_uiform_visitor_error';
+	}
+
 }
 
-?>
+
