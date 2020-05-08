@@ -597,15 +597,17 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$resp['success'] = 1;
 		$resp['return_url'] = $offline_return_url;
 		
+                $gt_data = $this->model_gateways_rec->getRecordById($item_number);
+                $this->flag_submitted=$gt_data->fbh_id;
 		if(empty($offline_return_url)){
 			
 			 //get data from form
 				$form_data = $this->formsmodel->getFormById_2($form_id);
 				$form_data_onsubm = json_decode($form_data->fmb_data2, true);
 				//prepare message
-				$tmp_template_msg = (isset($form_data_onsubm['onsubm']['sm_successtext'])) ? $form_data_onsubm['onsubm']['sm_successtext'] : '';
+				$tmp_template_msg = (isset($form_data_onsubm['onsubm']['sm_successtext'])) ? urldecode($form_data_onsubm['onsubm']['sm_successtext']) : '';
+                                $tmp_template_msg = do_shortcode($tmp_template_msg);
 				
-			
 			$resp['show_message'] =  $tmp_template_msg;
 		}
 		
