@@ -416,7 +416,7 @@ class Uiform_InstallDB {
 		 $wpdb->query( $sql );
 
 		  // Store the date when the initial activation was performed
-		$type      = class_exists( 'UiformCostEst' ) ? 'pro' : 'lite';
+		$type      = class_exists( 'UiformCostEstLite' ) ? 'pro' : 'lite';
 		$activated = get_option( 'zgfm_c_activated', array() );
 		if ( empty( $activated[ $type ] ) ) {
 			$activated[ $type ] = time();

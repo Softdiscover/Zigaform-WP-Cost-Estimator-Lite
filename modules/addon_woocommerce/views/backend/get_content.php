@@ -103,7 +103,7 @@ ob_start();
 				</div>  
 				<div class="widget-body">
  
-					<?php if ( UIFORM_DEV === 1 ) { ?>
+					<?php if ( UIFORM_DEBUG === 1 ) { ?>
 					<a href="javascript:void(0);" onclick="javascript:zgfm_back_addon_woocomm.dev_show_vars();" class="sfdc-btn sfdc-btn-primary">
 					<span class="fa fa-desktop"></span> show data</a>
 					<?php } ?>

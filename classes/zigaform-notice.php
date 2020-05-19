@@ -99,7 +99,7 @@ class Zigaform_c_notice {
 		// Fetch when plugin was initially installed
 		$activated = get_option( 'zgfm_c_activated', array() );
 
-		$type = class_exists( 'UiformCostEst' ) ? 'pro' : 'lite';
+		$type = class_exists( 'UiformCostEstLite' ) ? 'pro' : 'lite';
 
 		if ( ! empty( $activated[ $type ] ) ) {
 			// continue if plugin is installed for at least 7 days

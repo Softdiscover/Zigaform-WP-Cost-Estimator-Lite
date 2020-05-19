@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: Zigaform - Calculator & Cost Estimation Form Builder Lite
+ * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for WordPress.
- * Version: 4.7.2
+ * Version: 4.7.5
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '4.7.2';
+		public $version = '4.7.5';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -161,11 +161,13 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 				 return true;
 			 }*/
 
-			$check_slug = 'Zigaform - Calculator & Cost Estimation Form Builder Lite';
+			$check_slug = 'Zigaform - Premium Calculator & Cost Estimation Form Builder';
 
 			 $output           = array();
 			 $output['result'] = false;
 			 $pluginList       = get_option( 'active_plugins' );
+
+			
 
 			if ( is_array( $pluginList ) ) {
 				foreach ( $pluginList as $key => $value ) {
@@ -245,16 +247,15 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 			$this->define( 'UIFORM_BASENAME', plugin_basename( __FILE__ ) );
 			$this->define( 'UIFORM_ABSFILE', __FILE__ );
 			$this->define( 'UIFORM_ADMINPATH', get_admin_url() );
-			$this->define( 'UIFORM_APP_NAME', 'Zigaform - Calculator & Cost Estimation Form Builder Lite' );
+			$this->define( 'UIFORM_APP_NAME', 'ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite' );
 			$this->define( 'UIFORM_VERSION', $this->version );
 			$this->define( 'UIFORM_FORMS_DIR', dirname( __FILE__ ) );
 			$this->define( 'UIFORM_FORMS_URL', plugins_url() . '/' . UIFORM_FOLDER );
 			$this->define( 'UIFORM_FORMS_LIBS', UIFORM_FORMS_DIR . '/libraries' );
 			$this->define( 'UIFORM_DEMO', 0 );
-			$this->define('UIFORM_DEV', 0);
 
-			$this->define('ZIGAFORM_C_LITE', 1);
-			$this->define('UIFORM_DEBUG', 0);
+			$this->define( 'ZIGAFORM_C_LITE', 1 );
+			$this->define( 'UIFORM_DEBUG', 0 );
 			if ( UIFORM_DEBUG == 1 ) {
 				error_reporting( E_ALL );
 				ini_set( 'display_errors', 1 );
