@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				
 							<?php $message = __( 'Conditional logic', 'FRocket_admin' ); ?>
-							<?php include( UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php' ); ?>
+							<?php include UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php'; ?>
 				
 					<?php } else { ?>
 						<label ><?php echo __( 'Enable Conditional logic', 'FRocket_admin' ); ?></label>

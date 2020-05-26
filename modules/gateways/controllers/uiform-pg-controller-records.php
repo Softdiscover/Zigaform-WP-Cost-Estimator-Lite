@@ -86,10 +86,10 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module {
 
 	public function list_records() {
 
-		require_once( UIFORM_FORMS_DIR . '/classes/Pagination.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/Pagination.php';
 		$this->pagination = new CI_Pagination();
 		$offset           = ( isset( $_GET['offset'] ) && $_GET['offset'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
-		//list all forms
+		// list all forms
 		$data                           = $config = array();
 		$config['base_url']             = admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records';
 		$config['total_rows']           = $this->model_gateways_records->CountRecords();
@@ -139,8 +139,8 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

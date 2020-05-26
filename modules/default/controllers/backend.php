@@ -49,7 +49,7 @@ class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module {
 
 		$this->formsmodel = self::$_models['formbuilder']['form'];
 
-		//Handle the smush pro dismiss features notice ajax
+		// Handle the smush pro dismiss features notice ajax
 		add_action( 'wp_ajax_zgfm_dismiss_upgrade_notice', array( $this, 'dismiss_upgrade_notice' ) );
 
 	}
@@ -60,7 +60,7 @@ class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module {
 	 */
 	function dismiss_upgrade_notice( $ajax = true ) {
 			update_site_option( 'zgfm-c-hide_upgrade_notice', 1 );
-			//No Need to send json response for other requests
+			// No Need to send json response for other requests
 		if ( $ajax ) {
 				wp_send_json_success();
 		}
@@ -84,8 +84,8 @@ class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

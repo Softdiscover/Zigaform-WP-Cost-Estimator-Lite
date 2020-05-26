@@ -83,19 +83,19 @@ class Uiform_Backup {
 
 				/*BEGIN: Remove All Tables from the Database*/
 
-				require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php' );
+				require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
 				$installdb  = new Uiform_InstallDB();
 				$dbTables   = array();
 				$dbTables[] = $installdb->form_history;
 				$dbTables[] = $installdb->form_fields;
 				$dbTables[] = $installdb->form_fields_type;
 				$dbTables[] = $installdb->form;
-				//$dbTables[]=$installdb->settings;
+				// $dbTables[]=$installdb->settings;
 				$dbTables[] = $installdb->pay_gateways;
 				$dbTables[] = $installdb->pay_records;
 				$dbTables[] = $installdb->pay_logs;
-				//$dbTables[]=$installdb->visitor;
-				//$dbTables[]=$installdb->visitor_error;
+				// $dbTables[]=$installdb->visitor;
+				// $dbTables[]=$installdb->visitor_error;
 
 				if ( count( $dbTables ) > 0 ) {
 					foreach ( $dbTables as $table_name ) {
@@ -136,7 +136,7 @@ class Uiform_Backup {
 		}
 	}
 	function makeDbBackup( $name = '' ) {
-		require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
 		$installdb  = new Uiform_InstallDB();
 		$dbTables   = array();
 		$dbTables[] = $installdb->form;
@@ -147,8 +147,8 @@ class Uiform_Backup {
 		$dbTables[] = $installdb->pay_gateways;
 		$dbTables[] = $installdb->pay_records;
 		$dbTables[] = $installdb->pay_logs;
-		//$dbTables[]=$installdb->visitor;
-		//$dbTables[]=$installdb->visitor_error;
+		// $dbTables[]=$installdb->visitor;
+		// $dbTables[]=$installdb->visitor_error;
 		$this->tables = $dbTables;
 
 		  $dump       = '';
@@ -234,11 +234,11 @@ class Uiform_Backup {
 
 		// $tables = $this->wpdb->get_col('SHOW TABLES');
 		$output = '';
-		//foreach($tables as $table) {
+		// foreach($tables as $table) {
 		$result = $this->wpdb->get_results( "SELECT * FROM {$table}", ARRAY_N );
 		if ( $flag === true ) {
 
-			//verifying the first table has content
+			// verifying the first table has content
 			$row = isset( $result[0] ) ? $result[0] : '';
 			if ( empty( $row[0] ) ) {
 				return false;
@@ -263,7 +263,7 @@ class Uiform_Backup {
 			$output .= ");\n";
 		}
 		$output .= "\n";
-		//}
+		// }
 
 		  $this->wpdb->query( 'UNLOCK TABLES' );
 		  return $output;
@@ -283,7 +283,8 @@ class Uiform_Backup {
 				$values = '';
 
 			foreach ( array_values( (array) $result ) as $value ) {
-					/*$value = str_replace(array("\x00", "\x0a", "\x0d", "\x1a"), array('\0', '\n', '\r', '\Z'), $value);
+					/*
+					$value = str_replace(array("\x00", "\x0a", "\x0d", "\x1a"), array('\0', '\n', '\r', '\Z'), $value);
 					$value = str_replace(array("\n", "\r", "\t"), array('\n', '\r', '\t'), $value);
 					$value = str_replace('\\', '\\\\', $value);
 					$value = str_replace('\'', '\\\'', $value);

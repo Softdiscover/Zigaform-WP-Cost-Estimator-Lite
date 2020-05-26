@@ -30,20 +30,20 @@ class Uiform_Form_Helper {
 	public static function getroute() {
 		$return = array();
 		if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-			//post
-			$return['module']     = isset( $_POST['zgfm_mod'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['zgfm_mod'] ) : '';
-			$return['controller'] = isset( $_POST['zgfm_contr'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['zgfm_contr'] ) : '';
-			$return['action']     = isset( $_POST['zgfm_action'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['zgfm_action'] ) : '';
+			// post
+			$return['module']     = isset( $_POST['zgfm_mod'] ) ? self::sanitizeInput( $_POST['zgfm_mod'] ) : '';
+			$return['controller'] = isset( $_POST['zgfm_contr'] ) ? self::sanitizeInput( $_POST['zgfm_contr'] ) : '';
+			$return['action']     = isset( $_POST['zgfm_action'] ) ? self::sanitizeInput( $_POST['zgfm_action'] ) : '';
 		} elseif ( $_SERVER['REQUEST_METHOD'] === 'GET' ) {
-			//get
-			$return['module']     = isset( $_GET['zgfm_mod'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['zgfm_mod'] ) : '';
-			$return['controller'] = isset( $_GET['zgfm_contr'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['zgfm_contr'] ) : '';
-			$return['action']     = isset( $_GET['zgfm_action'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['zgfm_action'] ) : '';
+			// get
+			$return['module']     = isset( $_GET['zgfm_mod'] ) ? self::sanitizeInput( $_GET['zgfm_mod'] ) : '';
+			$return['controller'] = isset( $_GET['zgfm_contr'] ) ? self::sanitizeInput( $_GET['zgfm_contr'] ) : '';
+			$return['action']     = isset( $_GET['zgfm_action'] ) ? self::sanitizeInput( $_GET['zgfm_action'] ) : '';
 		} else {
-			//request
-			$return['module']     = isset( $_REQUEST['zgfm_mod'] ) ? Uiform_Form_Helper::sanitizeInput( $_REQUEST['zgfm_mod'] ) : '';
-			$return['controller'] = isset( $_REQUEST['zgfm_contr'] ) ? Uiform_Form_Helper::sanitizeInput( $_REQUEST['zgfm_contr'] ) : '';
-			$return['action']     = isset( $_REQUEST['zgfm_action'] ) ? Uiform_Form_Helper::sanitizeInput( $_REQUEST['zgfm_action'] ) : '';
+			// request
+			$return['module']     = isset( $_REQUEST['zgfm_mod'] ) ? self::sanitizeInput( $_REQUEST['zgfm_mod'] ) : '';
+			$return['controller'] = isset( $_REQUEST['zgfm_contr'] ) ? self::sanitizeInput( $_REQUEST['zgfm_contr'] ) : '';
+			$return['action']     = isset( $_REQUEST['zgfm_action'] ) ? self::sanitizeInput( $_REQUEST['zgfm_action'] ) : '';
 		}
 		return $return;
 	}
@@ -51,14 +51,14 @@ class Uiform_Form_Helper {
 	public static function getHttpRequest( $var ) {
 		$var = strval( $var );
 		if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-			//post
-			$value = isset( $_POST[ $var ] ) ? Uiform_Form_Helper::sanitizeInput( $_POST[ $var ] ) : '';
+			// post
+			$value = isset( $_POST[ $var ] ) ? self::sanitizeInput( $_POST[ $var ] ) : '';
 		} elseif ( $_SERVER['REQUEST_METHOD'] === 'GET' ) {
-			//get
-			$value = isset( $_GET[ $var ] ) ? Uiform_Form_Helper::sanitizeInput( $_GET[ $var ] ) : '';
+			// get
+			$value = isset( $_GET[ $var ] ) ? self::sanitizeInput( $_GET[ $var ] ) : '';
 		} else {
-			//request
-			$value = isset( $_REQUEST[ $var ] ) ? Uiform_Form_Helper::sanitizeInput( $_REQUEST[ $var ] ) : '';
+			// request
+			$value = isset( $_REQUEST[ $var ] ) ? self::sanitizeInput( $_REQUEST[ $var ] ) : '';
 		}
 
 		return $value;
@@ -71,7 +71,7 @@ class Uiform_Form_Helper {
 		}
 		foreach ( $array as $key => $value ) {
 			if ( is_array( $value ) || is_object( $value ) ) {
-				Uiform_Form_Helper::array2xml( $value, $xml );
+				self::array2xml( $value, $xml );
 			} else {
 				if ( is_numeric( $key ) ) {
 					if ( is_string( $value ) ) {
@@ -157,13 +157,13 @@ class Uiform_Form_Helper {
 		$string = preg_replace( '/[^\pL\pN]+/', '', $string );
 		$string = preg_replace( '/[^a-zA-Z0-9]+/', '', $string );
 		$string = strtolower( $string );
-		//reserved words
+		// reserved words
 		switch ( trim( $string ) ) {
 			case 'check':
 				$string = $string . '1';
 				break;
 			default:
-				# code...
+				// code...
 				break;
 		}
 
@@ -200,7 +200,7 @@ class Uiform_Form_Helper {
 		if ( is_array( $data ) ) {
 			return array_map( array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $data );
 		} else {
-			return Uiform_Form_Helper::sanitizeInput( $data );
+			return self::sanitizeInput( $data );
 		}
 	}
 
@@ -215,7 +215,7 @@ class Uiform_Form_Helper {
 		if ( is_array( $data ) ) {
 			return array_map( array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), $data );
 		} else {
-			return Uiform_Form_Helper::sanitizeInput_html( $data );
+			return self::sanitizeInput_html( $data );
 		}
 	}
 
@@ -332,8 +332,8 @@ class Uiform_Form_Helper {
 	}
 
 	public static function is_uiform_page() {
-		$vget_page  = ( isset( $_GET['page'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_GET['page'] ) : '';
-		$vpost_page = ( isset( $_POST['page'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_POST['page'] ) : '';
+		$vget_page  = ( isset( $_GET['page'] ) ) ? self::sanitizeInput( $_GET['page'] ) : '';
+		$vpost_page = ( isset( $_POST['page'] ) ) ? self::sanitizeInput( $_POST['page'] ) : '';
 		if ( ( $vget_page === 'zgfm_cost_estimate' ) || ( $vpost_page === 'zgfm_cost_estimate' ) ) {
 			return true;
 		} else {
@@ -384,13 +384,13 @@ class Uiform_Form_Helper {
 	}
 
 	/**
-	* Verify if field is checked
-	*
-	* @param int $row    value field
-	* @param int $status status check
-	*
-	* @return array
-	*/
+	 * Verify if field is checked
+	 *
+	 * @param int $row    value field
+	 * @param int $status status check
+	 *
+	 * @return array
+	 */
 	public static function getChecked( $row, $status ) {
 		if ( $row == $status ) {
 			echo 'checked="checked"';
@@ -731,23 +731,23 @@ class Uiform_Form_Helper {
 				$value = number_format( (float) $value );
 				return $value;
 		}
-			//}
+			// }
 
 			return $value; // is string
 	}
 
 	public static function json_encode_advanced( array $arr, $sequential_keys = false, $quotes = false, $beautiful_json = false ) {
 
-		 $output = Uiform_Form_Helper::isAssoc( $arr ) ? '{' : '[';
+		 $output = self::isAssoc( $arr ) ? '{' : '[';
 		  $count = 0;
 		foreach ( $arr as $key => $value ) {
 
-			if ( Uiform_Form_Helper::isAssoc( $arr ) || ( ! Uiform_Form_Helper::isAssoc( $arr ) && $sequential_keys == true ) ) {
+			if ( self::isAssoc( $arr ) || ( ! self::isAssoc( $arr ) && $sequential_keys == true ) ) {
 				$output .= ( $quotes ? '"' : '' ) . $key . ( $quotes ? '"' : '' ) . ' : ';
 			}
 
 			if ( is_array( $value ) ) {
-				$output .= Uiform_Form_Helper::json_encode_advanced( $value, $sequential_keys, $quotes, $beautiful_json );
+				$output .= self::json_encode_advanced( $value, $sequential_keys, $quotes, $beautiful_json );
 			} elseif ( is_bool( $value ) ) {
 				$output .= ( $value ? 'true' : 'false' );
 			} elseif ( is_numeric( $value ) ) {
@@ -763,7 +763,7 @@ class Uiform_Form_Helper {
 			}
 		}
 
-		  $output .= Uiform_Form_Helper::isAssoc( $arr ) ? '}' : ']';
+		  $output .= self::isAssoc( $arr ) ? '}' : ']';
 
 		  return $output;
 	}
@@ -781,7 +781,7 @@ class Uiform_Form_Helper {
 	}
 
 	public static function get_font_library() {
-		require_once( UIFORM_FORMS_DIR . '/libraries/styles-font-menu/plugin.php' );
+		require_once UIFORM_FORMS_DIR . '/libraries/styles-font-menu/plugin.php';
 		$objsfm = new SFM_Plugin();
 
 		return $objsfm;
@@ -794,7 +794,7 @@ class Uiform_Form_Helper {
 			return false;
 		}
 
-		//check form id
+		// check form id
 
 		// make sure the user have manage options
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -888,7 +888,7 @@ class Uiform_Form_Helper {
 		 * @since   v0.0.1
 		 * @version v1.0.0  Saturday, April 11th, 2020.
 		 * @access  public static
-		 * @param   mixed   $str
+		 * @param   mixed $str
 		 * @return  mixed
 		 */
 	public static function encodeURIComponent( $str ) {
@@ -909,7 +909,7 @@ function uifm_generate_pdf( $html, $filename, $papersize, $paperorien, $stream =
 	if ( ZIGAFORM_C_LITE == 1 ) {
 
 	} else {
-		require_once( UIFORM_FORMS_DIR . '/helpers/dompdf/autoload.inc.php' );
+		require_once UIFORM_FORMS_DIR . '/helpers/dompdf/autoload.inc.php';
 
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml( $html );

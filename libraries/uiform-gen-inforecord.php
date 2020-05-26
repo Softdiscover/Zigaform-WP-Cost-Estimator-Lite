@@ -5,14 +5,14 @@ if ( isset( $_REQUEST['rkopt'] ) ) {
 	if ( ! defined( 'ABSPATH' ) ) {
 		define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 	}
-	require_once( ABSPATH . '../helpers/dompdf/dompdf_config.inc.php' );
-	require_once( ABSPATH . '../classes/uiform-form-helper.php' );
+	require_once ABSPATH . '../helpers/dompdf/dompdf_config.inc.php';
+	require_once ABSPATH . '../classes/uiform-form-helper.php';
 	if ( isset( $_REQUEST['rkopt'] ) && $_REQUEST['rkopt'] === 'genpdf' ) {
 		$tmp_data = ( isset( $_REQUEST['rkhtmltopdf'] ) && $_REQUEST['rkhtmltopdf'] ) ? Uiform_Form_Helper::sanitizeInput_html( $_REQUEST['rkhtmltopdf'] ) : '';
 		$tmp_data = json_decode( Uiform_Form_Helper::base64url_decode( $tmp_data ), true );
 
 		ob_start();
-		include( ABSPATH . '../modules/formbuilder/views/records/info_record_topdf.php' );
+		include ABSPATH . '../modules/formbuilder/views/records/info_record_topdf.php';
 		$cntACmp = ob_get_contents();
 		$cntACmp = Uiform_Form_Helper::sanitize_output( $cntACmp );
 		ob_end_clean();

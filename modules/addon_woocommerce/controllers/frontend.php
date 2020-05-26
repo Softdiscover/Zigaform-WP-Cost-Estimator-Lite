@@ -43,9 +43,9 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 	private $model_fields;
 	private $model_form;
 	private $model_addon_woo;
-	//adding libs
+	// adding libs
 	public $local_controllers = array();
-	//adding actions
+	// adding actions
 	public $local_actions = array(
 		array(
 			'action'        => 'onSubmitForm_pos',
@@ -54,7 +54,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 			'priority'      => 1,
 		),
 	);
-	//adding js actions
+	// adding js actions
 	public $js_actions = array();
 
 	/**
@@ -70,7 +70,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 		$this->model_formrecords   = self::$_models['formbuilder']['form_records'];
 		$this->model_fields        = self::$_models['formbuilder']['fields'];
 
-		//actions and filters
+		// actions and filters
 		add_action( 'woocommerce_before_calculate_totals', array( &$this, 'wc_before_calculate_totals' ), 99 );
 
 		add_action( 'woocommerce_add_cart_item_data', array( &$this, 'wc_add_cart_item_data' ), 10, 2 );
@@ -87,8 +87,8 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 		add_action( 'woocommerce_checkout_order_processed', array( &$this, 'wc_checkout_order_processed' ), 10, 2 );
 		add_action( 'woocommerce_before_cart_item_quantity_zero', array( &$this, 'wc_before_cart_item_quantity_zero' ), 10, 1 );
 
-		//woocommerce custom queries
-		require_once( UIFORM_FORMS_DIR . '/modules/addon_woocommerce/models/model-woocommerce.php' );
+		// woocommerce custom queries
+		require_once UIFORM_FORMS_DIR . '/modules/addon_woocommerce/models/model-woocommerce.php';
 		$this->model_addon_woo = new zfaddn_woocommerce_model();
 	}
 
@@ -113,7 +113,8 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 		return;
 		$cart = WC()->cart->get_cart();
 		foreach ( $cart as $key => $values ) {
-			/* if ($values['sasdf'] == $cart_item_key)
+			/*
+			 if ($values['sasdf'] == $cart_item_key)
 			  unset($woocommerce->cart->cart_contents[$key]); */
 		}
 	}
@@ -235,19 +236,19 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 
 			$addon_data = $form_data->adet_data;
 
-			//return if data is null
+			// return if data is null
 			if ( empty( $addon_data ) ) {
 				return;
 			}
 
 			$addon_data_tmp = json_decode( $addon_data, true );
 
-			//return if status is zero
+			// return if status is zero
 			if ( isset( $addon_data_tmp['status'] ) && intval( $addon_data_tmp['status'] ) != 1 ) {
 				return;
 			}
 
-			//product id is empty
+			// product id is empty
 			if ( empty( $addon_data_tmp['prod_id'] ) ) {
 				return;
 			}
@@ -276,7 +277,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 
 			}
 
-			//get product id
+			// get product id
 			$prod_id = $addon_data_tmp['prod_id'];
 
 			$woo_arr                       = array();
@@ -308,7 +309,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 			return;
 		}
 
-		//insert debug to database
+		// insert debug to database
 	}
 
 	/*
@@ -354,8 +355,8 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

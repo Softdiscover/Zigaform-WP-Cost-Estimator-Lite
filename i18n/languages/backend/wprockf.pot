@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.7.5
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.7.5 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.7.6
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.7.6 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.7.5\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.7.6\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: zigaform-wp-estimator.php:184, zigaform-wp-estimator.php:177, zigaform-wp-estimator.php:192, zigaform-wp-estimator.php:198
+#: zigaform-wp-estimator.php:185, zigaform-wp-estimator.php:178, zigaform-wp-estimator.php:193, zigaform-wp-estimator.php:199
 msgid "Zigaform alert"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:55, modules/formbuilder/controllers/uiform-fb-controller-forms.php:658
+#: views/footer.php:55, modules/formbuilder/controllers/uiform-fb-controller-forms.php:649
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
@@ -493,7 +493,7 @@ msgstr ""
 msgid "Slide Exits"
 msgstr ""
 
-#: modules/addon_woocommerce/controllers/frontend.php:297
+#: modules/addon_woocommerce/controllers/frontend.php:298
 msgid "Error! form was not added to cart "
 msgstr ""
 
@@ -505,75 +505,75 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:315
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:310
 msgid "Rollback Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:337
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:330
 msgid "Error message"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:361
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:352
 msgid "Form variables"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:661
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:652
 msgid "Success"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:678
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:669
 msgid "Shortcodes"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:747, modules/formbuilder/controllers/uiform-fb-controller-forms.php:772
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:736, modules/formbuilder/controllers/uiform-fb-controller-forms.php:761
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1918
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1879
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2592
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2532
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:305
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:322
 msgid "Entry information"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:306, modules/formbuilder/views/records/info_record.php:26
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:323, modules/formbuilder/views/records/info_record.php:26
 msgid "Submitted form data"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:307, modules/formbuilder/views/records/info_record.php:47
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:324, modules/formbuilder/views/records/info_record.php:47
 msgid "Additional info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:308, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:50, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:325, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:50, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
 msgid "Date"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:309, modules/formbuilder/views/records/info_record.php:54
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:326, modules/formbuilder/views/records/info_record.php:54
 msgid "IP"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:310, modules/formbuilder/views/records/info_record.php:58
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:327, modules/formbuilder/views/records/info_record.php:58
 msgid "Client PC info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:311
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:328
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:312, modules/formbuilder/views/forms/ajax_variables_openmodal.php:77, modules/formbuilder/views/forms/create_form_main.php:100, modules/formbuilder/views/forms/create_form_modals.php:114, modules/formbuilder/views/forms/settings_form_email.php:567, modules/formbuilder/views/records/info_record.php:66
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:329, modules/formbuilder/views/forms/ajax_variables_openmodal.php:77, modules/formbuilder/views/forms/create_form_main.php:100, modules/formbuilder/views/forms/create_form_modals.php:114, modules/formbuilder/views/forms/settings_form_email.php:567, modules/formbuilder/views/records/info_record.php:66
 msgid "Form name"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:350, modules/formbuilder/controllers/uiform-fb-controller-records.php:392, modules/formbuilder/views/records/info_record_topdf.php:58
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:366, modules/formbuilder/controllers/uiform-fb-controller-records.php:406, modules/formbuilder/views/records/info_record_topdf.php:58
 msgid "Units"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:373, modules/gateways/views/records/list_records.php:38
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:388, modules/gateways/views/records/list_records.php:38
 msgid "Amount"
 msgstr ""
 
@@ -581,35 +581,35 @@ msgstr ""
 msgid "Select language"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:175
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:178
 msgid "english"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:176
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:182
 msgid "spanish"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:177
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:186
 msgid "french"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:178
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:190
 msgid "german"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:179
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:194
 msgid "italian"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:180
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:198
 msgid "portuguese"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:181
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:202
 msgid "russian"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:182
+#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:206
 msgid "chinese"
 msgstr ""
 
@@ -2077,11 +2077,11 @@ msgstr ""
 msgid "Enable custom template for Summary Records and PDF"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_samplebuttons.php:122
+#: modules/formbuilder/views/forms/settings_form_samplebuttons.php:123
 msgid "Text font size"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_samplebuttons.php:124
+#: modules/formbuilder/views/forms/settings_form_samplebuttons.php:125
 msgid "Select font size"
 msgstr ""
 
@@ -2345,15 +2345,15 @@ msgstr ""
 msgid "Row"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:437, modules/formbuilder/views/forms/templates_fields.php:511, modules/formbuilder/views/forms/templates_fields.php:562, modules/formbuilder/views/forms/templates_fields.php:613, modules/formbuilder/views/forms/templates_fields.php:655, modules/formbuilder/views/forms/templates_fields.php:699, modules/formbuilder/views/forms/templates_fields.php:745, modules/formbuilder/views/forms/templates_fields.php:792, modules/formbuilder/views/forms/templates_fields.php:829, modules/formbuilder/views/forms/templates_fields.php:867, modules/formbuilder/views/forms/templates_fields.php:908, modules/formbuilder/views/forms/templates_fields.php:949, modules/formbuilder/views/forms/templates_fields.php:991, modules/formbuilder/views/forms/templates_fields.php:1037, modules/formbuilder/views/forms/templates_fields.php:1078, modules/formbuilder/views/forms/templates_fields.php:1118, modules/formbuilder/views/forms/templates_fields.php:1186, modules/formbuilder/views/forms/templates_fields.php:1223, modules/formbuilder/views/forms/templates_fields.php:1267, modules/formbuilder/views/forms/templates_fields.php:1310, modules/formbuilder/views/forms/templates_fields.php:1352, modules/formbuilder/views/forms/templates_fields.php:1400, modules/formbuilder/views/forms/templates_fields.php:1436, modules/formbuilder/views/forms/templates_fields.php:1486, modules/formbuilder/views/forms/templates_fields.php:1521, modules/formbuilder/views/forms/templates_fields.php:1555, modules/formbuilder/views/forms/templates_fields.php:1589, modules/formbuilder/views/forms/templates_fields.php:1623, modules/formbuilder/views/forms/templates_fields.php:1657, modules/formbuilder/views/forms/templates_fields.php:1715, modules/formbuilder/views/forms/templates_fields.php:1753, modules/formbuilder/views/forms/templates_fields.php:1794, modules/formbuilder/views/forms/templates_fields.php:1857, modules/formbuilder/views/forms/test_dcheckbox.php:18, modules/formbuilder/views/fields/templates/prevpanel_appetext.php:35, modules/formbuilder/views/fields/templates/prevpanel_captcha.php:35, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:35, modules/formbuilder/views/fields/templates/prevpanel_colorpicker.php:34, modules/formbuilder/views/fields/templates/prevpanel_customhtml.php:35, modules/formbuilder/views/fields/templates/prevpanel_datepicker.php:35, modules/formbuilder/views/fields/templates/prevpanel_datetime.php:34, modules/formbuilder/views/fields/templates/prevpanel_datetime_2.php:35, modules/formbuilder/views/fields/templates/prevpanel_dyncheckbox.php:34, modules/formbuilder/views/fields/templates/prevpanel_dynradiobtn.php:34, modules/formbuilder/views/fields/templates/prevpanel_fileupload.php:35, modules/formbuilder/views/fields/templates/prevpanel_heading1.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading2.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading3.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading4.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading5.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading6.php:34, modules/formbuilder/views/fields/templates/prevpanel_imageupload.php:36, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:35, modules/formbuilder/views/fields/templates/prevpanel_password.php:35, modules/formbuilder/views/fields/templates/prevpanel_prepapptext.php:35, modules/formbuilder/views/fields/templates/prevpanel_preptext.php:35, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:35, modules/formbuilder/views/fields/templates/prevpanel_range.php:35, modules/formbuilder/views/fields/templates/prevpanel_ratingstar.php:34, modules/formbuilder/views/fields/templates/prevpanel_recaptcha.php:35, modules/formbuilder/views/fields/templates/prevpanel_select.php:36, modules/formbuilder/views/fields/templates/prevpanel_slider.php:35, modules/formbuilder/views/fields/templates/prevpanel_spinner.php:35, modules/formbuilder/views/fields/templates/prevpanel_submitbtn.php:34, modules/formbuilder/views/fields/templates/prevpanel_switch.php:34, modules/formbuilder/views/fields/templates/prevpanel_textbox.php:34, modules/formbuilder/views/fields/templates/prevpanel_timepicker.php:35
+#: modules/formbuilder/views/forms/templates_fields.php:437, modules/formbuilder/views/forms/templates_fields.php:511, modules/formbuilder/views/forms/templates_fields.php:562, modules/formbuilder/views/forms/templates_fields.php:613, modules/formbuilder/views/forms/templates_fields.php:655, modules/formbuilder/views/forms/templates_fields.php:699, modules/formbuilder/views/forms/templates_fields.php:745, modules/formbuilder/views/forms/templates_fields.php:792, modules/formbuilder/views/forms/templates_fields.php:829, modules/formbuilder/views/forms/templates_fields.php:867, modules/formbuilder/views/forms/templates_fields.php:908, modules/formbuilder/views/forms/templates_fields.php:949, modules/formbuilder/views/forms/templates_fields.php:991, modules/formbuilder/views/forms/templates_fields.php:1037, modules/formbuilder/views/forms/templates_fields.php:1078, modules/formbuilder/views/forms/templates_fields.php:1118, modules/formbuilder/views/forms/templates_fields.php:1186, modules/formbuilder/views/forms/templates_fields.php:1223, modules/formbuilder/views/forms/templates_fields.php:1267, modules/formbuilder/views/forms/templates_fields.php:1310, modules/formbuilder/views/forms/templates_fields.php:1352, modules/formbuilder/views/forms/templates_fields.php:1400, modules/formbuilder/views/forms/templates_fields.php:1436, modules/formbuilder/views/forms/templates_fields.php:1486, modules/formbuilder/views/forms/templates_fields.php:1521, modules/formbuilder/views/forms/templates_fields.php:1555, modules/formbuilder/views/forms/templates_fields.php:1589, modules/formbuilder/views/forms/templates_fields.php:1623, modules/formbuilder/views/forms/templates_fields.php:1657, modules/formbuilder/views/forms/templates_fields.php:1715, modules/formbuilder/views/forms/templates_fields.php:1753, modules/formbuilder/views/forms/templates_fields.php:1794, modules/formbuilder/views/forms/templates_fields.php:1857, modules/formbuilder/views/forms/test_dcheckbox.php:19, modules/formbuilder/views/fields/templates/prevpanel_appetext.php:35, modules/formbuilder/views/fields/templates/prevpanel_captcha.php:35, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:35, modules/formbuilder/views/fields/templates/prevpanel_colorpicker.php:34, modules/formbuilder/views/fields/templates/prevpanel_customhtml.php:35, modules/formbuilder/views/fields/templates/prevpanel_datepicker.php:35, modules/formbuilder/views/fields/templates/prevpanel_datetime.php:34, modules/formbuilder/views/fields/templates/prevpanel_datetime_2.php:35, modules/formbuilder/views/fields/templates/prevpanel_dyncheckbox.php:34, modules/formbuilder/views/fields/templates/prevpanel_dynradiobtn.php:34, modules/formbuilder/views/fields/templates/prevpanel_fileupload.php:35, modules/formbuilder/views/fields/templates/prevpanel_heading1.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading2.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading3.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading4.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading5.php:34, modules/formbuilder/views/fields/templates/prevpanel_heading6.php:34, modules/formbuilder/views/fields/templates/prevpanel_imageupload.php:36, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:35, modules/formbuilder/views/fields/templates/prevpanel_password.php:35, modules/formbuilder/views/fields/templates/prevpanel_prepapptext.php:35, modules/formbuilder/views/fields/templates/prevpanel_preptext.php:35, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:35, modules/formbuilder/views/fields/templates/prevpanel_range.php:35, modules/formbuilder/views/fields/templates/prevpanel_ratingstar.php:34, modules/formbuilder/views/fields/templates/prevpanel_recaptcha.php:35, modules/formbuilder/views/fields/templates/prevpanel_select.php:36, modules/formbuilder/views/fields/templates/prevpanel_slider.php:35, modules/formbuilder/views/fields/templates/prevpanel_spinner.php:35, modules/formbuilder/views/fields/templates/prevpanel_submitbtn.php:34, modules/formbuilder/views/fields/templates/prevpanel_switch.php:34, modules/formbuilder/views/fields/templates/prevpanel_textbox.php:34, modules/formbuilder/views/fields/templates/prevpanel_timepicker.php:35
 msgid "Textbox label"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:440, modules/formbuilder/views/forms/templates_fields.php:514, modules/formbuilder/views/forms/templates_fields.php:565, modules/formbuilder/views/forms/templates_fields.php:616, modules/formbuilder/views/forms/templates_fields.php:658, modules/formbuilder/views/forms/templates_fields.php:702, modules/formbuilder/views/forms/templates_fields.php:748, modules/formbuilder/views/forms/templates_fields.php:795, modules/formbuilder/views/forms/templates_fields.php:832, modules/formbuilder/views/forms/templates_fields.php:870, modules/formbuilder/views/forms/templates_fields.php:911, modules/formbuilder/views/forms/templates_fields.php:952, modules/formbuilder/views/forms/templates_fields.php:994, modules/formbuilder/views/forms/templates_fields.php:1040, modules/formbuilder/views/forms/templates_fields.php:1081, modules/formbuilder/views/forms/templates_fields.php:1121, modules/formbuilder/views/forms/templates_fields.php:1189, modules/formbuilder/views/forms/templates_fields.php:1226, modules/formbuilder/views/forms/templates_fields.php:1270, modules/formbuilder/views/forms/templates_fields.php:1313, modules/formbuilder/views/forms/templates_fields.php:1355, modules/formbuilder/views/forms/templates_fields.php:1403, modules/formbuilder/views/forms/templates_fields.php:1439, modules/formbuilder/views/forms/templates_fields.php:1489, modules/formbuilder/views/forms/templates_fields.php:1524, modules/formbuilder/views/forms/templates_fields.php:1558, modules/formbuilder/views/forms/templates_fields.php:1592, modules/formbuilder/views/forms/templates_fields.php:1626, modules/formbuilder/views/forms/templates_fields.php:1660, modules/formbuilder/views/forms/templates_fields.php:1718, modules/formbuilder/views/forms/templates_fields.php:1756, modules/formbuilder/views/forms/templates_fields.php:1797, modules/formbuilder/views/forms/templates_fields.php:1860, modules/formbuilder/views/forms/test_dcheckbox.php:21, modules/formbuilder/views/fields/templates/prevpanel_appetext.php:38, modules/formbuilder/views/fields/templates/prevpanel_captcha.php:38, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:38, modules/formbuilder/views/fields/templates/prevpanel_colorpicker.php:37, modules/formbuilder/views/fields/templates/prevpanel_customhtml.php:38, modules/formbuilder/views/fields/templates/prevpanel_datepicker.php:38, modules/formbuilder/views/fields/templates/prevpanel_datetime.php:37, modules/formbuilder/views/fields/templates/prevpanel_datetime_2.php:38, modules/formbuilder/views/fields/templates/prevpanel_dyncheckbox.php:37, modules/formbuilder/views/fields/templates/prevpanel_dynradiobtn.php:37, modules/formbuilder/views/fields/templates/prevpanel_fileupload.php:38, modules/formbuilder/views/fields/templates/prevpanel_heading1.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading2.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading3.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading4.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading5.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading6.php:37, modules/formbuilder/views/fields/templates/prevpanel_imageupload.php:39, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:38, modules/formbuilder/views/fields/templates/prevpanel_password.php:38, modules/formbuilder/views/fields/templates/prevpanel_prepapptext.php:38, modules/formbuilder/views/fields/templates/prevpanel_preptext.php:38, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:38, modules/formbuilder/views/fields/templates/prevpanel_range.php:38, modules/formbuilder/views/fields/templates/prevpanel_ratingstar.php:37, modules/formbuilder/views/fields/templates/prevpanel_recaptcha.php:38, modules/formbuilder/views/fields/templates/prevpanel_select.php:39, modules/formbuilder/views/fields/templates/prevpanel_slider.php:38, modules/formbuilder/views/fields/templates/prevpanel_spinner.php:38, modules/formbuilder/views/fields/templates/prevpanel_submitbtn.php:37, modules/formbuilder/views/fields/templates/prevpanel_switch.php:37, modules/formbuilder/views/fields/templates/prevpanel_textbox.php:37, modules/formbuilder/views/fields/templates/prevpanel_timepicker.php:38
+#: modules/formbuilder/views/forms/templates_fields.php:440, modules/formbuilder/views/forms/templates_fields.php:514, modules/formbuilder/views/forms/templates_fields.php:565, modules/formbuilder/views/forms/templates_fields.php:616, modules/formbuilder/views/forms/templates_fields.php:658, modules/formbuilder/views/forms/templates_fields.php:702, modules/formbuilder/views/forms/templates_fields.php:748, modules/formbuilder/views/forms/templates_fields.php:795, modules/formbuilder/views/forms/templates_fields.php:832, modules/formbuilder/views/forms/templates_fields.php:870, modules/formbuilder/views/forms/templates_fields.php:911, modules/formbuilder/views/forms/templates_fields.php:952, modules/formbuilder/views/forms/templates_fields.php:994, modules/formbuilder/views/forms/templates_fields.php:1040, modules/formbuilder/views/forms/templates_fields.php:1081, modules/formbuilder/views/forms/templates_fields.php:1121, modules/formbuilder/views/forms/templates_fields.php:1189, modules/formbuilder/views/forms/templates_fields.php:1226, modules/formbuilder/views/forms/templates_fields.php:1270, modules/formbuilder/views/forms/templates_fields.php:1313, modules/formbuilder/views/forms/templates_fields.php:1355, modules/formbuilder/views/forms/templates_fields.php:1403, modules/formbuilder/views/forms/templates_fields.php:1439, modules/formbuilder/views/forms/templates_fields.php:1489, modules/formbuilder/views/forms/templates_fields.php:1524, modules/formbuilder/views/forms/templates_fields.php:1558, modules/formbuilder/views/forms/templates_fields.php:1592, modules/formbuilder/views/forms/templates_fields.php:1626, modules/formbuilder/views/forms/templates_fields.php:1660, modules/formbuilder/views/forms/templates_fields.php:1718, modules/formbuilder/views/forms/templates_fields.php:1756, modules/formbuilder/views/forms/templates_fields.php:1797, modules/formbuilder/views/forms/templates_fields.php:1860, modules/formbuilder/views/forms/test_dcheckbox.php:22, modules/formbuilder/views/fields/templates/prevpanel_appetext.php:38, modules/formbuilder/views/fields/templates/prevpanel_captcha.php:38, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:38, modules/formbuilder/views/fields/templates/prevpanel_colorpicker.php:37, modules/formbuilder/views/fields/templates/prevpanel_customhtml.php:38, modules/formbuilder/views/fields/templates/prevpanel_datepicker.php:38, modules/formbuilder/views/fields/templates/prevpanel_datetime.php:37, modules/formbuilder/views/fields/templates/prevpanel_datetime_2.php:38, modules/formbuilder/views/fields/templates/prevpanel_dyncheckbox.php:37, modules/formbuilder/views/fields/templates/prevpanel_dynradiobtn.php:37, modules/formbuilder/views/fields/templates/prevpanel_fileupload.php:38, modules/formbuilder/views/fields/templates/prevpanel_heading1.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading2.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading3.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading4.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading5.php:37, modules/formbuilder/views/fields/templates/prevpanel_heading6.php:37, modules/formbuilder/views/fields/templates/prevpanel_imageupload.php:39, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:38, modules/formbuilder/views/fields/templates/prevpanel_password.php:38, modules/formbuilder/views/fields/templates/prevpanel_prepapptext.php:38, modules/formbuilder/views/fields/templates/prevpanel_preptext.php:38, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:38, modules/formbuilder/views/fields/templates/prevpanel_range.php:38, modules/formbuilder/views/fields/templates/prevpanel_ratingstar.php:37, modules/formbuilder/views/fields/templates/prevpanel_recaptcha.php:38, modules/formbuilder/views/fields/templates/prevpanel_select.php:39, modules/formbuilder/views/fields/templates/prevpanel_slider.php:38, modules/formbuilder/views/fields/templates/prevpanel_spinner.php:38, modules/formbuilder/views/fields/templates/prevpanel_submitbtn.php:37, modules/formbuilder/views/fields/templates/prevpanel_switch.php:37, modules/formbuilder/views/fields/templates/prevpanel_textbox.php:37, modules/formbuilder/views/fields/templates/prevpanel_timepicker.php:38
 msgid "Textbox sublabel"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:452, modules/formbuilder/views/forms/templates_fields.php:488, modules/formbuilder/views/forms/templates_fields.php:540, modules/formbuilder/views/forms/templates_fields.php:591, modules/formbuilder/views/forms/templates_fields.php:633, modules/formbuilder/views/forms/templates_fields.php:677, modules/formbuilder/views/forms/templates_fields.php:723, modules/formbuilder/views/forms/templates_fields.php:770, modules/formbuilder/views/forms/templates_fields.php:807, modules/formbuilder/views/forms/templates_fields.php:845, modules/formbuilder/views/forms/templates_fields.php:886, modules/formbuilder/views/forms/templates_fields.php:927, modules/formbuilder/views/forms/templates_fields.php:969, modules/formbuilder/views/forms/templates_fields.php:1015, modules/formbuilder/views/forms/templates_fields.php:1056, modules/formbuilder/views/forms/templates_fields.php:1096, modules/formbuilder/views/forms/templates_fields.php:1164, modules/formbuilder/views/forms/templates_fields.php:1201, modules/formbuilder/views/forms/templates_fields.php:1245, modules/formbuilder/views/forms/templates_fields.php:1289, modules/formbuilder/views/forms/templates_fields.php:1331, modules/formbuilder/views/forms/templates_fields.php:1368, modules/formbuilder/views/forms/templates_fields.php:1415, modules/formbuilder/views/forms/templates_fields.php:1452, modules/formbuilder/views/forms/templates_fields.php:1500, modules/formbuilder/views/forms/templates_fields.php:1535, modules/formbuilder/views/forms/templates_fields.php:1569, modules/formbuilder/views/forms/templates_fields.php:1603, modules/formbuilder/views/forms/templates_fields.php:1637, modules/formbuilder/views/forms/templates_fields.php:1671, modules/formbuilder/views/forms/templates_fields.php:1694, modules/formbuilder/views/forms/templates_fields.php:1732, modules/formbuilder/views/forms/templates_fields.php:1773, modules/formbuilder/views/forms/templates_fields.php:1812, modules/formbuilder/views/forms/templates_fields.php:1881, modules/formbuilder/views/forms/test_dcheckbox.php:199, modules/formbuilder/views/fields/modal/settings_field_helpblock.php:25, modules/formbuilder/views/fields/modal/settings_field_misc.php:34, modules/formbuilder/views/fields/templates/prevpanel_appetext.php:54, modules/formbuilder/views/fields/templates/prevpanel_captcha.php:81, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:64, modules/formbuilder/views/fields/templates/prevpanel_colorpicker.php:50, modules/formbuilder/views/fields/templates/prevpanel_customhtml.php:50, modules/formbuilder/views/fields/templates/prevpanel_datepicker.php:57, modules/formbuilder/views/fields/templates/prevpanel_datetime.php:55, modules/formbuilder/views/fields/templates/prevpanel_datetime_2.php:59, modules/formbuilder/views/fields/templates/prevpanel_dyncheckbox.php:51, modules/formbuilder/views/fields/templates/prevpanel_dynradiobtn.php:51, modules/formbuilder/views/fields/templates/prevpanel_fileupload.php:58, modules/formbuilder/views/fields/templates/prevpanel_heading1.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading2.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading3.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading4.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading5.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading6.php:48, modules/formbuilder/views/fields/templates/prevpanel_imageupload.php:61, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:56, modules/formbuilder/views/fields/templates/prevpanel_password.php:51, modules/formbuilder/views/fields/templates/prevpanel_prepapptext.php:55, modules/formbuilder/views/fields/templates/prevpanel_preptext.php:54, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:63, modules/formbuilder/views/fields/templates/prevpanel_range.php:54, modules/formbuilder/views/fields/templates/prevpanel_ratingstar.php:49, modules/formbuilder/views/fields/templates/prevpanel_recaptcha.php:50, modules/formbuilder/views/fields/templates/prevpanel_select.php:56, modules/formbuilder/views/fields/templates/prevpanel_slider.php:59, modules/formbuilder/views/fields/templates/prevpanel_spinner.php:53, modules/formbuilder/views/fields/templates/prevpanel_submitbtn.php:50, modules/formbuilder/views/fields/templates/prevpanel_switch.php:51, modules/formbuilder/views/fields/templates/prevpanel_textarea.php:50, modules/formbuilder/views/fields/templates/prevpanel_textbox.php:49, modules/formbuilder/views/fields/templates/prevpanel_timepicker.php:57, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:36
+#: modules/formbuilder/views/forms/templates_fields.php:452, modules/formbuilder/views/forms/templates_fields.php:488, modules/formbuilder/views/forms/templates_fields.php:540, modules/formbuilder/views/forms/templates_fields.php:591, modules/formbuilder/views/forms/templates_fields.php:633, modules/formbuilder/views/forms/templates_fields.php:677, modules/formbuilder/views/forms/templates_fields.php:723, modules/formbuilder/views/forms/templates_fields.php:770, modules/formbuilder/views/forms/templates_fields.php:807, modules/formbuilder/views/forms/templates_fields.php:845, modules/formbuilder/views/forms/templates_fields.php:886, modules/formbuilder/views/forms/templates_fields.php:927, modules/formbuilder/views/forms/templates_fields.php:969, modules/formbuilder/views/forms/templates_fields.php:1015, modules/formbuilder/views/forms/templates_fields.php:1056, modules/formbuilder/views/forms/templates_fields.php:1096, modules/formbuilder/views/forms/templates_fields.php:1164, modules/formbuilder/views/forms/templates_fields.php:1201, modules/formbuilder/views/forms/templates_fields.php:1245, modules/formbuilder/views/forms/templates_fields.php:1289, modules/formbuilder/views/forms/templates_fields.php:1331, modules/formbuilder/views/forms/templates_fields.php:1368, modules/formbuilder/views/forms/templates_fields.php:1415, modules/formbuilder/views/forms/templates_fields.php:1452, modules/formbuilder/views/forms/templates_fields.php:1500, modules/formbuilder/views/forms/templates_fields.php:1535, modules/formbuilder/views/forms/templates_fields.php:1569, modules/formbuilder/views/forms/templates_fields.php:1603, modules/formbuilder/views/forms/templates_fields.php:1637, modules/formbuilder/views/forms/templates_fields.php:1671, modules/formbuilder/views/forms/templates_fields.php:1694, modules/formbuilder/views/forms/templates_fields.php:1732, modules/formbuilder/views/forms/templates_fields.php:1773, modules/formbuilder/views/forms/templates_fields.php:1812, modules/formbuilder/views/forms/templates_fields.php:1881, modules/formbuilder/views/forms/test_dcheckbox.php:200, modules/formbuilder/views/fields/modal/settings_field_helpblock.php:25, modules/formbuilder/views/fields/modal/settings_field_misc.php:34, modules/formbuilder/views/fields/templates/prevpanel_appetext.php:54, modules/formbuilder/views/fields/templates/prevpanel_captcha.php:81, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:64, modules/formbuilder/views/fields/templates/prevpanel_colorpicker.php:50, modules/formbuilder/views/fields/templates/prevpanel_customhtml.php:50, modules/formbuilder/views/fields/templates/prevpanel_datepicker.php:57, modules/formbuilder/views/fields/templates/prevpanel_datetime.php:55, modules/formbuilder/views/fields/templates/prevpanel_datetime_2.php:59, modules/formbuilder/views/fields/templates/prevpanel_dyncheckbox.php:51, modules/formbuilder/views/fields/templates/prevpanel_dynradiobtn.php:51, modules/formbuilder/views/fields/templates/prevpanel_fileupload.php:58, modules/formbuilder/views/fields/templates/prevpanel_heading1.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading2.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading3.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading4.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading5.php:48, modules/formbuilder/views/fields/templates/prevpanel_heading6.php:48, modules/formbuilder/views/fields/templates/prevpanel_imageupload.php:61, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:56, modules/formbuilder/views/fields/templates/prevpanel_password.php:51, modules/formbuilder/views/fields/templates/prevpanel_prepapptext.php:55, modules/formbuilder/views/fields/templates/prevpanel_preptext.php:54, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:63, modules/formbuilder/views/fields/templates/prevpanel_range.php:54, modules/formbuilder/views/fields/templates/prevpanel_ratingstar.php:49, modules/formbuilder/views/fields/templates/prevpanel_recaptcha.php:50, modules/formbuilder/views/fields/templates/prevpanel_select.php:56, modules/formbuilder/views/fields/templates/prevpanel_slider.php:59, modules/formbuilder/views/fields/templates/prevpanel_spinner.php:53, modules/formbuilder/views/fields/templates/prevpanel_submitbtn.php:50, modules/formbuilder/views/fields/templates/prevpanel_switch.php:51, modules/formbuilder/views/fields/templates/prevpanel_textarea.php:50, modules/formbuilder/views/fields/templates/prevpanel_textbox.php:49, modules/formbuilder/views/fields/templates/prevpanel_timepicker.php:57, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:36
 msgid "Help block text"
 msgstr ""
 

@@ -377,7 +377,7 @@ $default_template = ob_get_clean();
 	 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
 		<div id="zgfm-blocked-feature-pdf-box">
 			<?php $message = __( 'Invoice', 'FRocket_admin' ); ?>
-				<?php include( UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php' ); ?>
+				<?php include UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php'; ?>
 			</div>
 		<?php } else { ?>
 			

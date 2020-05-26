@@ -68,11 +68,11 @@ class Uiform_Pg_Controller_Settings extends Uiform_Base_Module {
 		$json = array();
 		switch ( $pg_id ) {
 			case 1:
-				//offline
+				// offline
 				$json['offline_return_url'] = ( $_POST['offline_return_url'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['offline_return_url'] ) : '';
 				break;
 			case 2:
-				//paypal
+				// paypal
 				$json['paypal_email']      = ( $_POST['paypal_email'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['paypal_email'] ) : '';
 				$json['paypal_currency']   = ( $_POST['paypal_currency'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['paypal_currency'] ) : '';
 				$json['paypal_return_url'] = ( $_POST['paypal_return_url'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['paypal_return_url'] ) : '';
@@ -171,8 +171,8 @@ class Uiform_Pg_Controller_Settings extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

@@ -38,10 +38,10 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	private $wpdb       = '';
 	protected $modules;
 
-	//adding libs
+	// adding libs
 	public $local_controllers = array();
 
-	//adding routes
+	// adding routes
 	public $local_back_actions = array(
 		array(
 			'action'        => 'back_exttab_block',
@@ -59,7 +59,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	);
 
 
-		//adding js actions
+		// adding js actions
 	public $js_back_actions = array(
 
 		array(
@@ -100,7 +100,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	protected function __construct() {
 		global $wpdb;
 		$this->wpdb = $wpdb;
-		//admin resources
+		// admin resources
 		add_action( 'admin_enqueue_scripts', array( &$this, 'load_dependencies' ), 20, 1 );
 	}
 
@@ -139,9 +139,9 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	* load css, and javascript files
 	*/
 	public function load_dependencies() {
-		//css
+		// css
 		wp_enqueue_style( 'zgfm-woocommerce-style', UIFORM_FORMS_URL . '/modules/addon_woocommerce/views/backend/assets/style.css' );
-		//load
+		// load
 		 wp_enqueue_script( 'zgfm_back_woocommerce_js', UIFORM_FORMS_URL . '/modules/addon_woocommerce/views/backend/assets/back.js', array(), UIFORM_VERSION, true );
 	}
 
@@ -186,8 +186,8 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

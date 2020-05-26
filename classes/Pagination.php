@@ -79,7 +79,7 @@ class CI_Pagination {
 			$this->anchor_class = 'class="' . $this->anchor_class . '" ';
 		}
 
-		//log_message('debug', "Pagination Class Initialized");
+		// log_message('debug', "Pagination Class Initialized");
 	}
 
 	// --------------------------------------------------------------------
@@ -131,9 +131,10 @@ class CI_Pagination {
 		}
 
 		// Determine the current page number.
-		//$CI =& get_instance();
+		// $CI =& get_instance();
 
-		/*if ($this->page_query_string === TRUE)
+		/*
+		if ($this->page_query_string === TRUE)
 		{
 			if ($CI->input->get($this->query_string_segment) != $base_page)
 			{
@@ -164,7 +165,7 @@ class CI_Pagination {
 		$this->num_links = (int) $this->num_links;
 
 		if ( $this->num_links < 1 ) {
-			//show_error('Your number of links must be a positive number.');
+			// show_error('Your number of links must be a positive number.');
 		}
 
 		if ( ! is_numeric( $this->cur_page ) ) {
@@ -288,5 +289,6 @@ class CI_Pagination {
 }
 // END Pagination Class
 
-/* End of file Pagination.php */
+/*
+ End of file Pagination.php */
 /* Location: ./system/libraries/Pagination.php */

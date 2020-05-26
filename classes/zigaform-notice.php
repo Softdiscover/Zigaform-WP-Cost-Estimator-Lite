@@ -22,12 +22,12 @@ class Zigaform_c_notice {
 		global $wpdb;
 		$this->wpdb = $wpdb;
 
-		//admin notice
+		// admin notice
 		add_action( 'admin_notices', array( $this, 'notice_add' ) );
 		add_action( 'wp_ajax_zgfm_c_notice_dismiss', array( $this, 'notice_dismiss' ) );
 		add_action( 'wp_ajax_zgfm_c_notice_rated', array( $this, 'notice_rated' ) );
 
-		//footer
+		// footer
 		add_filter( 'admin_footer_text', array( $this, 'notice_footer' ), 1, 2 );
 
 	}
@@ -35,7 +35,6 @@ class Zigaform_c_notice {
 
 	/**
 	 * Adding admin notice
-	 *
 	 */
 	public function notice_rated() {
 
@@ -51,11 +50,10 @@ class Zigaform_c_notice {
 
 	/**
 	 * Adding admin notice
-	 *
 	 */
 	public function notice_add() {
 
-		//only for super admin
+		// only for super admin
 		if ( ! is_super_admin() ) {
 			return;
 		}
@@ -65,7 +63,7 @@ class Zigaform_c_notice {
 		$time = time();
 		$load = false;
 
-		//if rated, not load
+		// if rated, not load
 		if ( ( isset( $data['rated'] ) && $data['rated'] ) ) {
 				return;
 		}
@@ -114,7 +112,7 @@ class Zigaform_c_notice {
 		}
 
 		// after 7 days, add the message
-		//include(dirname(__DIR__) . '/views/help/notice-1.php');
+		// include(dirname(__DIR__) . '/views/help/notice-1.php');
 		if ( ZIGAFORM_C_LITE === 1 ) {
 			$notice_url          = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
 				$notice_heading  = esc_html__( 'Thanks for using Zigaform!', 'FRocket_admin' );
@@ -153,12 +151,12 @@ class Zigaform_c_notice {
 						</button>
 				</div>
 		</div><?php
-		//Notice CSS
+		// Notice CSS
 		wp_register_style( 'zgfm-style-global-css', UIFORM_FORMS_URL . '/assets/backend/css/global-ext.css', array(), UIFORM_VERSION );
-		//Notice CSS
+		// Notice CSS
 		wp_enqueue_style( 'zgfm-style-global-css' );
 
-		//Notice JS
+		// Notice JS
 		wp_register_script(
 			'zgfm-script-global-js',
 			UIFORM_FORMS_URL . '/assets/backend/js/global-ext.js',
@@ -166,9 +164,9 @@ class Zigaform_c_notice {
 				'jquery',
 			),
 			UIFORM_VERSION
-        );
+			  );
 
-			  //Notice JS
+			  // Notice JS
 			  wp_enqueue_script( 'zgfm-script-global-js', '', array(), '', true );
 
 	}
@@ -176,7 +174,6 @@ class Zigaform_c_notice {
 
 	/**
 	 * Dismiss notice
-	 *
 	 */
 	public function notice_dismiss() {
 
@@ -192,7 +189,6 @@ class Zigaform_c_notice {
 
 	/**
 	 * When user is on zigaform admin page, display footer text that asks them to rate us.
-	 *
 	 */
 	public function notice_footer( $text ) {
 

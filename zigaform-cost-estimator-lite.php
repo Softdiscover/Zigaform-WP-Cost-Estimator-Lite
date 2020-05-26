@@ -3,7 +3,7 @@
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for WordPress.
- * Version: 4.7.5
+ * Version: 4.7.6
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '4.7.5';
+		public $version = '4.7.6';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -74,7 +74,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		public static function instance() {
 			$class_name = get_class();
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof $class_name ) ) {
-				self::$instance = new $class_name;
+				self::$instance = new $class_name();
 			}
 
 			return self::$instance;
@@ -84,7 +84,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 			// Save the class name for later use
 			$this->class_name = get_class();
 			 //
-			//  Plug-in requirements
+			// Plug-in requirements
 			//
 			$this->define_constants();
 			$this->load_dependencies();
@@ -129,13 +129,13 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		 */
 		public function activate( $network_wide = false ) {
 
-			$zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
+			$zgfm_is_installed = self::another_zgfm_isInstalled();
 
 			if ( $zgfm_is_installed['result'] ) {
 				wp_die( $zgfm_is_installed['message2'] );
 			}
 
-			require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php' );
+			require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
 			$installdb = new Uiform_InstallDB();
 			$installdb->install( $network_wide );
 			return true;
@@ -157,7 +157,8 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		*/
 		public static function another_zgfm_isInstalled() {
 
-			 /*if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
+			 /*
+			 if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
 				 return true;
 			 }*/
 
@@ -207,11 +208,11 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		}
 
 		/**
-		* check_requirements()
-		* Checks that the WordPress setup meets the plugin requirements
-		*
-		* @return boolean
-		*/
+		 * check_requirements()
+		 * Checks that the WordPress setup meets the plugin requirements
+		 *
+		 * @return boolean
+		 */
 		private function check_requirements() {
 			global $wp_version;
 			if ( ! version_compare( $wp_version, $this->wp_version, '>=' ) ) {
@@ -224,8 +225,8 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 				return false;
 			}
 
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			 $zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+			 $zgfm_is_installed = self::another_zgfm_isInstalled();
 			if ( $zgfm_is_installed['result'] ) {
 				return false;
 			}
@@ -266,7 +267,8 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 
 		/**
 		 * Define constant if not already set
-		 * @param  string $name
+		 *
+		 * @param  string      $name
 		 * @param  string|bool $value
 		 */
 		private function define( $name, $value ) {
@@ -285,9 +287,9 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 				require_once UIFORM_FORMS_DIR . '/classes/uiform-base-module.php';
 				require_once UIFORM_FORMS_DIR . '/classes/uiform-form-helper.php';
 				require_once UIFORM_FORMS_DIR . '/classes/uiform-bootstrap.php';
-				//include UIFORM_FORMS_DIR . '/helpers/styles-font-menu/plugin.php';
+				// include UIFORM_FORMS_DIR . '/helpers/styles-font-menu/plugin.php';
 				require_once UIFORM_FORMS_DIR . '/classes/zigaform-notice.php';
-				//require_once UIFORM_FORMS_DIR . '/classes/zgfm_core_addon.php';
+				// require_once UIFORM_FORMS_DIR . '/classes/zgfm_core_addon.php';
 			}
 
 			// Front-End Site
@@ -304,7 +306,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		private function check_updateChanges() {
 			global $wpdb;
 			$version     = UIFORM_VERSION;
-			$install_ver = get_option( 'uifmcostest_version' );
+			$install_ver = get_option( 'uifmcostest_version' , UIFORM_VERSION);
 
 			require_once UIFORM_FORMS_DIR . '/libraries/updates.php';
 
@@ -319,7 +321,7 @@ function uiform_uninstallLite() {
 	if ( $zgfm_is_installed['result'] ) {
 
 	} else {
-		require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
 		$installdb = new Uiform_InstallDB();
 		$installdb->uninstall();
 	}
