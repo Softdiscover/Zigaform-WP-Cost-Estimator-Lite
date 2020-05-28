@@ -33015,8 +33015,10 @@ if (!$uifm.isFunction(zgfm_back_upgrade)) {
 			uiformDCheckbox.prototype._constructor = uiformDCheckbox;
 
 			uiformDCheckbox.prototype._refresh = function () {
+				this.$canvas_parent=this.$element.closest('.rockfm-input17-wrap').width();
 				this._enableCheckboxVal(this.$opt_gal_checkbox, this);
 				this._setValToChkBoxInput(this);
+				this._get_items();
 			};
 
 			uiformDCheckbox.prototype._mod2_initPreview = function () {
@@ -33058,10 +33060,16 @@ if (!$uifm.isFunction(zgfm_back_upgrade)) {
 
 				var closestParentDiv=this.$canvas_parent;
 
-				 				var new_width, new_height;
+								var new_width, new_height;
 				if(tmp_can_width > closestParentDiv){
-					new_width = closestParentDiv;
-					new_height = new_width/aspectRatio;
+
+					if(parseInt(closestParentDiv)>0){
+						new_width = closestParentDiv;
+					}else{
+						new_width = tmp_can_width;
+					}
+
+										new_height = new_width/aspectRatio;
 				}else{
 					new_width = tmp_can_width;
 					new_height = tmp_can_height;

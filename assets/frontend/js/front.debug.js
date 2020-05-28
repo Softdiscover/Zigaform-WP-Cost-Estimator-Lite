@@ -1323,9 +1323,29 @@ if (!$uifm.isFunction(rocketfm)) {
 					});
 				}
 			};
+
+
+
+			arguments.callee.refresh_fields = function (el) {
+
+								let obj_form=this.getInnerVariable('val_curform_obj');
+						if (obj_form.find('.rockfm-input17-wrap .uifm-dcheckbox-item').length) {
+							obj_form.find('.rockfm-input17-wrap .uifm-dcheckbox-item').uiformDCheckbox('_refresh');
+						}
+
+						if (obj_form.find('.rockfm-input17-wrap .uifm-dradiobtn-item').length) {
+							obj_form.find('.rockfm-input17-wrap .uifm-dradiobtn-item').uiformDCheckbox('_refresh');
+						}
+			};
+
+
 			arguments.callee.wizard_nextButton = function (el) {
+
 				var el_form = $(el).closest('.rockfm-form');
 				this.setInnerVariable('val_curform_obj', el_form);
+
+
+
 				rocketfm.setInnerVariable('submitting_form_id', el_form.find('._rockfm_form_id').val());
 
 				var objform = $(el).closest('.rockfm-form');
@@ -1405,6 +1425,8 @@ if (!$uifm.isFunction(rocketfm)) {
 						parentIFrame.size(); 
 					}
 				}
+
+				this.refresh_fields();
 			};
 
 			arguments.callee.wizard_nextButton_validate = function (el_form, res_val, callback) {
@@ -1475,6 +1497,8 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 
 				$('.popover').popover('hide');
+
+				this.refresh_fields();
 			};
 			arguments.callee.payment_checkSelectedRdo = function (objwrap) {
 				var $return;
@@ -4801,8 +4825,10 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 			uiformDCheckbox.prototype._constructor = uiformDCheckbox;
 
 			uiformDCheckbox.prototype._refresh = function () {
+				this.$canvas_parent=this.$element.closest('.rockfm-input17-wrap').width();
 				this._enableCheckboxVal(this.$opt_gal_checkbox, this);
 				this._setValToChkBoxInput(this);
+				this._get_items();
 			};
 
 			uiformDCheckbox.prototype._mod2_initPreview = function () {
@@ -4844,10 +4870,16 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 				var closestParentDiv=this.$canvas_parent;
 
-				 				var new_width, new_height;
+								var new_width, new_height;
 				if(tmp_can_width > closestParentDiv){
-					new_width = closestParentDiv;
-					new_height = new_width/aspectRatio;
+
+					if(parseInt(closestParentDiv)>0){
+						new_width = closestParentDiv;
+					}else{
+						new_width = tmp_can_width;
+					}
+
+										new_height = new_width/aspectRatio;
 				}else{
 					new_width = tmp_can_width;
 					new_height = tmp_can_height;
