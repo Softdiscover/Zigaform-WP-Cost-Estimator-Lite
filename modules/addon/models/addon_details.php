@@ -64,6 +64,7 @@ class Uiform_Model_Addon_Details {
 
 
 	function existRecord( $addon_name, $form_id ) {
+	 
 		$query = sprintf(
 			'select 
                 COUNT(*) as count
@@ -73,6 +74,7 @@ class Uiform_Model_Addon_Details {
 			$addon_name,
 			(int) $form_id
 		);
+		 
 		 $row  = $this->wpdb->get_row( $query );
 		if ( intval( $row->count ) > 0 ) {
 			return 1;

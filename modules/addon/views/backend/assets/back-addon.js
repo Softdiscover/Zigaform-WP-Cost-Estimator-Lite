@@ -32,33 +32,9 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 			};
 
 			this.load_addon = function () {
-				//load addons
-				let tmp_addon_arr = uiform_vars.addon;
-
-				var tmp_function;
-				var tmp_controller;
-				var addon_data;
-				for (var property1 in tmp_addon_arr) {
-					if ('onLoadForm_loadAddon' === String(property1)) {
-						for (var property2 in tmp_addon_arr[property1]) {
-							for (var property3 in tmp_addon_arr[property1][property2]) {
-								tmp_controller = tmp_addon_arr[property1][property2][property3]['controller'];
-								tmp_function = tmp_addon_arr[property1][property2][property3]['function'];
-
-								addon_data = settings['data'][property3] || {};
-								window[tmp_controller][tmp_function](addon_data);
-							}
-						}
-					}
-				}
-
-				/* switch(String(addon_name)) {
-                        case 'func_anim':
-                           zgfm_back_addon_anim.load_settings(addon_data);
-                            break;
-                        default:
-                            
-                    }  */
+			 
+                wp.hooks.applyFilters( 'zgfm.onLoadForm_loadAddon');
+                
 			};
 
 			/*

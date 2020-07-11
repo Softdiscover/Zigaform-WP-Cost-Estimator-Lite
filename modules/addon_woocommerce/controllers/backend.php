@@ -37,60 +37,17 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	var $per_page       = 5;
 	private $wpdb       = '';
 	protected $modules;
-
+	public $model_addon_details;
+	
 	// adding libs
 	public $local_controllers = array();
 
 	// adding routes
-	public $local_back_actions = array(
-		array(
-			'action'        => 'back_exttab_block',
-			'function'      => 'get_content',
-			'accepted_args' => 0,
-			'priority'      => 1,
-		),
-		array(
-			'action'        => 'saveForm_store',
-			'function'      => 'saveData',
-			'accepted_args' => 0,
-			'priority'      => 1,
-		),
-
-	);
+	public $local_back_actions = array();
 
 
 		// adding js actions
-	public $js_back_actions = array(
-
-		array(
-			'action'        => 'onLoadForm_loadAddon',
-			'function'      => 'load_settings',
-			'controller'    => 'zgfm_back_addon_woocomm',
-			'accepted_args' => 0,
-			'priority'      => 1,
-		),
-		array(
-			'action'        => 'onFieldCreation_post',
-			'function'      => 'onFieldCreation_post',
-			'controller'    => 'zgfm_back_addon_woocomm',
-			'accepted_args' => 0,
-			'priority'      => 1,
-		),
-		array(
-			'action'        => 'getData_beforeSubmitForm',
-			'function'      => 'get_currentDataToSave',
-			'controller'    => 'zgfm_back_addon_woocomm',
-			'accepted_args' => 0,
-			'priority'      => 1,
-		),
-		array(
-			'action'        => 'tinyMCE_onChange',
-			'function'      => 'tinyMCE_onChange',
-			'controller'    => 'zgfm_back_addon_woocomm',
-			'accepted_args' => 1,
-			'priority'      => 1,
-		),
-	);
+	public $js_back_actions = array();
 
 	/**
 	 * Constructor
@@ -100,12 +57,51 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	protected function __construct() {
 		global $wpdb;
 		$this->wpdb = $wpdb;
+		$this->model_addon_details = self::$_models['addon']['addon_details'];
 		// admin resources
 		add_action( 'admin_enqueue_scripts', array( &$this, 'load_dependencies' ), 20, 1 );
+		
+		add_filter( 'zgfm_saveForm_store', array( &$this, 'saveData' ), 10 , 2 );
+		
+		//load options
+		add_action( 'wp_ajax_zgfm_back_woocommerce_load_settings', array( &$this, 'ajax_load_settings' ) );
+		// add content to extension tab
+		add_filter( 'zgfm_back_exttab_block', array( &$this, 'back_exttab_block' ) );
 	}
 
-	public function saveData( $form_id, &$fmb_data ) {
+	/**
+	   * Add data to filter
+	   */
+	  public function back_exttab_block( $filter_data ) {
+		// load form variables
+		$filter_data[] = $this->get_content();
+		return $filter_data;
+	}
+	
+	public function ajax_load_settings() {
+		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 
+		$json      = array();
+		$tmp_addon = array();
+		$form_id   = ( isset( $_POST['form_id'] ) ) ? Uiform_Form_Helper::sanitizeInput( trim( $_POST['form_id'] ) ) : '';
+	 
+		$tmp_data = $this->model_addon_details->getAddonDataByForm( 'woocommerce', $form_id );
+		if ( ! empty( $tmp_data ) ) {
+			$tmp_addon = json_decode( $tmp_data->adet_data, true );
+		}else{
+			$tmp_addon = array();
+		}
+		$json['data'] = $tmp_addon;
+		  //return data to ajax callback
+		  header( 'Content-Type: application/json' );
+		  echo json_encode( $json );
+		  wp_die();
+	}
+	
+	public function saveData( $fmb_data , $form_id ) {
+		if(!isset($fmb_data['addons']['woocommerce'])){
+			return $fmb_data;
+		}
 		$data_addon = $fmb_data['addons']['woocommerce'];
 
 		$data_addon_store = json_encode( $data_addon );
@@ -131,7 +127,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 
 			$this->wpdb->insert( self::$_models['addon']['addon_details']->table, $newdata );
 		}
-
+		return $fmb_data;
 	}
 
 
@@ -142,7 +138,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 		// css
 		wp_enqueue_style( 'zgfm-woocommerce-style', UIFORM_FORMS_URL . '/modules/addon_woocommerce/views/backend/assets/style.css' );
 		// load
-		 wp_enqueue_script( 'zgfm_back_woocommerce_js', UIFORM_FORMS_URL . '/modules/addon_woocommerce/views/backend/assets/back.js', array(), UIFORM_VERSION, true );
+		 wp_enqueue_script( 'zgfm_back_woocommerce_js', UIFORM_FORMS_URL . '/modules/addon_woocommerce/views/backend/assets/back.js', array( 'wp-i18n', 'wp-hooks' ), ( UIFORM_DEBUG ) ? date( 'YmdHis' ) : 1, true );
 	}
 
 	public function get_content() {

@@ -40,6 +40,7 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
 				//fill select list of form values
 				$('#woocmc_quantity').html('');
+				$('#woocmc_quantity').append($('<option></option>').attr('value', "1").text('None'));
 				$.each(tmp_options, function (key2, value2) {
 					$('#woocmc_quantity').append($('<option></option>').attr('value', value2['id']).attr('data-type', value2['type']).text(value2['name']));
 				});
@@ -50,15 +51,35 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				this.load_events();
 			};
 
-			this.load_settings = function (options) {
-				//load data
-				settings = $.extend(true, {}, defaults, { data: options });
-
-				//show options
-				this.show_options();
-
-				//load events
-				this.load_events_once();
+			this.load_settings = function () {
+			
+				var idform=$('#uifm_frm_main_id').val();
+                $.ajax({
+                    type: 'POST',
+                    url: ajaxurl,
+                    data: {
+                       'action': 'zgfm_back_woocommerce_load_settings',
+                       'page':'zgfm_cost_estimate',
+                       'zgfm_security':uiform_vars.ajax_nonce,
+                       'form_id':parseInt(idform)
+                        },
+                        success: function(msg) {
+                           //load data
+                           if(msg.data.status){
+                            settings = $.extend(true, {}, defaults, { data: msg.data });
+                           }else{
+                            settings = $.extend(true, {}, defaults);
+                           }
+                           
+                        //show options
+						zgfm_back_addon_woocomm.show_options();
+		
+						//load events
+						zgfm_back_addon_woocomm.load_events_once();
+                        }
+                });
+			
+			 
 			};
 
 			this.load_events_once = function () {
@@ -100,6 +121,9 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
 					zgfm_back_addon_woocomm.update_settings(f_store, f_val);
 				});
+				
+			 
+				
 			};
 
 			/*
@@ -170,13 +194,12 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
 				//fill select list of form values
 				$('#woocmc_quantity').html('');
+				$('#woocmc_quantity').append($('<option></option>').attr('value', "1").text('None'));
 				$.each(tmp_options, function (key2, value2) {
 					$('#woocmc_quantity').append($('<option></option>').attr('value', value2['id']).attr('data-type', value2['type']).text(value2['name']));
 				});
 
 				$('#woocmc_quantity').val(tmp_wc_quantity);
-
-				//$('#woocmc_quantity').val(tmp_wc_quantity);
 
 				let tmp_status_2 = settings['data']['summ_status'];
 
@@ -189,10 +212,10 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				let tmp_summ_title = settings['data']['summ_title'];
 				$('#woocmc_summ_title').val(tmp_summ_title);
 
-				let tmp_summ_content = settings['data']['summ_content'];
-
+				let tmp_summ_content = settings['data']['summ_content']||'';
 				if (typeof tinymce != 'undefined') {
 					var editor = tinymce.get('woocmc_summ_content');
+					
 					if (editor && editor instanceof tinymce.Editor) {
 						var content = tmp_summ_content;
 						editor.setContent(content, { format: 'html' });
@@ -210,11 +233,12 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 			 */
 			this.onFieldCreation_post = function () {
 				//load fields
-				this.refresh_options();
+				zgfm_back_addon_woocomm.refresh_options();
 			};
 
-			this.get_currentDataToSave = function () {
-				return settings['data'];
+			this.get_currentDataToSave = function (result) {
+				result['woocommerce']=settings['data'];
+                return result;
 			};
 
 			this.dataFields_load = function () {
@@ -295,5 +319,30 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 			};
 		};
 		window.zgfm_back_addon_woocomm = zgfm_back_addon_woocomm = $.zgfm_back_addon_woocomm = new zgfm_fn_woocomm();
+		
+		 //adding hook
+		 const { addFilter } = wp.hooks;
+		 //before submit form
+			 addFilter(
+			   "zgfm.onLoadForm_loadAddon",
+			   "zgfm_back_addon_woocomm/load_settings",
+			   zgfm_back_addon_woocomm.load_settings
+			 );	
+			 addFilter(
+				"zgfm.onLoadForm_loadAddon",
+				"zgfm_back_addon_woocomm/onFieldCreation_post",
+				zgfm_back_addon_woocomm.onFieldCreation_post
+			  );
+			  addFilter(
+				"zgfm.getData_beforeSubmitForm",
+				"zgfm_back_addon_woocomm/get_currentDataToSave",
+				zgfm_back_addon_woocomm.get_currentDataToSave
+			  ); 
+			  addFilter(
+				"zgfm.tinyMCE_onChange",
+				"zgfm_back_addon_woocomm/tinyMCE_onChange",
+				zgfm_back_addon_woocomm.tinyMCE_onChange
+			  );  
+		
 	})($uifm, window);
 }

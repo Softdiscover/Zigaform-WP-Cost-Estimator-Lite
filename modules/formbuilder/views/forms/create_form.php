@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				   href="#uiformc-menu-sec6"><?php echo __( 'Calculation', 'FRocket_admin' ); ?></a>
 			</li>
 			
-			<?php if ( isset( $addons_actions['back_exttab_block'] ) ) { ?>
+			<?php if ( ! empty( $modules_tab_extension ) ) { ?>
 			
 			<li><a data-toggle="sfdc-tab"
 				   class="uiform-settings-extensions"
@@ -142,12 +142,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			  
 			</div>
 		</div>
-		<?php if ( isset( $addons_actions['back_exttab_block'] ) ) { ?>
+		
+		<?php if ( ! empty( $modules_tab_extension ) ) { ?>
 		<div id="uiformc-menu-sec7" class="sfdc-tab-pane ">
 			<div class="uiformc-tab-content-inner2 clearfix">
 					<!-- load modules -->
 			  <?php
-				if ( ! empty( $modules_tab_extension ) ) {
+				 
 					$count = 1;
 					?>
 				  <div class="sfdc-col-xs-3">
@@ -188,16 +189,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 						
 					</div> 
-					
-					
-					
-					<?php
-
-				}
-
-
-				?>
-	
+					 
 	<!--/ load modules -->
 			</div>
 		</div>

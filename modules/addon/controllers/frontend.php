@@ -73,9 +73,10 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 
 			// load addons
 			require_once UIFORM_FORMS_DIR . '/modules/addon_' . $value->add_name . '/controllers/frontend.php';
-
+			call_user_func( array( 'zfaddn_' . $value->add_name . '_front', 'get_instance' ) );
+			
 			 // $tmp_modules_arr['addon_'.$value->add_name]=array( 'back' => call_user_func( array( 'zfaddn_back_'.$value->add_name, 'get_instance' ) ));
-
+			/*
 			$tmp_add_new_contr             = array();
 			$tmp_add_new_contr['frontend'] = call_user_func( array( 'zfaddn_' . $value->add_name . '_front', 'get_instance' ) );
 			$tmp_add_new_flag              = array();
@@ -84,7 +85,7 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 			$tmp_add_new_contr = array_merge( $tmp_add_new_contr, $tmp_add_new_flag );
 
 			// $tmp_modules_arr['addon_'.$value->add_name] = $tmp_add_new_contr;
-			self::$_addons[ $value->add_name ] = $tmp_add_new_contr;
+			self::$_addons[ $value->add_name ] = $tmp_add_new_contr;*/
 		}
 
 		// self::$_addons = $tmp_addons_arr;

@@ -72,58 +72,83 @@ class Uiform_Backup {
 				ini_set( 'memory_limit', '1000M' );
 				set_time_limit( 0 );
 
-			if ( ( trim( (string) $database_name ) != '' ) && ( trim( (string) $database_user ) != '' ) && ( trim( (string) $database_host ) != '' ) && ( $conn = @mysql_connect( (string) $database_host, (string) $database_user, (string) $datadase_password ) ) ) {
-				  /*BEGIN: Select the Database*/
-				if ( ! mysql_select_db( (string) $database_name, $conn ) ) {
-					$sql = 'CREATE DATABASE IF NOT EXISTS `' . (string) $database_name . '`';
-					mysql_query( $sql, $conn );
-					mysql_select_db( (string) $database_name, $conn );
-				}
-				/*END: Select the Database*/
+			if ( ( trim( (string) $database_name ) != '' ) &&
+			( trim( (string) $database_user ) != '' ) &&
+			( trim( (string) $database_host ) != '' )
+			 ) {
 
-				/*BEGIN: Remove All Tables from the Database*/
-
-				require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
-				$installdb  = new Uiform_InstallDB();
-				$dbTables   = array();
-				$dbTables[] = $installdb->form_history;
-				$dbTables[] = $installdb->form_fields;
-				$dbTables[] = $installdb->form_fields_type;
-				$dbTables[] = $installdb->form;
-				// $dbTables[]=$installdb->settings;
-				$dbTables[] = $installdb->pay_gateways;
-				$dbTables[] = $installdb->pay_records;
-				$dbTables[] = $installdb->pay_logs;
-				// $dbTables[]=$installdb->visitor;
-				// $dbTables[]=$installdb->visitor_error;
-
-				if ( count( $dbTables ) > 0 ) {
-					foreach ( $dbTables as $table_name ) {
-
-						mysql_query( 'DROP TABLE `' . (string) $database_name . "`.{$table_name}", $conn );
+				if ( function_exists( 'mysqli_connect' ) ) {
+					$conn = mysqli_connect( (string) $database_host, (string) $database_user, (string) $datadase_password, (string) $database_name );
+					if ( mysqli_connect_errno() ) {
+						throw new Exception( 'ERROR connecting database: ' . mysqli_connect_error() );
+						die();
 					}
-				}
 
-						/*END: Remove All Tables from the Database*/
+					/**
+					 * Disable foreign key checks
+					 */
+
+						mysqli_query( $conn, 'SET foreign_key_checks = 0' );
+
+					$sql = 'CREATE DATABASE IF NOT EXISTS \`' . (string) $database_name . '\`';
+
+					mysqli_query( $conn, $sql );
+
+						/*END: Select the Database*/
+
+					/*BEGIN: Remove All Tables from the Database*/
+					/*END: Remove All Tables from the Database*/
 
 					/*BEGIN: Restore Database Content*/
-				if ( isset( $database_file ) ) {
+					if ( isset( $database_file ) ) {
 
-					$sql_file = file_get_contents( $database_file, true );
+						$sql_file = file_get_contents( $database_file, true );
 
-					$sql_file    = strtr(
-						$sql_file,
-						array(
-							"\r\n" => "\n",
-							"\r"   => "\n",
-						)
-					);
-					$sql_queries = explode( ";\n", $sql_file );
+						$sql_file    = strtr(
+							$sql_file,
+							array(
+								"\r\n" => "\n",
+								"\r"   => "\n",
+							)
+						);
+						$sql_queries = explode( ";\n", $sql_file );
 
-					for ( $i = 0; $i < count( $sql_queries ); $i++ ) {
+						for ( $i = 0; $i < count( $sql_queries ); $i++ ) {
 
-						@mysql_query( $sql_queries[ $i ], $conn );
+							mysqli_query( $conn, $sql_queries[ $i ] );
+						}
+					}
+				} elseif ( $conn = @mysql_connect( (string) $database_host, (string) $database_user, (string) $datadase_password ) ) {
 
+						/*BEGIN: Select the Database*/
+					if ( ! mysql_select_db( (string) $database_name, $conn ) ) {
+						$sql = 'CREATE DATABASE IF NOT EXISTS \`' . (string) $database_name . '\`';
+						mysql_query( $sql, $conn );
+						mysql_select_db( (string) $database_name, $conn );
+					}
+					/*END: Select the Database*/
+
+					/*BEGIN: Remove All Tables from the Database*/
+					/*END: Remove All Tables from the Database*/
+
+					/*BEGIN: Restore Database Content*/
+					if ( isset( $database_file ) ) {
+
+						$sql_file = file_get_contents( $database_file, true );
+
+						$sql_file    = strtr(
+							$sql_file,
+							array(
+								"\r\n" => "\n",
+								"\r"   => "\n",
+							)
+						);
+						$sql_queries = explode( ";\n", $sql_file );
+
+						for ( $i = 0; $i < count( $sql_queries ); $i++ ) {
+
+							@mysql_query( $sql_queries[ $i ], $conn );
+						}
 					}
 				}
 			}

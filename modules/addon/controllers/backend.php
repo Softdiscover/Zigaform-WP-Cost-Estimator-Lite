@@ -34,7 +34,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 	const VERSION       = '0.1';
 	private $pagination = '';
-	var $per_page       = 100;
+	public $per_page       = 100;
 	private $wpdb       = '';
 	protected $modules;
 	private $model_addon = '';
@@ -54,7 +54,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 		add_action( 'admin_enqueue_scripts', array( &$this, 'loadStyle' ), 20, 1 );
 
 		add_filter( 'zgfm_back_filter_globalvars', array( &$this, 'filter_add_globalvariable' ) );
-
+		
 		// ajax for saving form
 		add_action( 'wp_ajax_rocket_fbuilder_addon_status', array( &$this, 'listaddon_updateStatus' ) );
 	}
@@ -87,7 +87,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 	}
 
 	public function filter_add_globalvariable( $value ) {
-		$value['addon'] = self::$_addons_jsactions;
+		/*$value['addon'] = self::$_addons_jsactions;*/
 		return $value;
 	}
 
@@ -105,7 +105,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 	public function loadStyle() {
 		// load
-		wp_enqueue_script( 'zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js' );
+		wp_enqueue_script( 'zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js', array(), (UIFORM_DEBUG) ? date('YmdHis'):1 , true );
 
 		wp_enqueue_style( 'zgfm_back_addon_css', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.css' );
 	}
@@ -114,123 +114,29 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 		// get addons
 		$tmp_addons = $this->model_addon->getListAddonsByBack();
-
+		
 		// flag variables
 		$tmp_addons_arr  = array();
 		$tmp_modules_arr = self::$_addons;
 
 		// storing lib objects
 		foreach ( $tmp_addons as $key => $value ) {
-
 			// load addons
 			require_once UIFORM_FORMS_DIR . '/modules/addon_' . $value->add_name . '/controllers/backend.php';
-
-			$tmp_add_new_contr = array();
-
-			$tmp_add_new_contr['backend'] = call_user_func( array( 'zfaddn_' . $value->add_name . '_back', 'get_instance' ) );
-
-			$tmp_add_new_flag = array();
-			$tmp_add_new_flag = call_user_func( array( $tmp_add_new_contr['backend'], 'add_controllers' ) );
-
-			$tmp_add_new_contr = array_merge( $tmp_add_new_contr, $tmp_add_new_flag );
-
-			self::$_addons[ $value->add_name ] = $tmp_add_new_contr;
-
+			call_user_func( array( 'zfaddn_' . $value->add_name . '_back', 'get_instance' ) );
+			 
 		}
 
 	}
 
 	public function load_addActions() {
-
-		$tmp_addons = self::$_addons;
-
-		$tmp_addons_actions = array();
-
-		/*
-		pending to add cache*/
-		// loop addons
-		foreach ( $tmp_addons as $key => $value ) {
-			// loop controllers
-			foreach ( $value as $key2 => $value2 ) {
-
-				$tmp_flag = array();
-				$tmp_flag = $value2->local_back_actions;
-
-				if ( ! empty( $tmp_flag ) ) {
-					foreach ( $tmp_flag as $key3 => $value3 ) {
-						$tmp_addons_actions[ $value3['action'] ][ $value3['priority'] ][ $key ] = array(
-							'function'      => $value3['function'],
-							'accepted_args' => $value3['accepted_args'],
-							'controller'    => $key2,
-
-						);
-					}
-				}
-			}
-		}
-
-		self::$_addons_actions = $tmp_addons_actions;
-
-		// add js actions
-		$tmp_addons_actions = array();
-
-		/*
-		pending to add cache*/
-		// loop addons
-		foreach ( $tmp_addons as $key => $value ) {
-			// loop controllers
-			foreach ( $value as $key2 => $value2 ) {
-
-				$tmp_flag = array();
-				$tmp_flag = $value2->js_back_actions;
-
-				if ( ! empty( $tmp_flag ) ) {
-					foreach ( $tmp_flag as $key3 => $value3 ) {
-						$tmp_addons_actions[ $value3['action'] ][ $value3['priority'] ][ $key ] = array(
-							'function'      => $value3['function'],
-							'accepted_args' => $value3['accepted_args'],
-							'controller'    => $value3['controller'],
-
-						);
-					}
-				}
-			}
-		}
-
-		self::$_addons_jsactions = $tmp_addons_actions;
-
+ 
 	}
 
 
 
 	public function addons_doActions( $section = '', $return_array = false ) {
-
-		if ( empty( self::$_addons_actions[ $section ] ) ) {
-			return '';
-		}
-
-		$tmp_addons = self::$_addons_actions[ $section ];
-
-		if ( $return_array ) {
-			$tmp_str = array();
-		} else {
-			$tmp_str = '';
-		}
-
-		if ( ! empty( $tmp_addons ) ) {
-			foreach ( $tmp_addons as $key => $value ) {
-				foreach ( $value as $key2 => $value2 ) {
-					if ( $return_array ) {
-						$tmp_str[] = call_user_func( array( self::$_addons[ $key2 ][ $value2['controller'] ], $value2['function'] ) );
-					} else {
-						$tmp_str .= call_user_func( array( self::$_addons[ $key2 ][ $value2['controller'] ], $value2['function'] ) );
-					}
-				}
-			}
-		}
-
-		return $tmp_str;
-
+ 
 	}
 
 	public function get_addon_content( $addon_name ) {

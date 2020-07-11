@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.8.0
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.8.0 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.8.3
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.8.3 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.8.0\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.8.3\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -433,67 +433,67 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:218
+#: modules/addon_func_anim/controllers/animation.php:228
 msgid "Customs"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:243
+#: modules/addon_func_anim/controllers/animation.php:253
 msgid "Attention Seekers"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:280
+#: modules/addon_func_anim/controllers/animation.php:290
 msgid "Bouncing Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:306
+#: modules/addon_func_anim/controllers/animation.php:316
 msgid "Bouncing Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:332
+#: modules/addon_func_anim/controllers/animation.php:342
 msgid "Fading Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:374
+#: modules/addon_func_anim/controllers/animation.php:384
 msgid "Fading Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:415
+#: modules/addon_func_anim/controllers/animation.php:425
 msgid "Flippers"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:440
+#: modules/addon_func_anim/controllers/animation.php:450
 msgid "Lightspeed"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:453
+#: modules/addon_func_anim/controllers/animation.php:463
 msgid "Rotating Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:478
+#: modules/addon_func_anim/controllers/animation.php:488
 msgid "Rotating Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:503
+#: modules/addon_func_anim/controllers/animation.php:513
 msgid "Specials"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:520
+#: modules/addon_func_anim/controllers/animation.php:530
 msgid "Zoom Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:545
+#: modules/addon_func_anim/controllers/animation.php:555
 msgid "Zoom Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:570
+#: modules/addon_func_anim/controllers/animation.php:580
 msgid "Slide Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:591
+#: modules/addon_func_anim/controllers/animation.php:601
 msgid "Slide Exits"
 msgstr ""
 
-#: modules/addon_woocommerce/controllers/frontend.php:298
+#: modules/addon_woocommerce/controllers/frontend.php:300
 msgid "Error! form was not added to cart "
 msgstr ""
 
@@ -529,11 +529,11 @@ msgstr ""
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1879
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1881
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2532
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2534
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -685,7 +685,7 @@ msgstr ""
 msgid "To form values"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:230, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/view_settings.php:48, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:114
+#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:222, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/view_settings.php:48, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:114
 msgid "Options"
 msgstr ""
 
@@ -805,7 +805,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:235
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:227
 msgid "Rollback"
 msgstr ""
 
@@ -981,39 +981,39 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:211
+#: modules/formbuilder/views/forms/create_form.php:203
 msgid "Dev Options"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:216
+#: modules/formbuilder/views/forms/create_form.php:208
 msgid "test"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:218
+#: modules/formbuilder/views/forms/create_form.php:210
 msgid "Show data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:220
+#: modules/formbuilder/views/forms/create_form.php:212
 msgid "Generate field static data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:237, modules/formbuilder/views/forms/settings_form_calc.php:83, modules/formbuilder/views/forms/settings_form_email.php:483, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_summbox.php:97
+#: modules/formbuilder/views/forms/create_form.php:229, modules/formbuilder/views/forms/settings_form_calc.php:83, modules/formbuilder/views/forms/settings_form_email.php:483, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_summbox.php:97
 msgid "Variables"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:240
+#: modules/formbuilder/views/forms/create_form.php:232
 msgid "C.Logic Graph"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:243
+#: modules/formbuilder/views/forms/create_form.php:235
 msgid "Refresh & Clean Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:253
+#: modules/formbuilder/views/forms/create_form.php:245
 msgid "preview"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:262
+#: modules/formbuilder/views/forms/create_form.php:254
 msgid "Save form"
 msgstr ""
 
@@ -1093,7 +1093,7 @@ msgstr ""
 msgid "The import has failed. press the accept button"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/formhtml_form.php:228, modules/formbuilder/views/forms/modal1_footer.php:18, modules/formbuilder/views/forms/templates_fields.php:1907, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
+#: modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/formhtml_form.php:229, modules/formbuilder/views/forms/modal1_footer.php:18, modules/formbuilder/views/forms/templates_fields.php:1907, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
 msgid "Close"
 msgstr ""
 
@@ -1353,15 +1353,15 @@ msgstr ""
 msgid "Panel"
 msgstr ""
 
-#: modules/formbuilder/views/forms/formhtml_form.php:93, modules/formbuilder/views/forms/settings_form_main_record.php:23
+#: modules/formbuilder/views/forms/formhtml_form.php:94, modules/formbuilder/views/forms/settings_form_main_record.php:23
 msgid "Summary"
 msgstr ""
 
-#: modules/formbuilder/views/forms/formhtml_form.php:165, modules/formbuilder/views/forms/templates_fields.php:164
+#: modules/formbuilder/views/forms/formhtml_form.php:166, modules/formbuilder/views/forms/templates_fields.php:164
 msgid "Previous"
 msgstr ""
 
-#: modules/formbuilder/views/forms/formhtml_form.php:168, modules/formbuilder/views/forms/templates_fields.php:167, modules/formbuilder/views/forms/templates_fields.php:1689, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:31
+#: modules/formbuilder/views/forms/formhtml_form.php:169, modules/formbuilder/views/forms/templates_fields.php:167, modules/formbuilder/views/forms/templates_fields.php:1689, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:31
 msgid "Next"
 msgstr ""
 

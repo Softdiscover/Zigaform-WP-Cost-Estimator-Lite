@@ -7184,22 +7184,7 @@ if (!$uifm.isFunction(rocketform)) {
 
 				zgfm_back_err.integrity_check();
 
-				let tmp_addon_arr = uiform_vars.addon;
-
-				var tmp_function;
-				var tmp_controller;
-
-				for (var property1 in tmp_addon_arr) {
-					if ('onFieldCreation_post' === String(property1)) {
-						for (var property2 in tmp_addon_arr[property1]) {
-							for (var property3 in tmp_addon_arr[property1][property2]) {
-								tmp_controller = tmp_addon_arr[property1][property2][property3]['controller'];
-								tmp_function = tmp_addon_arr[property1][property2][property3]['function'];
-								window[tmp_controller][tmp_function]();
-							}
-						}
-					}
-				}
+				wp.hooks.applyFilters( 'zgfm.onFieldCreation_post');
 
 				return id;
 			};
@@ -7302,7 +7287,7 @@ if (!$uifm.isFunction(rocketform)) {
 				addon_data['textarea_id'] = tab_opt;
 				addon_data['field_id'] = tmp_id;
 				addon_data['textarea_content'] = tmp_content;
-				zgfm_back_addon.do_action('tinyMCE_onChange', addon_data);
+				wp.hooks.applyFilters( 'zgfm.tinyMCE_onChange',addon_data);
 			};
 			arguments.callee.initPanel = function () {
 				this.loading_panelbox('rocketform-bk-dashboard', 1);
@@ -8136,8 +8121,7 @@ if (!$uifm.isFunction(rocketform)) {
 						});
 				}
 
-				var tmp_addon_data = zgfm_back_addon.do_action('getData_beforeSubmitForm', null);
-
+				var tmp_addon_data =wp.hooks.applyFilters( 'zgfm.getData_beforeSubmitForm', {} );
 				var editor;
 				var uifm_frm_inv_tpl_html;
 				var uifm_frm_inv_tpl_st = $('#uifm_frm_invoice_tpl_enable').bootstrapSwitchZgpb('state') ? 1 : 0;
@@ -14099,23 +14083,9 @@ if (!$uifm.isFunction(rocketform)) {
 						rocketform.formvariables_generateTable();
 						rocketform.customeremail_generateHtml();
 
-						let tmp_addon_arr = uiform_vars.addon;
+						wp.hooks.applyFilters( 'zgfm.fieldName_onBlur');
 
-						var tmp_function;
-						var tmp_controller;
-
-						for (var property1 in tmp_addon_arr) {
-							if ('fieldName_onBlur' === String(property1)) {
-								for (var property2 in tmp_addon_arr[property1]) {
-									for (var property3 in tmp_addon_arr[property1][property2]) {
-										tmp_controller = tmp_addon_arr[property1][property2][property3]['controller'];
-										tmp_function = tmp_addon_arr[property1][property2][property3]['function'];
-										window[tmp_controller][tmp_function]();
-									}
-								}
-							}
-						}
-					});
+											});
 
 					$(".uifm-fld-val-opts .sfdc-btn-group > .sfdc-btn[data-settings-option='group-checkboxes']").click(function () {
 						var element = $(this);
@@ -31269,22 +31239,8 @@ if (!$uifm.isFunction(zgfm_back_fld_options)) {
 
 				$('#uifm-field-opt-content .uiform-tab-content').height(tmp_height);
 
-				let tmp_addon_arr = uiform_vars.addon;
 
-				var tmp_function;
-				var tmp_controller;
-
-				for (var property1 in tmp_addon_arr) {
-					if ('getData_toFields' === String(property1)) {
-						for (var property2 in tmp_addon_arr[property1]) {
-							for (var property3 in tmp_addon_arr[property1][property2]) {
-								tmp_controller = tmp_addon_arr[property1][property2][property3]['controller'];
-								tmp_function = tmp_addon_arr[property1][property2][property3]['function'];
-								window[tmp_controller][tmp_function](step_pane, id);
-							}
-						}
-					}
-				}
+								wp.hooks.applyFilters( 'zgfm.getData_toFields',step_pane, id);
 
 				var pickfield = $('#' + id);
 

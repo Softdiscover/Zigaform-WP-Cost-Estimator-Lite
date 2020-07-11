@@ -46,14 +46,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 	// adding libs
 	public $local_controllers = array();
 	// adding actions
-	public $local_actions = array(
-		array(
-			'action'        => 'onSubmitForm_pos',
-			'function'      => 'submit_data',
-			'accepted_args' => 0,
-			'priority'      => 1,
-		),
-	);
+	public $local_actions = array();
 	// adding js actions
 	public $js_actions = array();
 
@@ -69,13 +62,18 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 		$this->model_form          = self::$_models['formbuilder']['form'];
 		$this->model_formrecords   = self::$_models['formbuilder']['form_records'];
 		$this->model_fields        = self::$_models['formbuilder']['fields'];
-
+		
+		//check if woocommerce constant is active
+		if (!defined('WC_VERSION')) {
+			return;
+		}
+		
 		// actions and filters
 		add_action( 'woocommerce_before_calculate_totals', array( &$this, 'wc_before_calculate_totals' ), 99 );
 
 		add_action( 'woocommerce_add_cart_item_data', array( &$this, 'wc_add_cart_item_data' ), 10, 2 );
 		add_filter( 'woocommerce_get_item_data', array( &$this, 'wc_get_item_data' ), 10, 2 );
-
+		
 		if ( version_compare( WC_VERSION, '3.2.6' ) >= 0 ) {
 			add_action( 'woocommerce_checkout_create_order_line_item', array( &$this, 'wc_checkout_create_order_line_item' ), 10, 4 );
 			add_action( 'woocommerce_new_order_item', array( &$this, 'wc_add_order_item_meta' ), 10, 3 );
@@ -90,6 +88,10 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 		// woocommerce custom queries
 		require_once UIFORM_FORMS_DIR . '/modules/addon_woocommerce/models/model-woocommerce.php';
 		$this->model_addon_woo = new zfaddn_woocommerce_model();
+		
+		//save on submit form
+		add_action( 'zgfm_onSubmitForm_pos', array( &$this, 'submit_data' ), 10, 2 );
+		
 	}
 
 	/*
@@ -221,10 +223,10 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 	 * sending info
 	 */
 
-	public function submit_data() {
+	public function submit_data($form_id , $record_id) {
 
 		try {
-
+		  
 			$form_id = self::$_form_data['form_id'];
 			$rec_id  = self::$_form_data['record_id'];
 
@@ -255,7 +257,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 
 			$quantity = 1;
 			$total    = $form_data->pgr_payment_amount;
-			if ( ! empty( $addon_data_tmp['wc_quantity'] ) ) {
+			if ( ! empty( $addon_data_tmp['wc_quantity'] ) && intval($addon_data_tmp['wc_quantity'])!=1 ) {
 				$quantity_field = $this->model_fields->getFieldNameByUniqueId( $addon_data_tmp['wc_quantity'], $form_id );
 
 				$quantity = $this->model_formrecords->getFieldOptRecord( $rec_id, $quantity_field->type, $addon_data_tmp['wc_quantity'], 'input', 'value' );

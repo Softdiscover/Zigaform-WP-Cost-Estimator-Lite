@@ -87,7 +87,6 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 			add_action( 'init', array( $this, 'init' ) );
 
 		} else {
-
 			  // load third party tools
 			$vendor_file = UIFORM_FORMS_DIR . '/helpers/vendor/autoload_52.php';
 			if ( is_readable( $vendor_file ) ) {

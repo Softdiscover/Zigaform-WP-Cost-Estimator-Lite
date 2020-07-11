@@ -1222,24 +1222,8 @@ if (!$uifm.isFunction(rocketfm)) {
 						}
 					}
 
-					let tmp_addon_arr = rockfm_vars['_uifmvar']['addon'];
 
-					var tmp_function;
-					var tmp_controller;
-
-					for (var property1 in tmp_addon_arr) {
-						if ('initForm_loadAddLibs' === String(property1)) {
-							for (var property2 in tmp_addon_arr[property1]) {
-								for (var property3 in tmp_addon_arr[property1][property2]) {
-									tmp_controller = tmp_addon_arr[property1][property2][property3]['controller'];
-									tmp_function = tmp_addon_arr[property1][property2][property3]['function'];
-
-									window[tmp_controller][tmp_function]();
-								}
-							}
-						}
-					}
-
+									    wp.hooks.applyFilters( 'zgfmfront.initForm_loadAddLibs');
 
 					zgfm_front_helper.load_form_init_events(obj_form);
 
@@ -3029,7 +3013,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 
 			this.costest_sticky_init = function (obj_form) {
 				var sm_pos_lbl = obj_form.find('.uiform-sticky-sidebar-box').attr('data-sticky-pos'),
-					sm_box_sd_width = '200';
+					sm_box_sd_width = obj_form.find('.uiform-sticky-sidebar-box').attr('data-sticky-width')||400;
 
 				obj_form.find('.uiform-sticky-sidebar-box').uiform_stickybox({
 					enable: 1,
