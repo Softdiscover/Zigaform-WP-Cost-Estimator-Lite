@@ -909,7 +909,12 @@ function uifm_generate_pdf( $html, $filename, $papersize, $paperorien, $stream =
 	if ( ZIGAFORM_C_LITE == 1 ) {
 
 	} else {
-		require_once UIFORM_FORMS_DIR . '/helpers/dompdf/autoload.inc.php';
+		if (version_compare(phpversion(), '7.1', '>='))
+		{
+			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/0.8.5/autoload.inc.php';
+		}else{
+			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/0.8.3/autoload.inc.php';
+		}
 
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml( $html );
