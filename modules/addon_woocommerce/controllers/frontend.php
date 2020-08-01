@@ -229,7 +229,6 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 		  
 			$form_id = self::$_form_data['form_id'];
 			$rec_id  = self::$_form_data['record_id'];
-
 			$form_data = $this->model_addon_woo->getData( $form_id, $rec_id );
 
 			$send_data              = array();

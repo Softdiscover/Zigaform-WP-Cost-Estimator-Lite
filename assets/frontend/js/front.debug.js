@@ -883,8 +883,10 @@ if (!$uifm.isFunction(rocketfm)) {
 						obj_form.addClass('rockfm-form-mloaded');
 
 						if (obj_form.find('.rockfm-input4-slider').length) {
-							obj_form.find('.rockfm-input4-slider').bootstrapSlider();
-							obj_form.find('.rockfm-input4-slider').on('slide', function (slideEvt) {
+
+							 							obj_form.find('.rockfm-input4-slider').bootstrapSlider();
+
+														obj_form.find('.rockfm-input4-slider').on('slide', function (slideEvt) {
 								$(this).parent().parent().find('.rockfm-input4-number').text(slideEvt.value);
 							});
 						}
@@ -2331,7 +2333,6 @@ if (!$uifm.isFunction(zgfm_front_calc)) {
 								switch (option) {
 									case 'char':
 										result = String(result);
-										console.log('getting : ' + result);
 										break;
 									case 'num':
 									default:

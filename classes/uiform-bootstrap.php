@@ -999,13 +999,13 @@ JS;
 			wp_enqueue_script( 'jquery-ui-button' );
 
 			// prev jquery
-			wp_enqueue_script( 'rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
+			wp_enqueue_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
 
 			// bootstrap
-			wp_enqueue_script( 'rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap.js', array( 'jquery', 'rockefform-prev-jquery' ) );
+			wp_enqueue_script( 'rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap.js', array( 'jquery', 'rockfm-prev-jquery' ) );
 
 			// bootstrap sfdc
-			wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockefform-prev-jquery' ) );
+			wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockfm-prev-jquery' ) );
 
 			// jasny bootstrap
 			wp_enqueue_script( 'rockefform-jasny-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bjasny/jasny-bootstrap.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
@@ -1129,7 +1129,7 @@ JS;
 			$form_variables['uifm_sfm_baseurl'] = UIFORM_FORMS_URL . '/libraries/styles-font-menu/styles-fonts/png/';
 			$form_variables['imagesurl']        = UIFORM_FORMS_URL . '/assets/frontend/images';
 
-			wp_localize_script( 'rockefform-prev-jquery', 'rockfm_vars', $form_variables );
+			wp_localize_script( 'rockfm-prev-jquery', 'rockfm_vars', $form_variables );
 
 	}
 
