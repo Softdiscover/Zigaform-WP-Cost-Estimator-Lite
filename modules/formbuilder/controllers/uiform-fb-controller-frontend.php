@@ -1504,11 +1504,23 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 									$form_f_tmp[ $key ]['lbl_show_st'] = isset( $tmp_fdata['price']['lbl_show_st'] ) ? $tmp_fdata['price']['lbl_show_st'] : 0;
 
 									// for records
-									$tmp_options_rec = array();
-								foreach ( $value as $value2 ) {
-									$tmp_options_rec[] = $value2;
+									$tmp_summary=array();
+								 
+								foreach ( $value as $key2 => $value2 ) {
+									$tmp_summary_inner='';
+									 
+									if(isset($tmp_fdata['input17']['options'][ $key2 ]['label'])){
+										$tmp_summary_inner.=$tmp_fdata['input17']['options'][ $key2 ]['label'];
+									}
+									
+									if(intval($value2) > 1){
+										$tmp_summary_inner.= ' - qty: '.$value2;
+									}
+									$tmp_summary[] = $tmp_summary_inner;
 								}
-									$form_f_rec_tmp[ $key ] = implode( '^,^', $tmp_options_rec );
+								 
+							 
+								$form_f_rec_tmp[ $key ] =implode('^,^', $tmp_summary);
 									// end for records
 
 								foreach ( $value as $key2 => $value2 ) {
