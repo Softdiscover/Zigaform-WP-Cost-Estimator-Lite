@@ -87,13 +87,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 			add_action( 'init', array( $this, 'init' ) );
 
 		} else {
-			  // load third party tools
-			$vendor_file = UIFORM_FORMS_DIR . '/helpers/vendor/autoload_52.php';
-			if ( is_readable( $vendor_file ) ) {
-					require_once $vendor_file;
-			}
-			add_filter( 'themeisle_sdk_products', array( &$this, 'zigaform_register_sdk' ), 10, 1 );
-
+			 
 			// load frontend
 			$this->loadFrontendControllers();
 		}
@@ -135,15 +129,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 	}
 
-	 /**
-	  * Registers with the SDK
-	  *
-	  * @since    1.0.0
-	  */
-	function zigaform_register_sdk( $products ) {
-		   $products[] = UIFORM_ABSFILE;
-		   return $products;
-	}
+ 
 
 	public function zigaform_upgrade() {
 

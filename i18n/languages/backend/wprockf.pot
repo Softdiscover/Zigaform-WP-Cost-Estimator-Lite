@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.8.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.8.9 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.9.0
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.9.0 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.8.9\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.9.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1518,7 +1518,7 @@ msgid "Conditional Logic Graph"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_calc.php:22
-msgid "ENABLE MATH CALCULATION"
+msgid "ENABLE CUSTOM MATH CALCULATION"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_calc.php:31
