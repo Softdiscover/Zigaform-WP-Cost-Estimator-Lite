@@ -399,7 +399,7 @@ if (!$uifm.isFunction(rocketfm)) {
 			};
 			arguments.callee.validate_enableHighlight = function (el) {
 				try {
-					var first_el = el.find('.rockfm-required').not('.rockfm-conditional-hidden').eq(0);
+					var first_el = el.find('.rockfm-required').not('.rockfm-conditional-hidden').not('.rockfm-cond-hidden-children').eq(0);
 					var type = first_el.attr('data-typefield');
 					var field_inp;
 					switch (parseInt(type)) {
@@ -472,6 +472,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				el_form
 					.find('.rockfm-required')
 					.not('.rockfm-conditional-hidden')
+					.not('.rockfm-cond-hidden-children')
 					.on('click change keyup focus keypress', function () {
 						rocketfm.validate_field($(this));
 					});
@@ -479,6 +480,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				el_form
 					.find('.rockfm-required')
 					.not('.rockfm-conditional-hidden')
+					.not('.rockfm-cond-hidden-children')
 					.each(function (index, element) {
 						rocketfm.validate_field($(element));
 					});
@@ -486,6 +488,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				el_form
 					.find('.rockfm-required')
 					.not('.rockfm-conditional-hidden')
+					.not('.rockfm-cond-hidden-children')
 					.find('.rockfm-colorpicker-wrap')
 					.colorpicker()
 					.on('changeColor', function (ev) {
@@ -493,7 +496,7 @@ if (!$uifm.isFunction(rocketfm)) {
 						rocketfm.validate_field(tmp_fld);
 					});
 
-				if (parseInt(el_form.find('.rockfm-required').not('.rockfm-conditional-hidden').length) > 0) {
+				if (parseInt(el_form.find('.rockfm-required').not('.rockfm-conditional-hidden').not('.rockfm-cond-hidden-children').length) > 0) {
 					valid = false;
 					this.validate_enableHighlight(el_form);
 				} else {
@@ -625,6 +628,7 @@ if (!$uifm.isFunction(rocketfm)) {
 							},
 							beforeSerialize: function (form, options) {
 								el.find('.rockfm-conditional-hidden', form).remove();
+								el.find('.rockfm-cond-hidden-children', form).remove();
 								obj_btn.attr('disabled', 'disabled').html(obj_btn.attr('data-val-subm') + ' <i class="sfdc-glyphicon sfdc-glyphicon-refresh sfdc-gly-spin"></i>');
 							},
 
@@ -661,6 +665,7 @@ if (!$uifm.isFunction(rocketfm)) {
 					}
 				} else {
 					el.find('.rockfm-conditional-hidden').remove();
+					el.find('.rockfm-cond-hidden-children').remove();
 					el.submit();
 				}
 			};
@@ -899,14 +904,17 @@ if (!$uifm.isFunction(rocketfm)) {
 							spinners.each(function (i) {
 								(s_min = $(this).attr('data-rockfm-min')), (s_max = $(this).attr('data-rockfm-max')), (s_step = $(this).attr('data-rockfm-step')), (s_value = $(this).attr('data-rockfm-value'));
 
-								$(this).TouchSpin({
+																let s_decimals=$(this).attr('data-rockfm-decimal')||0;
+
+																$(this).TouchSpin({
 									verticalbuttons: true,
 									min: parseFloat(s_min),
 									max: parseFloat(s_max),
 									step: parseFloat(s_step),
 									verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
 									verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
-									initval: parseFloat(s_value)
+									initval: parseFloat(s_value),
+									decimals: parseFloat(s_decimals)
 								});
 							});
 						}
@@ -1160,11 +1168,11 @@ if (!$uifm.isFunction(rocketfm)) {
 						}
 
 						if (obj_form.find('.rockfm-clogic-fcond').length) {
-							obj_form.zgfm_logicfrm(obj_form.find('.rockfm_clogic_data').val());
+							obj_form.zgfm_logicfrm(obj_form.parent().find('.rockfm_clogic_data').val());
 							obj_form.data('zgfm_logicfrm').setData();
 							obj_form.data('zgfm_logicfrm').refreshfields();
 
-						}
+ 						}
 
 						if (obj_form.find('.rockfm_main_data')) {
 							obj_form.zgpb_datafrm(obj_form.find('.rockfm_main_data').val());
@@ -1202,6 +1210,10 @@ if (!$uifm.isFunction(rocketfm)) {
 
 						obj_form.find('input, textarea').placeholder();
 					}
+
+					$.each( obj_form.find('.rockfm-conditional-hidden'), function( i, val ) {
+					  $(this).find('.rockfm-field').addClass('rockfm-cond-hidden-children');
+					});
 
 					if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
 						if ('parentIFrame' in window) {
@@ -2072,10 +2084,14 @@ var zgfm_recaptcha_onloadCallback = function () {
 
 		this.enableFields = function (element) {
 			element.removeClass('rockfm-conditional-hidden');
+
+			element.find('.rockfm-cond-hidden-children').removeClass('rockfm-cond-hidden-children');
 		};
 
 		this.disableFields = function (element) {
 			element.addClass('rockfm-conditional-hidden');
+
+			element.find('.rockfm-field').addClass('rockfm-cond-hidden-children');
 		};
 
 		this.processFieldCond = function (field_cond) {
