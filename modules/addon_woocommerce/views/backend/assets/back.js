@@ -59,7 +59,7 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
                     url: ajaxurl,
                     data: {
                        'action': 'zgfm_back_woocommerce_load_settings',
-                       'page':'zgfm_cost_estimate',
+                       'page':'zgfm_form_builder',
                        'zgfm_security':uiform_vars.ajax_nonce,
                        'form_id':parseInt(idform)
                         },

@@ -334,7 +334,7 @@ class Uiform_Form_Helper {
 	public static function is_uiform_page() {
 		$vget_page  = ( isset( $_GET['page'] ) ) ? self::sanitizeInput( $_GET['page'] ) : '';
 		$vpost_page = ( isset( $_POST['page'] ) ) ? self::sanitizeInput( $_POST['page'] ) : '';
-		if ( ( $vget_page === 'zgfm_cost_estimate' ) || ( $vpost_page === 'zgfm_cost_estimate' ) ) {
+		if ( ( $vget_page === 'zgfm_form_builder' ) || ( $vpost_page === 'zgfm_form_builder' ) ) {
 			return true;
 		} else {
 			return false;
@@ -906,7 +906,7 @@ class Uiform_Form_Helper {
 use Dompdf\Dompdf;
 
 function uifm_generate_pdf( $html, $filename, $papersize, $paperorien, $stream = true ) {
-	if ( ZIGAFORM_C_LITE == 1 ) {
+	if ( ZIGAFORM_F_LITE === 1 ) {
 
 	} else {
 		if (version_compare(phpversion(), '7.1', '>='))

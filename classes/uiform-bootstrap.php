@@ -56,7 +56,13 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 			add_filter( 'rockfm_languages_directory', array( &$this, 'rockfm_lang_dir_filter' ) );
 			add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
 			add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
-
+		
+		// Composer autoload
+        $composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
+        if (file_exists($composer_path)) {
+            require_once $composer_path;
+        }
+		
 		// load admin
 		if ( is_admin() && Uiform_Form_Helper::is_uiform_page() ) {
 
@@ -117,7 +123,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		if ( is_admin() ) {
 			add_filter( 'site_transient_update_plugins', array( &$this, 'disable_plugin_updates' ) );
 
-			// if(ZIGAFORM_C_LITE===1){
+			// if(ZIGAFORM_F_LITE===1){
 			  add_filter( ( is_multisite() ? 'network_admin_' : '' ) . 'plugin_action_links', array( $this, 'plugin_add_links' ), 10, 2 );
 
 			  // ZigaForm Upgrade
@@ -139,7 +145,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		}
 
 		// No need to show it on zigaform panel
-		if ( isset( $_GET['page'] ) && 'zgfm_cost_estimate' == $_GET['page'] ) {
+		if ( isset( $_GET['page'] ) && 'zgfm_form_builder' == $_GET['page'] ) {
 				return;
 		}
 
@@ -170,7 +176,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 		if ( 'new' == $install_type ) {
 
-			if ( ZIGAFORM_C_LITE === 1 ) {
+			if ( ZIGAFORM_F_LITE === 1 ) {
 				$notice_url     = 'https://wordpress-cost-estimator.zigaform.com/#demo-samples';
 				$notice_heading = esc_html__( 'Thanks for installing Zigaform. We hope you like it!', 'FRocket_admin' );
 				$notice_content = esc_html__( 'And hey, if you do, you can check the PRO version and get access to more features!', 'FRocket_admin' );
@@ -183,7 +189,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 			}
 		} else {
 
-			if ( ZIGAFORM_C_LITE === 1 ) {
+			if ( ZIGAFORM_F_LITE === 1 ) {
 				$notice_heading = esc_html__( 'Thanks for using zigaform!', 'FRocket_admin' );
 				$notice_url     = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
 				$notice_content = sprintf( __( 'Please rate <strong>Zigaform</strong> <a href="%1$s" target="_blank" rel="noopener" >&#9733;&#9733;&#9733;&#9733;&#9733;</a> on <a href="%2$s" target="_blank">WordPress.org</a> to help us spread the word. Thank you from the Zigaform team!', 'FRocket_admin' ), $notice_url, $notice_url );
@@ -236,14 +242,14 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 	public function plugin_add_links( $links, $file ) {
 
 		if ( is_array( $links ) && ( strpos( $file, 'zigaform-cost-estimator-lite.php' ) !== false ) ) {
-			$settings_link = '<a href="' . admin_url( 'admin.php' ) . '?page=zgfm_cost_estimate">' . __( 'Settings', 'FRocket_admin' ) . '</a>';
+			$settings_link = '<a href="' . admin_url( 'admin.php' ) . '?page=zgfm_form_builder">' . __( 'Settings', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
 			$settings_link = '<a target="_blank" href="https://wordpress-cost-estimator.zigaform.com/">' . __( 'Add-Ons / Pro Support', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
 						$settings_link = '<a style="color: #08AA17;font-weight:bold;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=checkout@softdiscover.com&lc=US&item_name=Donation+to+Zigaform+wordpress+estimation+form+builder+plugin&no_note=0&cn=&currency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">' . __( 'Donate', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
 		} elseif ( is_array( $links ) && ( strpos( $file, 'zigaform-wp-estimator.php' ) !== false ) ) {
-						$settings_link = '<a href="' . admin_url( 'admin.php' ) . '?page=zgfm_cost_estimate">' . __( 'Settings', 'FRocket_admin' ) . '</a>';
+						$settings_link = '<a href="' . admin_url( 'admin.php' ) . '?page=zgfm_form_builder">' . __( 'Settings', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
 						$settings_link = '<b><a target="_blank" href="https://wordpress-cost-estimator.zigaform.com/#contact">' . __( 'Support', 'FRocket_admin' ) . '</a></b>';
 			array_unshift( $links, $settings_link );
@@ -715,10 +721,10 @@ JS;
 	 * @return null
 	 */
 	public function get_menu() {
-		$current_page = isset( $_REQUEST['page'] ) ? esc_html( $_REQUEST['page'] ) : 'zgfm_cost_estimate';
+		$current_page = isset( $_REQUEST['page'] ) ? esc_html( $_REQUEST['page'] ) : 'zgfm_form_builder';
 
 		switch ( $current_page ) {
-			case 'zgfm_cost_estimate':
+			case 'zgfm_form_builder':
 				$this->route_page();
 				break;
 			case 'zigaform-cost-help':
@@ -745,29 +751,29 @@ JS;
 	  */
 	public function loadMenu() {
 
-		if ( ZIGAFORM_C_LITE == 1 ) {
-			add_menu_page( 'ZigaForm - Cost Estimator lite', 'ZigaForm Estimator Lite', 'edit_posts', 'zgfm_cost_estimate', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png' );
+		if ( ZIGAFORM_F_LITE === 1 ) {
+			add_menu_page( 'ZigaForm - Cost Estimator lite', 'ZigaForm Estimator Lite', 'edit_posts', 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png' );
 		} else {
-			add_menu_page( 'ZigaForm - Cost Estimator', 'ZigaForm Estimator', 'edit_posts', 'zgfm_cost_estimate', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png' );
+			add_menu_page( 'ZigaForm - Cost Estimator', 'ZigaForm Estimator', 'edit_posts', 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png' );
 		}
 
-		// add_submenu_page("zgfm_cost_estimate", __('Forms', 'FRocket_admin'), __('Forms', 'FRocket_admin'), $perms, '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms');
+		// add_submenu_page("zgfm_form_builder", __('Forms', 'FRocket_admin'), __('Forms', 'FRocket_admin'), $perms, '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms');
 
 		$perms = 'manage_options';
-		add_submenu_page( 'zgfm_cost_estimate', __( 'Forms', 'FRocket_admin' ), __( 'Forms', 'FRocket_admin' ), $perms, 'zgfm_cost_estimate', array( &$this, 'get_menu' ) );
-		$page_help  = add_submenu_page( 'zgfm_cost_estimate', __( 'Help', 'FRocket_admin' ), __( 'Help', 'FRocket_admin' ), $perms, 'zigaform-cost-help', array( &$this, 'get_menu' ) );
-		$page_about = add_submenu_page( 'zgfm_cost_estimate', __( 'About', 'FRocket_admin' ), __( 'About', 'FRocket_admin' ), $perms, 'zigaform-cost-about', array( &$this, 'get_menu' ) );
+		add_submenu_page( 'zgfm_form_builder', __( 'Forms', 'FRocket_admin' ), __( 'Forms', 'FRocket_admin' ), $perms, 'zgfm_form_builder', array( &$this, 'get_menu' ) );
+		$page_help  = add_submenu_page( 'zgfm_form_builder', __( 'Help', 'FRocket_admin' ), __( 'Help', 'FRocket_admin' ), $perms, 'zigaform-cost-help', array( &$this, 'get_menu' ) );
+		$page_about = add_submenu_page( 'zgfm_form_builder', __( 'About', 'FRocket_admin' ), __( 'About', 'FRocket_admin' ), $perms, 'zigaform-cost-about', array( &$this, 'get_menu' ) );
 
-		if ( UIFORM_DEBUG == 1 ) {
-			$page_debug = add_submenu_page( 'zgfm_cost_estimate', __( 'Debug', 'FRocket_admin' ), __( 'Debug', 'FRocket_admin' ), $perms, 'zigaform-cost-debug', array( &$this, 'get_menu' ) );
+		if ( UIFORM_DEBUG === 1 ) {
+			$page_debug = add_submenu_page( 'zgfm_form_builder', __( 'Debug', 'FRocket_admin' ), __( 'Debug', 'FRocket_admin' ), $perms, 'zigaform-cost-debug', array( &$this, 'get_menu' ) );
 			add_action( 'admin_print_styles-' . $page_debug, array( &$this, 'load_admin_resources' ) );
 		}
 
-		if ( ZIGAFORM_C_LITE == 1 ) {
+		if ( ZIGAFORM_F_LITE === 1 ) {
 			// go pro page
 			$submenu_txt = __( 'Go Pro!', 'FRocket_admin' );
 			$go_pro_link = '<span style="color:#f18500">' . $submenu_txt . '</span>';
-			$page_gopro  = add_submenu_page( 'zgfm_cost_estimate', $go_pro_link, $go_pro_link, $perms, 'zigaform-cost-gopro', array( &$this, 'get_menu' ) );
+			$page_gopro  = add_submenu_page( 'zgfm_form_builder', $go_pro_link, $go_pro_link, $perms, 'zigaform-cost-gopro', array( &$this, 'get_menu' ) );
 			add_action( 'admin_print_styles-' . $page_gopro, array( &$this, 'load_admin_resources' ) );
 		}
 
@@ -790,7 +796,7 @@ JS;
 	 */
 	public function get_extra_meta_links( $meta, $file, $data, $status ) {
 
-		if ( ZIGAFORM_C_LITE === 1 ) {
+		if ( ZIGAFORM_F_LITE === 1 ) {
 			$pos_coincidencia = strpos( $file, 'zigaform-cost-estimator-lite.php' );
 		} else {
 			$pos_coincidencia = strpos( $file, 'zigaform-wp-estimator.php' );
@@ -799,7 +805,7 @@ JS;
 		if ( $pos_coincidencia !== false ) {
 			  $plugin_page = admin_url( 'admin.php?page=zgfm_form_builder' );
 			  $meta[]      = "<a href='https://wordpress-cost-estimator.zigaform.com//#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __( 'Support', 'FRocket_admin' ) . '</a>';
-			if ( ZIGAFORM_C_LITE === 1 ) {
+			if ( ZIGAFORM_F_LITE === 1 ) {
 				$meta[] = "<a href='https://1.envato.market/DdzY2' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __( 'Get Premium', 'FRocket_admin' ) . '</a>';
 				// $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
 			}
@@ -807,7 +813,7 @@ JS;
 			$meta[] = "<a href='https://wordpress-cost-estimator.zigaform.com/#demo-samples' target='_blank'><span class='dashicons  dashicons-laptop'></span>" . __( 'Live Demo', 'FRocket_admin' ) . '</a>';
 			$meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/' target='_blank'><span class='dashicons  dashicons-search'></span>" . __( 'Documentation', 'FRocket_admin' ) . '</a>';
 
-			if ( ZIGAFORM_C_LITE === 1 ) {
+			if ( ZIGAFORM_F_LITE === 1 ) {
 				$meta[] = "<a href='https://wordpress.org/plugins/zigaform-calculator-cost-estimation-form-builder-lite/reviews#new-post' target='_blank' title='" . __( 'Leave a review', 'FRocket_admin' ) . "'><i class='ml-stars'><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg></i></a>";
 			} else {
 				$meta[] = "<a href='https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/reviews/13663682' target='_blank' title='" . __( 'Leave a review', 'FRocket_admin' ) . "'><i class='ml-stars'><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg></i></a>";
@@ -1097,7 +1103,7 @@ JS;
 					'url_admin'       => admin_url(),
 					'url_plugin'      => UIFORM_FORMS_URL,
 					'app_version'     => UIFORM_VERSION,
-					'app_is_lite'     => ZIGAFORM_C_LITE,
+					'app_is_lite'     => ZIGAFORM_F_LITE,
 					'app_demo_st'     => UIFORM_DEMO,
 					'url_assets'      => UIFORM_FORMS_URL . '/assets',
 					'ajax_nonce'      => wp_create_nonce( 'zgfm_ajax_nonce' ),
@@ -1136,7 +1142,7 @@ JS;
 		$lang_domain = apply_filters( 'rockfm_languages_domain', $lang_domain );
 
 		// Traditional WordPress plugin locale filter
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'zgfm_cost_estimate' );
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'zgfm_form_builder' );
 		$mofile = sprintf( '%1$s-%2$s.mo', 'wprockf', $locale );
 
 		// Setup paths to current locale file

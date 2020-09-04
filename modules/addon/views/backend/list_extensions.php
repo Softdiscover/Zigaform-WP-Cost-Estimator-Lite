@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<div class="zgfm-ext-buttons">
 													<?php if ( UIFORM_DEMO === 0 ) { ?>
 													
-														<?php if ( ZIGAFORM_C_LITE === 0 ) { ?>
+														<?php if ( ZIGAFORM_F_LITE === 0 ) { ?>
 													
 															<?php if ( intval( $value->flag_status ) === 0 ) { ?>
 															<!-- Indicates a successful or positive action -->

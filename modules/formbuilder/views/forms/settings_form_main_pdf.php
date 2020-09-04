@@ -159,7 +159,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	
 	
-	 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+	 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		<div id="zgfm-blocked-feature-pdf-box">
 			<?php $message = __( 'PDF EXPORT', 'FRocket_admin' ); ?>
 				<?php include UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php'; ?>

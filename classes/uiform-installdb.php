@@ -203,7 +203,7 @@ class Uiform_InstallDB {
 		// insert data
 		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A );
 		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->settings VALUES ('4.9.4', null, null, null, null, null, null, '', '1');";
+			$sql = "INSERT INTO $this->settings VALUES ('4.9.8', null, null, null, null, null, null, '', '1');";
 			$wpdb->query( $sql );
 		}
 
@@ -224,7 +224,7 @@ class Uiform_InstallDB {
 		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->pay_gateways, ARRAY_A );
 		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
 
-			if ( ZIGAFORM_C_LITE === 1 ) {
+			if ( ZIGAFORM_F_LITE === 1 ) {
 				$sql = "INSERT INTO $this->pay_gateways VALUES 
                 ('1', 'Offline', '0', '', '1', '3', 'Offline payment description'),
                 ('2', 'Paypal', '0', '', '0', '0', 'paypal payment');";

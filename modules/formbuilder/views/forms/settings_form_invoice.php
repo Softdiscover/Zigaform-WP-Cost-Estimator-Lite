@@ -128,6 +128,8 @@ $default_template = ob_get_clean();
 ?>
 
 <div class="uiform-set-field-wrap" id="uiform-set-form-invoice">
+
+	<div id="zgfm-invoice-section-customtxts">
    <div class="sfdc-row">
 		<div class="sfdc-col-sm-6">
 			<div class="sfdc-form-group">
@@ -295,7 +297,7 @@ $default_template = ob_get_clean();
 		</div>
 	</div>
 	
-	
+</div>
 	
 		 <div class="sfdc-row">
 										<div class="sfdc-col-md-12">
@@ -374,7 +376,7 @@ $default_template = ob_get_clean();
 									</div>    
 	
 	
-	 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+	 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		<div id="zgfm-blocked-feature-pdf-box">
 			<?php $message = __( 'Invoice', 'FRocket_admin' ); ?>
 				<?php include UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php'; ?>
@@ -396,8 +398,10 @@ jQuery(document).ready(function ($) {
 			var f_val = (state) ? 1 : 0;
 			if (f_val === 1) {
 				$('#uifm-tab-inner-inv-tpl-3').show();
+				$('#zgfm-invoice-section-customtxts').hide();
 			} else {
 				$('#uifm-tab-inner-inv-tpl-3').hide();
+				$('#zgfm-invoice-section-customtxts').show();
 			}
 		});
 
@@ -407,7 +411,9 @@ jQuery(document).ready(function ($) {
 		} else {
 			$('#uifm-tab-inner-inv-tpl-3').hide();
 		}
-   
+    
+        
+    
 	  
 });
 

@@ -3,7 +3,7 @@
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
  * Plugin URI: http://wordpress-cost-estimator.zigaform.com
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for WordPress.
- * Version: 4.9.4
+ * Version: 4.9.8
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-cost-estimator.zigaform.com/
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '4.9.4';
+		public $version = '4.9.8';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -173,7 +173,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 			if ( is_array( $pluginList ) ) {
 				foreach ( $pluginList as $key => $value ) {
 
-					if ( ZIGAFORM_C_LITE === 1 ) {
+					if ( ZIGAFORM_F_LITE === 1 ) {
 						if ( strpos( $value, 'zigaform-wp-estimator.php' ) !== false ) {
 							$output['message']  = __( 'Zigaform alert', 'FRocket_admin' );
 							$output['message2'] = __( 'Found zigaform cost estimation installed. Deactivate it before installing ' . $check_slug, 'FRocket_admin' );
@@ -255,9 +255,9 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 			$this->define( 'UIFORM_FORMS_LIBS', UIFORM_FORMS_DIR . '/libraries' );
 			$this->define( 'UIFORM_DEMO', 0 );
 
-			$this->define( 'ZIGAFORM_C_LITE', 1 );
+			$this->define( 'ZIGAFORM_F_LITE', 1 );
 			$this->define( 'UIFORM_DEBUG', 0 );
-			if ( UIFORM_DEBUG == 1 ) {
+			if ( UIFORM_DEBUG === 1 ) {
 				error_reporting( E_ALL );
 				ini_set( 'display_errors', 1 );
 				ini_set( 'memory_limit', '850M' );
@@ -316,7 +316,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 
 }
 
-function uiform_uninstallLite() {
+function cest_uiform_uninstallLite() {
 	$zgfm_is_installed = UiformCostEstLite::another_zgfm_isInstalled();
 	if ( $zgfm_is_installed['result'] ) {
 
@@ -328,7 +328,7 @@ function uiform_uninstallLite() {
 	return true;
 }
 function wpRCESTLite() {
-	register_uninstall_hook( __FILE__, 'uiform_uninstallLite' );
+	register_uninstall_hook( __FILE__, 'cest_uiform_uninstallLite' );
 	return UiformCostEstLite::instance();
 }
 

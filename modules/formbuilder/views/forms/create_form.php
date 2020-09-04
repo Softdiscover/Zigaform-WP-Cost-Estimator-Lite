@@ -227,7 +227,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			href="javascript:void(0);"><i class="fa fa-retweet" aria-hidden="true"></i> <?php echo __( 'Rollback', 'FRocket_admin' ); ?></a></li>
 			<li><a onclick="javascript:rocketform.variables_openModal();"
 			href="javascript:void(0);"><i class="fa fa-table" aria-hidden="true"></i> <?php echo __( 'Variables', 'FRocket_admin' ); ?></a></li>
-			<?php if ( ZIGAFORM_C_LITE === 0 ) { ?>     
+			<?php if ( ZIGAFORM_F_LITE === 0 ) { ?>     
 			<li><a onclick="javascript:rocketform.clogicgraph_popup();"
 			href="javascript:void(0);"><span class="fa fa-map"></span> <?php echo __( 'C.Logic Graph', 'FRocket_admin' ); ?></a></li>
 			<?php } ?>

@@ -21,12 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<li class="dropdown">
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-file"></span> <?php echo __( 'Forms', 'FRocket_admin' ); ?><span class="caret"></span></a>
 		  <ul class="dropdown-menu" role="menu">
-			<li><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform'; ?>"><?php echo __( 'New', 'FRocket_admin' ); ?></a></li>
+			<li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform'; ?>"><?php echo __( 'New', 'FRocket_admin' ); ?></a></li>
 			<?php if ( isset( $_GET['zgfm_action'] ) && Uiform_Form_Helper::sanitizeInput( $_GET['zgfm_action'] ) === 'create_uiform' ) { ?>
 			<li><a href="javascript:void(0);" onclick="javascript:rocketform.saveForm();"><?php echo __( 'Save', 'FRocket_admin' ); ?></a></li>
 			<?php } ?>
 			<li class="divider"></li>
-			<li><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms'; ?>"><?php echo __( 'List forms', 'FRocket_admin' ); ?></a></li>
+			<li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms'; ?>"><?php echo __( 'List forms', 'FRocket_admin' ); ?></a></li>
 		  </ul>
 		</li>
 		<?php if ( isset( $_GET['zgfm_action'] ) && Uiform_Form_Helper::sanitizeInput( $_GET['zgfm_action'] ) === 'create_uiform' ) { ?>
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			  </li>
 			   
 			  
-			   <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+			   <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		
 				<?php } else { ?>
 				<li><a onclick="javascript:rocketform.templates_load(7);" 
@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php } ?>
 			   
 				
-				<?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+				<?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		
 				<?php } else { ?>
 				 <li><a onclick="javascript:rocketform.templates_load(8);" 
@@ -105,12 +105,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			  <span class="fa fa-question-circle"></span> <?php echo __( 'Records', 'FRocket_admin' ); ?><span class="caret"></span></a>
 		  <ul class="dropdown-menu" role="menu">
-			<li><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records'; ?>">
+			<li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records'; ?>">
 				<?php echo __( 'List all Forms', 'FRocket_admin' ); ?>
 				</a>
 			</li>
 			
-			 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+			 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 			<li><a onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="Filter record"
 				   href="javascript:void(0);">
@@ -118,13 +118,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 						 ><i class="fa fa-lock"></i></span></a>
 			   </li>
 		   <?php } else { ?>
-				<li><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms'; ?>">
+				<li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms'; ?>">
 				   <?php echo __( 'Filter records', 'FRocket_admin' ); ?></a>
 			   </li>
 		   <?php } ?>
 			
 				
-			 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+			 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 			   <li><a onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="Custom report"
 				   href="javascript:void(0);">
@@ -133,7 +133,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</li>
 			<?php } else { ?>
 
-				<li><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=custom_report'; ?>">
+				<li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=custom_report'; ?>">
 					<?php echo __( 'Custom Report', 'FRocket_admin' ); ?></a>
 				</li>
 			<?php } ?>    
@@ -142,7 +142,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</li>
 		<li class="divider-menu"></li>
 		
-		 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+		 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 
 			   <li ><a onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="Invoice"
@@ -153,7 +153,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</li>
 				
 		   <?php } else { ?>
-				 <li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records'; ?>">
+				 <li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records'; ?>">
 					<i class="fa fa-money"></i> <?php echo __( 'Invoices', 'FRocket_admin' ); ?>
 					</a>
 				</li>
@@ -167,35 +167,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 	  
 			 <li >
-			<a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform&opt=import'; ?>">
+			<a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform&opt=import'; ?>">
 				<i class="fa fa-reply"></i> <?php echo __( 'Import', 'FRocket_admin' ); ?></a></li>
 		
 				
 		<li class="divider-menu"></li>
   
 			<li>
-				<a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=export_form'; ?>">
+				<a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=export_form'; ?>">
 				<i class="fa fa-share"></i> <?php echo __( 'Export', 'FRocket_admin' ); ?></a>
 			</li>
 		
 	   
 		<li class="divider-menu"></li>
-		<li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=view_charts'; ?>">
+		<li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=view_charts'; ?>">
 			<span class="fa fa-area-chart"></span> <?php echo __( 'Charts', 'FRocket_admin' ); ?> 
 			</a>
 		</li>
 		<li class="divider-menu"></li> 
-		<li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=view_settings'; ?>">
+		<li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=view_settings'; ?>">
 			<i class="fa fa-cog"></i> <?php echo __( 'Settings', 'FRocket_admin' ); ?>
 			</a>
 		</li>
 		<li class="divider-menu"></li>
-		<li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings'; ?>">
+		<li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings'; ?>">
 			<i class="fa fa-cloud-download"></i> <?php echo __( 'Backup', 'FRocket_admin' ); ?>
 			</a>
 		</li>
 		<li class="divider-menu"></li>
-		<li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=view_settings'; ?>">
+		<li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=view_settings'; ?>">
 			<i class="fa fa-money"></i> <?php echo __( 'Payment Gateways', 'FRocket_admin' ); ?>
 			</a>
 		</li>
@@ -205,7 +205,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</a>
 		</li>
 		<li class="divider-menu"></li> 
-		<li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=system_check'; ?>">
+		<li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=system_check'; ?>">
 			<i class="fa fa-cog"></i> <?php echo __( 'System Check', 'FRocket_admin' ); ?>
 			</a>
 		</li>
@@ -227,7 +227,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		  </ul>
 		</li>
 		 <li class="divider-menu"></li>
-		<li ><a href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=addon&zgfm_contr=backend&zgfm_action=list_extensions'; ?>">
+		<li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=addon&zgfm_contr=backend&zgfm_action=list_extensions'; ?>">
 			<span class="fa fa-plug"></span> <?php echo __( 'Extensions', 'FRocket_admin' ); ?>
 			</a>
 		</li>

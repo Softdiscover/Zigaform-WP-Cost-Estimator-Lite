@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.9.4
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.9.4 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.9.8
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.9.8 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.9.4\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.9.8\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:55, modules/formbuilder/controllers/uiform-fb-controller-forms.php:649
+#: views/footer.php:55, modules/formbuilder/controllers/uiform-fb-controller-forms.php:758
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: views/header.php:29
+#: views/header.php:29, modules/formbuilder/views/forms/list_forms.php:25
 msgid "List forms"
 msgstr ""
 
@@ -505,28 +505,32 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:310
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:323
 msgid "Rollback Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:330
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:343
 msgid "Error message"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:352
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:365
 msgid "Form variables"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:652
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:761
 msgid "Success"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:669
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:778
 msgid "Shortcodes"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:736, modules/formbuilder/controllers/uiform-fb-controller-forms.php:761
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:845, modules/formbuilder/controllers/uiform-fb-controller-forms.php:870
 msgid "Error! User has no permission to edit this form"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2707
+msgid "Forms in trash"
 msgstr ""
 
 #: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1894
@@ -537,44 +541,52 @@ msgstr ""
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:323
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:413
 msgid "Entry information"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:324, modules/formbuilder/views/records/info_record.php:28
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:414, modules/formbuilder/views/records/info_record.php:28
 msgid "Submitted form data"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:325, modules/formbuilder/views/records/info_record.php:57
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:415, modules/formbuilder/views/records/info_record.php:57
 msgid "Additional info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:326, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:60, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:416, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:60, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
 msgid "Date"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:327, modules/formbuilder/views/records/info_record.php:64
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:417, modules/formbuilder/views/records/info_record.php:64
 msgid "IP"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:328, modules/formbuilder/views/records/info_record.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:418, modules/formbuilder/views/records/info_record.php:68
 msgid "Client PC info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:329
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:419
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:330, modules/formbuilder/views/forms/ajax_variables_openmodal.php:77, modules/formbuilder/views/forms/create_form_main.php:100, modules/formbuilder/views/forms/create_form_modals.php:114, modules/formbuilder/views/forms/settings_form_email.php:567, modules/formbuilder/views/records/info_record.php:76
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:420, modules/formbuilder/views/forms/ajax_variables_openmodal.php:77, modules/formbuilder/views/forms/create_form_main.php:100, modules/formbuilder/views/forms/create_form_modals.php:114, modules/formbuilder/views/forms/settings_form_email.php:567, modules/formbuilder/views/records/info_record.php:76
 msgid "Form name"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:367, modules/formbuilder/controllers/uiform-fb-controller-records.php:407, modules/formbuilder/views/records/info_record_topdf.php:58
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:457, modules/formbuilder/controllers/uiform-fb-controller-records.php:497, modules/formbuilder/views/records/info_record_topdf.php:58
 msgid "Units"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:389, modules/gateways/views/records/list_records.php:38
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:479, modules/gateways/views/records/list_records.php:38
 msgid "Amount"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:559
+msgid "Records list"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:592
+msgid "Records in trash"
 msgstr ""
 
 #: modules/formbuilder/controllers/uiform-fb-controller-settings.php:174
@@ -611,6 +623,14 @@ msgstr ""
 
 #: modules/formbuilder/controllers/uiform-fb-controller-settings.php:206
 msgid "chinese"
+msgstr ""
+
+#: modules/gateways/controllers/uiform-pg-controller-records.php:311
+msgid "Invoices list"
+msgstr ""
+
+#: modules/gateways/controllers/uiform-pg-controller-records.php:344
+msgid "Invoices in trash"
 msgstr ""
 
 #: modules/addon/views/backend/list_extensions.php:65
@@ -897,7 +917,7 @@ msgstr ""
 msgid "Form record id"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:88, modules/formbuilder/views/forms/create_form.php:38, modules/formbuilder/views/forms/settings_form_invoice.php:379
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:88, modules/formbuilder/views/forms/create_form.php:38, modules/formbuilder/views/forms/settings_form_invoice.php:381
 msgid "Invoice"
 msgstr ""
 
@@ -1385,10 +1405,6 @@ msgstr ""
 msgid "Shortcode for modals"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:25
-msgid "List forms."
-msgstr ""
-
 #: modules/formbuilder/views/forms/list_forms.php:39
 msgid "Add new form"
 msgstr ""
@@ -1401,12 +1417,8 @@ msgstr ""
 msgid "Enable Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:62, modules/formbuilder/views/forms/list_forms_table.php:91
-msgid "Delete Form"
-msgstr ""
-
-#: modules/formbuilder/views/forms/list_forms.php:66, modules/formbuilder/views/forms/list_forms_table.php:93, modules/formbuilder/views/forms/settings_form_calc.php:287, modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:424, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96, modules/gateways/views/records/list_records.php:80, modules/gateways/views/records/list_records.php:83
-msgid "Delete"
+#: modules/formbuilder/views/forms/list_forms.php:62, modules/formbuilder/views/forms/list_forms.php:66, modules/formbuilder/views/forms/list_forms_table.php:90, modules/formbuilder/views/forms/list_forms_table.php:91
+msgid "Move to trash"
 msgstr ""
 
 #: modules/formbuilder/views/forms/list_forms.php:86
@@ -1425,35 +1437,39 @@ msgstr ""
 msgid "Rows per page"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:137
+#: modules/formbuilder/views/forms/list_forms.php:134, modules/formbuilder/views/fields/modal/settings_form_clogic.php:89
+msgid "All"
+msgstr ""
+
+#: modules/formbuilder/views/forms/list_forms.php:138
 msgid "Search"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:146
+#: modules/formbuilder/views/forms/list_forms.php:147
 msgid "Order by"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:148
+#: modules/formbuilder/views/forms/list_forms.php:149
 msgid "Descendent"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:149
+#: modules/formbuilder/views/forms/list_forms.php:150
 msgid "Ascendent"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:154
+#: modules/formbuilder/views/forms/list_forms.php:155
 msgid "Remember parameters"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:157
+#: modules/formbuilder/views/forms/list_forms.php:158
 msgid "Save Settings"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:176
+#: modules/formbuilder/views/forms/list_forms.php:178
 msgid "List form information"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:178
+#: modules/formbuilder/views/forms/list_forms.php:180
 msgid "there is no forms selected. select one at least"
 msgstr ""
 
@@ -1493,8 +1509,8 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:90
-msgid "Delete form"
+#: modules/formbuilder/views/forms/list_forms_table.php:93
+msgid "Move to Trash "
 msgstr ""
 
 #: modules/formbuilder/views/forms/preview_clogic_graph.php:47
@@ -1583,6 +1599,10 @@ msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_calc.php:272
 msgid "Temporal variable title"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_calc.php:287, modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:424, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96, modules/gateways/views/records/list_records.php:80, modules/gateways/views/records/list_records.php:83
+msgid "Delete"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_calc.php:305
@@ -1705,7 +1725,7 @@ msgstr ""
 msgid "if you leave it blank, reply option will not be taken it"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_email.php:209, modules/formbuilder/views/forms/settings_form_email.php:276, modules/formbuilder/views/forms/settings_form_email.php:280, modules/formbuilder/views/forms/settings_form_invoice.php:156, modules/formbuilder/views/forms/settings_form_invoice.php:159, modules/formbuilder/views/forms/settings_form_invoice.php:190, modules/formbuilder/views/forms/settings_form_invoice.php:193, modules/formbuilder/views/forms/settings_form_invoice.php:224, modules/formbuilder/views/forms/settings_form_invoice.php:227, modules/formbuilder/views/forms/settings_form_invoice.php:259, modules/formbuilder/views/forms/settings_form_invoice.php:262
+#: modules/formbuilder/views/forms/settings_form_email.php:209, modules/formbuilder/views/forms/settings_form_email.php:276, modules/formbuilder/views/forms/settings_form_email.php:280, modules/formbuilder/views/forms/settings_form_invoice.php:158, modules/formbuilder/views/forms/settings_form_invoice.php:161, modules/formbuilder/views/forms/settings_form_invoice.php:192, modules/formbuilder/views/forms/settings_form_invoice.php:195, modules/formbuilder/views/forms/settings_form_invoice.php:226, modules/formbuilder/views/forms/settings_form_invoice.php:229, modules/formbuilder/views/forms/settings_form_invoice.php:261, modules/formbuilder/views/forms/settings_form_invoice.php:264
 msgid "Select Field"
 msgstr ""
 
@@ -1734,7 +1754,7 @@ msgid "Customer email"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_email.php:269
-msgid "Choose field to receive notification (field needs to have email validation)"
+msgid "Choose field to receive notification, field needs to have email validation"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_email.php:390
@@ -1769,79 +1789,79 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:134
+#: modules/formbuilder/views/forms/settings_form_invoice.php:136
 msgid "From - text 1"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:136, modules/formbuilder/views/forms/settings_form_invoice.php:170, modules/formbuilder/views/forms/settings_form_invoice.php:204, modules/formbuilder/views/forms/settings_form_invoice.php:238, modules/formbuilder/views/forms/settings_form_invoice.php:272
+#: modules/formbuilder/views/forms/settings_form_invoice.php:138, modules/formbuilder/views/forms/settings_form_invoice.php:172, modules/formbuilder/views/forms/settings_form_invoice.php:206, modules/formbuilder/views/forms/settings_form_invoice.php:240, modules/formbuilder/views/forms/settings_form_invoice.php:274
 msgid "this field will be located in the FROM zone"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:143, modules/formbuilder/views/forms/settings_form_invoice.php:177, modules/formbuilder/views/forms/settings_form_invoice.php:211, modules/formbuilder/views/forms/settings_form_invoice.php:246, modules/formbuilder/views/forms/settings_form_invoice.php:279, modules/formbuilder/views/forms/settings_form_invoice.php:293
+#: modules/formbuilder/views/forms/settings_form_invoice.php:145, modules/formbuilder/views/forms/settings_form_invoice.php:179, modules/formbuilder/views/forms/settings_form_invoice.php:213, modules/formbuilder/views/forms/settings_form_invoice.php:248, modules/formbuilder/views/forms/settings_form_invoice.php:281, modules/formbuilder/views/forms/settings_form_invoice.php:295
 msgid "Here goes your text"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:148
+#: modules/formbuilder/views/forms/settings_form_invoice.php:150
 msgid "To - text 1"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:150, modules/formbuilder/views/forms/settings_form_invoice.php:184, modules/formbuilder/views/forms/settings_form_invoice.php:218, modules/formbuilder/views/forms/settings_form_invoice.php:253, modules/formbuilder/views/forms/settings_form_invoice.php:286
+#: modules/formbuilder/views/forms/settings_form_invoice.php:152, modules/formbuilder/views/forms/settings_form_invoice.php:186, modules/formbuilder/views/forms/settings_form_invoice.php:220, modules/formbuilder/views/forms/settings_form_invoice.php:255, modules/formbuilder/views/forms/settings_form_invoice.php:288
 msgid "this field will be located in the TO zone"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:168
+#: modules/formbuilder/views/forms/settings_form_invoice.php:170
 msgid "From - text 2"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:182
+#: modules/formbuilder/views/forms/settings_form_invoice.php:184
 msgid "To - text 2"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:202
+#: modules/formbuilder/views/forms/settings_form_invoice.php:204
 msgid "From - text 3"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:216
+#: modules/formbuilder/views/forms/settings_form_invoice.php:218
 msgid "To - text 3"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:236
+#: modules/formbuilder/views/forms/settings_form_invoice.php:238
 msgid "From - text 4"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:251
+#: modules/formbuilder/views/forms/settings_form_invoice.php:253
 msgid "To - text 4"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:270
+#: modules/formbuilder/views/forms/settings_form_invoice.php:272
 msgid "From - text 5"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:284
+#: modules/formbuilder/views/forms/settings_form_invoice.php:286
 msgid "To - text 5"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:304
+#: modules/formbuilder/views/forms/settings_form_invoice.php:306
 msgid "Custom Template for PDF "
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:311
+#: modules/formbuilder/views/forms/settings_form_invoice.php:313
 msgid "Enable custom template for Invoice"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:331
+#: modules/formbuilder/views/forms/settings_form_invoice.php:333
 msgid "Options above will not be used. so you have to add your shortcodes of your fields in the content of the invoice"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:340, modules/formbuilder/views/forms/settings_form_main_record.php:83
+#: modules/formbuilder/views/forms/settings_form_invoice.php:342, modules/formbuilder/views/forms/settings_form_main_record.php:83
 msgid "Sample "
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:343, modules/formbuilder/views/forms/settings_form_main_record.php:86
+#: modules/formbuilder/views/forms/settings_form_invoice.php:345, modules/formbuilder/views/forms/settings_form_main_record.php:86
 msgid "Show PDF sample"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_invoice.php:353, modules/formbuilder/views/forms/settings_form_main_record.php:97
+#: modules/formbuilder/views/forms/settings_form_invoice.php:355, modules/formbuilder/views/forms/settings_form_main_record.php:97
 msgid "Custom template "
 msgstr ""
 
@@ -3693,10 +3713,6 @@ msgstr ""
 msgid "this field if"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:89
-msgid "All"
-msgstr ""
-
 #: modules/formbuilder/views/fields/modal/settings_form_clogic.php:90
 msgid "Any"
 msgstr ""
@@ -3729,7 +3745,7 @@ msgstr ""
 msgid "less than"
 msgstr ""
 
-#: modules/formbuilder/views/fields/render_front/type_subbtn.php:22, modules/formbuilder/views/fields/render_front/type_wizardbtn.php:38
+#: modules/formbuilder/views/fields/render_front/type_subbtn.php:22, modules/formbuilder/views/fields/render_front/type_wizardbtn.php:39
 msgid "Sending"
 msgstr ""
 

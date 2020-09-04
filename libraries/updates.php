@@ -199,7 +199,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 
 			 $wpdb->query( $sql );
 
-			if ( ZIGAFORM_C_LITE != 1 ) {
+			if ( ZIGAFORM_F_LITE != 1 ) {
 					 $sql = "INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
 					 $wpdb->query( $sql );
 			}

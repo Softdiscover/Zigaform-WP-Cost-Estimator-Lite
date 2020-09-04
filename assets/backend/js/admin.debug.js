@@ -5632,7 +5632,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_load_form',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: id
 					},
@@ -5714,8 +5714,8 @@ if (!$uifm.isFunction(rocketform)) {
 				}
 
 				if (typeof form_data != 'undefined' && form_data) {
-					$('#uifm_frm_invoice_tpl_enable').bootstrapSwitchZgpb('state', form_data.data['fmb_inv_tpl_st']);
-					$('#uifm_frm_record_tpl_enable').bootstrapSwitchZgpb('state', form_data.data['fmb_rec_tpl_st']);
+					$('#uifm_frm_invoice_tpl_enable').bootstrapSwitchZgpb('state', parseInt(form_data.data['fmb_inv_tpl_st']));
+					$('#uifm_frm_record_tpl_enable').bootstrapSwitchZgpb('state', parseInt(form_data.data['fmb_rec_tpl_st']));
 					var editor, content;
 					if (typeof tinymce != 'undefined' && form_data.data.hasOwnProperty('fmb_inv_tpl_html') && form_data.data['fmb_inv_tpl_html'] != null) {
 						editor = tinymce.get('uifm_frm_invoice_tpl_content');
@@ -7702,7 +7702,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_invoice_delete_records',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						pgr_id: pgr_id
 					},
@@ -7723,7 +7723,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_delete_records',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						rec_id: rec_id
 					},
@@ -7744,7 +7744,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_load_records_byform',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: parseInt(idform)
 					},
@@ -7763,7 +7763,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_export_form',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: parseInt(idform)
 					},
@@ -7775,7 +7775,7 @@ if (!$uifm.isFunction(rocketform)) {
 			};
 
 			arguments.callee.importForm_onfailExit = function () {
-				var re_url = rockfm_vars.uifm_siteurl + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform';
+				var re_url = rockfm_vars.uifm_siteurl + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform';
 				rocketform.redirect_tourl(re_url);
 			};
 			arguments.callee.importForm_onfailPopup = function () {
@@ -7798,7 +7798,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_import_form',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							importcode: importcode
 						},
@@ -7924,7 +7924,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_creport_byform',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: parseInt(idform)
 					},
@@ -7947,7 +7947,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_creport_savefields',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: parseInt(idform),
 						data: myCheckboxes,
@@ -7964,7 +7964,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_form_showmodalsuccess',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: idval
 					},
@@ -8066,7 +8066,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_save_newform',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							uifm_frm_main_title: $('#uifm_frm_main_title').val()
 						},
@@ -8153,7 +8153,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_save_form',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						uifm_frm_main_title: $('#uifm_frm_main_title').val(),
 						uifm_frm_main_id: $('#uifm_frm_main_id').val(),
@@ -9221,7 +9221,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_load_preview_form',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							form_id: idform
 						},
@@ -9245,9 +9245,9 @@ if (!$uifm.isFunction(rocketform)) {
 					$.ajax({
 						type: 'POST',
 						url: ajaxurl,
-						data: data + '&action=rocket_fbuilder_listform_duplicate&page=zgfm_cost_estimate' + '&zgfm_security=' + uiform_vars.ajax_nonce,
+						data: data + '&action=rocket_fbuilder_listform_duplicate&page=zgfm_form_builder' + '&zgfm_security=' + uiform_vars.ajax_nonce,
 						success: function (msg) {
-							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms');
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms');
 						}
 					});
 				} else {
@@ -9281,9 +9281,9 @@ if (!$uifm.isFunction(rocketform)) {
 					$.ajax({
 						type: 'POST',
 						url: ajaxurl,
-						data: data + '&action=rocket_fbuilder_listform_updatest&page=zgfm_cost_estimate&form_st=' + form_st + '&zgfm_security=' + uiform_vars.ajax_nonce,
+						data: data + '&action=rocket_fbuilder_listform_updatest&page=zgfm_form_builder&form_st=' + form_st + '&zgfm_security=' + uiform_vars.ajax_nonce,
 						success: function (msg) {
-							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms');
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms');
 						}
 					});
 				} else {
@@ -9316,12 +9316,12 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_delete_form',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: idform
 					},
 					success: function (msg) {
-						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms');
+						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms');
 					}
 				});
 			};
@@ -9919,7 +9919,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_field_sel_impbulkdata',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							csrf_field_name: uiform_vars.csrf_field_name
 						},
@@ -10282,7 +10282,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_getthumbimg',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							html: encodeURIComponent(html),
 							img_src_full: $('img', html).attr('src'),
@@ -11322,7 +11322,7 @@ if (!$uifm.isFunction(rocketform)) {
 						front_lines_st: front_lines_st,
 						front_lines: front_lines,
 						zgfm_security: uiform_vars.ajax_nonce,
-						page: 'zgfm_cost_estimate'
+						page: 'zgfm_form_builder'
 					},
 					success: function (response) {
 						obj_field.find('.uifm-inp6-captcha-img').attr('src', el_url + response.rkver);
@@ -11510,7 +11510,7 @@ if (!$uifm.isFunction(rocketform)) {
 								front_lines_st: front_lines_st,
 								front_lines: front_lines,
 								zgfm_security: uiform_vars.ajax_nonce,
-								page: 'zgfm_cost_estimate'
+								page: 'zgfm_form_builder'
 							},
 							success: function (response) {
 								obj.find('.uifm-inp6-captcha-img').attr('src', el_url + response.rkver);
@@ -11601,7 +11601,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_loadchart_byform',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: parseInt(idform)
 					},
@@ -12396,10 +12396,10 @@ if (!$uifm.isFunction(rocketform)) {
 				$.ajax({
 					type: 'POST',
 					url: ajaxurl,
-					data: data + '&action=rocket_fbuilder_setting_saveOpts&page=zgfm_cost_estimate' + '&zgfm_security=' + uiform_vars.ajax_nonce,
+					data: data + '&action=rocket_fbuilder_setting_saveOpts&page=zgfm_form_builder' + '&zgfm_security=' + uiform_vars.ajax_nonce,
 					success: function (msg) {
 						rocketform.hideLoader();
-						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=view_settings');
+						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=view_settings');
 					}
 				});
 			};
@@ -12439,7 +12439,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_getthumbimg',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						html: encodeURIComponent(html),
 						img_src_full: $('img', html).attr('src'),
@@ -12456,7 +12456,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_loadtemplate',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						number: number
 					},
@@ -12765,13 +12765,13 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'uiform_fbuilder_setting_delbackupfile',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						uifm_frm_delfile: delfile
 					},
 					success: function () {
 						rocketform.loading_panelbox2(0);
-						var re_url = uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings';
+						var re_url = uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings';
 						rocketform.redirect_tourl(re_url);
 					}
 				});
@@ -12784,7 +12784,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'uiform_fbuilder_setting_restorebkpfile',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						uifm_frm_resfile: resfile
 					},
@@ -12838,7 +12838,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'uiform_fbuilder_blocked_getmessage',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						message: str_output
 					},
@@ -13002,14 +13002,14 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'uiform_fbuilder_setting_backup',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						uifm_frm_namebackup: $('#_uifm_backup_namebkp').val()
 					},
 					success: function () {
 						rocketform.loading_panelbox2(0);
 						$('#_uifm_backup_namebkp').val('');
-						var re_url = uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings';
+						var re_url = uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings';
 						rocketform.redirect_tourl(re_url);
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {}
@@ -13048,7 +13048,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_refreshpreviewpanel',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						uifm_frm_main_title: $('#uifm_frm_main_title').val(),
 						uifm_frm_main_id: $('#uifm_frm_main_id').val(),
@@ -13153,7 +13153,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_refreshpreviewpanel',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						uifm_frm_main_title: $('#uifm_frm_main_title').val(),
 						uifm_frm_main_id: $('#uifm_frm_main_id').val(),
@@ -13318,7 +13318,7 @@ if (!$uifm.isFunction(rocketform)) {
 						$.ajax({
 							type: 'POST',
 							url: ajaxurl,
-							data: data + '&action=rocket_fbuilder_setting_saveGateway&page=zgfm_cost_estimate' + '&zgfm_security=' + uiform_vars.ajax_nonce,
+							data: data + '&action=rocket_fbuilder_setting_saveGateway&page=zgfm_form_builder' + '&zgfm_security=' + uiform_vars.ajax_nonce,
 							beforeSend: function () {
 								rocketform.showLoader(3, true, true);
 							},
@@ -13365,7 +13365,7 @@ if (!$uifm.isFunction(rocketform)) {
 						$.ajax({
 							type: 'POST',
 							url: ajaxurl,
-							data: data + '&action=rocket_fbuilder_setting_saveGateway&page=zgfm_cost_estimate' + '&zgfm_security=' + uiform_vars.ajax_nonce,
+							data: data + '&action=rocket_fbuilder_setting_saveGateway&page=zgfm_form_builder' + '&zgfm_security=' + uiform_vars.ajax_nonce,
 							beforeSend: function () {
 								rocketform.showLoader(3, true, true);
 							},
@@ -13381,7 +13381,7 @@ if (!$uifm.isFunction(rocketform)) {
 			};
 
 			arguments.callee.gateway_gotoList = function () {
-				var re_url = uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=view_settings';
+				var re_url = uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=view_settings';
 				rocketform.redirect_tourl(re_url);
 			};
 
@@ -13391,7 +13391,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_modal_form_getshorcodes',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: form_id
 					},
@@ -13490,7 +13490,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_variables_emailpage',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: id,
 						form_data: encodeURIComponent(JSON.stringify(tmp_frm))
@@ -13672,7 +13672,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_preview_clogic_graph',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_data: encodeURIComponent(JSON.stringify(mainrformb))
 					},
@@ -13779,7 +13779,7 @@ if (!$uifm.isFunction(rocketform)) {
 							url: ajaxurl,
 							data: {
 								action: 'rocket_fbuilder_field_options',
-								page: 'zgfm_cost_estimate',
+								page: 'zgfm_form_builder',
 								zgfm_security: uiform_vars.ajax_nonce,
 								field_id: id,
 								field_type: type,
@@ -15042,7 +15042,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_rollback_openmodal',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							form_id: id
 						},
@@ -15066,7 +15066,7 @@ if (!$uifm.isFunction(rocketform)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_rollback_process',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							log_id: id
 						},
@@ -15149,7 +15149,7 @@ if (!$uifm.isFunction(rocketform)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_variables_openmodal',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						form_id: id,
 						form_data: encodeURIComponent(JSON.stringify(tmp_frm))
@@ -30966,7 +30966,7 @@ if (!$uifm.isFunction(zgfm_back_err)) {
 						url: ajaxurl,
 						data: {
 							action: 'rocket_fbuilder_integrity_openmodal',
-							page: 'zgfm_cost_estimate',
+							page: 'zgfm_form_builder',
 							zgfm_security: uiform_vars.ajax_nonce,
 							csrf_field_name: uiform_vars.csrf_field_name
 						},
@@ -31006,7 +31006,7 @@ if (!$uifm.isFunction(zgfm_back_fld_options)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_dev_generate_fieldopt',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce
 					},
 					beforeSend: function () {},
@@ -31396,6 +31396,137 @@ if (!$uifm.isFunction(zgfm_back_general)) {
 				alert('Filter paramaters saved');
 			};
 
+			this.invoiceslist_search_process = function () {
+				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_fbuilder_invoicelist_sendfilter',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						data_filter: tmp_params,
+						opt_save: 1,
+						opt_offset: $('#uifm_listform_offset_val').val(),
+						op_is_trash:$('#uifm_listrecord_is_trash').val()
+					},
+					success: function (msg) {
+						$('#zgfm-back-listform-maintable-container').html(msg['content']);
+						$('.uiform-confirmation-func-action').click(function (e) {
+							e.preventDefault(); 
+							var targetUrl = $(this).attr('href'); 
+							var tmp_callback = $(this).data('dialog-callback');
+							$('#uiform-confirmation-func-action-dialog').dialog({
+								autoOpen: false,
+								title: 'Confirmation',
+								modal: true,
+								buttons: {
+									OK: function () {
+										$(this).dialog('close');
+										eval(tmp_callback);
+									},
+									Cancel: function () {
+										$(this).dialog('close');
+									}
+								}
+							});
+
+							$('#uiform-confirmation-func-action-dialog').dialog('option', 'title', $(this).data('dialog-title'));
+
+							$('#uiform-confirmation-func-action-dialog').dialog('open');
+						});
+					}
+				});
+			};
+
+			this.recordslist_search_process = function () {
+				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_fbuilder_recordlist_sendfilter',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						data_filter: tmp_params,
+						opt_save: 1,
+						opt_offset: $('#uifm_listform_offset_val').val(),
+						op_is_trash:$('#uifm_listrecord_is_trash').val()
+					},
+					success: function (msg) {
+						$('#zgfm-back-listform-maintable-container').html(msg['content']);
+						$('.uiform-confirmation-func-action').click(function (e) {
+							e.preventDefault(); 
+							var targetUrl = $(this).attr('href'); 
+							var tmp_callback = $(this).data('dialog-callback');
+							$('#uiform-confirmation-func-action-dialog').dialog({
+								autoOpen: false,
+								title: 'Confirmation',
+								modal: true,
+								buttons: {
+									OK: function () {
+										$(this).dialog('close');
+										eval(tmp_callback);
+									},
+									Cancel: function () {
+										$(this).dialog('close');
+									}
+								}
+							});
+
+							$('#uiform-confirmation-func-action-dialog').dialog('option', 'title', $(this).data('dialog-title'));
+
+							$('#uiform-confirmation-func-action-dialog').dialog('open');
+						});
+					}
+				});
+			};
+
+			this.formslist_trashsearch_process = function () {
+				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_fbuilder_trashformlist_filter',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						data_filter: tmp_params,
+						opt_save: 1,
+						opt_offset: $('#uifm_listform_offset_val').val()
+					},
+					success: function (msg) {
+						$('#zgfm-back-listform-maintable-container').html(msg['content']);
+						$('.uiform-confirmation-func-action').click(function (e) {
+							e.preventDefault(); 
+							var targetUrl = $(this).attr('href'); 
+							var tmp_callback = $(this).data('dialog-callback');
+							$('#uiform-confirmation-func-action-dialog').dialog({
+								autoOpen: false,
+								title: 'Confirmation',
+								modal: true,
+								buttons: {
+									OK: function () {
+										$(this).dialog('close');
+										eval(tmp_callback);
+									},
+									Cancel: function () {
+										$(this).dialog('close');
+									}
+								}
+							});
+
+							$('#uiform-confirmation-func-action-dialog').dialog('option', 'title', $(this).data('dialog-title'));
+
+							$('#uiform-confirmation-func-action-dialog').dialog('open');
+						});
+					}
+				});
+			};
+
 			this.formslist_search_process = function (opt_save) {
 				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
 
@@ -31404,7 +31535,7 @@ if (!$uifm.isFunction(zgfm_back_general)) {
 					url: ajaxurl,
 					data: {
 						action: 'zgfm_fbuilder_formlist_filter',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						data_filter: tmp_params,
 						opt_save: opt_save,
@@ -31438,7 +31569,146 @@ if (!$uifm.isFunction(zgfm_back_general)) {
 					}
 				});
 			};
-		};
+
+			this.list_records_updateStatus = function (rec_st) {
+				if ($('.uiform-listform-chk-id').is(':checked')) {
+					var data = $('#uiform-form-listform').serialize();
+					var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data + '&action=zgfm_fbuilder_list_record_updatest&page=zgfm_form_builder&form_st=' + rec_st + '&zgfm_security=' + uiform_vars.ajax_nonce+'&is_trash='+is_trash,
+						success: function (msg) {
+							if(parseInt(is_trash)===0){
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records');
+							}else{
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_trash_records');
+							}
+
+													}
+					});
+				} else {
+					$('#uifm_modal_msg').sfdc_modal('show');
+					$('#uifm_modal_msg .sfdc-modal-title').html($('#uifm_listform_popup_title').val());
+					$('#uifm_modal_msg .sfdc-modal-body').html('<p>' + $('#uifm_listform_popup_notforms').val() + '</p>');
+					$('#uifm_modal_msg').on('show.bs.modal', rocketform.modal_centerPos($('#uifm_modal_msg')));
+				}
+			};
+
+
+			this.list_invoices_updateStatus = function (rec_st) {
+				if ($('.uiform-listform-chk-id').is(':checked')) {
+					var data = $('#uiform-form-listform').serialize();
+					var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data + '&action=zgfm_fbuilder_list_invoice_updatest&page=zgfm_form_builder&form_st=' + rec_st + '&zgfm_security=' + uiform_vars.ajax_nonce+'&is_trash='+is_trash,
+						success: function (msg) {
+							if(parseInt(is_trash)===0){
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records');
+							}else{
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_trash_records');
+							}
+
+													}
+					});
+				} else {
+					$('#uifm_modal_msg').sfdc_modal('show');
+					$('#uifm_modal_msg .sfdc-modal-title').html($('#uifm_listform_popup_title').val());
+					$('#uifm_modal_msg .sfdc-modal-body').html('<p>' + $('#uifm_listform_popup_notforms').val() + '</p>');
+					$('#uifm_modal_msg').on('show.bs.modal', rocketform.modal_centerPos($('#uifm_modal_msg')));
+				}
+			};
+
+			this.list_trashform_updateStatus = function (form_st) {
+				if ($('.uiform-listform-chk-id').is(':checked')) {
+					var data = $('#uiform-form-listform').serialize();
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data + '&action=rocket_fbuilder_list_trashform_updatest&page=zgfm_form_builder&form_st=' + form_st + '&zgfm_security=' + uiform_vars.ajax_nonce,
+						success: function (msg) {
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_trash');
+						}
+					});
+				} else {
+					$('#uifm_modal_msg').sfdc_modal('show');
+					$('#uifm_modal_msg .sfdc-modal-title').html($('#uifm_listform_popup_title').val());
+					$('#uifm_modal_msg .sfdc-modal-body').html('<p>' + $('#uifm_listform_popup_notforms').val() + '</p>');
+					$('#uifm_modal_msg').on('show.bs.modal', rocketform.modal_centerPos($('#uifm_modal_msg')));
+				}
+			};
+
+			this.listform_deleteTrashFormById = function (idform) {
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'rocket_fbuilder_delete_trashform',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						form_id: idform
+					},
+					success: function (msg) {
+						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_trash');
+					}
+				});
+			};
+
+			this.listform_deleteRecordById = function (id) {
+
+							var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+
+								$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'rocket_fbuilder_delete_record',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						rec_id: id,
+						is_trash: is_trash
+					},
+					success: function (msg) {
+						if(parseInt(is_trash)===0){
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records');
+						}else{
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_trash_records');
+						}
+
+
+																	}
+				});
+			};
+
+			this.listform_deleteInvoiceById = function (id) {
+
+							var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+
+								$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'rocket_fbuilder_delete_invoice',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						pgr_id: id,
+						is_trash: is_trash
+					},
+					success: function (msg) {
+						if(parseInt(is_trash)===0){
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records');
+						}else{
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_trash_records');
+						}
+
+
+																	}
+				});
+			};
+
+					};
 		window.zgfm_back_general = zgfm_back_general = $.zgfm_back_general = new zgfm_back_general();
 	})($uifm, window);
 }
@@ -31798,7 +32068,7 @@ if (!$uifm.isFunction(zgfm_back_tools)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_pdf_showsample',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						full_page: whole_control,
 						message: encodeURIComponent(message),
@@ -31882,7 +32152,7 @@ if (!$uifm.isFunction(zgfm_back_tools)) {
 					url: ajaxurl,
 					data: {
 						action: 'rocket_fbuilder_email_sendsample',
-						page: 'zgfm_cost_estimate',
+						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						full_page: whole_control,
 						message: encodeURIComponent(message),

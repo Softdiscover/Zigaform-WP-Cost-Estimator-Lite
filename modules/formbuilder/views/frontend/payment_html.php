@@ -61,7 +61,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								   <i class="fa fa-list-ul"></i> <?php echo __( 'See summary', 'frocket_front' ); ?>
 								</a>
 						</p>
-						  <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+						  <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 	
 						<?php } else { ?>
 							<p class="uiform-pg-summbox-p text-right"> 

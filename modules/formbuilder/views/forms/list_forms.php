@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="uiform-container" data-uiform-page="form_list" class="sfdc-wrap uiform-wrap">
 	<div class="space20"></div>
-	<div class="sfdc-row">
+	<div class="">
 		<div class="col-lg-12">
 		<div class="widget widget-padding span12">
 			<div class="widget-header">
 				<i class="fa fa-list-alt"></i>
 				<h5>
-				<?php echo __( 'List forms.', 'FRocket_admin' ); ?>
+				<?php echo __( 'List forms', 'FRocket_admin' ); ?>
 				</h5>
 				<div class="widget-buttons">
 					
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div id="uiform-listform-options">
 					<div class="uiform-listform-options-col">
 						 <a class="sfdc-btn sfdc-btn-sm sfdc-btn-primary" 
-					   href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform'; ?>">
+					   href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform'; ?>">
 						<i class="fa fa-plus">
 						</i>
 						<?php echo __( 'Add new form', 'FRocket_admin' ); ?>
@@ -59,17 +59,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 					<div class="uiform-listform-options-col">
 						<a class="sfdc-btn sfdc-btn-sm sfdc-btn-danger uiform-confirmation-func-action" 
-						   data-dialog-title="<?php echo __( 'Delete Form', 'FRocket_admin' ); ?>"
+						   data-dialog-title="<?php echo __( 'Move to trash', 'FRocket_admin' ); ?>"
 						   data-dialog-callback="rocketform.listform_updateStatus(0);"
 						href="javascript:void(0);">
 							<i class="fa fa-trash-o"></i>
-						<?php echo __( 'Delete', 'FRocket_admin' ); ?>
+						<?php echo __( 'Move to trash', 'FRocket_admin' ); ?>
 						</a>
 					</div>
 					
 					<div class="uiform-listform-options-col">
 						
-							 <?php if ( ZIGAFORM_C_LITE == 1 ) { ?>
+							 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 						
 						<a class="sfdc-btn sfdc-btn-sm sfdc-btn-success" 
 						   onclick="javascript:rocketform.showFeatureLocked(this);"
@@ -131,6 +131,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<option value="400" <?php echo ( $per_page === 400 ) ? 'selected' : ''; ?> >400</option>
 											<option value="500" <?php echo ( $per_page === 500 ) ? 'selected' : ''; ?> >500</option>
 											<option value="1000" <?php echo ( $per_page === 1000 ) ? 'selected' : ''; ?> >1000</option>
+											<option value="" <?php echo ( $per_page === 0 ) ? 'selected' : ''; ?> ><?php echo __( 'All', 'FRocket_admin' ); ?></option>
 										</select>                                
 									</div> <!-- form group [rows] -->
 									<div class="sfdc-form-group">
@@ -163,7 +164,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>   
 					
 				</div>
-				<div id="zgfm-back-listform-maintable-container"></div>
+				<?php echo $subsubsub; ?>
+				<div id="zgfm-back-listform-maintable-container" class="clear clearfix"></div>
 			</div> 
 		</div> 
 	</div>

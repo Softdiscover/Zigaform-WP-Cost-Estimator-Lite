@@ -113,7 +113,7 @@ class Zigaform_c_notice {
 
 		// after 7 days, add the message
 		// include(dirname(__DIR__) . '/views/help/notice-1.php');
-		if ( ZIGAFORM_C_LITE === 1 ) {
+		if ( ZIGAFORM_F_LITE === 1 ) {
 			$notice_url          = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
 				$notice_heading  = esc_html__( 'Thanks for using Zigaform!', 'FRocket_admin' );
 				$notice_content  = __( 'Hey, I noticed you created an estimation form with Zigaform - that’s awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'FRocket_admin' );
@@ -194,10 +194,10 @@ class Zigaform_c_notice {
 
 			global $current_screen;
 
-		if ( ( ! empty( $current_screen->id ) && strpos( $current_screen->id, 'zgfm_cost_estimate' ) !== false )
+		if ( ( ! empty( $current_screen->id ) && strpos( $current_screen->id, 'zgfm_form_builder' ) !== false )
 				 || ( ! empty( $current_screen->id ) && strpos( $current_screen->id, 'zigaform-cost-' ) !== false )
 					) {
-			if ( ZIGAFORM_C_LITE === 1 ) {
+			if ( ZIGAFORM_F_LITE === 1 ) {
 				$url = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
 			} else {
 				$url = 'https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/reviews/13663682';

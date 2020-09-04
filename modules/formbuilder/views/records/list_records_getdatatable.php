@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li>
 					<a 
 						class="sfdc-btn sfdc-btn-sm sfdc-btn-info"
-						href="<?php echo admin_url() . '?page=zgfm_cost_estimate&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_record&id_rec=' . $value['fbh_id']; ?>"><i class="fa fa-pencil-square-o"></i> <?php echo __( 'Show detail', 'FRocket_admin' ); ?></a></li>
+						href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_record&id_rec=' . $value['fbh_id']; ?>"><i class="fa fa-pencil-square-o"></i> <?php echo __( 'Show detail', 'FRocket_admin' ); ?></a></li>
 				</ul>
 			</div>
 			</td>
