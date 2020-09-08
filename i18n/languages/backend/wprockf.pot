@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.9.8
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.9.8 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 4.9.9
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 4.9.9 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.9.8\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 4.9.9\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -985,7 +985,7 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:87, modules/formbuilder/views/forms/templates_fields.php:2000, modules/formbuilder/views/fields/modal/settings_field_input.php:79, modules/formbuilder/views/fields/modal/settings_field_input.php:86, modules/formbuilder/views/fields/modal/settings_field_input_2.php:150
+#: modules/formbuilder/views/forms/create_form.php:87, modules/formbuilder/views/forms/templates_fields.php:2005, modules/formbuilder/views/fields/modal/settings_field_input.php:79, modules/formbuilder/views/fields/modal/settings_field_input.php:86, modules/formbuilder/views/fields/modal/settings_field_input_2.php:153
 msgid "Price"
 msgstr ""
 
@@ -2301,7 +2301,7 @@ msgstr ""
 msgid "Clean Tabs"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:73, modules/formbuilder/views/forms/templates_fields.php:2110
+#: modules/formbuilder/views/forms/settings_form_wizard.php:73, modules/formbuilder/views/forms/templates_fields.php:2116
 msgid "Add new"
 msgstr ""
 
@@ -2317,7 +2317,7 @@ msgstr ""
 msgid "Skin tab"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:123, modules/formbuilder/views/fields/modal/field_opt_checkbox_extra.php:22, modules/formbuilder/views/fields/modal/field_opt_select_extra.php:22, modules/formbuilder/views/fields/modal/settings_field_input_2.php:212
+#: modules/formbuilder/views/forms/settings_form_wizard.php:123, modules/formbuilder/views/fields/modal/field_opt_checkbox_extra.php:22, modules/formbuilder/views/fields/modal/field_opt_select_extra.php:22, modules/formbuilder/views/fields/modal/settings_field_input_2.php:215
 msgid "Theme 1"
 msgstr ""
 
@@ -2385,7 +2385,7 @@ msgstr ""
 msgid "Textarea sublabel"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:531, modules/formbuilder/views/forms/templates_fields.php:582, modules/formbuilder/views/forms/templates_fields.php:625, modules/formbuilder/views/forms/templates_fields.php:626, modules/formbuilder/views/forms/templates_fields.php:627, modules/formbuilder/views/forms/templates_fields.php:668, modules/formbuilder/views/forms/templates_fields.php:670, modules/formbuilder/views/forms/templates_fields.php:671, modules/formbuilder/views/forms/templates_fields.php:2020, modules/formbuilder/views/forms/templates_fields.php:2032, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:55, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:48, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:50, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:51, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:54, modules/formbuilder/views/fields/templates/prevpanel_select.php:48, modules/formbuilder/views/fields/templates/prevpanel_select.php:49, modules/formbuilder/views/fields/templates/prevpanel_select.php:50
+#: modules/formbuilder/views/forms/templates_fields.php:531, modules/formbuilder/views/forms/templates_fields.php:582, modules/formbuilder/views/forms/templates_fields.php:625, modules/formbuilder/views/forms/templates_fields.php:626, modules/formbuilder/views/forms/templates_fields.php:627, modules/formbuilder/views/forms/templates_fields.php:668, modules/formbuilder/views/forms/templates_fields.php:670, modules/formbuilder/views/forms/templates_fields.php:671, modules/formbuilder/views/forms/templates_fields.php:2026, modules/formbuilder/views/forms/templates_fields.php:2038, modules/formbuilder/views/fields/templates/prevpanel_checkbox.php:55, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:48, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:50, modules/formbuilder/views/fields/templates/prevpanel_multiselect.php:51, modules/formbuilder/views/fields/templates/prevpanel_radiobtn.php:54, modules/formbuilder/views/fields/templates/prevpanel_select.php:48, modules/formbuilder/views/fields/templates/prevpanel_select.php:49, modules/formbuilder/views/fields/templates/prevpanel_select.php:50
 msgid "option"
 msgstr ""
 
@@ -2437,27 +2437,27 @@ msgstr ""
 msgid "Prev"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:1979
+#: modules/formbuilder/views/forms/templates_fields.php:1984
 msgid "Type label"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:1990
+#: modules/formbuilder/views/forms/templates_fields.php:1995
 msgid "Type value"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:2070
+#: modules/formbuilder/views/forms/templates_fields.php:2076
 msgid "Price per unit"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:2086
+#: modules/formbuilder/views/forms/templates_fields.php:2092
 msgid "Enable quantity"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:2095
+#: modules/formbuilder/views/forms/templates_fields.php:2101
 msgid "Maximum quantity"
 msgstr ""
 
-#: modules/formbuilder/views/forms/templates_fields.php:2107, modules/formbuilder/views/forms/templates_fields.php:2121
+#: modules/formbuilder/views/forms/templates_fields.php:2113, modules/formbuilder/views/forms/templates_fields.php:2127
 msgid "Images"
 msgstr ""
 
@@ -3009,7 +3009,7 @@ msgstr ""
 msgid "Count selected text"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/field_opt_text.php:68, modules/formbuilder/views/fields/modal/settings_field_input_17.php:83, modules/formbuilder/views/fields/modal/settings_field_input_2.php:144
+#: modules/formbuilder/views/fields/modal/field_opt_text.php:68, modules/formbuilder/views/fields/modal/settings_field_input_17.php:83, modules/formbuilder/views/fields/modal/settings_field_input_2.php:147
 msgid "Label"
 msgstr ""
 
@@ -3330,42 +3330,42 @@ msgid "Settings label option"
 msgstr ""
 
 #: modules/formbuilder/views/fields/modal/settings_field_input_2.php:130
-msgid "Fill Empty Spaces"
+msgid "Copy Label to Value"
 msgstr ""
 
 #: modules/formbuilder/views/fields/modal/settings_field_input_2.php:133
 msgid "Import bulk data"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:141
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:144
 msgid "Check"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:147
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:150
 msgid "Value"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:166, modules/formbuilder/views/fields/modal/settings_field_label.php:627
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:169, modules/formbuilder/views/fields/modal/settings_field_label.php:627
 msgid "Block alignment"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:177
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:180
 msgid "Block"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:187
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:190
 msgid "Inline"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:200, modules/formbuilder/views/fields/modal/settings_field_input_5.php:47
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:203, modules/formbuilder/views/fields/modal/settings_field_input_5.php:47
 msgid "Theme"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:206
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:209
 msgid "Choose Theme"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:211, modules/formbuilder/views/fields/modal/settings_field_input_7.php:44
+#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:214, modules/formbuilder/views/fields/modal/settings_field_input_7.php:44
 msgid "Default"
 msgstr ""
 
