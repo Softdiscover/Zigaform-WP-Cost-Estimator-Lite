@@ -89,7 +89,7 @@ ob_start();
 <div class='sfdclauncher'>
 
 </div>
-<div class="sfdclauncher zgfm-block1-container clearfix" >
+<div class="sfdclauncher zgfm-block1-container sfdc-clearfix" >
 	<div class="space20"></div>
 	<div class="">
 		<div class="col-lg-12">

@@ -145,7 +145,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 		<?php if ( ! empty( $modules_tab_extension ) ) { ?>
 		<div id="uiformc-menu-sec7" class="sfdc-tab-pane ">
-			<div class="uiformc-tab-content-inner2 clearfix">
+			<div class="uiformc-tab-content-inner2 sfdc-clearfix">
 					<!-- load modules -->
 			  <?php
 				 

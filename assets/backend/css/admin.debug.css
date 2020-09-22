@@ -16623,3 +16623,7 @@ ol.inline li {
   text-align: center;
 }
 
+
+.sfdc-clearfix {
+  clear: both;
+}

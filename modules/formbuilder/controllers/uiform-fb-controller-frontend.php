@@ -1680,6 +1680,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				self::$_form_data['form_id']   = $form_id;
 				self::$_form_data['record_id'] = $idActivate;
 				
+				
+				// update to payment records
+				$data3                       = array();
+				$data3['fbh_id']             = $idActivate;
+				$data3['pgr_payment_amount'] = $form_cost_total;
+				$data3['pgr_currency']       = $this->current_cost['cur'];
+				$data3['flag_status']        = 1;
+				$data3['created_ip']         = $_SERVER['REMOTE_ADDR'];
+				$data3['created_by']         = 1;
+				$data3['created_date']       = date( 'Y-m-d h:i:s' );
+				$data3['type_pg_id']         = 1;
+
+				$this->wpdb->insert( $this->model_gateways_rec->table, $data3 );
+				
 				// is demo
 			if ( $is_demo === 0 ) {
 				// preparing mail
@@ -1826,19 +1840,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				$data['fbh_id']          = $idActivate;
 				$data['currency']        = $this->current_cost;
 
-				// insert to payment records
-					$data3                       = array();
-					$data3['fbh_id']             = $idActivate;
-					$data3['pgr_payment_amount'] = $form_cost_total;
-					$data3['pgr_currency']       = $this->current_cost['cur'];
-					$data3['flag_status']        = 1;
-					$data3['created_ip']         = $_SERVER['REMOTE_ADDR'];
-					$data3['created_by']         = 1;
-					$data3['created_date']       = date( 'Y-m-d h:i:s' );
-					$data3['type_pg_id']         = 1;
-
-					$this->wpdb->insert( $this->model_gateways_rec->table, $data3 );
-
+				  
 				//self::$_modules['addon']['frontend']->addons_doActions( 'onSubmitForm_pos' );
 				do_action( 'zgfm_onSubmitForm_pos', self::$_form_data['form_id'], self::$_form_data['record_id']);
 
