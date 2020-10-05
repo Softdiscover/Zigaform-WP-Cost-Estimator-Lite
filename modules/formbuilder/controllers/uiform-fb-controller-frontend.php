@@ -1720,7 +1720,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				$email_recipient = ( isset( $form_data_onsubm['onsubm']['mail_recipient'] ) ) ? $form_data_onsubm['onsubm']['mail_recipient'] : get_option( 'admin_email' );
 				$email_cc        = ( isset( $form_data_onsubm['onsubm']['mail_cc'] ) ) ? $form_data_onsubm['onsubm']['mail_cc'] : '';
 				$email_bcc       = ( isset( $form_data_onsubm['onsubm']['mail_bcc'] ) ) ? $form_data_onsubm['onsubm']['mail_bcc'] : '';
-				$mail_subject    = ( isset( $form_data_onsubm['onsubm']['mail_subject'] ) ) ? do_shortcode( $form_data_onsubm['onsubm']['mail_subject'] ) : __( 'New form request', 'FRocket_front' );
+				$mail_subject    = ( isset( $form_data_onsubm['onsubm']['mail_subject'] ) ) ? do_shortcode( $form_data_onsubm['onsubm']['mail_subject'] ) : __( 'New form request', 'frocket_front' );
 
 				$mail_usr_recipient = ( isset( $form_data_onsubm['onsubm']['mail_usr_recipient'] ) ) ? $form_data_onsubm['onsubm']['mail_usr_recipient'] : '';
 				$mail_replyto       = ( isset( $form_data_onsubm['onsubm']['mail_replyto'] ) ) ? $form_data_onsubm['onsubm']['mail_replyto'] : '';
@@ -1765,7 +1765,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					$mail_usr_cc      = ( isset( $form_data_onsubm['onsubm']['mail_usr_cc'] ) ) ? $form_data_onsubm['onsubm']['mail_usr_cc'] : '';
 					$mail_usr_bcc     = ( isset( $form_data_onsubm['onsubm']['mail_usr_bcc'] ) ) ? $form_data_onsubm['onsubm']['mail_usr_bcc'] : '';
 					$mail_usr_replyto = ( isset( $form_data_onsubm['onsubm']['mail_usr_replyto'] ) ) ? $form_data_onsubm['onsubm']['mail_usr_replyto'] : '';
-					$mail_usr_subject = ( isset( $form_data_onsubm['onsubm']['mail_usr_subject'] ) ) ? do_shortcode( $form_data_onsubm['onsubm']['mail_usr_subject'] ) : __( 'New form request', 'FRocket_front' );
+					$mail_usr_subject = ( isset( $form_data_onsubm['onsubm']['mail_usr_subject'] ) ) ? do_shortcode( $form_data_onsubm['onsubm']['mail_usr_subject'] ) : __( 'New form request', 'frocket_front' );
 
 					$mail_usr_pdf_st = ( isset( $form_data_onsubm['onsubm']['mail_usr_pdf_st'] ) ) ? $form_data_onsubm['onsubm']['mail_usr_pdf_st'] : '0';
 					if ( intval( $mail_usr_pdf_st ) === 1 ) {
@@ -2665,7 +2665,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					echo $shortcode_string;
 
 					wp_enqueue_script( 'rockfm-extra-1', UIFORM_FORMS_URL . '/assets/frontend/js/extra-default.js', array( 'jquery' ), UIFORM_VERSION, true );
-
 					 // end buffer 2
 					$output = ob_get_clean();
 					if ( ob_get_length() > 0 ) {

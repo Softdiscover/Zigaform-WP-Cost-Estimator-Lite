@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.2
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.2 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.5 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 5.0.2\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 5.0.5\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: zigaform-wp-estimator.php:185, zigaform-wp-estimator.php:178, zigaform-wp-estimator.php:193, zigaform-wp-estimator.php:199
+#: zigaform-wp-estimator.php:191, zigaform-wp-estimator.php:184, zigaform-wp-estimator.php:199, zigaform-wp-estimator.php:205
 msgid "Zigaform alert"
 msgstr ""
 
@@ -37,55 +37,55 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#: views/footer.php:18, modules/formbuilder/views/forms/create_form_modals.php:94, modules/formbuilder/views/forms/create_form_modals.php:124
-msgid "Accept"
+#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:98, modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/formhtml_form.php:229, modules/formbuilder/views/forms/modal1_footer.php:18, modules/formbuilder/views/forms/templates_fields.php:1907, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
+msgid "Close"
 msgstr ""
 
-#: views/footer.php:40
+#: views/footer.php:19
 msgid "Regenerate"
 msgstr ""
 
-#: views/footer.php:51
+#: views/footer.php:30
 msgid "Tour guide info"
 msgstr ""
 
-#: views/footer.php:52
+#: views/footer.php:31
 msgid "there is not tour guide for this page. press the accept button"
 msgstr ""
 
-#: views/footer.php:53
+#: views/footer.php:32
 msgid "Success! Updated successfully"
 msgstr ""
 
-#: views/footer.php:54
+#: views/footer.php:33
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:55, modules/formbuilder/controllers/uiform-fb-controller-forms.php:758
+#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:758
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
-#: views/footer.php:56
+#: views/footer.php:35
 msgid "the form did not loaded properly. Press regenerate button in order to recover the form"
 msgstr ""
 
-#: views/footer.php:61, modules/formbuilder/views/forms/templates_fields.php:1953
+#: views/footer.php:40, modules/formbuilder/views/forms/templates_fields.php:1953
 msgid "Delete field selected"
 msgstr ""
 
-#: views/footer.php:62, modules/formbuilder/views/forms/templates_fields.php:1954
+#: views/footer.php:41, modules/formbuilder/views/forms/templates_fields.php:1954
 msgid "Are you sure?"
 msgstr ""
 
-#: views/footer.php:63, modules/formbuilder/views/forms/templates_fields.php:1955, modules/gateways/views/settings/editoffline.php:90, modules/gateways/views/settings/editpaypal.php:163
+#: views/footer.php:42, modules/formbuilder/views/forms/templates_fields.php:1955, modules/gateways/views/settings/editoffline.php:90, modules/gateways/views/settings/editpaypal.php:163
 msgid "Cancel"
 msgstr ""
 
-#: views/footer.php:64, modules/formbuilder/views/forms/templates_fields.php:1956, modules/gateways/views/settings/editpaypal.php:123
+#: views/footer.php:43, modules/formbuilder/views/forms/templates_fields.php:1956, modules/gateways/views/settings/editpaypal.php:123
 msgid "Yes"
 msgstr ""
 
-#: views/footer.php:67, modules/formbuilder/views/forms/templates_fields.php:1959
+#: views/footer.php:46, modules/formbuilder/views/forms/templates_fields.php:1959
 msgid "Are you sure about this?"
 msgstr ""
 
@@ -241,7 +241,7 @@ msgstr ""
 msgid "Zigaform Community"
 msgstr ""
 
-#: views/header.php:231, modules/addon/views/backend/list_extensions.php:27, modules/formbuilder/views/forms/create_form.php:54, modules/formbuilder/views/forms/create_form.php:55
+#: views/header.php:231, modules/addon/views/backend/list_extensions.php:28, modules/formbuilder/views/forms/create_form.php:54, modules/formbuilder/views/forms/create_form.php:55
 msgid "Extensions"
 msgstr ""
 
@@ -493,6 +493,30 @@ msgstr ""
 msgid "Slide Exits"
 msgstr ""
 
+#: modules/addon_mgtranslate/controllers/backend.php:93, modules/addon_mgtranslate/controllers/backend.php:158, modules/addon_mgtranslate/controllers/backend.php:246, modules/addon_mgtranslate/views/backend/show_list.php:24
+msgid "Translation Manager"
+msgstr ""
+
+#: modules/addon_mgtranslate/controllers/backend.php:125
+msgid "New translation created successfully"
+msgstr ""
+
+#: modules/addon_mgtranslate/controllers/backend.php:138
+msgid "Error! An error ocurred during the process"
+msgstr ""
+
+#: modules/addon_mgtranslate/controllers/backend.php:160
+msgid "Create New"
+msgstr ""
+
+#: modules/addon_mgtranslate/controllers/backend.php:247
+msgid "Translation saved successfully"
+msgstr ""
+
+#: modules/addon_mgtranslate/controllers/backend.php:292, modules/addon_mgtranslate/controllers/backend.php:292, modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:36
+msgid "Translation"
+msgstr ""
+
 #: modules/addon_woocommerce/controllers/frontend.php:299
 msgid "Error! form was not added to cart "
 msgstr ""
@@ -589,42 +613,6 @@ msgstr ""
 msgid "Records in trash"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:174
-msgid "Select language"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:178
-msgid "english"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:182
-msgid "spanish"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:186
-msgid "french"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:190
-msgid "german"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:194
-msgid "italian"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:198
-msgid "portuguese"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:202
-msgid "russian"
-msgstr ""
-
-#: modules/formbuilder/controllers/uiform-fb-controller-settings.php:206
-msgid "chinese"
-msgstr ""
-
 #: modules/gateways/controllers/uiform-pg-controller-records.php:311
 msgid "Invoices list"
 msgstr ""
@@ -637,12 +625,28 @@ msgstr ""
 msgid "locked"
 msgstr ""
 
-#: modules/addon/views/backend/list_extensions.php:60, modules/addon/views/backend/list_extensions.php:48, modules/formbuilder/views/forms/list_forms.php:48
+#: modules/addon/views/backend/list_extensions.php:59
+msgid "This addon is not compatible with your site. try to upgrade your site and fullfil the requirements."
+msgstr ""
+
+#: modules/addon/views/backend/list_extensions.php:54, modules/formbuilder/views/forms/list_forms.php:48
 msgid "Disable"
 msgstr ""
 
-#: modules/addon/views/backend/list_extensions.php:57, modules/addon/views/backend/list_extensions.php:45, modules/formbuilder/views/forms/list_forms.php:57, modules/formbuilder/views/records/custom_report_getAllfields.php:24
+#: modules/addon/views/backend/list_extensions.php:51, modules/formbuilder/views/forms/list_forms.php:57, modules/formbuilder/views/records/custom_report_getAllfields.php:24
 msgid "Enable"
+msgstr ""
+
+#: modules/addon/views/backend/list_extensions.php:78
+msgid "Requirements"
+msgstr ""
+
+#: modules/addon/views/backend/list_extensions.php:79
+msgid "WP"
+msgstr ""
+
+#: modules/addon/views/backend/list_extensions.php:86
+msgid "PHP"
 msgstr ""
 
 #: modules/addon_func_anim/views/backend/get_field_back_animation.php:24
@@ -659,6 +663,62 @@ msgstr ""
 
 #: modules/addon_func_anim/views/backend/get_field_back_animation.php:70
 msgid "Animation delay"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:25, modules/formbuilder/views/fields/modal/settings_field_input_19.php:156, modules/formbuilder/views/fields/modal/settings_field_input_19.php:157, modules/formbuilder/views/fields/modal/settings_field_input_7.php:23
+msgid "Language"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:25
+msgid "Side"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:35
+msgid "Message ID"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/ajax_new_lang.php:24
+msgid "Add a Wordpress locale code or a custom name"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/ajax_new_lang.php:26
+msgid "it is recommended to add Wordpress Local Code (e.g. nl_NL) as new translation name or just add a new custom name."
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:31
+msgid "Select Language"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:47
+msgid "Select side"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:49
+msgid "Admin-side"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:50
+msgid "Client-side"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:56, modules/addon_mgtranslate/views/backend/show_list.php:57
+msgid "Fill empty spaces"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:67
+msgid "Warning! if you have some changes on the translations and you are about to make an upgrade of the software, make a backup before, just copying the po and mo files from the next directory: "
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:68
+msgid "Then after the upgrade is done, just replace/overwrite the po and mo files using your backup in order to keep the changes. also you can send your translations to zigaform.com  in order to keep your translations on future version updates. "
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:87, modules/addon_mgtranslate/views/backend/show_list.php:84
+msgid "Create New Language"
+msgstr ""
+
+#: modules/addon_mgtranslate/views/backend/show_list.php:88, modules/addon_mgtranslate/views/backend/show_list.php:85, modules/formbuilder/views/records/custom_report.php:53
+msgid "Save Changes"
 msgstr ""
 
 #: modules/addon_webhook/views/backend/get_content.php:31
@@ -1113,10 +1173,6 @@ msgstr ""
 msgid "The import has failed. press the accept button"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/formhtml_form.php:229, modules/formbuilder/views/forms/modal1_footer.php:18, modules/formbuilder/views/forms/templates_fields.php:1907, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
-msgid "Close"
-msgstr ""
-
 #: modules/formbuilder/views/forms/create_form_modals.php:35
 msgid "Desktop"
 msgstr ""
@@ -1127,6 +1183,10 @@ msgstr ""
 
 #: modules/formbuilder/views/forms/create_form_modals.php:69
 msgid "Load form"
+msgstr ""
+
+#: modules/formbuilder/views/forms/create_form_modals.php:94, modules/formbuilder/views/forms/create_form_modals.php:124
+msgid "Accept"
 msgstr ""
 
 #: modules/formbuilder/views/forms/create_form_modals.php:108
@@ -2469,10 +2529,6 @@ msgstr ""
 msgid "Select your custom fields to be shown on list report"
 msgstr ""
 
-#: modules/formbuilder/views/records/custom_report.php:53
-msgid "Save Changes"
-msgstr ""
-
 #: modules/formbuilder/views/records/custom_report_getAllfields.php:25, modules/formbuilder/views/fields/modal/field_opt_column.php:32, modules/formbuilder/views/fields/modal/field_opt_text.php:32
 msgid "Field name"
 msgstr ""
@@ -3275,10 +3331,6 @@ msgstr ""
 
 #: modules/formbuilder/views/fields/modal/settings_field_input_19.php:136, modules/formbuilder/views/fields/modal/settings_field_input_19.php:137
 msgid "Date format"
-msgstr ""
-
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:156, modules/formbuilder/views/fields/modal/settings_field_input_19.php:157, modules/formbuilder/views/fields/modal/settings_field_input_7.php:23
-msgid "Language"
 msgstr ""
 
 #: modules/formbuilder/views/fields/modal/settings_field_input_19.php:165, modules/formbuilder/views/fields/modal/settings_field_input_7.php:27

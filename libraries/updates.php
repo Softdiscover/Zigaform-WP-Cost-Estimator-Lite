@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'No direct script access allowed' );
 }
 
-if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
+if ( version_compare( $version, $install_ver, '>' ) ) {
 
-	if ( ! $install_ver || version_compare( $install_ver, '1.6', '<' ) ) {
+	if ( version_compare( $install_ver, '1.6', '<' ) ) {
 		$tbname = $wpdb->prefix . 'cest_uiform_fields';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
@@ -39,7 +39,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		}
 	}
 
-	if ( ! $install_ver || version_compare( $install_ver, '3', '<' ) ) {
+	if ( version_compare( $install_ver, '3', '<' ) ) {
 
 		$tbname = $wpdb->prefix . 'cest_uiform_form_log';
 
@@ -72,7 +72,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 	}
 
 				//below 3.3.2
-	if ( ! $install_ver || version_compare( $install_ver, '3.4', '<' ) ) {
+	if ( version_compare( $install_ver, '3.4', '<' ) ) {
 		$tbname = $wpdb->prefix . 'cest_uiform_form_records';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
@@ -104,7 +104,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 
 
 				//below 3.4.3
-	if ( ! $install_ver || version_compare( $install_ver, '3.4.3', '<' ) ) {
+	if ( version_compare( $install_ver, '3.4.3', '<' ) ) {
 
 		$tbname = $wpdb->prefix . 'cest_uiform_form';
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
@@ -152,7 +152,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 	}
 
 				 //below 3.7
-	if ( ! $install_ver || version_compare( $install_ver, '3.7', '<' ) ) {
+	if ( version_compare( $install_ver, '3.7', '<' ) ) {
 
 		$charset = '';
 		if ( $wpdb->has_cap( 'collation' ) ) {
@@ -253,7 +253,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 	}
 
 				//below 3.7.6.3
-	if ( ! $install_ver || version_compare( $install_ver, '3.7.6.3', '<' ) ) {
+	if ( version_compare( $install_ver, '3.7.6.3', '<' ) ) {
 
 		 $tbname = $wpdb->prefix . 'cest_addon';
 
@@ -273,7 +273,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 	}
 
 						//below 3.7
-	if ( ! $install_ver || version_compare( $install_ver, '3.9.5', '<' ) ) {
+	if ( version_compare( $install_ver, '3.9.5', '<' ) ) {
 
 
 		$tbname = $wpdb->prefix . 'cest_uiform_fields_type';
@@ -287,7 +287,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 	}
 
 						  //below 3.9.9.6.1
-	if ( ! $install_ver || version_compare( $install_ver, '3.9.9.6.1', '<' ) ) {
+	if ( version_compare( $install_ver, '3.9.9.6.1', '<' ) ) {
 		$tbname = $wpdb->prefix . 'cest_uiform_form';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
@@ -317,7 +317,18 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 			}
 		}
 	}
-
+	
+	if ( version_compare( $install_ver, '5.0.5', '<' ) ) {
+		  // insert data
+		  $tbname = $wpdb->prefix . 'cest_addon';
+		  $uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $tbname . " where add_name='mgtranslate'", ARRAY_A );
+		  if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
+			  $sql = "INSERT INTO $tbname VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
+			   $wpdb->query( $sql );
+		  }
+	}
+	
+	
 				 update_option( 'uifmcostest_version', $version );
 }
 

@@ -1,6 +1,6 @@
-# Zigaform - Calculator & Cost Estimation Form Builder Lite
+# Zigaform - Wordpress Calculator & Cost Estimation Form Builder Lite
 
-**Zigaform - Calculator & Cost Estimation Form Builder**  is a real-time drag and drop form builder which makes you to build your estimation forms on few easy steps. it can estimate any service for your clients and you can proceed checkout using payment gateway.  Also it provides an advanced grid system and skin customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
+**Zigaform - Wordpress Calculator & Cost Estimation Form Builder**  is a real-time drag and drop form builder which makes you to build your estimation forms on few easy steps. it can estimate any service for your clients and you can proceed checkout using payment gateway.  Also it provides an advanced grid system and skin customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
 https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
 

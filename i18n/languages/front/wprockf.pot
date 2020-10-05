@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 1.0.0
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 1.0.0 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.5 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 1.0.0\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 5.0.5\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,11 +13,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:290, modules/formbuilder/views/frontend/form_invoice.php:22
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:291, modules/formbuilder/views/frontend/form_invoice.php:22
 msgid "Invoice"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:292, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:328
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:293, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:328
 msgid "Export to PDF"
 msgstr ""
 
@@ -25,27 +25,47 @@ msgstr ""
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:639
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:629
 msgid "Total cost"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1056, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2684
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1048, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2648
 msgid "warning! Form was not submitted"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1387
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1044, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2642
+msgid "Success! your form was submitted"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1041
+msgid "Error! something went wrong."
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1373
 msgid "Error! The file exceeds the allowed size of"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1394
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1380
 msgid "Error! Type of file is not allowed to upload"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:350, modules/formbuilder/controllers/uiform-fb-controller-records.php:392
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1723, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1768
+msgid "New form request"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
+msgid " , version : "
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
+msgid " , platform : "
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:457, modules/formbuilder/controllers/uiform-fb-controller-records.php:497
 msgid "qty"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:353, modules/formbuilder/controllers/uiform-fb-controller-records.php:395, modules/formbuilder/views/frontend/form_invoice.php:109, modules/formbuilder/views/frontend/form_invoice.php:102
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:460, modules/formbuilder/controllers/uiform-fb-controller-records.php:500, modules/formbuilder/views/frontend/form_invoice.php:109, modules/formbuilder/views/frontend/form_invoice.php:102
 msgid "Amount"
 msgstr ""
 
@@ -73,11 +93,11 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/form_invoice.php:186, modules/formbuilder/views/frontend/form_summary.php:73, modules/formbuilder/views/records/info_record.php:31
+#: modules/formbuilder/views/frontend/form_invoice.php:186, modules/formbuilder/views/frontend/form_summary.php:74, modules/formbuilder/views/frontend/mail_generate_fields.php:205, modules/formbuilder/views/records/info_record.php:33
 msgid "Sub total"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/form_invoice.php:194, modules/formbuilder/views/frontend/form_summary.php:78, modules/formbuilder/views/records/info_record.php:36
+#: modules/formbuilder/views/frontend/form_invoice.php:194, modules/formbuilder/views/frontend/form_summary.php:79, modules/formbuilder/views/frontend/mail_generate_fields.php:210, modules/formbuilder/views/records/info_record.php:38
 msgid "Tax"
 msgstr ""
 
@@ -85,7 +105,7 @@ msgstr ""
 msgid "Invoice Total"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/form_summary.php:83, modules/formbuilder/views/frontend/payment_html.php:80, modules/formbuilder/views/records/info_record.php:41
+#: modules/formbuilder/views/frontend/form_summary.php:84, modules/formbuilder/views/frontend/mail_generate_fields.php:216, modules/formbuilder/views/frontend/payment_html.php:80, modules/formbuilder/views/records/info_record.php:43
 msgid "Total"
 msgstr ""
 

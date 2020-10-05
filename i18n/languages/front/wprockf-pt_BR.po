@@ -1,94 +1,151 @@
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.5 package.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: Rocket form\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: softdiscover <info@softdiscover.com>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
-"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3.1\n"
 
-msgid "Date"
-msgstr "Fecha"
-
-msgid "From"
-msgstr "De"
-
-msgid "To"
-msgstr "Para"
-
-msgid "Item ID"
-msgstr "Item ID"
-
-msgid "Quantity"
-msgstr "Quantidade"
-
-msgid "Description"
-msgstr "Descrição"
-
-msgid "Amount"
-msgstr "Quantia"
-
-msgid "Invoice Total"
-msgstr "Total da Fatura"
-
-msgid "Total"
-msgstr "Total"
-
-msgid "Choose Payment Method"
-msgstr "Escolher método de Pagamento"
-
-msgid "Payment Option"
-msgstr "Opção de Pagamento"
-
-msgid "Order Summary"
-msgstr "Resumo do pedido"
-
-msgid "See summary"
-msgstr "Veja resumo"
-
-msgid "See invoice"
-msgstr "Veja factura"
-
-msgid "Agree To The"
-msgstr "Concordo com os"
-
-msgid "Complete Order"
-msgstr "Pedidos Completos"
-
-msgid "Select Payment"
-msgstr "Selecionar Pagamento"
-
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:291, modules/formbuilder/views/frontend/form_invoice.php:22
 msgid "Invoice"
 msgstr "Factura"
 
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:293, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:328
+msgid "Export to PDF"
+msgstr "Export to PDF"
+
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:322
 msgid "Order summary"
 msgstr "Resumo do pedido"
 
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:629
 msgid "Total cost"
 msgstr "Custo total"
 
-msgid "Error! something went wrong."
-msgstr "Erro! algo deu errado."
-
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1048, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2648
 msgid "warning! Form was not submitted"
 msgstr "AVVERTENZA! Non è stata presentata la forma"
 
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1044, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2642
+msgid "Success! your form was submitted"
+msgstr "Success! your form was submitted"
+
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1041
+msgid "Error! something went wrong."
+msgstr "Error! something went wrong."
+
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1373
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Erro! O arquivo excede o tamanho permitido de"
 
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1380
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Erro! Tipo de arquivo não é permitido fazer upload"
 
-msgid "quantity"
-msgstr "quantidade"
-
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1723, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1768
 msgid "New form request"
-msgstr "Nuova richiesta di forma"
+msgstr "New form request"
 
-msgid "Success! your form was submitted"
-msgstr "Successo! il form è stato presentato"
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
+msgid " , version : "
+msgstr " , version : "
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
+msgid " , platform : "
+msgstr " , platform : "
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:457, modules/formbuilder/controllers/uiform-fb-controller-records.php:497
+msgid "qty"
+msgstr "qty"
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:460, modules/formbuilder/controllers/uiform-fb-controller-records.php:500, modules/formbuilder/views/frontend/form_invoice.php:109, modules/formbuilder/views/frontend/form_invoice.php:102
+msgid "Amount"
+msgstr "Quantia"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:23
+msgid "Date"
+msgstr "Fecha"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:29
+msgid "From"
+msgstr "De"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:61
+msgid "To"
+msgstr "Para"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:106, modules/formbuilder/views/frontend/form_invoice.php:99
+msgid "Item ID"
+msgstr "Item ID"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:107
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:108, modules/formbuilder/views/frontend/form_invoice.php:101
+msgid "Description"
+msgstr "Descrição"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:186, modules/formbuilder/views/frontend/form_summary.php:74, modules/formbuilder/views/frontend/mail_generate_fields.php:205, modules/formbuilder/views/records/info_record.php:33
+msgid "Sub total"
+msgstr "Sub total"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:194, modules/formbuilder/views/frontend/form_summary.php:79, modules/formbuilder/views/frontend/mail_generate_fields.php:210, modules/formbuilder/views/records/info_record.php:38
+msgid "Tax"
+msgstr "Tax"
+
+#: modules/formbuilder/views/frontend/form_invoice.php:203
+msgid "Invoice Total"
+msgstr "Total da Fatura"
+
+#: modules/formbuilder/views/frontend/form_summary.php:84, modules/formbuilder/views/frontend/mail_generate_fields.php:216, modules/formbuilder/views/frontend/payment_html.php:80, modules/formbuilder/views/records/info_record.php:43
+msgid "Total"
+msgstr "Total"
+
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:97, modules/formbuilder/views/frontend/mail_generate_fields.php:128
+msgid "Units"
+msgstr "Units"
+
+#: modules/formbuilder/views/frontend/payment_html.php:22
+msgid "Choose Payment Method"
+msgstr "Escolher método de Pagamento"
+
+#: modules/formbuilder/views/frontend/payment_html.php:28
+msgid "Payment Option"
+msgstr "Opção de Pagamento"
+
+#: modules/formbuilder/views/frontend/payment_html.php:52
+msgid "Order Summary"
+msgstr "Resumo do pedido"
+
+#: modules/formbuilder/views/frontend/payment_html.php:61
+msgid "See summary"
+msgstr "Veja resumo"
+
+#: modules/formbuilder/views/frontend/payment_html.php:71
+msgid "See invoice"
+msgstr "Veja factura"
+
+#: modules/formbuilder/views/frontend/payment_html.php:86
+msgid "Agree To The"
+msgstr "Concordo com os"
+
+#: modules/formbuilder/views/frontend/payment_html.php:86
+msgid "Terms &amp; Conditions"
+msgstr "Terms & Conditions"
+
+#: modules/formbuilder/views/frontend/payment_html.php:97
+msgid "Complete Order"
+msgstr "Pedidos Completos"
+
+#: modules/formbuilder/views/frontend/payment_html.php:103
+msgid "Select Payment"
+msgstr "Selecionar Pagamento"
