@@ -2881,7 +2881,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 		// load form variables
 		$form_variables                        = array();
-		$form_variables['_uifmvar']['addon']   = self::$_addons_jsactions;
 		$form_variables['_uifmvar']['is_demo'] = $is_demo;
 		$form_variables['_uifmvar']['is_dev']  = UIFORM_DEBUG;
 

@@ -293,6 +293,14 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 				$woo_arr['zgfm_summ_title']   = $addon_data_tmp['summ_title'];
 			}
 
+			//get product price
+			$product_data = wc_get_product( $prod_id );
+			$product_price = $product_data->get_price();
+			if(strval($product_price) == ''){
+				 throw new Exception( __( 'Error! Produce price should be at least zero and not empty ', 'FRocket_admin' ) );
+			}
+			 
+			//adding to cart
 			$wc_item_key = WC()->instance()->cart->add_to_cart( $prod_id, $quantity, 0, array(), $woo_arr );
 
 			if ( ! $wc_item_key ) {

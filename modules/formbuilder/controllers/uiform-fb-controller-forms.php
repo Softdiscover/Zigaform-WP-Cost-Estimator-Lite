@@ -1074,21 +1074,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		$data = $this->current_data_form[ intval( $child_field['num_tab'] ) ][ $child_field['id'] ];
 
 		$data['addon_extraclass'] = '';
-
-		// process addons
-		/*if ( ! empty( self::$_addons_actions ) ) {
-			foreach ( self::$_addons_actions as $zkey => $zvalue ) {
-
-				if ( strval( $zkey ) === 'field_addon_extraclass' ) {
-					foreach ( $zvalue as $zkey2 => $zvalue2 ) {
-						foreach ( $zvalue2 as $zkey3 => $zvalue3 ) {
-
-									  self::$_addons[ $zkey3 ][ $zvalue3['controller'] ]->getExtraDataField( $data );
-						}
-					}
-				}
-			}
-		}*/
+ 
 		
 		$data = apply_filters('zgfm_field_addon_extraclass', $data);
 		 
