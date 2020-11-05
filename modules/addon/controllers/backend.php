@@ -54,7 +54,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 		add_action( 'admin_enqueue_scripts', array( &$this, 'loadStyle' ), 20, 1 );
 
 		//add_filter( 'zgfm_back_filter_globalvars', array( &$this, 'filter_add_globalvariable' ) );
-		
+
 		// ajax for saving form
 		add_action( 'wp_ajax_rocket_fbuilder_addon_status', array( &$this, 'listaddon_updateStatus' ) );
 	}
@@ -97,14 +97,14 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 		global $wp_version;
 		$data          = array();
 		$data['query'] = $this->model_addon->getListAddons( 100, 0 );
-		$data['wp_version']=$wp_version;
+		$data['wp_version'] = $wp_version;
 		echo self::loadPartial( 'layout.php', 'addon/views/backend/list_extensions.php', $data );
 	}
 
 
 	public function loadStyle() {
 		// load
-		wp_enqueue_script( 'zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js', array(), (UIFORM_DEBUG) ? date('YmdHis'):1 , true );
+		wp_enqueue_script( 'zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js', array(), ( UIFORM_DEBUG ) ? date( 'YmdHis' ) : 1, true );
 
 		wp_enqueue_style( 'zgfm_back_addon_css', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.css' );
 	}
@@ -113,7 +113,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 		// get addons
 		$tmp_addons = $this->model_addon->getListAddonsByBack();
-		
+
 		// flag variables
 		$tmp_addons_arr  = array();
 		$tmp_modules_arr = self::$_addons;
@@ -123,19 +123,19 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 			// load addons
 			require_once UIFORM_FORMS_DIR . '/modules/addon_' . $value->add_name . '/controllers/backend.php';
 			call_user_func( array( 'zfaddn_' . $value->add_name . '_back', 'get_instance' ) );
-			 
+
 		}
 
 	}
 
 	public function load_addActions() {
- 
+
 	}
 
 
 
 	public function addons_doActions( $section = '', $return_array = false ) {
- 
+
 	}
 
 	public function get_addon_content( $addon_name ) {

@@ -203,7 +203,7 @@ class Uiform_InstallDB {
 		// insert data
 		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A );
 		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->settings VALUES ('5.0.9', null, null, null, null, null, null, '', '1');";
+			$sql = "INSERT INTO $this->settings VALUES ('5.1.4', null, null, null, null, null, null, '', '1');";
 			$wpdb->query( $sql );
 		}
 
@@ -338,8 +338,8 @@ class Uiform_InstallDB {
             `add_icon` text ,
             `add_installed` smallint(5) DEFAULT NULL,
             `add_order` int(5) DEFAULT NULL,
-            `add_params` text ,
-            `add_log` text ,
+            `add_params` longtext,
+            `add_log` longtext,
             `addonscol` varchar(45) DEFAULT NULL,
             `flag_status` smallint(5)  DEFAULT 1,
             `created_date` timestamp NULL,
@@ -348,7 +348,7 @@ class Uiform_InstallDB {
             `updated_ip` varchar(100)  DEFAULT NULL,
             `created_by` VARCHAR(100) NULL ,
             `updated_by` VARCHAR(100) NULL ,
-            `add_xml` text ,
+            `add_xml` longtext,
             `add_load_back` smallint(5) DEFAULT NULL,
             `add_load_front` smallint(5) DEFAULT NULL,
             `is_field` smallint(5) DEFAULT NULL,
@@ -376,14 +376,14 @@ class Uiform_InstallDB {
 			$sql = "INSERT INTO $this->core_addon VALUES ('woocommerce', 'Woocommerce Add-On', 'Integrate your estimation form into woocommerce.  Add custom summary to a product form and collect more data when it is added to the cart.', 1, 1, '1.0', NULL, 1, 3, NULL, NULL, NULL, 0, '2020-01-29 23:46:55', '2020-01-29 23:42:54', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
 			$wpdb->query( $sql );
 		}
-        
-         // insert data
+
+		 // insert data
 			$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='mgtranslate'", ARRAY_A );
-            if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-                $sql = "INSERT INTO $this->core_addon VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
-                 $wpdb->query( $sql );
-            }
-        
+		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
+			$sql = "INSERT INTO $this->core_addon VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
+			 $wpdb->query( $sql );
+		}
+
 		   // addon detail
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (
             `add_name` varchar(45)  NOT NULL,
@@ -400,7 +400,7 @@ class Uiform_InstallDB {
         ) " . $charset . ';';
 
 		 $wpdb->query( $sql );
- 
+
 		// addon log
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_log (
             `add_log_id` bigint(20) NOT NULL AUTO_INCREMENT,

@@ -38,7 +38,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	private $wpdb       = '';
 	protected $modules;
 	public $model_addon_details;
-	
+
 	// adding libs
 	public $local_controllers = array();
 
@@ -60,9 +60,9 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 		$this->model_addon_details = self::$_models['addon']['addon_details'];
 		// admin resources
 		add_action( 'admin_enqueue_scripts', array( &$this, 'load_dependencies' ), 20, 1 );
-		
-		add_filter( 'zgfm_saveForm_store', array( &$this, 'saveData' ), 10 , 2 );
-		
+
+		add_filter( 'zgfm_saveForm_store', array( &$this, 'saveData' ), 10, 2 );
+
 		//load options
 		add_action( 'wp_ajax_zgfm_back_woocommerce_load_settings', array( &$this, 'ajax_load_settings' ) );
 		// add content to extension tab
@@ -72,23 +72,23 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 	/**
 	   * Add data to filter
 	   */
-	  public function back_exttab_block( $filter_data ) {
+	public function back_exttab_block( $filter_data ) {
 		// load form variables
 		$filter_data[] = $this->get_content();
 		return $filter_data;
 	}
-	
+
 	public function ajax_load_settings() {
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 
 		$json      = array();
 		$tmp_addon = array();
 		$form_id   = ( isset( $_POST['form_id'] ) ) ? Uiform_Form_Helper::sanitizeInput( trim( $_POST['form_id'] ) ) : '';
-	 
+
 		$tmp_data = $this->model_addon_details->getAddonDataByForm( 'woocommerce', $form_id );
 		if ( ! empty( $tmp_data ) ) {
 			$tmp_addon = json_decode( $tmp_data->adet_data, true );
-		}else{
+		} else {
 			$tmp_addon = array();
 		}
 		$json['data'] = $tmp_addon;
@@ -97,9 +97,9 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module {
 		  echo json_encode( $json );
 		  wp_die();
 	}
-	
-	public function saveData( $fmb_data , $form_id ) {
-		if(!isset($fmb_data['addons']['woocommerce'])){
+
+	public function saveData( $fmb_data, $form_id ) {
+		if ( ! isset( $fmb_data['addons']['woocommerce'] ) ) {
 			return $fmb_data;
 		}
 		$data_addon = $fmb_data['addons']['woocommerce'];

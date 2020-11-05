@@ -119,7 +119,7 @@ class Uiform_Model_Gateways_Records {
 
 		return $this->wpdb->get_results( $query );
 	}
-	
+
 
 	/**
 	 * Show all records according to filter
@@ -129,8 +129,7 @@ class Uiform_Model_Gateways_Records {
 	 * @return void
 	 */
 	function getListAllInvoicesFiltered( $data ) {
-	 
-		
+
 		$per_page   = $data['per_page'];
 		$segment    = $data['segment'];
 		$orderby    = $data['orderby'];
@@ -146,7 +145,7 @@ class Uiform_Model_Gateways_Records {
 			$this->tbform_record,
 			$this->tbform
 		);
- 
+
 		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
 		$query .= sprintf( ' ORDER BY gr.created_date %s ', $orderby );
@@ -156,9 +155,9 @@ class Uiform_Model_Gateways_Records {
 			$query  .= sprintf( ' limit %s,%s', (int) $segment, (int) $per_page );
 		}
 		return $this->wpdb->get_results( $query );
-		 
+
 	}
-	
+
 	/**
 	 * Show trash records according to filter
 	 *
@@ -167,8 +166,7 @@ class Uiform_Model_Gateways_Records {
 	 * @return void
 	 */
 	function getListTrashInvoicesFiltered( $data ) {
-	 
-		
+
 		$per_page   = $data['per_page'];
 		$segment    = $data['segment'];
 		$orderby    = $data['orderby'];
@@ -184,7 +182,7 @@ class Uiform_Model_Gateways_Records {
 			$this->tbform_record,
 			$this->tbform
 		);
- 
+
 		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
 		$query .= sprintf( ' ORDER BY gr.created_date %s ', $orderby );
@@ -194,17 +192,17 @@ class Uiform_Model_Gateways_Records {
 			$query  .= sprintf( ' limit %s,%s', (int) $segment, (int) $per_page );
 		}
 		return $this->wpdb->get_results( $query );
-		 
+
 	}
-	
+
 	/**
 	 * delete payment records by form id
 	 *
 	 * @param [type] $form_id
 	 * @return void
 	 */
-	function deleteRecordbyFormId($form_id){
-	
+	function deleteRecordbyFormId( $form_id ) {
+
 		$query = sprintf(
 			'
             DELETE from %s where pgr_id IN (
@@ -215,14 +213,14 @@ class Uiform_Model_Gateways_Records {
 			$this->tbform_record,
 			$form_id
 		);
-		
+
 		$this->wpdb->query( $query );
 	}
 
 		/*
 	* list all and trash forms
 	*/
-	function ListTotals(){
+	function ListTotals() {
 		$query = sprintf(
 			'
 			SELECT 
@@ -231,11 +229,10 @@ class Uiform_Model_Gateways_Records {
 			FROM %s
 			',
 			$this->table
-			
 		);
 
 		return $this->wpdb->get_row( $query );
-	
+
 	}
 
 

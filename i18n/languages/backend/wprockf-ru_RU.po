@@ -1,5 +1,5 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.9 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.1.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.1.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: other project\n"
@@ -37,7 +37,7 @@ msgstr "Загрузка"
 msgid "Saving"
 msgstr "Экономия"
 
-#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:98, modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/formhtml_form.php:229, modules/formbuilder/views/forms/modal1_footer.php:18, modules/formbuilder/views/forms/templates_fields.php:1907, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
+#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:95, modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/formhtml_form.php:229, modules/formbuilder/views/forms/modal1_footer.php:18, modules/formbuilder/views/forms/templates_fields.php:1907, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
 msgid "Close"
 msgstr "Закрыть"
 
@@ -61,7 +61,7 @@ msgstr "Удачи! Успешно Обновлено"
 msgid "Form was created"
 msgstr "Форма была создана"
 
-#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:758
+#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:756
 msgid ""
 "Success! The form was created. Now just copy and paste the shortcode to "
 "your content"
@@ -471,93 +471,93 @@ msgstr "Nope, maybe later"
 msgid "I already did"
 msgstr "I already did"
 
-#: modules/addon_func_anim/controllers/animation.php:230
+#: modules/addon_func_anim/controllers/animation.php:227
 msgid "Customs"
 msgstr "Пользовательские CSS"
 
-#: modules/addon_func_anim/controllers/animation.php:255
+#: modules/addon_func_anim/controllers/animation.php:252
 msgid "Attention Seekers"
 msgstr "Attention Seekers"
 
-#: modules/addon_func_anim/controllers/animation.php:292
+#: modules/addon_func_anim/controllers/animation.php:289
 msgid "Bouncing Entrances"
 msgstr "Bouncing Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:318
+#: modules/addon_func_anim/controllers/animation.php:315
 msgid "Bouncing Exits"
 msgstr "Bouncing Exits"
 
-#: modules/addon_func_anim/controllers/animation.php:344
+#: modules/addon_func_anim/controllers/animation.php:341
 msgid "Fading Entrances"
 msgstr "Fading Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:386
+#: modules/addon_func_anim/controllers/animation.php:383
 msgid "Fading Exits"
 msgstr "Заполнение право"
 
-#: modules/addon_func_anim/controllers/animation.php:427
+#: modules/addon_func_anim/controllers/animation.php:424
 msgid "Flippers"
 msgstr "Flippers"
 
-#: modules/addon_func_anim/controllers/animation.php:452
+#: modules/addon_func_anim/controllers/animation.php:449
 msgid "Lightspeed"
 msgstr "Легкий"
 
-#: modules/addon_func_anim/controllers/animation.php:465
+#: modules/addon_func_anim/controllers/animation.php:462
 msgid "Rotating Entrances"
 msgstr "Rotating Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:490
+#: modules/addon_func_anim/controllers/animation.php:487
 msgid "Rotating Exits"
 msgstr "Rotating Exits"
 
-#: modules/addon_func_anim/controllers/animation.php:515
+#: modules/addon_func_anim/controllers/animation.php:512
 msgid "Specials"
 msgstr "Specials"
 
-#: modules/addon_func_anim/controllers/animation.php:532
+#: modules/addon_func_anim/controllers/animation.php:529
 msgid "Zoom Entrances"
 msgstr "Zoom Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:557
+#: modules/addon_func_anim/controllers/animation.php:554
 msgid "Zoom Exits"
 msgstr "Zoom Exits"
 
-#: modules/addon_func_anim/controllers/animation.php:582
+#: modules/addon_func_anim/controllers/animation.php:579
 msgid "Slide Entrances"
 msgstr "Slide Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:603
+#: modules/addon_func_anim/controllers/animation.php:600
 msgid "Slide Exits"
 msgstr "Боковой ящик Ширина"
 
-#: modules/addon_mgtranslate/controllers/backend.php:93, modules/addon_mgtranslate/controllers/backend.php:158, modules/addon_mgtranslate/controllers/backend.php:246, modules/addon_mgtranslate/views/backend/show_list.php:24
+#: modules/addon_mgtranslate/controllers/backend.php:90, modules/addon_mgtranslate/controllers/backend.php:148, modules/addon_mgtranslate/controllers/backend.php:234, modules/addon_mgtranslate/views/backend/show_list.php:24
 msgid "Translation Manager"
 msgstr "Translation Manager"
 
-#: modules/addon_mgtranslate/controllers/backend.php:125
+#: modules/addon_mgtranslate/controllers/backend.php:118
 msgid "New translation created successfully"
 msgstr "New translation created successfully"
 
-#: modules/addon_mgtranslate/controllers/backend.php:138
+#: modules/addon_mgtranslate/controllers/backend.php:130
 msgid "Error! An error ocurred during the process"
 msgstr "Error! An error ocurred during the process"
 
-#: modules/addon_mgtranslate/controllers/backend.php:160
+#: modules/addon_mgtranslate/controllers/backend.php:150
 msgid "Create New"
 msgstr "Create New"
 
-#: modules/addon_mgtranslate/controllers/backend.php:247
+#: modules/addon_mgtranslate/controllers/backend.php:235
 msgid "Translation saved successfully"
 msgstr "Translation saved successfully"
 
-#: modules/addon_mgtranslate/controllers/backend.php:292, modules/addon_mgtranslate/controllers/backend.php:292, modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:36
+#: modules/addon_mgtranslate/controllers/backend.php:278, modules/addon_mgtranslate/controllers/backend.php:278, modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:36
 msgid "Translation"
 msgstr "Translation"
 
 #: modules/addon_woocommerce/controllers/frontend.php:300
 msgid "Error! Produce price should be at least zero and not empty "
-msgstr ""
+msgstr "Error! Produce price should be at least zero and not empty "
 
 #: modules/addon_woocommerce/controllers/frontend.php:307
 msgid "Error! form was not added to cart "
@@ -583,91 +583,91 @@ msgstr "Пользовательские сообщения об ошибке"
 msgid "Form variables"
 msgstr "Имя формы"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:761
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:759
 msgid "Success"
 msgstr "Успех Сообщение"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:778
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:776
 msgid "Shortcodes"
 msgstr "Короткий код"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:845, modules/formbuilder/controllers/uiform-fb-controller-forms.php:870
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:843, modules/formbuilder/controllers/uiform-fb-controller-forms.php:868
 msgid "Error! User has no permission to edit this form"
 msgstr "Error! User has no permission to edit this form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2693
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2688
 msgid "Forms in trash"
 msgstr "Форма редактор"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1896
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1956
 msgid "Order summary"
 msgstr "Итог заказа"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2552
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2612
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:413
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:408
 msgid "Entry information"
 msgstr "Информация Ред"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:414, modules/formbuilder/views/records/info_record.php:28
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409, modules/formbuilder/views/records/info_record.php:28
 msgid "Submitted form data"
 msgstr "Передано данных формы"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:415, modules/formbuilder/views/records/info_record.php:57
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:410, modules/formbuilder/views/records/info_record.php:57
 msgid "Additional info"
 msgstr "Дополнительная информация"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:416, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:60, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:411, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:60, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
 msgid "Date"
 msgstr "Дата"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:417, modules/formbuilder/views/records/info_record.php:64
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:412, modules/formbuilder/views/records/info_record.php:64
 msgid "IP"
 msgstr "IP"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:418, modules/formbuilder/views/records/info_record.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:413, modules/formbuilder/views/records/info_record.php:68
 msgid "Client PC info"
 msgstr "Информация клиента ПК"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:419
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:414
 msgid "Form URL"
 msgstr "Форма URL"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:420, modules/formbuilder/views/forms/ajax_variables_openmodal.php:77, modules/formbuilder/views/forms/create_form_main.php:100, modules/formbuilder/views/forms/create_form_modals.php:114, modules/formbuilder/views/forms/settings_form_email.php:567, modules/formbuilder/views/records/info_record.php:76
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:415, modules/formbuilder/views/forms/ajax_variables_openmodal.php:77, modules/formbuilder/views/forms/create_form_main.php:100, modules/formbuilder/views/forms/create_form_modals.php:114, modules/formbuilder/views/forms/settings_form_email.php:567, modules/formbuilder/views/records/info_record.php:76
 msgid "Form name"
 msgstr "Имя формы"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:457, modules/formbuilder/controllers/uiform-fb-controller-records.php:497, modules/formbuilder/views/records/info_record_topdf.php:58
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:452, modules/formbuilder/controllers/uiform-fb-controller-records.php:492, modules/formbuilder/views/records/info_record_topdf.php:58
 msgid "Units"
 msgstr "Units"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:479, modules/gateways/views/records/list_records.php:38
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:474, modules/gateways/views/records/list_records.php:38
 msgid "Amount"
 msgstr "Количество"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:559
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:554
 msgid "Records list"
 msgstr "Документация"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:592
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:587
 msgid "Records in trash"
 msgstr "Документация"
 
-#: modules/gateways/controllers/uiform-pg-controller-records.php:311
+#: modules/gateways/controllers/uiform-pg-controller-records.php:304
 msgid "Invoices list"
 msgstr "Счета"
 
-#: modules/gateways/controllers/uiform-pg-controller-records.php:344
+#: modules/gateways/controllers/uiform-pg-controller-records.php:337
 msgid "Invoices in trash"
 msgstr "Счет Всего"
 
-#: modules/addon/views/backend/list_extensions.php:65
+#: modules/addon/views/backend/list_extensions.php:66
 msgid "locked"
 msgstr "Блок"
 
-#: modules/addon/views/backend/list_extensions.php:59
+#: modules/addon/views/backend/list_extensions.php:60
 msgid ""
 "This addon is not compatible with your site. try to upgrade your site and "
 "fullfil the requirements."
@@ -683,15 +683,15 @@ msgstr "Отключить"
 msgid "Enable"
 msgstr "Включить"
 
-#: modules/addon/views/backend/list_extensions.php:78
+#: modules/addon/views/backend/list_extensions.php:79
 msgid "Requirements"
 msgstr "Requirements"
 
-#: modules/addon/views/backend/list_extensions.php:79
+#: modules/addon/views/backend/list_extensions.php:80
 msgid "WP"
 msgstr "WP"
 
-#: modules/addon/views/backend/list_extensions.php:86
+#: modules/addon/views/backend/list_extensions.php:89
 msgid "PHP"
 msgstr "PHP"
 
@@ -833,7 +833,7 @@ msgstr "Map URL parameters"
 msgid "To form values"
 msgstr "Новый запрос форма"
 
-#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:222, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/view_settings.php:48, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:114
+#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:223, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/view_settings.php:48, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:114
 msgid "Options"
 msgstr "Опции"
 
@@ -969,31 +969,31 @@ msgstr "Имя форма"
 msgid "Created"
 msgstr "Созданный"
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:227
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:228
 msgid "Rollback"
 msgstr "Rollback"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:24, modules/formbuilder/views/forms/ajax_variables_openmodal.php:147, modules/formbuilder/views/forms/settings_form_email.php:506, modules/formbuilder/views/forms/settings_form_summbox.php:113, modules/formbuilder/views/forms/templates_fields.php:91, modules/formbuilder/views/forms/templates_fields.php:115
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:24, modules/formbuilder/views/forms/ajax_variables_openmodal.php:149, modules/formbuilder/views/forms/settings_form_email.php:506, modules/formbuilder/views/forms/settings_form_summbox.php:113, modules/formbuilder/views/forms/templates_fields.php:91, modules/formbuilder/views/forms/templates_fields.php:115
 msgid "Field"
 msgstr "Имя поля"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:148, modules/formbuilder/views/forms/settings_form_email.php:507, modules/formbuilder/views/forms/settings_form_summbox.php:114
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:150, modules/formbuilder/views/forms/settings_form_email.php:507, modules/formbuilder/views/forms/settings_form_summbox.php:114
 msgid "Codes"
 msgstr "Codes"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:28, modules/formbuilder/views/forms/ajax_variables_openmodal.php:151, modules/formbuilder/views/forms/settings_form_email.php:510, modules/formbuilder/views/forms/settings_form_summbox.php:117
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:28, modules/formbuilder/views/forms/ajax_variables_openmodal.php:153, modules/formbuilder/views/forms/settings_form_email.php:510, modules/formbuilder/views/forms/settings_form_summbox.php:117
 msgid "label"
 msgstr "метка"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:152, modules/formbuilder/views/forms/settings_form_email.php:511, modules/formbuilder/views/forms/settings_form_summbox.php:118
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:154, modules/formbuilder/views/forms/settings_form_email.php:511, modules/formbuilder/views/forms/settings_form_summbox.php:118
 msgid "input"
 msgstr "Вклад"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:153, modules/formbuilder/views/forms/settings_form_email.php:512
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:155, modules/formbuilder/views/forms/settings_form_email.php:512
 msgid "Cost"
 msgstr "Cost"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:31, modules/formbuilder/views/forms/ajax_variables_openmodal.php:154, modules/formbuilder/views/forms/settings_form_email.php:513, modules/formbuilder/views/forms/settings_form_summbox.php:119
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:31, modules/formbuilder/views/forms/ajax_variables_openmodal.php:156, modules/formbuilder/views/forms/settings_form_email.php:513, modules/formbuilder/views/forms/settings_form_summbox.php:119
 msgid "quantity"
 msgstr "количество"
 
@@ -1019,27 +1019,27 @@ msgstr "Задний план"
 msgid "Frontend"
 msgstr "Содержание"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:32, modules/formbuilder/views/forms/ajax_variables_openmodal.php:142
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:32, modules/formbuilder/views/forms/ajax_variables_openmodal.php:144
 msgid "Fields"
 msgstr "Загрузить Поля"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:35, modules/formbuilder/views/forms/ajax_variables_openmodal.php:237, modules/formbuilder/views/forms/fields_available.php:716
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:35, modules/formbuilder/views/forms/ajax_variables_openmodal.php:239, modules/formbuilder/views/forms/fields_available.php:716
 msgid "Others"
 msgstr "Прочее"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:40, modules/formbuilder/views/forms/ajax_variables_openmodal.php:93, modules/formbuilder/views/forms/ajax_variables_openmodal.php:242, modules/formbuilder/views/forms/settings_form_email.php:530, modules/formbuilder/views/forms/settings_form_summbox.php:135
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:40, modules/formbuilder/views/forms/ajax_variables_openmodal.php:93, modules/formbuilder/views/forms/ajax_variables_openmodal.php:244, modules/formbuilder/views/forms/settings_form_email.php:530, modules/formbuilder/views/forms/settings_form_summbox.php:135
 msgid "variables"
 msgstr "Отключить"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:41, modules/formbuilder/views/forms/ajax_variables_openmodal.php:94, modules/formbuilder/views/forms/ajax_variables_openmodal.php:119, modules/formbuilder/views/forms/ajax_variables_openmodal.php:243, modules/formbuilder/views/forms/ajax_variables_openmodal.php:288, modules/formbuilder/views/forms/settings_form_email.php:531, modules/formbuilder/views/forms/settings_form_email.php:582, modules/formbuilder/views/forms/settings_form_summbox.php:136
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:41, modules/formbuilder/views/forms/ajax_variables_openmodal.php:94, modules/formbuilder/views/forms/ajax_variables_openmodal.php:119, modules/formbuilder/views/forms/ajax_variables_openmodal.php:245, modules/formbuilder/views/forms/ajax_variables_openmodal.php:290, modules/formbuilder/views/forms/settings_form_email.php:531, modules/formbuilder/views/forms/settings_form_email.php:582, modules/formbuilder/views/forms/settings_form_summbox.php:136
 msgid "Code"
 msgstr "Code"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:47, modules/formbuilder/views/forms/ajax_variables_openmodal.php:249, modules/formbuilder/views/forms/settings_form_email.php:537, modules/formbuilder/views/forms/settings_form_summbox.php:142
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:47, modules/formbuilder/views/forms/ajax_variables_openmodal.php:251, modules/formbuilder/views/forms/settings_form_email.php:537, modules/formbuilder/views/forms/settings_form_summbox.php:142
 msgid "Currency symbol"
 msgstr "Символ валюты"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:52, modules/formbuilder/views/forms/ajax_variables_openmodal.php:254, modules/formbuilder/views/forms/settings_form_email.php:542, modules/formbuilder/views/forms/settings_form_summbox.php:147
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:52, modules/formbuilder/views/forms/ajax_variables_openmodal.php:256, modules/formbuilder/views/forms/settings_form_email.php:542, modules/formbuilder/views/forms/settings_form_summbox.php:147
 msgid "Currency code"
 msgstr "Код валюты"
 
@@ -1047,11 +1047,11 @@ msgstr "Код валюты"
 msgid "Sub total Amount price"
 msgstr "Sub total Amount price"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:61, modules/formbuilder/views/forms/ajax_variables_openmodal.php:263, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/forms/settings_form_summbox.php:156
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:61, modules/formbuilder/views/forms/ajax_variables_openmodal.php:265, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/forms/settings_form_summbox.php:156
 msgid "Tax"
 msgstr "Счет"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:65, modules/formbuilder/views/forms/ajax_variables_openmodal.php:267, modules/formbuilder/views/forms/settings_form_email.php:555, modules/formbuilder/views/forms/settings_form_summbox.php:160
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:65, modules/formbuilder/views/forms/ajax_variables_openmodal.php:269, modules/formbuilder/views/forms/settings_form_email.php:555, modules/formbuilder/views/forms/settings_form_summbox.php:160
 msgid "Total Amount price"
 msgstr "Total Amount price"
 
@@ -1079,23 +1079,37 @@ msgstr "Выставленный счет"
 msgid "Invoice date"
 msgstr "Выставленный счет"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:113, modules/formbuilder/views/forms/ajax_variables_openmodal.php:282, modules/formbuilder/views/forms/create_form.php:47
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:113, modules/formbuilder/views/forms/ajax_variables_openmodal.php:284, modules/formbuilder/views/forms/create_form.php:47
 msgid "Calculation"
 msgstr "Calculation"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:118, modules/formbuilder/views/forms/ajax_variables_openmodal.php:287, modules/formbuilder/views/forms/settings_form_email.php:581
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:118, modules/formbuilder/views/forms/ajax_variables_openmodal.php:289, modules/formbuilder/views/forms/settings_form_email.php:581
 msgid "Calculation variables"
 msgstr "Calculation variables"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:259, modules/formbuilder/views/forms/settings_form_summbox.php:152
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:120
+msgid "Wrapper"
+msgstr "Wrapper"
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:120
+msgid ""
+"you can use this to show content depending if the calculation variable has "
+"a value. if it does not have a value, the content inside this shortcode "
+"will not appear. "
+msgstr ""
+"you can use this to show content depending if the calculation variable has "
+"a value. if it does not have a value, the content inside this shortcode "
+"will not appear. "
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:261, modules/formbuilder/views/forms/settings_form_summbox.php:152
 msgid "Sub Total price"
 msgstr "Sub Total price"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:271, modules/formbuilder/views/forms/settings_form_summbox.php:164
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:273, modules/formbuilder/views/forms/settings_form_summbox.php:164
 msgid "Summary content"
 msgstr "Резюме Box"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:275, modules/formbuilder/views/forms/settings_form_summbox.php:168
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:277, modules/formbuilder/views/forms/settings_form_summbox.php:168
 msgid "Summary link"
 msgstr "Резюме"
 
@@ -1169,23 +1183,23 @@ msgstr "Показать данные"
 msgid "Generate field static data"
 msgstr "Generate field static data"
 
-#: modules/formbuilder/views/forms/create_form.php:229, modules/formbuilder/views/forms/settings_form_calc.php:83, modules/formbuilder/views/forms/settings_form_email.php:483, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_summbox.php:97
+#: modules/formbuilder/views/forms/create_form.php:230, modules/formbuilder/views/forms/settings_form_calc.php:83, modules/formbuilder/views/forms/settings_form_email.php:483, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_summbox.php:97
 msgid "Variables"
 msgstr "Отключить"
 
-#: modules/formbuilder/views/forms/create_form.php:232
+#: modules/formbuilder/views/forms/create_form.php:233
 msgid "C.Logic Graph"
 msgstr "C.Logic"
 
-#: modules/formbuilder/views/forms/create_form.php:235
+#: modules/formbuilder/views/forms/create_form.php:236
 msgid "Refresh & Clean Form"
 msgstr "Refresh & Clean Form"
 
-#: modules/formbuilder/views/forms/create_form.php:245
+#: modules/formbuilder/views/forms/create_form.php:246
 msgid "preview"
 msgstr "предварительный просмотр"
 
-#: modules/formbuilder/views/forms/create_form.php:254
+#: modules/formbuilder/views/forms/create_form.php:255
 msgid "Save form"
 msgstr "Сохранить форма"
 

@@ -1,5 +1,5 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.9 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.1.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.1.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -30,43 +30,43 @@ msgstr "Сводка заказа"
 msgid "Total cost"
 msgstr "Общая стоимость"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1048, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2648
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1111, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2708
 msgid "warning! Form was not submitted"
 msgstr "предупреждение! Форма не отправлена"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1044, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2642
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1107, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2702
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1041
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1104
 msgid "Error! something went wrong."
 msgstr "Error! something went wrong."
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1373
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1436
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Ошибка! Файл превышает допустимый размер"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1380
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1443
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Ошибка! Тип файла не разрешено загружать"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1723, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1768
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1784, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1829
 msgid "New form request"
 msgstr "New form request"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:404
 msgid " , version : "
 msgstr " , version : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:404
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:457, modules/formbuilder/controllers/uiform-fb-controller-records.php:497
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:452, modules/formbuilder/controllers/uiform-fb-controller-records.php:492
 msgid "qty"
 msgstr "qty"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:460, modules/formbuilder/controllers/uiform-fb-controller-records.php:500, modules/formbuilder/views/frontend/form_invoice.php:109, modules/formbuilder/views/frontend/form_invoice.php:102
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:455, modules/formbuilder/controllers/uiform-fb-controller-records.php:495, modules/formbuilder/views/frontend/form_invoice.php:109, modules/formbuilder/views/frontend/form_invoice.php:102
 msgid "Amount"
 msgstr "Сумма"
 

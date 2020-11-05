@@ -141,7 +141,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 	 */
 	public function global_scripts() {
 		// prev jquery
-		wp_register_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
+		wp_register_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ), null, false );
 		wp_enqueue_script( 'rockfm-prev-jquery' );
 		// for summmary and invoices
 		wp_register_script( self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(), UIFORM_VERSION, false );
@@ -658,15 +658,31 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 			array(
 				'id'   => '',
 				'atr1' => 'input',
+				'opt'  => '', // quick option
 			),
 			$atts
 		);
 
 		$result = '';
+		$output = '';
 
-		$f_data = $this->model_formrecords->getFieldDataById( $this->flag_submitted, $vars['id'] );
+		switch ( strval( $vars['opt'] ) ) {
+			case 'calc':
+				$form_rec_data = $this->model_formrecords->getVarOptRecord( 'calc_' . $vars['atr1'], $this->flag_submitted );
+				$resultCalc        = $form_rec_data;
 
-		$output = $this->model_formrecords->getFieldOptRecord( $this->flag_submitted, $f_data->type, $vars['id'], $vars['atr1'] );
+				if ( $resultCalc != '' && intval( $resultCalc ) > 0 ) {
+					$output = '1';
+				}
+
+				break;
+
+			default:
+				$f_data = $this->model_formrecords->getFieldDataById( $this->flag_submitted, $vars['id'] );
+				$output = $this->model_formrecords->getFieldOptRecord( $this->flag_submitted, $f_data->type, $vars['id'], $vars['atr1'] );
+
+				break;
+		}
 
 		if ( $output != '' ) {
 			$result = do_shortcode( $content );
@@ -688,6 +704,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					'atr1' => 'input',
 					'atr2' => '',
 					'atr3' => '',
+					'atr4' => '',
 				),
 				$atts
 			);
@@ -717,6 +734,52 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					}
 
 					$output = Uiform_Form_Helper::cformat_numeric( $this->format_price_conf, $output );
+
+					break;
+				case 'format':
+					switch ( strval( $vars['atr4'] ) ) {
+						case 'list':
+							//format to field with multiple options
+							switch ( strval( $f_data->type ) ) {
+								case '9':
+								case '11':
+									$tmpArr = explode( '^,^', $output );
+									if ( is_array( $tmpArr ) ) {
+										$newString = '<ul>';
+										foreach ( $tmpArr as $key => $value ) {
+											$newString .= '<li>' . $value . '</li>';
+										}
+										$newString .= '</ul>';
+										$output = $newString;
+									}
+
+									break;
+
+								default:
+									# code...
+									break;
+							}
+							break;
+						case 'comma':
+								//format to field with multiple options
+							switch ( strval( $f_data->type ) ) {
+								case '9':
+								case '11':
+									$tmpArr = explode( '^,^', $output );
+									if ( is_array( $tmpArr ) ) {
+										$output = str_replace( '^,^', ', ', $output );
+									}
+
+									break;
+
+								default:
+									# code...
+									break;
+							}
+							break;
+						default:
+							break;
+					}
 
 					break;
 
@@ -1504,23 +1567,22 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 									$form_f_tmp[ $key ]['lbl_show_st'] = isset( $tmp_fdata['price']['lbl_show_st'] ) ? $tmp_fdata['price']['lbl_show_st'] : 0;
 
 									// for records
-									$tmp_summary=array();
-								 
+									$tmp_summary = array();
+
 								foreach ( $value as $key2 => $value2 ) {
-									$tmp_summary_inner='';
-									 
-									if(isset($tmp_fdata['input17']['options'][ $key2 ]['label'])){
-										$tmp_summary_inner.=$tmp_fdata['input17']['options'][ $key2 ]['label'];
+									$tmp_summary_inner = '';
+
+									if ( isset( $tmp_fdata['input17']['options'][ $key2 ]['label'] ) ) {
+										$tmp_summary_inner .= $tmp_fdata['input17']['options'][ $key2 ]['label'];
 									}
-									
-									if(intval($value2) > 1){
-										$tmp_summary_inner.= ' - qty: '.$value2;
+
+									if ( intval( $value2 ) > 1 ) {
+										$tmp_summary_inner .= ' - qty: ' . $value2;
 									}
 									$tmp_summary[] = $tmp_summary_inner;
 								}
-								 
-							 
-								$form_f_rec_tmp[ $key ] =implode('^,^', $tmp_summary);
+
+								$form_f_rec_tmp[ $key ] = implode( '^,^', $tmp_summary );
 									// end for records
 
 								foreach ( $value as $key2 => $value2 ) {
@@ -1679,8 +1741,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				$this->flag_submitted          = $idActivate;
 				self::$_form_data['form_id']   = $form_id;
 				self::$_form_data['record_id'] = $idActivate;
-				
-				
+
 				// update to payment records
 				$data3                       = array();
 				$data3['fbh_id']             = $idActivate;
@@ -1693,7 +1754,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				$data3['type_pg_id']         = 1;
 
 				$this->wpdb->insert( $this->model_gateways_rec->table, $data3 );
-				
+
 				// is demo
 			if ( $is_demo === 0 ) {
 				// preparing mail
@@ -1840,9 +1901,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				$data['fbh_id']          = $idActivate;
 				$data['currency']        = $this->current_cost;
 
-				  
 				//self::$_modules['addon']['frontend']->addons_doActions( 'onSubmitForm_pos' );
-				do_action( 'zgfm_onSubmitForm_pos', self::$_form_data['form_id'], self::$_form_data['record_id']);
+				do_action( 'zgfm_onSubmitForm_pos', self::$_form_data['form_id'], self::$_form_data['record_id'] );
 
 			if ( intval( $data['payment_st'] ) === 1 ) {
 				$id_payrec            = $this->wpdb->insert_id;
@@ -1885,8 +1945,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		 $is_html = isset( $_GET['is_html'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['is_html'] ) : 0;
 
 		 $form_data = $this->model_formrecords->getFormDataById( $rec_id );
-		 $this->current_form_id=$form_data->form_fmb_id;
-		 
+		 $this->current_form_id = $form_data->form_fmb_id;
+
 		if ( intval( $rec_id ) > 0 ) {
 			ob_start();
 			?>
@@ -2396,19 +2456,19 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		wp_register_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
 		wp_enqueue_script( 'rockfm-prev-jquery' );
 
-		wp_register_script( 'rockfm-wp-i18n', site_url().'/wp-includes/js/dist/i18n.min.js', array());
+		wp_register_script( 'rockfm-wp-i18n', site_url() . '/wp-includes/js/dist/i18n.min.js', array() );
 		wp_enqueue_script( 'rockfm-wp-i18n' );
- 
-		wp_register_script( 'rockfm-wp-hooks', site_url().'/wp-includes/js/dist/hooks.min.js', array());
+
+		wp_register_script( 'rockfm-wp-hooks', site_url() . '/wp-includes/js/dist/hooks.min.js', array() );
 		wp_enqueue_script( 'rockfm-wp-hooks' );
-				
+
 		// load resources
 		$this->load_form_resources();
 
 		// load rocket form
 		wp_enqueue_script( 'rockfm-js_global' );
-		do_action('wp_enqueue_scripts');
-		 
+		do_action( 'wp_enqueue_scripts' );
+
 		$result            = array();
 		$result['scripts'] = array();
 		$result['styles']  = array();
@@ -2420,29 +2480,29 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 		$result['files'][] = '<script type="text/javascript" src="' . $result['scripts']['base_url'] . $wp_scripts->registered['jquery-core']->src . '"></script>';
 		$result['files'][] = '<script type="text/javascript" src="' . $result['scripts']['base_url'] . $wp_scripts->registered['jquery-ui-core']->src . '"></script>';
-		$temp=array();
+		$temp = array();
 		foreach ( $wp_scripts->queue as $script ) :
- 
-	if ( Uiform_Form_Helper::isValidUrl_structure( $wp_scripts->registered[ $script ]->src ) ) {
- 
-					if(	strpos($wp_scripts->registered[ $script ]->handle,'rockfm-')!==false ||
-						strpos($wp_scripts->registered[ $script ]->handle,'jquery-')!==false
-					){
+
+			if ( Uiform_Form_Helper::isValidUrl_structure( $wp_scripts->registered[ $script ]->src ) ) {
+
+				if ( strpos( $wp_scripts->registered[ $script ]->handle, 'rockfm-' ) !== false ||
+						strpos( $wp_scripts->registered[ $script ]->handle, 'jquery-' ) !== false
+					) {
 					$result['files'][] = '<script type="text/javascript" src="' . $wp_scripts->registered[ $script ]->src . '"></script>';
-					}
-	}
- 
+				}
+			}
+
 		endforeach;
- 
+
 		global $wp_styles;
 		$result['styles']['base_url']    = $wp_styles->base_url;
 		$result['styles']['content_url'] = $wp_styles->content_url;
 		foreach ( $wp_styles->queue as $style ) :
 			//excepting block-library
-			if( strpos($wp_styles->registered[ $style ]->src, 'dist/block-library') === false &&
-				strpos($wp_styles->registered[ $style ]->src, get_template_directory_uri() ) === false
-			 ){
-			$result['files'][] = '<link href="' . $wp_styles->registered[ $style ]->src . '" rel="stylesheet">';
+			if ( strpos( $wp_styles->registered[ $style ]->src, 'dist/block-library' ) === false &&
+				strpos( $wp_styles->registered[ $style ]->src, get_template_directory_uri() ) === false
+			 ) {
+				$result['files'][] = '<link href="' . $wp_styles->registered[ $style ]->src . '" rel="stylesheet">';
 			}
 		endforeach;
 		return $result;
@@ -2455,7 +2515,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 			return '';
 		}
 
-		$shortcode_string =  $rdata->fmb_html ;
+		$shortcode_string = $rdata->fmb_html;
 
 		$data = array();
 
@@ -2465,7 +2525,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$form_variables['ajax_nonce']        = wp_create_nonce( 'zgfm_ajax_nonce' );
 		$form_variables['ajaxurl']           = admin_url( 'admin-ajax.php' );
 		$form_variables['imagesurl']         = UIFORM_FORMS_URL . '/assets/frontend/images';
-		 
+
 		$form_data_onsubm = json_decode( $rdata->fmb_data2, true );
 		 $onload_scroll   = ( isset( $form_data_onsubm['main']['onload_scroll'] ) ) ? $form_data_onsubm['main']['onload_scroll'] : '0';
 		if ( intval( $onload_scroll ) === 1 ) {
@@ -2484,7 +2544,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$form_variables['_uifmvar']['fm_modalmode_st'] = get_option( 'zgfm_b_modalmode', 0 );
 
 		$data['rockfm_vars_arr'] = $form_variables;
-		 
+
 		$data['form_id'] = $id_form;
 		// get enqueue files
 		$data['head_files'] = $this->get_enqueue_files( $id_form );
@@ -2558,7 +2618,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					if ( empty( $data_form ) ) {
 						return;
 					}
-							$shortcode_string =  $data_form->fmb_html ;
+							$shortcode_string = $data_form->fmb_html;
 					 // load resources
 							$this->load_form_resources_alt( $id, $is_demo );
 
@@ -2587,14 +2647,14 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					?>
 								<script type="text/javascript">
 									
-									$uifm("#rockfm_form_<?php echo $id; ?>").ready(function () {
-										  zgfm_front_helper.load_cssfiles(<?php echo $id; ?>);
-										   
-											rocketfm();
-											rocketfm.initialize();
-											rocketfm.setExternalVars();
-											rocketfm.loadform_init();
-									});
+										jQuery("#rockfm_form_<?php echo $id; ?>").ready(function () {
+											  zgfm_front_helper.load_cssfiles(<?php echo $id; ?>);
+												rocketfm();
+												rocketfm.initialize();
+												rocketfm.setExternalVars();
+												rocketfm.loadform_init();
+										});
+									
 								</script>
 								<?php
 								$js_string = ob_get_clean();
@@ -2614,7 +2674,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					if ( empty( $data_form ) ) {
 						return;
 					}
-					$shortcode_string =  $data_form->fmb_html ;
+					$shortcode_string = $data_form->fmb_html;
 
 					$modalmode = get_option( 'zgfm_c_modalmode', 0 );
 					if ( intval( $modalmode ) === 0 ) {
@@ -2864,9 +2924,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 		 /* load js */
 		if ( UIFORM_DEBUG === 1 ) {
-			wp_enqueue_script( 'rockfm-js_global', UIFORM_FORMS_URL . '/assets/frontend/js/front.debug.js?v=' . date( 'Ymdgis' ), array( 'rockfm-bootstrap' , 'wp-i18n', 'wp-hooks'), UIFORM_VERSION, true );
+			wp_enqueue_script( 'rockfm-js_global', UIFORM_FORMS_URL . '/assets/frontend/js/front.debug.js?v=' . date( 'Ymdgis' ), array( 'rockfm-bootstrap', 'wp-i18n', 'wp-hooks' ), UIFORM_VERSION, true );
 		} else {
-			wp_enqueue_script( 'rockfm-js_global', UIFORM_FORMS_URL . '/assets/frontend/js/front.min.js', array( 'rockfm-bootstrap' , 'wp-i18n', 'wp-hooks' ), UIFORM_VERSION, true );
+			wp_enqueue_script( 'rockfm-js_global', UIFORM_FORMS_URL . '/assets/frontend/js/front.min.js', array( 'rockfm-bootstrap', 'wp-i18n', 'wp-hooks' ), UIFORM_VERSION, true );
 		}
 
 	}
@@ -2889,7 +2949,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 	}
 
 	public function shortcode_show_version() {
-		if( ZIGAFORM_F_LITE === 1 ){
+		if ( ZIGAFORM_F_LITE === 1 ) {
 			$output  = '<noscript>';
 			$output .= '<a href="https://zigaform.com/?uifm_v=' . UIFORM_VERSION . '" title="WordPress Calculator & Cost Estimation" >ZigaForm </a> version ' . UIFORM_VERSION;
 			$output .= '</noscript>';

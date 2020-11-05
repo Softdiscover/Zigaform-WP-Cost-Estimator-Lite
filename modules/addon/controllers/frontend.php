@@ -74,9 +74,9 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 			// load addons
 			require_once UIFORM_FORMS_DIR . '/modules/addon_' . $value->add_name . '/controllers/frontend.php';
 			call_user_func( array( 'zfaddn_' . $value->add_name . '_front', 'get_instance' ) );
-			 
+
 		}
- 
+
 	}
 
 	public function load_addActions() {

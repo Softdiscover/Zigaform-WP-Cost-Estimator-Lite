@@ -164,7 +164,7 @@ class Zigaform_c_notice {
 				'jquery',
 			),
 			UIFORM_VERSION
-			  );
+        );
 
 			  // Notice JS
 			  wp_enqueue_script( 'zgfm-script-global-js', '', array(), '', true );

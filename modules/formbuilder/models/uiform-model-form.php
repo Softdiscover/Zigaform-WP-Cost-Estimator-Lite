@@ -106,7 +106,7 @@ class Uiform_Model_Form {
 			where uf.flag_status=0 ',
 			$this->table
 		);
- 
+
 		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
 		$query .= sprintf( ' ORDER BY uf.updated_date %s ', $orderby );
@@ -224,11 +224,11 @@ class Uiform_Model_Form {
 			return 0;
 		}
 	}
-	
+
 	/*
 	* list all and trash forms
 	*/
-	function ListTotals(){
+	function ListTotals() {
 		$query = sprintf(
 			'
 			SELECT 
@@ -237,14 +237,13 @@ class Uiform_Model_Form {
 			FROM %s
 			',
 			$this->table
-			
 		);
 
 		return $this->wpdb->get_row( $query );
-	
+
 	}
-	
- 
+
+
 
 }
 

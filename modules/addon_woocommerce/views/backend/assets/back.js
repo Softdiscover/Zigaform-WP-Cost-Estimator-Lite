@@ -3,10 +3,10 @@ if (typeof $uifm === 'undefined') {
 }
 var zgfm_back_addon_woocomm = zgfm_back_addon_woocomm || null;
 if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
-	(function ($, window) {
+	(function($, window) {
 		'use strict';
 
-		var zgfm_fn_woocomm = function () {
+		var zgfm_fn_woocomm = function() {
 			var variable = [];
 			variable.innerVars = {};
 			variable.externalVars = {};
@@ -19,19 +19,19 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 					summ_status: '0',
 					summ_title: 'summary',
 					summ_content:
-						'<div style="overflow-x:auto;background:#eee;clear:both;"> <table cellpadding="0" cellspacing="0" style="margin:0px;"> <tr class="details"> <td> Check </td><td> 0 </td></tr><tr class="heading"> <td> <b>Item</b> </td><td> <b>Price</b> </td></tr><tr class="item"> <td> Product 1 </td><td> $0 </td></tr><tr class="item"> <td> Service 1 </td><td> $0 </td></tr><tr class="item last"> <td> Product 2 </td><td> $0 </td></tr><tr class="total"> <td></td><td> Total: $0 </td></tr></table></div>'
-				}
+						'<div style="overflow-x:auto;background:#eee;clear:both;"> <table cellpadding="0" cellspacing="0" style="margin:0px;"> <tr class="details"> <td> Check </td><td> 0 </td></tr><tr class="heading"> <td> <b>Item</b> </td><td> <b>Price</b> </td></tr><tr class="item"> <td> Product 1 </td><td> $0 </td></tr><tr class="item"> <td> Service 1 </td><td> $0 </td></tr><tr class="item last"> <td> Product 2 </td><td> $0 </td></tr><tr class="total"> <td></td><td> Total: $0 </td></tr></table></div>',
+				},
 			};
 
 			var settings = $.extend(true, {}, defaults);
 
-			this.initialize = function () {};
+			this.initialize = function() {};
 
-			this.dump_data = function () {
+			this.dump_data = function() {
 				console.log(this.dumpvar3(settings));
 			};
 
-			this.refresh_options = function () {
+			this.refresh_options = function() {
 				//show options
 				let tmp_wc_quantity = settings['data']['wc_quantity'];
 
@@ -40,9 +40,18 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
 				//fill select list of form values
 				$('#woocmc_quantity').html('');
-				$('#woocmc_quantity').append($('<option></option>').attr('value', "1").text('None'));
-				$.each(tmp_options, function (key2, value2) {
-					$('#woocmc_quantity').append($('<option></option>').attr('value', value2['id']).attr('data-type', value2['type']).text(value2['name']));
+				$('#woocmc_quantity').append(
+					$('<option></option>')
+						.attr('value', '1')
+						.text('None')
+				);
+				$.each(tmp_options, function(key2, value2) {
+					$('#woocmc_quantity').append(
+						$('<option></option>')
+							.attr('value', value2['id'])
+							.attr('data-type', value2['type'])
+							.text(value2['name'])
+					);
 				});
 
 				$('#woocmc_quantity').val(tmp_wc_quantity);
@@ -51,39 +60,36 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				this.load_events();
 			};
 
-			this.load_settings = function () {
-			
-				var idform=$('#uifm_frm_main_id').val();
-                $.ajax({
-                    type: 'POST',
-                    url: ajaxurl,
-                    data: {
-                       'action': 'zgfm_back_woocommerce_load_settings',
-                       'page':'zgfm_form_builder',
-                       'zgfm_security':uiform_vars.ajax_nonce,
-                       'form_id':parseInt(idform)
-                        },
-                        success: function(msg) {
-                           //load data
-                           if(msg.data.status){
-                            settings = $.extend(true, {}, defaults, { data: msg.data });
-                           }else{
-                            settings = $.extend(true, {}, defaults);
-                           }
-                           
-                        //show options
+			this.load_settings = function() {
+				var idform = $('#uifm_frm_main_id').val();
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_back_woocommerce_load_settings',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						form_id: parseInt(idform),
+					},
+					success: function(msg) {
+						//load data
+						if (msg.data.status) {
+							settings = $.extend(true, {}, defaults, { data: msg.data });
+						} else {
+							settings = $.extend(true, {}, defaults);
+						}
+
+						//show options
 						zgfm_back_addon_woocomm.show_options();
-		
+
 						//load events
 						zgfm_back_addon_woocomm.load_events_once();
-                        }
-                });
-			
-			 
+					},
+				});
 			};
 
-			this.load_events_once = function () {
-				$('.woocomm-input').on('change', function (e) {
+			this.load_events_once = function() {
+				$('.woocomm-input').on('change', function(e) {
 					if (e) {
 						e.stopPropagation();
 						e.preventDefault();
@@ -96,7 +102,7 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				});
 
 				/* tinymce text*/
-				$('#woocmc_summ_content').on('change keyup paste', function (e) {
+				$('#woocmc_summ_content').on('change keyup paste', function(e) {
 					// your code here
 					var tab_opt = $(e.target).attr('id');
 					var tmp_content = $(e.target).val();
@@ -109,8 +115,8 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				});
 			};
 
-			this.load_events = function () {
-				$('.woocomm-input').on('change', function (e) {
+			this.load_events = function() {
+				$('.woocomm-input').on('change', function(e) {
 					if (e) {
 						e.stopPropagation();
 						e.preventDefault();
@@ -121,15 +127,12 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
 					zgfm_back_addon_woocomm.update_settings(f_store, f_val);
 				});
-				
-			 
-				
 			};
 
 			/*
 			 * receeive tinymce data
 			 */
-			this.tinyMCE_onChange = function (args) {
+			this.tinyMCE_onChange = function(args) {
 				if (args['textarea_id'] === 'woocmc_summ_content') {
 					var f_store = 'summ_content';
 					var f_val = args['textarea_content'];
@@ -138,7 +141,7 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				}
 			};
 
-			this.update_settings = function (f_store, value) {
+			this.update_settings = function(f_store, value) {
 				var opt1, opt2, opt3, tmp_store;
 				var f_id = $('#uifm-field-selected-id').val();
 				var f_step = $('#' + f_id)
@@ -173,7 +176,7 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				}
 			};
 
-			this.show_options = function () {
+			this.show_options = function() {
 				//load settings on tab
 
 				let tmp_status = settings['data']['status'];
@@ -194,9 +197,18 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 
 				//fill select list of form values
 				$('#woocmc_quantity').html('');
-				$('#woocmc_quantity').append($('<option></option>').attr('value', "1").text('None'));
-				$.each(tmp_options, function (key2, value2) {
-					$('#woocmc_quantity').append($('<option></option>').attr('value', value2['id']).attr('data-type', value2['type']).text(value2['name']));
+				$('#woocmc_quantity').append(
+					$('<option></option>')
+						.attr('value', '1')
+						.text('None')
+				);
+				$.each(tmp_options, function(key2, value2) {
+					$('#woocmc_quantity').append(
+						$('<option></option>')
+							.attr('value', value2['id'])
+							.attr('data-type', value2['type'])
+							.text(value2['name'])
+					);
 				});
 
 				$('#woocmc_quantity').val(tmp_wc_quantity);
@@ -212,10 +224,10 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				let tmp_summ_title = settings['data']['summ_title'];
 				$('#woocmc_summ_title').val(tmp_summ_title);
 
-				let tmp_summ_content = settings['data']['summ_content']||'';
+				let tmp_summ_content = settings['data']['summ_content'] || '';
 				if (typeof tinymce != 'undefined') {
 					var editor = tinymce.get('woocmc_summ_content');
-					
+
 					if (editor && editor instanceof tinymce.Editor) {
 						var content = tmp_summ_content;
 						editor.setContent(content, { format: 'html' });
@@ -231,29 +243,29 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 			/*
 			 * execute action after creating field
 			 */
-			this.onFieldCreation_post = function () {
+			this.onFieldCreation_post = function() {
 				//load fields
 				zgfm_back_addon_woocomm.refresh_options();
 			};
 
-			this.get_currentDataToSave = function (result) {
-				result['woocommerce']=settings['data'];
-                return result;
+			this.get_currentDataToSave = function(result) {
+				result['woocommerce'] = settings['data'];
+				return result;
 			};
 
-			this.dataFields_load = function () {
+			this.dataFields_load = function() {
 				var tmp_fields = rocketform.get_coreData();
 				var tmp_options = [];
 				var tmp_inneropts = {};
 				if (
 					parseInt(
-						$.map(tmp_fields['steps_src'], function (n, i) {
+						$.map(tmp_fields['steps_src'], function(n, i) {
 							return i;
 						}).length
 					) != 0
 				) {
-					$.each(tmp_fields['steps_src'], function (index3, value3) {
-						$.each(value3, function (index4, value4) {
+					$.each(tmp_fields['steps_src'], function(index3, value3) {
+						$.each(value3, function(index4, value4) {
 							if (parseInt($('#' + index4).length) != 0) {
 								switch (parseInt(value4['type'])) {
 									case 6:
@@ -275,23 +287,23 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				return tmp_options;
 			};
 
-			this.dev_show_vars = function () {
+			this.dev_show_vars = function() {
 				console.log(this.dumpvar3(settings));
 			};
 
-			this.setExternalVars = function () {};
-			this.getExternalVars = function (name) {
+			this.setExternalVars = function() {};
+			this.getExternalVars = function(name) {
 				if (variable.externalVars[name]) {
 					return variable.externalVars[name];
 				} else {
 					return '';
 				}
 			};
-			this.setInnerVariable = function (name, value) {
+			this.setInnerVariable = function(name, value) {
 				variable.innerVars[name] = value;
 			};
 
-			this.getInnerVariable = function (name) {
+			this.getInnerVariable = function(name) {
 				if (variable.innerVars[name]) {
 					return variable.innerVars[name];
 				} else {
@@ -299,16 +311,16 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 				}
 			};
 
-			this.dumpvar3 = function (object) {
+			this.dumpvar3 = function(object) {
 				return JSON.stringify(object, null, 2);
 			};
-			this.dumpvar2 = function (object) {
+			this.dumpvar2 = function(object) {
 				return JSON.stringify(object);
 			};
 
-			this.dumpvar = function (object) {
+			this.dumpvar = function(object) {
 				var seen = [];
-				var json = JSON.stringify(object, function (key, val) {
+				var json = JSON.stringify(object, function(key, val) {
 					if (val != null && typeof val == 'object') {
 						if (seen.indexOf(val) >= 0) return;
 						seen.push(val);
@@ -319,30 +331,13 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 			};
 		};
 		window.zgfm_back_addon_woocomm = zgfm_back_addon_woocomm = $.zgfm_back_addon_woocomm = new zgfm_fn_woocomm();
-		
-		 //adding hook
-		 const { addFilter } = wp.hooks;
-		 //before submit form
-			 addFilter(
-			   "zgfm.onLoadForm_loadAddon",
-			   "zgfm_back_addon_woocomm/load_settings",
-			   zgfm_back_addon_woocomm.load_settings
-			 );	
-			 addFilter(
-				"zgfm.onLoadForm_loadAddon",
-				"zgfm_back_addon_woocomm/onFieldCreation_post",
-				zgfm_back_addon_woocomm.onFieldCreation_post
-			  );
-			  addFilter(
-				"zgfm.getData_beforeSubmitForm",
-				"zgfm_back_addon_woocomm/get_currentDataToSave",
-				zgfm_back_addon_woocomm.get_currentDataToSave
-			  ); 
-			  addFilter(
-				"zgfm.tinyMCE_onChange",
-				"zgfm_back_addon_woocomm/tinyMCE_onChange",
-				zgfm_back_addon_woocomm.tinyMCE_onChange
-			  );  
-		
+
+		//adding hook
+		const { addFilter } = wp.hooks;
+		//before submit form
+		addFilter('zgfm.onLoadForm_loadAddon', 'zgfm_back_addon_woocomm/load_settings', zgfm_back_addon_woocomm.load_settings);
+		addFilter('zgfm.onLoadForm_loadAddon', 'zgfm_back_addon_woocomm/onFieldCreation_post', zgfm_back_addon_woocomm.onFieldCreation_post);
+		addFilter('zgfm.getData_beforeSubmitForm', 'zgfm_back_addon_woocomm/get_currentDataToSave', zgfm_back_addon_woocomm.get_currentDataToSave);
+		addFilter('zgfm.tinyMCE_onChange', 'zgfm_back_addon_woocomm/tinyMCE_onChange', zgfm_back_addon_woocomm.tinyMCE_onChange);
 	})($uifm, window);
 }

@@ -43,15 +43,15 @@ class Uiform_Model_Gateways_Logs {
 		$this->tbform_record = $wpdb->prefix . 'cest_uiform_form_records';
 		$this->tbform        = $wpdb->prefix . 'cest_uiform_form';
 	}
-	
+
 	/**
 	 * delete payment records by form id
 	 *
 	 * @param [type] $form_id
 	 * @return void
 	 */
-	function deleteRecordbyFormId($form_id){
-	
+	function deleteRecordbyFormId( $form_id ) {
+
 		$query = sprintf(
 			'
             DELETE from %s where pgr_id IN (
@@ -65,11 +65,11 @@ class Uiform_Model_Gateways_Logs {
 			$this->tbform_record,
 			$form_id
 		);
-		
+
 		$this->wpdb->query( $query );
 	}
-	
-	
+
+
 }
 
 

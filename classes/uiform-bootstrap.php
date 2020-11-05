@@ -48,16 +48,11 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 	 */
 
 	public function register_hook_callbacks() {
-		
 
 		add_action( 'admin_menu', array( &$this, 'loadMenu' ) );
 
-		
-		 
 		// end format WordPress editor
-			add_action( 'init', array( $this, 'init' ) );	
-
-		
+			add_action( 'init', array( $this, 'init' ) );
 
 		// i18n
 		add_action( 'init', array( &$this, 'i18n' ) );
@@ -80,10 +75,9 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 		// add_action( 'init',                  array( $this, 'upgrade' ), 11 );
 
-
 	}
 
- 
+
 
 	public function zigaform_upgrade() {
 
@@ -501,7 +495,7 @@ JS;
 JS;
 		return $initArray;
 	}
- 
+
 	protected function loadBackendControllers() {
 
 		// addon
@@ -731,7 +725,7 @@ JS;
 
 		add_filter( 'plugin_row_meta', array( &$this, 'get_extra_meta_links' ), 10, 4 );
 		add_action( 'admin_head', array( $this, 'add_star_styles' ) );
-		 
+
 	}
 
 	/**
@@ -805,11 +799,11 @@ JS;
 			$this->modules['formbuilder']['forms']->list_uiforms();
 		}
 	}
-	
+
 	/**
 	 * load styles and script across the site
 	 */
-	public function load_adminGeneral_resources(){
+	public function load_adminGeneral_resources() {
 		// admin
 		if ( UIFORM_DEBUG === 1 ) {
 			wp_register_style(
@@ -828,18 +822,17 @@ JS;
 				'all'
 			);
 		}
-		
+
 		// load rocketform
 		wp_enqueue_style( self::PREFIX . 'admin' );
-		 
+
 		//bootstrap 4
 		wp_enqueue_style( 'rockefform-bootstrap-v4', UIFORM_FORMS_URL . '/assets/common/bootstrap/4.3.1/css/bootstrap.css' );
-		
+
 		//font awesome
 		wp_enqueue_style( 'rockefform-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css' );
-		
-	    
-	    // load jquery
+
+		// load jquery
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-widget' );
@@ -860,10 +853,10 @@ JS;
 
 			// prev jquery
 			wp_enqueue_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
- 
+
 			// bootstrap sfdc
 			wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockfm-prev-jquery' ) );
-	    
+
 		if ( UIFORM_DEBUG === 1 ) {
 			wp_register_script(
 				self::PREFIX . 'admin',
@@ -1212,74 +1205,71 @@ JS;
 		try {
 			global $wp_version;
 			// load admin
-		if ( is_admin() &&
+			if ( is_admin() &&
 			current_user_can( 'manage_options' ) &&
-		  	Uiform_Form_Helper::is_zigaform_admin_enabled() ) {
-			
-			// Composer autoload
-			$composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
-			if (file_exists($composer_path)) {
-				require_once $composer_path;
-			}
+			Uiform_Form_Helper::is_zigaform_admin_enabled() ) {
 
-			//load controllers
-			$this->loadBackendControllers();
-			
-			// add class to body
-			add_filter( 'body_class', array( &$this, 'filter_body_class' ) );
-			 
-			//load script and styles
-			if(Uiform_Form_Helper::is_uiform_page()){
-				// deregister bootstrap in child themes
-				add_action( 'admin_enqueue_scripts', array( &$this, 'remove_unwanted_css' ), 1000 );
-				
-				// admin resources
-				add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1 );
-	
-				// disabling WordPress update message
-				add_action( 'admin_menu', array( &$this, 'wphidenag' ) );
-				// format WordPress editor
-				if ( version_compare( $wp_version, 4, '<' ) ) {
-					// for WordPress 3.x
-					// event tinymce
-					add_filter( 'tiny_mce_before_init', array( &$this, 'wpse24113_tiny_mce_before_init' ) );
-					// add_filter('tiny_mce_before_init', array(&$this, 'myformatTinyMCE'));
-				} else {
-					add_filter( 'tiny_mce_before_init', array( &$this, 'wpver411_tiny_mce_before_init' ) );
-					add_filter( 'mce_external_plugins', array( &$this, 'my_external_plugins' ) );
-	
+				// Composer autoload
+				$composer_path = path_join( UIFORM_FORMS_DIR, 'vendor/autoload.php' );
+				if ( file_exists( $composer_path ) ) {
+					require_once $composer_path;
 				}
-			}else{
-				// admin resources
-				add_action( 'admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1 );
+
+				//load controllers
+				$this->loadBackendControllers();
+
+				// add class to body
+				add_filter( 'body_class', array( &$this, 'filter_body_class' ) );
+
+				//load script and styles
+				if ( Uiform_Form_Helper::is_uiform_page() ) {
+					// deregister bootstrap in child themes
+					add_action( 'admin_enqueue_scripts', array( &$this, 'remove_unwanted_css' ), 1000 );
+
+					// admin resources
+					add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1 );
+
+					// disabling WordPress update message
+					add_action( 'admin_menu', array( &$this, 'wphidenag' ) );
+					// format WordPress editor
+					if ( version_compare( $wp_version, 4, '<' ) ) {
+						// for WordPress 3.x
+						// event tinymce
+						add_filter( 'tiny_mce_before_init', array( &$this, 'wpse24113_tiny_mce_before_init' ) );
+						// add_filter('tiny_mce_before_init', array(&$this, 'myformatTinyMCE'));
+					} else {
+						add_filter( 'tiny_mce_before_init', array( &$this, 'wpver411_tiny_mce_before_init' ) );
+						add_filter( 'mce_external_plugins', array( &$this, 'my_external_plugins' ) );
+
+					}
+				} else {
+					// admin resources
+					add_action( 'admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1 );
+				}
+
+				 // disable update notifications and more
+				if ( is_admin() ) {
+					add_filter( 'site_transient_update_plugins', array( &$this, 'disable_plugin_updates' ) );
+
+					// if(ZIGAFORM_F_LITE===1){
+					  add_filter( ( is_multisite() ? 'network_admin_' : '' ) . 'plugin_action_links', array( $this, 'plugin_add_links' ), 10, 2 );
+
+					  // ZigaForm Upgrade
+					  add_action( 'admin_notices', array( $this, 'zigaform_upgrade' ) );
+
+					// }
+
+				}
+			} else {
+				// load frontend
+				$this->loadFrontendControllers();
 			}
-			
-			
 
-			 // disable update notifications and more
-			if ( is_admin() ) {
-				add_filter( 'site_transient_update_plugins', array( &$this, 'disable_plugin_updates' ) );
-
-				// if(ZIGAFORM_F_LITE===1){
-				  add_filter( ( is_multisite() ? 'network_admin_' : '' ) . 'plugin_action_links', array( $this, 'plugin_add_links' ), 10, 2 );
-
-				  // ZigaForm Upgrade
-				  add_action( 'admin_notices', array( $this, 'zigaform_upgrade' ) );
-
-				// }
-
-			}
-
-		} else {
-			// load frontend
-			$this->loadFrontendControllers();
-		}
-			
-		// add lang dir
+			// add lang dir
 			add_filter( 'rockfm_languages_directory', array( &$this, 'rockfm_lang_dir_filter' ) );
 			add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
 			add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
-			
+
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

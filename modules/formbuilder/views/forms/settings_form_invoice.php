@@ -411,9 +411,9 @@ jQuery(document).ready(function ($) {
 		} else {
 			$('#uifm-tab-inner-inv-tpl-3').hide();
 		}
-    
-        
-    
+	
+		
+	
 	  
 });
 
