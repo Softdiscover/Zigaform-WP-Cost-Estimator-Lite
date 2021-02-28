@@ -294,7 +294,7 @@ class zfaddn_woocommerce_front extends Uiform_Base_Module {
 			}
 
 			//get product price
-			$product_data = wc_get_product( $prod_id );
+			$product_data = wc_get_product( intval($prod_id) );
 			$product_price = $product_data->get_price();
 			if ( strval( $product_price ) == '' ) {
 				 throw new Exception( __( 'Error! Produce price should be at least zero and not empty ', 'FRocket_admin' ) );
