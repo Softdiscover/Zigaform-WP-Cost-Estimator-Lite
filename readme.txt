@@ -4,7 +4,7 @@ Donate link: https://1.envato.market/DdzY2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, form builder, estimation, calculated, form,  estimate, estimation, estimator, cost estimation, calculation, price calculator, wizard, bootstrap, AJAX, contact, contact form, email, feedback, multilingual
-Requires at least: 3.6
+Requires at least: 5.0
 Tested up to: 5.6.2
 Stable tag: 5.2.6
 
