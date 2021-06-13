@@ -144,7 +144,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		wp_register_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ), null, false );
 		wp_enqueue_script( 'rockfm-prev-jquery' );
 		// for summmary and invoices
-		wp_register_script( self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(), UIFORM_VERSION, false );
+		wp_register_script( self::PREFIX . 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.3.1/iframeResizer.min.js', array(), UIFORM_VERSION, false );
 		wp_enqueue_script( self::PREFIX . 'rockefform-iframe' );
 	}
 
@@ -679,12 +679,22 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 			default:
 				$f_data = $this->model_formrecords->getFieldDataById( $this->flag_submitted, $vars['id'] );
-				$output = $this->model_formrecords->getFieldOptRecord( $this->flag_submitted, $f_data->type, $vars['id'], $vars['atr1'] );
+				switch (intval($f_data->type)) {
+					case 16:case 17:case 18:
+						$output = $this->model_formrecords->getFieldOptRecord( $this->flag_submitted, $f_data->type, $vars['id'], 'input','value' );
+						break;
+					
+					default:
+						$output = $this->model_formrecords->getFieldOptRecord( $this->flag_submitted, $f_data->type, $vars['id'], $vars['atr1'] );
+						break;
+				}
+				
+				
 
 				break;
 		}
 
-		if ( $output != '' ) {
+		if ( $output != '' && $output!='0' ) {
 			$result = do_shortcode( $content );
 		} else {
 			$result = '';
@@ -1052,6 +1062,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 						$temp_date = date( 'F j, Y', strtotime( $data->created_date ) );
 					}
 					$output = $temp_date;
+					break;
+				case 'user_ip':
+					$data   = $this->model_formrecords->getFormDataById( $rec_id );
+					$output = $data->created_ip;
 					break;
 				default:
 			}
@@ -2455,13 +2469,13 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 		wp_register_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
 		wp_enqueue_script( 'rockfm-prev-jquery' );
-
-		wp_register_script( 'rockfm-wp-i18n', site_url() . '/wp-includes/js/dist/i18n.min.js', array() );
-		wp_enqueue_script( 'rockfm-wp-i18n' );
-
+		
 		wp_register_script( 'rockfm-wp-hooks', site_url() . '/wp-includes/js/dist/hooks.min.js', array() );
 		wp_enqueue_script( 'rockfm-wp-hooks' );
-
+		
+		wp_register_script( 'rockfm-wp-i18n', site_url() . '/wp-includes/js/dist/i18n.min.js', array() );
+		wp_enqueue_script( 'rockfm-wp-i18n' );
+		
 		// load resources
 		$this->load_form_resources();
 

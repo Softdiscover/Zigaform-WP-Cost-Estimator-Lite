@@ -614,20 +614,8 @@ if (!$uifm.isFunction(rocketfm)) {
 					if (msg) {
 						tmp_msg.show();
 
-						if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
-							if ('parentIFrame' in window) {
-								parentIFrame.size(); 
-								parentIFrame.scrollTo(0, tmp_msg.offset().top);
-							}
-						} else {
-							$('html,body').animate(
-								{
-									scrollTop: tmp_msg.offset().top,
-								},
-								'slow'
-							);
-						}
-					}
+
+											}
 
 					$('.popover').popover('hide');
 					if ($('.uiform-main-form [data-toggle="tooltip"]').length) {
@@ -637,7 +625,25 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 
 				jQuery(document).trigger('zgfm.form.after_submit', {});
-			};
+
+
+												if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+					if ('parentIFrame' in window) {
+						parentIFrame.scrollTo(0, tmp_msg.offset().top);
+						parentIFrame.size(100); 
+						parentIFrame.autoResize();
+
+											}
+				} else {
+					$('html,body').animate(
+						{
+							scrollTop: tmp_msg.offset().top,
+						},
+						'slow'
+					);
+				}
+
+							};
 			arguments.callee.submitForm_submit = function(el) {
 				var tmp_math_calculation = '';
 				var tmp_mathcalc_enable = el.find('._rockfm_form_calc_math_enable').val();
@@ -3556,7 +3562,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										price_sum += parseFloat(uifm_fld_price);
 										tmp_uifm_summ_list_inner += '<li>' + $(this).attr('data-uifm-inp-label');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : ' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + ' ' + uifm_price_code;
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3602,7 +3608,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										price_sum += parseFloat(uifm_fld_price);
 										tmp_uifm_summ_list_inner += '<li>' + $(this).attr('data-uifm-inp-label');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : ' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + ' ' + uifm_price_code;
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3653,7 +3659,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										tmp_uifm_fld_price += parseFloat(uifm_fld_price);
 										tmp_uifm_summ_list_inner += '<li>' + $(this).text();
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : ' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + ' ' + uifm_price_code;
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3719,7 +3725,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										': </span>';
 								}
 
-								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + uifm_price_code + '</ul></li></span>';
+								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + '  <div class="uifm-sbox-summ-fld-symbol">' +  uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>' + '</li></ul></span>';
 							}
 
 							tmp_uifm_summ_list += tmp_uifm_summ_list_inner;
@@ -3776,7 +3782,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										': </span>';
 								}
 
-								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + uifm_price_code + '</li></ul></span>';
+								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + '  <div class="uifm-sbox-summ-fld-symbol">' +  uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>' + '</li></ul></span>';
 							}
 
 
@@ -3837,7 +3843,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 							price_sum += parseFloat(uifm_fld_price);
 							tmp_uifm_fld_price += parseFloat(uifm_fld_price);
 							if (parseFloat(uifm_fld_price) > 0) {
-								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price">' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + uifm_price_code + '</span>';
+								tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';								
 							}
 
 
@@ -3897,7 +3903,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 												.closest('.uifm-dcheckbox-item')
 												.uiformDCheckbox('get_labelOpt');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : ' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + uifm_price_code;
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3949,7 +3955,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 												.closest('.uifm-dradiobtn-item')
 												.uiformDCheckbox('get_labelOpt');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : ' + uifm_price_symbol + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + uifm_price_code;
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -4031,7 +4037,15 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 				zgfm_front_cost.costest_refresh(obj_form);
 			};
 
-			this.event_isDefined_toEl = function(el, search_evt, list_events) {
+						this.triggerEvent_before = function(){
+
+				 			};
+
+						this.triggerEvent_after = function(){
+
+				 			};
+
+						this.event_isDefined_toEl = function(el, search_evt, list_events) {
 				var flag = false;
 				try {
 					$.each(list_events, function(i, event) {
@@ -4179,14 +4193,15 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										e.preventDefault();
 									}
 
-									if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
+																		if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
 										if ('parentIFrame' in window) {
 											parentIFrame.size(); 
 										}
 									}
 
 									runExtraTasks($(this));
-								});
+
+																	});
 
 								break;
 							case 8:
@@ -4203,12 +4218,15 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										break;
 								}
 
-								tmp_field_inp.on(tmp_action, function(e) {
+																tmp_field_inp.on(tmp_action, function(e) {
 									if (e) {
 										e.preventDefault();
-									}
 
-									tmp_field_id = $(this).attr('data-idfield');
+																			}
+
+																		wp.hooks.applyFilters('zgfmfront.events_before');
+
+																		tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4233,7 +4251,10 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
-								});
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
+
+									 								});
 
 								break;
 							case 10:
@@ -4245,7 +4266,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											if (e) {
 												e.preventDefault();
 											}
-											tmp_field_id = $(this).attr('data-idfield');
+											wp.hooks.applyFilters('zgfmfront.events_before');
+
+																						tmp_field_id = $(this).attr('data-idfield');
 
 											if (obj_form.find('.rockfm-clogic-fcond').length) {
 												obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
@@ -4263,6 +4286,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 												zgfm_front_cost.costest_refresh(obj_form);
 											}
 											runExtraTasks($(this));
+
+											wp.hooks.applyFilters('zgfmfront.events_after');
 										});
 										break;
 									default:
@@ -4270,7 +4295,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											if (e) {
 												e.preventDefault();
 											}
-											tmp_field_id = $(this).attr('data-idfield');
+											wp.hooks.applyFilters('zgfmfront.events_before');
+
+																						tmp_field_id = $(this).attr('data-idfield');
 											if (obj_form.find('.rockfm-clogic-fcond').length) {
 												obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 											}
@@ -4287,8 +4314,12 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 												zgfm_front_cost.costest_refresh(obj_form);
 											}
 											runExtraTasks($(this));
+
+											wp.hooks.applyFilters('zgfmfront.events_after');
 										});
-								}
+
+
+																												}
 
 								break;
 							case 16:
@@ -4296,7 +4327,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
-									tmp_field_id = $(this).attr('data-idfield');
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
+																		tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4314,6 +4347,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										zgfm_front_cost.costest_refresh(obj_form);
 									}
 									runExtraTasks($(this));
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 18:
@@ -4321,7 +4356,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
-									tmp_field_id = $(this).attr('data-idfield');
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
+																		tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4339,6 +4376,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										zgfm_front_cost.costest_refresh(obj_form);
 									}
 									runExtraTasks($(this));
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 24:
@@ -4346,6 +4385,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
 
 									if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
 										if ('parentIFrame' in window) {
@@ -4360,6 +4400,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										zgfm_front_cost.costest_refresh(obj_form);
 									}
 									runExtraTasks($(this));
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 26:
@@ -4367,6 +4409,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
 
 									if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
 										if ('parentIFrame' in window) {
@@ -4381,6 +4424,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										zgfm_front_cost.costest_refresh(obj_form);
 									}
 									runExtraTasks($(this));
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 40:
@@ -4388,7 +4433,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
-									tmp_field_id = $(this).attr('data-idfield');
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
+																		tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4405,6 +4452,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										zgfm_front_cost.costest_refresh(obj_form);
 									}
 									runExtraTasks($(this));
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 41:
@@ -4413,7 +4462,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
-									tmp_field_id = $(this).attr('data-idfield');
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
+																		tmp_field_id = $(this).attr('data-idfield');
 
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
@@ -4425,6 +4476,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
+
+																		wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 
 								break;
@@ -4434,7 +4487,12 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 			};
 		};
 		window.zgfm_front_helper = zgfm_front_helper = $.zgfm_front_helper = new zgfm_front_helper();
-	})($uifm, window);
+
+		const { addFilter } = wp.hooks;
+		addFilter('zgfmfront.events_before', 'zgfm_front_helper/triggerEvent_before', zgfm_front_helper.triggerEvent_before);
+		addFilter('zgfmfront.events_after', 'zgfm_front_helper/triggerEvent_after', zgfm_front_helper.triggerEvent_after);
+
+			})($uifm, window);
 }
 
 (function($) {
@@ -4608,7 +4666,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 					checkSidebarOnDefaultPos();
 
-					if ($(window).width() <= 410) {
+					if ($(window).width() <= 700) {
 					} else {
 						if ($(data.stickyTop_sec).html().length != 0) {
 							data.sidebar_obj.insertBefore(data.formc_obj);
@@ -4627,7 +4685,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 					checkSidebarOnDefaultPos();
 
-					if ($(window).width() <= 410) {
+					if ($(window).width() <= 700) {
 					} else {
 						if ($(data.stickyTop_sec).html().length != 0) {
 							data.sidebar_obj.insertBefore(data.formc_obj);
@@ -4925,7 +4983,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 		var buildOrientation = function() {
 			switch (settings.orientation) {
 				case 'right':
-					if ($(window).width() <= 410) {
+					if ($(window).width() <= 700) {
 						if (parseInt(settings.resp_orientation) === 2) {
 							data.tmp_type = 3;
 						} else {
@@ -4937,7 +4995,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 					break;
 				case 'left':
-					if ($(window).width() <= 410) {
+					if ($(window).width() <= 700) {
 						if (parseInt(settings.resp_orientation) === 2) {
 							data.tmp_type = 3;
 						} else {

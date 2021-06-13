@@ -1,5 +1,5 @@
-# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.2.8
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.2.8 package.
+# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.3.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.3.5 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: my translation\n"
@@ -471,65 +471,385 @@ msgstr "Nope, maybe later"
 msgid "I already did"
 msgstr "I already did"
 
+#: modules/addon_func_anim/controllers/animation.php:223, modules/addon_woocommerce/views/backend/get_content.php:138
+msgid "None"
+msgstr "None"
+
 #: modules/addon_func_anim/controllers/animation.php:227
 msgid "Customs"
 msgstr "Css personalizado"
+
+#: modules/addon_func_anim/controllers/animation.php:229
+msgid "Top to Bottom"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:233
+msgid "Bottom to Top"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:237
+msgid "Left to Right"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:241
+msgid "Right to Left"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:245
+msgid "Appear from center"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:252
 msgid "Attention Seekers"
 msgstr "Attention Seekers"
 
+#: modules/addon_func_anim/controllers/animation.php:254
+msgid "bounce"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:258
+msgid "flash"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:262
+msgid "pulse"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:266
+msgid "rubberBand"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:270
+msgid "shake"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:274
+msgid "swing"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:278
+msgid "tada"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:282
+msgid "wobble"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:289
 msgid "Bouncing Entrances"
 msgstr "Bouncing Entrances"
+
+#: modules/addon_func_anim/controllers/animation.php:292
+msgid "bounceIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:296
+msgid "bounceInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:300
+msgid "bounceInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:304
+msgid "bounceInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:308
+msgid "bounceInUp"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:315
 msgid "Bouncing Exits"
 msgstr "Bouncing Exits"
 
+#: modules/addon_func_anim/controllers/animation.php:318
+msgid "bounceOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:322
+msgid "bounceOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:326
+msgid "bounceOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:330
+msgid "bounceOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:334
+msgid "bounceOutUp"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:341
 msgid "Fading Entrances"
 msgstr "Fading Entrances"
+
+#: modules/addon_func_anim/controllers/animation.php:344
+msgid "fadeIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:348
+msgid "fadeInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:352
+msgid "fadeInDownBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:356
+msgid "fadeInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:360
+msgid "fadeInLeftBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:364
+msgid "fadeInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:368
+msgid "fadeInRightBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:372
+msgid "fadeInUp"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:376
+msgid "fadeInUpBig"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:383
 msgid "Fading Exits"
 msgstr "Relleno derecho"
 
+#: modules/addon_func_anim/controllers/animation.php:385
+msgid "fadeOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:389
+msgid "fadeOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:393
+msgid "fadeOutDownBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:397
+msgid "fadeOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:401
+msgid "fadeOutLeftBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:405
+msgid "fadeOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:409
+msgid "fadeOutRightBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:413
+msgid "fadeOutUp"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:417
+msgid "fadeOutUpBig"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:424
 msgid "Flippers"
 msgstr "Flippers"
+
+#: modules/addon_func_anim/controllers/animation.php:426
+msgid "flip"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:430
+msgid "flipInX"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:434
+msgid "flipInY"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:438
+msgid "flipOutX"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:442
+msgid "flipOutY"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:449
 msgid "Lightspeed"
 msgstr "Ligero"
 
+#: modules/addon_func_anim/controllers/animation.php:451
+msgid "lightSpeedIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:455
+msgid "lightSpeedOut"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:462
 msgid "Rotating Entrances"
 msgstr "Rotating Entrances"
+
+#: modules/addon_func_anim/controllers/animation.php:464
+msgid "rotateIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:468
+msgid "rotateInDownLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:472
+msgid "rotateInDownRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:476
+msgid "rotateInUpLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:480
+msgid "rotateInUpRight"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:487
 msgid "Rotating Exits"
 msgstr "Rotating Exits"
 
+#: modules/addon_func_anim/controllers/animation.php:489
+msgid "rotateOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:493
+msgid "rotateOutDownLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:497
+msgid "rotateOutDownRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:501
+msgid "rotateOutUpLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:505
+msgid "rotateOutUpRight"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:512
 msgid "Specials"
 msgstr "Specials"
+
+#: modules/addon_func_anim/controllers/animation.php:514
+msgid "hinge"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:518
+msgid "rollIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:522
+msgid "rollOut"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:529
 msgid "Zoom Entrances"
 msgstr "Zoom Entrances"
 
+#: modules/addon_func_anim/controllers/animation.php:531
+msgid "zoomIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:535
+msgid "zoomInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:539
+msgid "zoomInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:543
+msgid "zoomInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:547
+msgid "zoomInUp"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:554
 msgid "Zoom Exits"
 msgstr "Zoom Exits"
+
+#: modules/addon_func_anim/controllers/animation.php:556
+msgid "zoomOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:560
+msgid "zoomOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:564
+msgid "zoomOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:568
+msgid "zoomOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:572
+msgid "zoomOutUp"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:579
 msgid "Slide Entrances"
 msgstr "Slide Entrances"
 
+#: modules/addon_func_anim/controllers/animation.php:581
+msgid "slideInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:585
+msgid "slideInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:589
+msgid "slideInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:593
+msgid "slideInUp"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:600
 msgid "Slide Exits"
 msgstr "Side Box Ancho"
+
+#: modules/addon_func_anim/controllers/animation.php:602
+msgid "slideOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:606
+msgid "slideOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:610
+msgid "slideOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:614
+msgid "slideOutUp"
+msgstr ""
 
 #: modules/addon_mgtranslate/controllers/backend.php:90, modules/addon_mgtranslate/controllers/backend.php:148, modules/addon_mgtranslate/controllers/backend.php:234, modules/addon_mgtranslate/views/backend/show_list.php:24
 msgid "Translation Manager"
@@ -599,11 +919,11 @@ msgstr "Error! User has no permission to edit this form"
 msgid "Forms in trash"
 msgstr "Editor de formularios"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1956
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1970
 msgid "Order summary"
 msgstr "Resumen del pedido"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2612
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2626
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 
@@ -893,10 +1213,6 @@ msgstr "WooCommerce product ID for this form"
 msgid "woocommerce quantity "
 msgstr "cantidad"
 
-#: modules/addon_woocommerce/views/backend/get_content.php:138
-msgid "None"
-msgstr "None"
-
 #: modules/addon_woocommerce/views/backend/get_content.php:141
 msgid "just choose a field that will be the product quantity in Woocommerce"
 msgstr "just choose a field that will be the product quantity in Woocommerce"
@@ -973,27 +1289,27 @@ msgstr "Creado"
 msgid "Rollback"
 msgstr "Rollback"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:24, modules/formbuilder/views/forms/ajax_variables_openmodal.php:149, modules/formbuilder/views/forms/settings_form_email.php:506, modules/formbuilder/views/forms/settings_form_summbox.php:113, modules/formbuilder/views/forms/templates_fields.php:91, modules/formbuilder/views/forms/templates_fields.php:115
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:24, modules/formbuilder/views/forms/ajax_variables_openmodal.php:153, modules/formbuilder/views/forms/settings_form_email.php:506, modules/formbuilder/views/forms/settings_form_summbox.php:113, modules/formbuilder/views/forms/templates_fields.php:91, modules/formbuilder/views/forms/templates_fields.php:115
 msgid "Field"
 msgstr "Nombre del campo"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:150, modules/formbuilder/views/forms/settings_form_email.php:507, modules/formbuilder/views/forms/settings_form_summbox.php:114
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:154, modules/formbuilder/views/forms/settings_form_email.php:507, modules/formbuilder/views/forms/settings_form_summbox.php:114
 msgid "Codes"
 msgstr "Codes"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:28, modules/formbuilder/views/forms/ajax_variables_openmodal.php:153, modules/formbuilder/views/forms/settings_form_email.php:510, modules/formbuilder/views/forms/settings_form_summbox.php:117
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:28, modules/formbuilder/views/forms/ajax_variables_openmodal.php:157, modules/formbuilder/views/forms/settings_form_email.php:510, modules/formbuilder/views/forms/settings_form_summbox.php:117
 msgid "label"
 msgstr "Etiqueta"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:154, modules/formbuilder/views/forms/settings_form_email.php:511, modules/formbuilder/views/forms/settings_form_summbox.php:118
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:158, modules/formbuilder/views/forms/settings_form_email.php:511, modules/formbuilder/views/forms/settings_form_summbox.php:118
 msgid "input"
 msgstr "Entrada"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:155, modules/formbuilder/views/forms/settings_form_email.php:512
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:159, modules/formbuilder/views/forms/settings_form_email.php:512
 msgid "Cost"
 msgstr "Cost"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:31, modules/formbuilder/views/forms/ajax_variables_openmodal.php:156, modules/formbuilder/views/forms/settings_form_email.php:513, modules/formbuilder/views/forms/settings_form_summbox.php:119
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:31, modules/formbuilder/views/forms/ajax_variables_openmodal.php:160, modules/formbuilder/views/forms/settings_form_email.php:513, modules/formbuilder/views/forms/settings_form_summbox.php:119
 msgid "quantity"
 msgstr "cantidad"
 
@@ -1019,27 +1335,27 @@ msgstr "Fondo"
 msgid "Frontend"
 msgstr "Contenido"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:32, modules/formbuilder/views/forms/ajax_variables_openmodal.php:144
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:32, modules/formbuilder/views/forms/ajax_variables_openmodal.php:148
 msgid "Fields"
 msgstr "Subir Campos"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:35, modules/formbuilder/views/forms/ajax_variables_openmodal.php:239, modules/formbuilder/views/forms/fields_available.php:716
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:35, modules/formbuilder/views/forms/ajax_variables_openmodal.php:243, modules/formbuilder/views/forms/fields_available.php:716
 msgid "Others"
 msgstr "Otros"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:40, modules/formbuilder/views/forms/ajax_variables_openmodal.php:93, modules/formbuilder/views/forms/ajax_variables_openmodal.php:244, modules/formbuilder/views/forms/settings_form_email.php:530, modules/formbuilder/views/forms/settings_form_summbox.php:135
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:40, modules/formbuilder/views/forms/ajax_variables_openmodal.php:97, modules/formbuilder/views/forms/ajax_variables_openmodal.php:248, modules/formbuilder/views/forms/settings_form_email.php:530, modules/formbuilder/views/forms/settings_form_summbox.php:135
 msgid "variables"
 msgstr "Inhabilitar"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:41, modules/formbuilder/views/forms/ajax_variables_openmodal.php:94, modules/formbuilder/views/forms/ajax_variables_openmodal.php:119, modules/formbuilder/views/forms/ajax_variables_openmodal.php:245, modules/formbuilder/views/forms/ajax_variables_openmodal.php:290, modules/formbuilder/views/forms/settings_form_email.php:531, modules/formbuilder/views/forms/settings_form_email.php:582, modules/formbuilder/views/forms/settings_form_summbox.php:136
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:41, modules/formbuilder/views/forms/ajax_variables_openmodal.php:98, modules/formbuilder/views/forms/ajax_variables_openmodal.php:123, modules/formbuilder/views/forms/ajax_variables_openmodal.php:249, modules/formbuilder/views/forms/ajax_variables_openmodal.php:294, modules/formbuilder/views/forms/settings_form_email.php:531, modules/formbuilder/views/forms/settings_form_email.php:582, modules/formbuilder/views/forms/settings_form_summbox.php:136
 msgid "Code"
 msgstr "Code"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:47, modules/formbuilder/views/forms/ajax_variables_openmodal.php:251, modules/formbuilder/views/forms/settings_form_email.php:537, modules/formbuilder/views/forms/settings_form_summbox.php:142
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:47, modules/formbuilder/views/forms/ajax_variables_openmodal.php:255, modules/formbuilder/views/forms/settings_form_email.php:537, modules/formbuilder/views/forms/settings_form_summbox.php:142
 msgid "Currency symbol"
 msgstr "Símbolo de moneda"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:52, modules/formbuilder/views/forms/ajax_variables_openmodal.php:256, modules/formbuilder/views/forms/settings_form_email.php:542, modules/formbuilder/views/forms/settings_form_summbox.php:147
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:52, modules/formbuilder/views/forms/ajax_variables_openmodal.php:260, modules/formbuilder/views/forms/settings_form_email.php:542, modules/formbuilder/views/forms/settings_form_summbox.php:147
 msgid "Currency code"
 msgstr "Código de moneda"
 
@@ -1047,11 +1363,11 @@ msgstr "Código de moneda"
 msgid "Sub total Amount price"
 msgstr "Sub total Amount price"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:61, modules/formbuilder/views/forms/ajax_variables_openmodal.php:265, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/forms/settings_form_summbox.php:156
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:61, modules/formbuilder/views/forms/ajax_variables_openmodal.php:269, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/forms/settings_form_summbox.php:156
 msgid "Tax"
 msgstr "Lengüeta"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:65, modules/formbuilder/views/forms/ajax_variables_openmodal.php:269, modules/formbuilder/views/forms/settings_form_email.php:555, modules/formbuilder/views/forms/settings_form_summbox.php:160
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:65, modules/formbuilder/views/forms/ajax_variables_openmodal.php:273, modules/formbuilder/views/forms/settings_form_email.php:555, modules/formbuilder/views/forms/settings_form_summbox.php:160
 msgid "Total Amount price"
 msgstr "Total Amount price"
 
@@ -1067,31 +1383,35 @@ msgstr "URL Form"
 msgid "Form record id"
 msgstr "Editor de formularios"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:88, modules/formbuilder/views/forms/create_form.php:38, modules/formbuilder/views/forms/settings_form_invoice.php:381
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:86
+msgid "User IP"
+msgstr ""
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:92, modules/formbuilder/views/forms/create_form.php:38, modules/formbuilder/views/forms/settings_form_invoice.php:381
 msgid "Invoice"
 msgstr "Factura"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:100
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:104
 msgid "Invoice Number"
 msgstr "Factura"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:105
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:109
 msgid "Invoice date"
 msgstr "Factura"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:113, modules/formbuilder/views/forms/ajax_variables_openmodal.php:284, modules/formbuilder/views/forms/create_form.php:47
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:117, modules/formbuilder/views/forms/ajax_variables_openmodal.php:288, modules/formbuilder/views/forms/create_form.php:47
 msgid "Calculation"
 msgstr "Calculation"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:118, modules/formbuilder/views/forms/ajax_variables_openmodal.php:289, modules/formbuilder/views/forms/settings_form_email.php:581
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:122, modules/formbuilder/views/forms/ajax_variables_openmodal.php:293, modules/formbuilder/views/forms/settings_form_email.php:581
 msgid "Calculation variables"
 msgstr "Calculation variables"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:120
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:124
 msgid "Wrapper"
 msgstr "Wrapper"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:120
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:124
 msgid ""
 "you can use this to show content depending if the calculation variable has "
 "a value. if it does not have a value, the content inside this shortcode "
@@ -1101,15 +1421,15 @@ msgstr ""
 "a value. if it does not have a value, the content inside this shortcode "
 "will not appear. "
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:261, modules/formbuilder/views/forms/settings_form_summbox.php:152
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:265, modules/formbuilder/views/forms/settings_form_summbox.php:152
 msgid "Sub Total price"
 msgstr "Sub Total price"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:273, modules/formbuilder/views/forms/settings_form_summbox.php:164
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:277, modules/formbuilder/views/forms/settings_form_summbox.php:164
 msgid "Summary content"
 msgstr "Resumen Box"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:277, modules/formbuilder/views/forms/settings_form_summbox.php:168
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:281, modules/formbuilder/views/forms/settings_form_summbox.php:168
 msgid "Summary link"
 msgstr "Resumen"
 
@@ -1607,7 +1927,7 @@ msgstr "Move to trash"
 msgid "Duplicate Form"
 msgstr "Duplicado"
 
-#: modules/formbuilder/views/forms/list_forms.php:90, modules/formbuilder/views/forms/list_forms.php:79
+#: modules/formbuilder/views/forms/list_forms.php:90, modules/formbuilder/views/forms/list_forms.php:79, modules/formbuilder/views/forms/settings_form_wizard.php:432
 msgid "Duplicate"
 msgstr "Duplicado"
 
@@ -1783,7 +2103,7 @@ msgstr "CHOOSE OPTIONAL VARIABLE"
 msgid "Temporal variable title"
 msgstr "Temporal variable title"
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:287, modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:424, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96, modules/gateways/views/records/list_records.php:80, modules/gateways/views/records/list_records.php:83
+#: modules/formbuilder/views/forms/settings_form_calc.php:287, modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:429, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96, modules/gateways/views/records/list_records.php:80, modules/gateways/views/records/list_records.php:83
 msgid "Delete"
 msgstr "Borrar"
 
@@ -2547,11 +2867,11 @@ msgstr "Aquí limpias"
 msgid "Add new"
 msgstr "Añadir nuevo"
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:86, modules/formbuilder/views/forms/settings_form_wizard.php:412
+#: modules/formbuilder/views/forms/settings_form_wizard.php:86, modules/formbuilder/views/forms/settings_form_wizard.php:417
 msgid "Tab"
 msgstr "Lengüeta"
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:91, modules/formbuilder/views/forms/settings_form_wizard.php:417
+#: modules/formbuilder/views/forms/settings_form_wizard.php:91, modules/formbuilder/views/forms/settings_form_wizard.php:422
 msgid "Type tab title"
 msgstr "Tipo título de la pestaña"
 

@@ -802,7 +802,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 			$data['fmb_name'] = $tmp_form_title->fmb_name;
 
 		}
-
+		 
 		$json                     = array();
 		$tmp_html                 = $this->generate_previewpanel_html( $data );
 		$data['fmb_html_backend'] = Uiform_Form_Helper::encodeHex( $tmp_html['output_html'] );

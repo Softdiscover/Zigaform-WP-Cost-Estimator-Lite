@@ -1029,7 +1029,7 @@ JS;
 			wp_enqueue_script( 'jquery-ui-slider' );
 			wp_enqueue_script( 'jquery-ui-spinner' );
 			wp_enqueue_script( 'jquery-ui-button' );
-
+ 
 			// prev jquery
 			wp_enqueue_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
 
@@ -1118,7 +1118,7 @@ JS;
 			wp_register_script(
 				self::PREFIX . 'admin',
 				UIFORM_FORMS_URL . '/assets/backend/js/admin.debug.js?v=' . date( 'YmdHis' ),
-				array( 'rockefform-bootstrap-sfdc' ),
+				array( 'rockefform-bootstrap-sfdc', 'wp-hooks', 'wp-i18n' ),
 				UIFORM_VERSION,
 				true
 			);
@@ -1126,7 +1126,7 @@ JS;
 			wp_register_script(
 				self::PREFIX . 'admin',
 				UIFORM_FORMS_URL . '/assets/backend/js/admin.min.js',
-				array( 'rockefform-bootstrap-sfdc' ),
+				array( 'rockefform-bootstrap-sfdc', 'wp-hooks', 'wp-i18n' ),
 				UIFORM_VERSION,
 				true
 			);
