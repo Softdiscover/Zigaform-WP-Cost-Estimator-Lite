@@ -60,13 +60,7 @@ ob_start();
 		rocketfm.initialize();
 		rocketfm.setExternalVars();
 		rocketfm.loadform_init();
-	   /* 
-		* removed because it conflict with global.js. delete if this has not other conflict
-		rocketfm();
-		rocketfm.initialize();
-		rocketfm.setExternalVars();
-	   //  $('#uifm_container_<?php echo $form_id; ?>').append('<img src="<?php echo $imagesurl; ?>/loader-form.gif"/></div>');
-		rocketfm.loadform_init();*/
+	   
 	 });                
    
 	</script>

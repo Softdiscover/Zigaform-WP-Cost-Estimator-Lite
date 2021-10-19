@@ -1,5 +1,6 @@
 /*!
- * Jasny Bootstrap v3.1.3 (http://jasny.github.io/bootstrap)
+ * custom plugin v1.0 - softdiscover
+ * original author: Jasny Bootstrap v3.1.3 (http://jasny.github.io/bootstrap)
  * Copyright 2012-2014 Arnold Daniels
  * Licensed under Apache-2.0 (https://github.com/jasny/bootstrap/blob/master/LICENSE)
  */
@@ -452,7 +453,7 @@ if (typeof window.$uifm === 'undefined') { throw new Error('Jasny Bootstrap\'s J
   // ROWLINK DATA-API
   // ==================
 
-  $(document).on('click.bs.rowlink.data-api', '[data-link="sfdc-row"]', function (e) {
+  $(document).on('click.bs.rowlink.data-api', '[data-link="row"]', function (e) {
     if ($(e.target).closest('.rowlink-skip').length !== 0) return
     
     var $this = $(this)

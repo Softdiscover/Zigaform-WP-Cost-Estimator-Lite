@@ -1,5 +1,5 @@
-# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.3.5
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.3.5 package.
+# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.5.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.5.1 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: my another proj\n"
@@ -3063,7 +3063,7 @@ msgstr "没有备份存储。创建新的"
 msgid "Download"
 msgstr "下载"
 
-#: modules/formbuilder/views/settings/backup_settings.php:91, modules/formbuilder/views/settings/backup_settings.php:176
+#: modules/formbuilder/views/settings/backup_settings.php:91, modules/formbuilder/views/settings/backup_settings.php:169
 msgid "Restore Backup"
 msgstr "恢复备份"
 
@@ -3071,11 +3071,11 @@ msgstr "恢复备份"
 msgid "Upload Backup"
 msgstr "上传备份"
 
-#: modules/formbuilder/views/settings/backup_settings.php:174
+#: modules/formbuilder/views/settings/backup_settings.php:167
 msgid "Database backup success"
 msgstr "数据库备份成功"
 
-#: modules/formbuilder/views/settings/backup_settings.php:175
+#: modules/formbuilder/views/settings/backup_settings.php:168
 msgid "Delete File selected"
 msgstr "删除文件选择"
 
@@ -4279,19 +4279,19 @@ msgstr "添加新的条件逻辑"
 msgid "Remove all"
 msgstr "移除所有"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:140, modules/formbuilder/views/fields/modal/settings_form_clogic.php:146
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:135, modules/formbuilder/views/fields/modal/settings_form_clogic.php:141
 msgid "is"
 msgstr "是"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:141, modules/formbuilder/views/fields/modal/settings_form_clogic.php:147
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:136, modules/formbuilder/views/fields/modal/settings_form_clogic.php:142
 msgid "is not"
 msgstr "不是"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:148
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:143
 msgid "greater than"
 msgstr "比...更棒"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:149
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:144
 msgid "less than"
 msgstr "少于"
 

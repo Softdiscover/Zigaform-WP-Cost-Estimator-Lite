@@ -67,11 +67,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<div class="sfdc-input-group">
 											<input type="text" id="dropdown-appended" class="sfdc-form-control">
 											<div class="sfdc-input-group-btn">
-												<button data-toggle="dropdown" class="sfdc-btn sfdc-btn-success dropdown-toggle">
+												<button data-toggle="sfdc-dropdown" class="sfdc-btn sfdc-btn-success dropdown-toggle">
 													Action
 													<i class="fa fa-caret-down"></i>
 												</button>
-												<ul class="dropdown-menu">
+												<ul class="sfdc-dropdown-menu">
 													<li><a href="#">Action</a></li>
 													<li><a href="#">Another action</a></li>
 													<li><a href="#">Something else here</a></li>
@@ -105,10 +105,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<input type="text" class="sfdc-form-control" id="segmented-dropdown">
 											<div class="sfdc-input-group-btn">
 												<button tabindex="-1" class="sfdc-btn sfdc-btn-warning">Action</button>
-												<button data-toggle="dropdown" class="sfdc-btn sfdc-btn-warning dropdown-toggle">
+												<button data-toggle="sfdc-dropdown" class="sfdc-btn sfdc-btn-warning dropdown-toggle">
 													<i class="fa fa-caret-down"></i>
 												</button>
-												<ul class="dropdown-menu">
+												<ul class="sfdc-dropdown-menu">
 													<li><a href="#">Action</a></li>
 													<li><a href="#">Another action</a></li>
 													<li><a href="#">Something else here</a></li>

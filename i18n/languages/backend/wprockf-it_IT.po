@@ -1,5 +1,5 @@
-# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.3.5
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.3.5 package.
+# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.5.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.5.1 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: my proj\n"
@@ -3097,7 +3097,7 @@ msgstr "Non c'è il backup memorizzato. Crea nuovo"
 msgid "Download"
 msgstr "Scarica"
 
-#: modules/formbuilder/views/settings/backup_settings.php:91, modules/formbuilder/views/settings/backup_settings.php:176
+#: modules/formbuilder/views/settings/backup_settings.php:91, modules/formbuilder/views/settings/backup_settings.php:169
 msgid "Restore Backup"
 msgstr "Ripristinare il backup"
 
@@ -3105,11 +3105,11 @@ msgstr "Ripristinare il backup"
 msgid "Upload Backup"
 msgstr "Upload Backup"
 
-#: modules/formbuilder/views/settings/backup_settings.php:174
+#: modules/formbuilder/views/settings/backup_settings.php:167
 msgid "Database backup success"
 msgstr "Successo backup del database"
 
-#: modules/formbuilder/views/settings/backup_settings.php:175
+#: modules/formbuilder/views/settings/backup_settings.php:168
 msgid "Delete File selected"
 msgstr "Elimina file selezionati"
 
@@ -4318,19 +4318,19 @@ msgstr "Aggiungi nuova logica condizionale"
 msgid "Remove all"
 msgstr "Rimuovi tutto"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:140, modules/formbuilder/views/fields/modal/settings_form_clogic.php:146
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:135, modules/formbuilder/views/fields/modal/settings_form_clogic.php:141
 msgid "is"
 msgstr "è"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:141, modules/formbuilder/views/fields/modal/settings_form_clogic.php:147
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:136, modules/formbuilder/views/fields/modal/settings_form_clogic.php:142
 msgid "is not"
 msgstr "non è"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:148
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:143
 msgid "greater than"
 msgstr "più grande di"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:149
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:144
 msgid "less than"
 msgstr "meno di"
 

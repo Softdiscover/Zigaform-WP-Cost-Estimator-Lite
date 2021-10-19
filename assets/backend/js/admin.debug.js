@@ -203,7 +203,11 @@ if (!$uifm.isFunction(rocketform)) {
 				},
 				num_tabs: 1,
 				steps: {
-					tab_title: [],
+					tab_title: [
+						{
+						'title': 'Tab title 1'
+						}
+					],
 					tab_cont: [],
 				},
 				steps_src: [],
@@ -35515,14 +35519,14 @@ $uifm(document).ready(function($) {
 	}
 	$('.uifm_selectpicker').selectpicker();
 
-	$('.uifm-custom-color').colorpicker();
+	if ($.fn.colorpicker) { 
+		$('.uifm-custom-color').colorpicker();
+	}
 
 	$('.switch-field').bootstrapSwitchZgpb();
 
 
 	$('[data-toggle="tooltip"]').tooltip({ container: 'body' });
-
-	$('.uifm-custom-color').colorpicker();
 
 
 	$('#uifm_frm_wiz_theme_typ').on('change', function(e) {
@@ -35532,14 +35536,35 @@ $uifm(document).ready(function($) {
 
 	$('.chzn-select').chosen({ width: '100%', search_contains: true });
 
-	$('.uifm_main_spinner_1').TouchSpin({
-		verticalbuttons: true,
-		min: 0,
-		max: 200,
-		stepinterval: 1,
-		verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
-		verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
-	});
+	if ($.fn.TouchSpin) {
+		$('.uifm_main_spinner_1').TouchSpin({
+			verticalbuttons: true,
+			min: 0,
+			max: 200,
+			stepinterval: 1,
+			verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
+			verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
+		});
+
+				$('.uifm_frm_form_skin_spinner').TouchSpin({
+			verticalbuttons: true,
+			min: 0,
+			max: 10000,
+			stepinterval: 1,
+			verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
+			verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
+		});
+
+			$('.uifm_frm_form_skin_spinner').TouchSpin({
+			verticalbuttons: true,
+			min: 0,
+			max: 10000,
+			stepinterval: 1,
+			verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
+			verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
+		});
+
+			}
 
 	$('.tooltip-option-enable input').tooltip({
 		title: 'Enable',
@@ -35644,23 +35669,6 @@ $uifm(document).ready(function($) {
 		}
 	});
 
-	$('.uifm_frm_form_skin_spinner').TouchSpin({
-		verticalbuttons: true,
-		min: 0,
-		max: 10000,
-		stepinterval: 1,
-		verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
-		verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
-	});
-
-	$('.uifm_frm_form_skin_spinner').TouchSpin({
-		verticalbuttons: true,
-		min: 0,
-		max: 10000,
-		stepinterval: 1,
-		verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
-		verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
-	});
 
 	$(document).on('change', '.uifm-formskin-setoption-st', function(e) {
 		var store = $(this).data('form-store');
@@ -35718,6 +35726,7 @@ $uifm(document).ready(function($) {
 			rocketform.wizardtab_refreshPreview();
 		});
 
+	if ($.fn.colorpicker) {
 	$('#uiform-settings-tab3-2,#uiform-settings-tab3-4')
 		.find('.uifm-custom-color')
 		.colorpicker()
@@ -35738,6 +35747,7 @@ $uifm(document).ready(function($) {
 				}
 			}
 		});
+	}
 
 	$('#uiform-settings-tab3-4')
 		.find('.uifm-custom-color')
@@ -35801,7 +35811,9 @@ $uifm(document).ready(function($) {
 		}
 	});
 
-	$('.switch-field').bootstrapSwitchZgpb();
+	if ($.fn.bootstrapSwitchZgpb) { 
+		$('.switch-field').bootstrapSwitchZgpb();
+		}
 
 	$('#uiform-settings-tab3-2  .uiform-opt-slider').on('slide', function(slideEvt) {
 		var store = $(this).data('form-store');
