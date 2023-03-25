@@ -1398,7 +1398,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 									 $form_f_rec_tmp[ $key ] = $tmp_options_row['label'];
 
 								if ( isset( $tmp_fdata['input2']['options'][ $value ] ) ) {
-									$tmp_options_row['cost']   = floatval( $tmp_fdata['input2']['options'][ $value ]['price'] );
+									$tmp_options_row['cost']   = floatval( $tmp_fdata['input2']['options'][ $value ]['price']??0 );
 									$tmp_options_row['amount'] = $tmp_options_row['cost'];
 
 									if ( isset( $tmp_fdata['price']['enable_st'] )
