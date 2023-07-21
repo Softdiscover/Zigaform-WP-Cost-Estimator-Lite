@@ -196,6 +196,7 @@ ob_start();
 <?php if ( isset( $calculation['enable_st'] ) && intval( $calculation['enable_st'] ) === 1 ) { ?>
 
 <script type="text/javascript">
+
 	var _zgfm_front_vars = _zgfm_front_vars || {};
 	_zgfm_front_vars.form = _zgfm_front_vars.form || {};
 	_zgfm_front_vars.form[<?php echo $form_id; ?>] = {};

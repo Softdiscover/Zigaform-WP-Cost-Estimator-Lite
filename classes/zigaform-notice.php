@@ -12,6 +12,7 @@ class Zigaform_c_notice {
 
 	private $tables = array();
 	private $suffix = 'd-M-Y_H-i-s';
+	private $wpdb = '';
 
 	/**
 	 * Constructor

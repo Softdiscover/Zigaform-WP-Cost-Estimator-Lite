@@ -34,6 +34,7 @@ class Uiform_Model_Addon {
 
 	private $wpdb = '';
 	public $table = '';
+	public $tbaddon_details = '';
 
 	function __construct() {
 		global $wpdb;

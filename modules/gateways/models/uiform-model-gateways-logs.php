@@ -34,6 +34,9 @@ class Uiform_Model_Gateways_Logs {
 
 	private $wpdb = '';
 	public $table = '';
+	public $tbpay_record = '';
+	public $tbform_record = '';
+	public $tbform = '';
 
 	function __construct() {
 		global $wpdb;
