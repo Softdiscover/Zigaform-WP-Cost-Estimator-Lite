@@ -76,6 +76,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		// ajax for verify recaptcha
 		add_action( 'wp_ajax_rocket_front_checkrecaptcha', array( &$this, 'ajax_check_recaptcha' ) );
 		add_action( 'wp_ajax_nopriv_rocket_front_checkrecaptcha', array( &$this, 'ajax_check_recaptcha' ) );
+		// ajax for verify recaptchav3
+		add_action( 'wp_ajax_rocket_front_checkrecaptchav3', array( &$this, 'ajax_check_recaptchav3' ) );
+		add_action( 'wp_ajax_nopriv_rocket_front_checkrecaptchav3', array( &$this, 'ajax_check_recaptchav3' ) );
 		// ajax refresh captcha
 		add_action( 'wp_ajax_rocket_front_refreshcaptcha', array( &$this, 'ajax_refresh_captcha' ) );
 		add_action( 'wp_ajax_nopriv_rocket_front_refreshcaptcha', array( &$this, 'ajax_refresh_captcha' ) );
@@ -1207,6 +1210,16 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		require_once UIFORM_FORMS_DIR . '/modules/formbuilder/controllers/uiform-fb-controller-recaptcha.php';
 		$inst_re = new Uiform_Fb_Controller_Recaptcha();
 		$inst_re->front_verify_recaptcha();
+
+	}
+	
+	public function ajax_check_recaptchav3() {
+
+		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+
+		require_once UIFORM_FORMS_DIR . '/modules/formbuilder/controllers/uiform-fb-controller-recaptcha.php';
+		$inst_re = new Uiform_Fb_Controller_Recaptcha();
+		$inst_re->front_verify_recaptchav3();
 
 	}
 

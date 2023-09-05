@@ -114,7 +114,7 @@ class ReCaptcha
      * @var RequestMethod
      */
     private $requestMethod;
-
+    public $hostname;
     /**
      * Create a configured instance to use the reCAPTCHA service.
      *
