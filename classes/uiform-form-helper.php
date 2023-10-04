@@ -1033,7 +1033,10 @@ function uifm_generate_pdf( $html, $filename, $papersize, $paperorien, $stream =
 	if ( ZIGAFORM_F_LITE === 1 ) {
 
 	} else {
-		if ( version_compare( phpversion(), '7.1', '>=' ) ) {
+		if ( version_compare(phpversion(), '8.0', '>=') ) {
+			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/2.0.3/vendor/autoload.php';
+		} elseif (version_compare(phpversion(), '7.1', '>='))
+		{
 			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/0.8.5/autoload.inc.php';
 		} else {
 			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/0.8.3/autoload.inc.php';
