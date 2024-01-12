@@ -1,5 +1,5 @@
-# Copyright (C) 2022 Zigaform WP Cost Estimation Form Builder 5.5.7
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.5.7 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 5.8.8
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.8.8 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Zigaform WP Cost Estimation Form Builder 5.0.2\n"
@@ -21,43 +21,43 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:291, modules/formbuilder/views/frontend/form_invoice.php:22
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:293, modules/formbuilder/views/frontend/form_invoice.php:22
 msgid "Invoice"
 msgstr "Invoice"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:293, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:328
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:295, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:330
 msgid "Export to PDF"
 msgstr "Export to PDF"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:322
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:324
 msgid "Order summary"
 msgstr "Order summary"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:629
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:631
 msgid "Total cost"
 msgstr "Total cost"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1125, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2708
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1127, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2717
 msgid "warning! Form was not submitted"
 msgstr "warning! Form was not submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1121, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2702
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1123, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2711
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1118
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1120
 msgid "Error! something went wrong."
 msgstr "Error! something went wrong."
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1450
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1462
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Error! The file exceeds the allowed size of"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1457
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1469
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Error! Type of file is not allowed to upload"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1798, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1843
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1810, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1855
 msgid "New form request"
 msgstr "New form request"
 

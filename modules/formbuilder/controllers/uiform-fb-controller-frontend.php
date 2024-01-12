@@ -164,8 +164,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$form_variables['imagesurl']                   = UIFORM_FORMS_URL . '/assets/frontend/images';
 		$form_variables['_uifmvar']['fm_loadmode']     = '';
 		$form_variables['_uifmvar']['fm_modalmode_st'] = get_option( 'zgfm_c_modalmode', 0 );
-
-		return $form_variables;
+		return apply_filters( 'zgfm_front_extra_variables', $form_variables );
 	}
 	public function shortcode_uifm_tax( $atts ) {
 
@@ -2601,7 +2600,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 						'id'      => 1,
 						'ajax'    => false,
 						'lmode'   => 0,
-						'is_demo' => '0',
+						'is_demo' => '0' 
 					),
 					$attributes
 				)
@@ -2618,6 +2617,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					$form_variables['_uifmvar']['id']      = $id;
 					$form_variables['_uifmvar']['addon']   = '';
 					$form_variables['_uifmvar']['is_demo'] = '';
+					$form_variables['_uifmvar']['is_mocking_submit'] = $is_mocking_submit;
 					if ( UIFORM_DEBUG === 1 ) {
 								wp_enqueue_script( 'rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/front.iframe.debug.js', array( 'jquery', self::PREFIX . 'rockefform-iframe' ), '1', false );
 					} else {
@@ -2647,7 +2647,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 					}
 							$shortcode_string = $data_form->fmb_html;
 					 // load resources
-							$this->load_form_resources_alt( $id, $is_demo );
+							$this->load_form_resources_alt( $id, $is_demo);
 
 									   // buffer 2
 							ob_start();
@@ -2662,10 +2662,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 									
 										jQuery("#rockfm_form_<?php echo $id; ?>").ready(function () {
 											  zgfm_front_helper.load_cssfiles(<?php echo $id; ?>);
-												rocketfm();
+											    rocketfm();
 												rocketfm.initialize();
 												rocketfm.setExternalVars();
-												rocketfm.loadform_init();
+									            rocketfm.loadform_init();
 										});
 									
 								</script>
@@ -2676,7 +2676,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 								echo $js_string;
 								// end buffer 2
 								$output = ob_get_clean();
-
+								wp_enqueue_script( 'rockfm-extra-1', UIFORM_FORMS_URL . '/assets/frontend/js/extra-default.js', array( 'jquery' ), UIFORM_VERSION, true );
 					break;
 				default:
 					/*normal shortcode*/
@@ -2936,7 +2936,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$form_variables                        = array();
 		$form_variables['_uifmvar']['is_demo'] = $is_demo;
 		$form_variables['_uifmvar']['is_dev']  = UIFORM_DEBUG;
-
+		
 		wp_localize_script( 'rockfm-js_global', 'rockfm_vars', apply_filters( 'zgfm_front_initvar_load', $form_variables ) );
 
 	}

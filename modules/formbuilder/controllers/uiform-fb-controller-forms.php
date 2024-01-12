@@ -2901,12 +2901,6 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
 			$formdata = $this->formsmodel->getFormById( $data['form_id'] );
 
-			/*
-			 * delete after a month
-			$data['uifm_frm_invoice_tpl_enable']=$formdata->fmb_inv_tpl_st;
-			$data['uifm_frm_invoice_tpl_content']=$formdata->fmb_inv_tpl_html;
-			$data['uifm_frm_record_tpl_enable']=$formdata->fmb_rec_tpl_st;
-			$data['uifm_frm_record_tpl_content']=$formdata->fmb_rec_tpl_html;*/
 		}
 
 		$pdf_paper_size         = array(

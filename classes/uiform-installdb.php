@@ -17,6 +17,22 @@ if ( class_exists( 'Uiform_InstallDB' ) ) {
 	return;}
 
 class Uiform_InstallDB {
+
+	private $form;
+	private $form_history;
+	private $form_fields;
+	private $form_log;
+	private $form_fields_type;
+	private $settings;
+	private $core_addon;
+	private $core_addon_detail;
+	private $core_addon_log;
+	private $pay_gateways;
+	private $pay_records;
+	private $pay_logs;
+	private $visitor;
+	private $visitor_error;
+
 	function __construct() {
 		global $wpdb;
 		$this->form              = $wpdb->prefix . 'cest_uiform_form';

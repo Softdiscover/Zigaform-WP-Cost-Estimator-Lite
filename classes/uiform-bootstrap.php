@@ -1109,6 +1109,9 @@ JS;
 			
 			wp_enqueue_script( 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.js' );
 			
+			wp_enqueue_script( 'rockefform-menu-fonts', UIFORM_FORMS_URL . '/assets/backend/js/fonts.js' );
+			wp_enqueue_script( 'rockefform-menu-main', UIFORM_FORMS_URL . '/libraries/styles-font-menu/js/styles-font-menu.js' );
+			wp_enqueue_style( 'rockefform-menu-style', UIFORM_FORMS_URL . '/libraries/styles-font-menu/css/styles-font-menu.css' );
 
 		if ( UIFORM_DEBUG === 1 ) {
 			wp_register_script(

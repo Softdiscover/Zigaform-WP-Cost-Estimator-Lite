@@ -38,7 +38,6 @@ if (!$uifm.isFunction(rocketfm)) {
 			};
 
 			arguments.callee.initialize = function() {
-				this.setExternalVars({});
 			};
 			arguments.callee.setExternalVars = function() {
 				uifmvariable.externalVars['fm_loadmode'] = rockfm_vars._uifmvar['fm_loadmode'] || '';
@@ -548,7 +547,8 @@ if (!$uifm.isFunction(rocketfm)) {
 			};
 
 			arguments.callee.submitForm_showMessage = function(el, response, obj_btn) {
-				var msg_error = '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Error! Form was not submitted.</div>';
+
+							var msg_error = '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Error! Form was not submitted.</div>';
 				var form_id = el
 					.parent()
 					.find('._rockfm_form_id')
@@ -557,7 +557,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				var tmp_msg = el.parent().find('.rockfm-alert-container');
 				tmp_msg.html('');
 
-				var tmp_redirect_st = 0;
+								var tmp_redirect_st = 0;
 				var tmp_redirect_url = '';
 
 				if (response) {
@@ -650,6 +650,29 @@ if (!$uifm.isFunction(rocketfm)) {
 				if (parseInt(tmp_mathcalc_enable) === 1) {
 					tmp_math_calculation = zgfm_front_calc.costest_calc_getTotal(el) || 0;
 				}
+
+								formId = parseInt(el.find('._rockfm_form_id').val());
+
+				 				isMockingSubmit = 'no';
+				if (rockfm_vars.hasOwnProperty('forms') && rockfm_vars.forms.hasOwnProperty(formId) && rockfm_vars.forms[formId].hasOwnProperty('is_mocking_submit')) {
+					isMockingSubmit = rockfm_vars.forms[formId]['is_mocking_submit'];
+				}
+
+				if (String(isMockingSubmit) === 'yes') {
+				var tmp_msg = el.parent().find('.rockfm-alert-container');
+				   tmp_msg.html('');
+					   tmp_msg.append('<div class="rockfm-alert-inner" ><div class="rockfm-alert rockfm-alert-success"><b>Success!</b> Form was submitted successfully</div></div>');
+					   $('html,body').animate(
+						   {
+							   scrollTop: tmp_msg.offset().top,
+						   },
+						   'slow'
+					   );
+					   tmp_msg.show();
+					   el.hide();
+
+										   return;
+				   }
 
 				if (el.find('._rockfm_type_submit') && parseInt(el.find('._rockfm_type_submit').val()) === 1) {
 					var obj_btn = el.find('.rockfm-submitbtn .rockfm-txtbox-inp-val');
@@ -1360,49 +1383,48 @@ if (!$uifm.isFunction(rocketfm)) {
 						}
 
 						obj_form.find('input, textarea').placeholder();
-					}
 
-					$.each(obj_form.find('.rockfm-conditional-hidden'), function(i, val) {
-						$(this)
-							.find('.rockfm-field')
-							.addClass('rockfm-cond-hidden-children');
-					});
+						$.each(obj_form.find('.rockfm-conditional-hidden'), function(i, val) {
+							$(this)
+								.find('.rockfm-field')
+								.addClass('rockfm-cond-hidden-children');
+						});
 
-					if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
-						if ('parentIFrame' in window) {
-							parentIFrame.size(); 
-						}
-					}
-
-					if (parseInt(obj_form.data('zgpb_datafrm').getData('onload_scroll')) === 1) {
-						if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+							if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
 							if ('parentIFrame' in window) {
-								parentIFrame.scrollTo(0, obj_form.offset().top);
+								parentIFrame.size(); 
 							}
-						} else {
-							$('html,body').animate(
-								{
-									scrollTop: obj_form.offset().top,
-								},
-								'slow'
-							);
 						}
-					}
 
+						if (parseInt(obj_form.data('zgpb_datafrm').getData('onload_scroll')) === 1) {
+							if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+								if ('parentIFrame' in window) {
+									parentIFrame.scrollTo(0, obj_form.offset().top);
+								}
+							} else {
+								$('html,body').animate(
+									{
+										scrollTop: obj_form.offset().top,
+									},
+									'slow'
+								);
+							}
+						}
+						wp.hooks.applyFilters('zgfmfront.initForm_loadAddLibs');
 
-					wp.hooks.applyFilters('zgfmfront.initForm_loadAddLibs');
+						zgfm_front_helper.load_form_init_events(obj_form);
 
-					zgfm_front_helper.load_form_init_events(obj_form);
+						jQuery(document).trigger('zgfm.form.init_loaded', { form: obj_form });
 
-					jQuery(document).trigger('zgfm.form.init_loaded', { form: obj_form });
+							obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
+							e.preventDefault();
+							var obj_form_alt = $(this).closest('.rockfm-form');
+							rocketfm.setInnerVariable('submitting_form_id', obj_form_alt.find('._rockfm_form_id').val());
 
-					obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
-						e.preventDefault();
-						var obj_form_alt = $(this).closest('.rockfm-form');
-						rocketfm.setInnerVariable('submitting_form_id', obj_form_alt.find('._rockfm_form_id').val());
+								rocketfm.submitForm_process(obj_form_alt, e);
+						});
 
-						rocketfm.submitForm_process(obj_form_alt, e);
-					});
+											}
 				});
 
 			};
