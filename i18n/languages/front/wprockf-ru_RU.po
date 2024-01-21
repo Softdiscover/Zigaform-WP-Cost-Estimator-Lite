@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 5.8.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.8.9 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 5.9.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.9.1 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -14,59 +14,59 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3.1\n"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:293, modules/formbuilder/views/frontend/form_invoice.php:22
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:309, modules/formbuilder/views/frontend/form_invoice.php:22
 msgid "Invoice"
 msgstr "Счет"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:295, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:330
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:311, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:349
 msgid "Export to PDF"
 msgstr "Export to PDF"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:324
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:344
 msgid "Order summary"
 msgstr "Сводка заказа"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:631
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:652
 msgid "Total cost"
 msgstr "Общая стоимость"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1127, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2721
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1154, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2742
 msgid "warning! Form was not submitted"
 msgstr "предупреждение! Форма не отправлена"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1123, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2715
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1150, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2737
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1120
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1147
 msgid "Error! something went wrong."
 msgstr "Error! something went wrong."
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1462
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1498
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Ошибка! Файл превышает допустимый размер"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1469
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1505
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Ошибка! Тип файла не разрешено загружать"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1810, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1855
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1838, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1883
 msgid "New form request"
 msgstr "New form request"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:404
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:405
 msgid " , version : "
 msgstr " , version : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:404
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:405
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:452, modules/formbuilder/controllers/uiform-fb-controller-records.php:492, modules/formbuilder/views/frontend/mail_generate_fields.php:97, modules/formbuilder/views/frontend/mail_generate_fields.php:128
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:453, modules/formbuilder/controllers/uiform-fb-controller-records.php:493, modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:149
 msgid "qty"
 msgstr "qty"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:455, modules/formbuilder/controllers/uiform-fb-controller-records.php:495, modules/formbuilder/views/frontend/form_invoice.php:109, modules/formbuilder/views/frontend/form_invoice.php:102
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:456, modules/formbuilder/controllers/uiform-fb-controller-records.php:496, modules/formbuilder/views/frontend/form_invoice.php:108, modules/formbuilder/views/frontend/form_invoice.php:101
 msgid "Amount"
 msgstr "Сумма"
 
@@ -82,39 +82,39 @@ msgstr "Откуда"
 msgid "To"
 msgstr "To"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:106, modules/formbuilder/views/frontend/form_invoice.php:99
+#: modules/formbuilder/views/frontend/form_invoice.php:105, modules/formbuilder/views/frontend/form_invoice.php:98
 msgid "Item ID"
 msgstr "Номер"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:107
+#: modules/formbuilder/views/frontend/form_invoice.php:106
 msgid "Quantity"
 msgstr "Количество"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:108, modules/formbuilder/views/frontend/form_invoice.php:101
+#: modules/formbuilder/views/frontend/form_invoice.php:107, modules/formbuilder/views/frontend/form_invoice.php:100
 msgid "Description"
 msgstr "Описание"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:186, modules/formbuilder/views/frontend/form_summary.php:74, modules/formbuilder/views/frontend/mail_generate_fields.php:205, modules/formbuilder/views/records/info_record.php:33
+#: modules/formbuilder/views/frontend/form_invoice.php:180, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:215, modules/formbuilder/views/records/info_record.php:34
 msgid "Sub total"
 msgstr "Sub total"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:194, modules/formbuilder/views/frontend/form_summary.php:79, modules/formbuilder/views/frontend/mail_generate_fields.php:210, modules/formbuilder/views/records/info_record.php:38
+#: modules/formbuilder/views/frontend/form_invoice.php:188, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:220, modules/formbuilder/views/records/info_record.php:39
 msgid "Tax"
 msgstr "Tax"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:203
+#: modules/formbuilder/views/frontend/form_invoice.php:197
 msgid "Invoice Total"
 msgstr "Всего по счету :"
 
-#: modules/formbuilder/views/frontend/form_summary.php:84, modules/formbuilder/views/frontend/mail_generate_fields.php:216, modules/formbuilder/views/frontend/payment_html.php:80, modules/formbuilder/views/records/info_record.php:43
+#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:226, modules/formbuilder/views/frontend/payment_html.php:79, modules/formbuilder/views/records/info_record.php:44
 msgid "Total"
 msgstr "Итого"
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:60, modules/formbuilder/views/frontend/mail_generate_fields.php:58, modules/formbuilder/views/frontend/mail_generate_fields.php:84, modules/formbuilder/views/frontend/mail_generate_fields.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:110, modules/formbuilder/views/frontend/mail_generate_fields.php:142, modules/formbuilder/views/frontend/mail_generate_fields.php:140
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:63, modules/formbuilder/views/frontend/mail_generate_fields.php:61, modules/formbuilder/views/frontend/mail_generate_fields.php:92, modules/formbuilder/views/frontend/mail_generate_fields.php:90, modules/formbuilder/views/frontend/mail_generate_fields.php:127, modules/formbuilder/views/frontend/mail_generate_fields.php:125, modules/formbuilder/views/frontend/mail_generate_fields.php:162, modules/formbuilder/views/frontend/mail_generate_fields.php:160
 msgid "amount"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:97, modules/formbuilder/views/frontend/mail_generate_fields.php:128
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:149
 msgid "Units"
 msgstr "Units"
 
@@ -134,22 +134,22 @@ msgstr "Сводка по заказу"
 msgid "See summary"
 msgstr "Сводка информации о See"
 
-#: modules/formbuilder/views/frontend/payment_html.php:71
+#: modules/formbuilder/views/frontend/payment_html.php:70
 msgid "See invoice"
 msgstr "См счет"
 
-#: modules/formbuilder/views/frontend/payment_html.php:86
+#: modules/formbuilder/views/frontend/payment_html.php:85
 msgid "Agree To The"
 msgstr "Я соглашаюсь с"
 
-#: modules/formbuilder/views/frontend/payment_html.php:86
+#: modules/formbuilder/views/frontend/payment_html.php:85
 msgid "Terms &amp; Conditions"
 msgstr "Terms & Conditions"
 
-#: modules/formbuilder/views/frontend/payment_html.php:97
+#: modules/formbuilder/views/frontend/payment_html.php:96
 msgid "Complete Order"
 msgstr "Завершить заказ"
 
-#: modules/formbuilder/views/frontend/payment_html.php:103
+#: modules/formbuilder/views/frontend/payment_html.php:102
 msgid "Select Payment"
 msgstr "Выберите тип оплаты"

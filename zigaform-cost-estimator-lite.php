@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: ZigaForm - Wordpress Calculator & Cost Estimation Form Builder Lite
- * Plugin URI: http://wordpress-cost-estimator.zigaform.com
+ * Plugin URI: https://softdiscover.com/zigaform/wordpress-cost-estimator
  * Description: The ZigaForm WP Calculator & Cost Estimation is the ultimate estimation form creation solution for WordPress.
- * Version: 5.8.9
+ * Version: 5.9.1
  * Author: ZigaForm.Com
- * Author URI: https://wordpress-cost-estimator.zigaform.com/
+ * Author URI: https://softdiscover.com/zigaform/wordpress-cost-estimator/
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Access denied.' );
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UiformCostEstLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '5.8.9';
+		public $version = '5.9.1';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.

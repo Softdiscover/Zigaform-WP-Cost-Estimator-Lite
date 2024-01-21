@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-cost-estimator.zigaform.com
+ * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'No direct script access allowed' );
@@ -119,7 +119,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		if ( 'new' == $install_type ) {
 
 			if ( ZIGAFORM_F_LITE === 1 ) {
-				$notice_url     = 'https://wordpress-cost-estimator.zigaform.com/#demo-samples';
+				$notice_url     = 'https://softdiscover.com/zigaform/wordpress-cost-estimator/#demo-samples';
 				$notice_heading = esc_html__( 'Thanks for installing Zigaform. We hope you like it!', 'FRocket_admin' );
 				$notice_content = esc_html__( 'And hey, if you do, you can check the PRO version and get access to more features!', 'FRocket_admin' );
 				$button_content = esc_html__( 'Go Zigaform Pro', 'FRocket_admin' );
@@ -186,14 +186,14 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		if ( is_array( $links ) && ( strpos( $file, 'zigaform-cost-estimator-lite.php' ) !== false ) ) {
 			$settings_link = '<a href="' . admin_url( 'admin.php' ) . '?page=zgfm_form_builder">' . __( 'Settings', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
-			$settings_link = '<a target="_blank" href="https://wordpress-cost-estimator.zigaform.com/">' . __( 'Add-Ons / Pro Support', 'FRocket_admin' ) . '</a>';
+			$settings_link = '<a target="_blank" href="https://softdiscover.com/zigaform/wordpress-cost-estimator/">' . __( 'Add-Ons / Pro Support', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
 						$settings_link = '<a style="color: #08AA17;font-weight:bold;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=checkout@softdiscover.com&lc=US&item_name=Donation+to+Zigaform+wordpress+estimation+form+builder+plugin&no_note=0&cn=&currency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">' . __( 'Donate', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
 		} elseif ( is_array( $links ) && ( strpos( $file, 'zigaform-wp-estimator.php' ) !== false ) ) {
 						$settings_link = '<a href="' . admin_url( 'admin.php' ) . '?page=zgfm_form_builder">' . __( 'Settings', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
-						$settings_link = '<b><a target="_blank" href="https://wordpress-cost-estimator.zigaform.com/#contact">' . __( 'Support', 'FRocket_admin' ) . '</a></b>';
+						$settings_link = '<b><a target="_blank" href="https://softdiscover.com/zigaform/wordpress-cost-estimator/#contact">' . __( 'Support', 'FRocket_admin' ) . '</a></b>';
 			array_unshift( $links, $settings_link );
 						$settings_link = '<a style="color: #08AA17;font-weight:bold;" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=checkout@softdiscover.com&lc=US&item_name=Donation+to+Zigaform+wordpress+estimation+form+builder+plugin&no_note=0&cn=&currency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">' . __( 'Donate', 'FRocket_admin' ) . '</a>';
 			array_unshift( $links, $settings_link );
@@ -747,13 +747,13 @@ JS;
 
 		if ( $pos_coincidencia !== false ) {
 			  $plugin_page = admin_url( 'admin.php?page=zgfm_form_builder' );
-			  $meta[]      = "<a href='https://wordpress-cost-estimator.zigaform.com//#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __( 'Support', 'FRocket_admin' ) . '</a>';
+			  $meta[]      = "<a href='https://softdiscover.com/zigaform/wordpress-cost-estimator//#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __( 'Support', 'FRocket_admin' ) . '</a>';
 			if ( ZIGAFORM_F_LITE === 1 ) {
 				$meta[] = "<a href='https://1.envato.market/DdzY2' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __( 'Get Premium', 'FRocket_admin' ) . '</a>';
 				// $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
 			}
 
-			$meta[] = "<a href='https://wordpress-cost-estimator.zigaform.com/#demo-samples' target='_blank'><span class='dashicons  dashicons-laptop'></span>" . __( 'Live Demo', 'FRocket_admin' ) . '</a>';
+			$meta[] = "<a href='https://softdiscover.com/zigaform/wordpress-cost-estimator/#demo-samples' target='_blank'><span class='dashicons  dashicons-laptop'></span>" . __( 'Live Demo', 'FRocket_admin' ) . '</a>';
 			$meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/' target='_blank'><span class='dashicons  dashicons-search'></span>" . __( 'Documentation', 'FRocket_admin' ) . '</a>';
 
 			if ( ZIGAFORM_F_LITE === 1 ) {

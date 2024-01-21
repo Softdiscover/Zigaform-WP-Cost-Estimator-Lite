@@ -32,7 +32,7 @@ https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/installation/
 
 ## Support ##
 
-Please see https://wordpress-cost-estimator.zigaform.com/#contact for more details.
+Please see https://softdiscover.com/zigaform/wordpress-cost-estimator/#contact for more details.
 
 ### Features :
 * real-time drag and drop form builder which makes to build estimation forms
@@ -87,7 +87,7 @@ Please see https://wordpress-cost-estimator.zigaform.com/#contact for more detai
 >
 >Try out [Zigaform - Cost Estimation & Payment Form Builder Premium](http://goo.gl/C261zv)
 
-More info in http://wordpress-cost-estimator.zigaform.com/
+More info in https://softdiscover.com/zigaform/wordpress-cost-estimator/
 
  
 ** OVERALL FEATURES
