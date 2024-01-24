@@ -386,19 +386,14 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         $table = str_replace($this->wpdb->prefix, '', $table);
 
         $col_st = false;
-        if ( ! empty($row)) {
+        if (!empty($row)) {
             $tmp_arr = array();
-            if ( isset($tmp_all_db[ $table ])) {
-                foreach ( $row as $key => $value) {
-                    if ( isset($tmp_all_db[ $table ][ $value->Field ])) {
-                              /*
-                              if (($key2 = array_search($value->Field, $tmp_all_db[$table])) !== false) {
-                                      unset($tmp_all_db[$table][$key2]);
-                                  }*/
-
-                        if ( strval($value->Type) === strval($tmp_all_db[ $table ][ $value->Field ]['type'])) {
+            if (isset($tmp_all_db[$table])) {
+                foreach ($row as $key => $value) {
+                    if (isset($tmp_all_db[$table][$value->Field])) {
+                        if (strpos(strval($value->Type), strval($tmp_all_db[$table][$value->Field]['type'])) !== false) {
                         } else {
-                              $err_msgs[] = $value->Field . ' field - ' . $tmp_all_db[ $table ][ $value->Field ]['type'] . ' type is missing';
+                            $err_msgs[] = $value->Field . ' field - ' . $tmp_all_db[$table][$value->Field]['type'] . ' type is missing';
                         }
                     } else {
                         $err_msgs[] = $value->Field . ' field is missing';
@@ -408,11 +403,6 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
                 $err_msgs[] = $table . ' table is missing';
             }
         }
-
-        /*
-        foreach ($tmp_all_db[$table] as $value) {
-           $err_msgs[]=$value.' column is missing';
-        }*/
 
         $resultado['err_msgs'] = $err_msgs;
 
