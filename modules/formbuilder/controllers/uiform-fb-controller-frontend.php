@@ -2957,15 +2957,30 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         
         wp_localize_script('rockfm-js_global', 'rockfm_vars', apply_filters('zgfm_front_initvar_load', $form_variables));
     }
-
+    
+    
+    /**
+     * show version.
+     *
+     * @author	Unknown
+     * @since	v0.0.1
+     * @version	v1.0.0	Sunday, January 28th, 2024.
+     * @access	public
+     * @return	void
+     */
     public function shortcode_show_version()
     {
-        if ( ZIGAFORM_F_LITE === 1) {
-            $output  = '<noscript>';
-            $output .= '<a href="https://softdiscover.com/zigaform/?uifm_v=' . UIFORM_VERSION . '" title="WordPress Calculator & Cost Estimation" >ZigaForm </a> version ' . UIFORM_VERSION;
-            $output .= '</noscript>';
-            echo $output;
+        if (ZIGAFORM_F_LITE === 0) {
+            $hideversion = get_option('zgfm_b_hideversion', 0);
+            if (intval($hideversion) === 1) {
+                return;
+            }
         }
+        
+        $output  = '<noscript>';
+        $output .= '<a href="https://softdiscover.com/zigaform/?uifmc_v=' . UIFORM_VERSION . '" title="WordPress Calculator & Cost Estimation" >ZigaForm </a> version ' . UIFORM_VERSION;
+        $output .= '</noscript>';
+        echo $output;
     }
 
     /**
