@@ -547,8 +547,7 @@ if (!$uifm.isFunction(rocketfm)) {
 			};
 
 			arguments.callee.submitForm_showMessage = function(el, response, obj_btn) {
-
-							var msg_error = '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Error! Form was not submitted.</div>';
+				var msg_error = '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Error! Form was not submitted.</div>';
 				var form_id = el
 					.parent()
 					.find('._rockfm_form_id')
@@ -557,7 +556,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				var tmp_msg = el.parent().find('.rockfm-alert-container');
 				tmp_msg.html('');
 
-								var tmp_redirect_st = 0;
+				var tmp_redirect_st = 0;
 				var tmp_redirect_url = '';
 
 				if (response) {
@@ -613,9 +612,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				} else {
 					if (msg) {
 						tmp_msg.show();
-
-
-											}
+					}
 
 					$('.popover').sfdc_popover('hide');
 					if ($('.uiform-main-form [data-toggle="tooltip"]').length) {
@@ -626,14 +623,12 @@ if (!$uifm.isFunction(rocketfm)) {
 
 				jQuery(document).trigger('zgfm.form.after_submit', {});
 
-
-												if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+				if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
 					if ('parentIFrame' in window) {
 						parentIFrame.scrollTo(0, tmp_msg.offset().top);
 						parentIFrame.size(100); 
 						parentIFrame.autoResize();
-
-											}
+					}
 				} else {
 					$('html,body').animate(
 						{
@@ -642,8 +637,7 @@ if (!$uifm.isFunction(rocketfm)) {
 						'slow'
 					);
 				}
-
-							};
+			};
 			arguments.callee.submitForm_submit = function(el) {
 				var tmp_math_calculation = '';
 				var tmp_mathcalc_enable = el.find('._rockfm_form_calc_math_enable').val();
@@ -651,28 +645,28 @@ if (!$uifm.isFunction(rocketfm)) {
 					tmp_math_calculation = zgfm_front_calc.costest_calc_getTotal(el) || 0;
 				}
 
-								formId = parseInt(el.find('._rockfm_form_id').val());
+				formId = parseInt(el.find('._rockfm_form_id').val());
 
-				 				isMockingSubmit = 'no';
+				isMockingSubmit = 'no';
 				if (rockfm_vars.hasOwnProperty('forms') && rockfm_vars.forms.hasOwnProperty(formId) && rockfm_vars.forms[formId].hasOwnProperty('is_mocking_submit')) {
 					isMockingSubmit = rockfm_vars.forms[formId]['is_mocking_submit'];
 				}
 
 				if (String(isMockingSubmit) === 'yes') {
-				var tmp_msg = el.parent().find('.rockfm-alert-container');
-				   tmp_msg.html('');
-					   tmp_msg.append('<div class="rockfm-alert-inner" ><div class="rockfm-alert rockfm-alert-success"><b>Success!</b> Form was submitted successfully</div></div>');
-					   $('html,body').animate(
-						   {
-							   scrollTop: tmp_msg.offset().top,
-						   },
-						   'slow'
-					   );
-					   tmp_msg.show();
-					   el.hide();
+					var tmp_msg = el.parent().find('.rockfm-alert-container');
+					tmp_msg.html('');
+					tmp_msg.append('<div class="rockfm-alert-inner" ><div class="rockfm-alert rockfm-alert-success"><b>Success!</b> Form was submitted successfully</div></div>');
+					$('html,body').animate(
+						{
+							scrollTop: tmp_msg.offset().top,
+						},
+						'slow'
+					);
+					tmp_msg.show();
+					el.hide();
 
-										   return;
-				   }
+					return;
+				}
 
 				if (el.find('._rockfm_type_submit') && parseInt(el.find('._rockfm_type_submit').val()) === 1) {
 					var obj_btn = el.find('.rockfm-submitbtn .rockfm-txtbox-inp-val');
@@ -840,10 +834,10 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 			};
 
-						arguments.callee.recaptchav3_validate = function() {
+			arguments.callee.recaptchav3_validate = function() {
 				var form_obj = this.getInnerVariable('val_curform_obj');
 
-							grecaptcha.execute(form_obj.attr('data-zgfm-recaptchav3-sitekey'), { action: 'submit' }).then(function(token) {
+				grecaptcha.execute(form_obj.attr('data-zgfm-recaptchav3-sitekey'), { action: 'submit' }).then(function(token) {
 					$.ajax({
 						type: 'POST',
 						url: rockfm_vars.ajaxurl,
@@ -880,8 +874,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				});
 			};
 
-
-						arguments.callee.recaptcha_validate = function() {
+			arguments.callee.recaptcha_validate = function() {
 				var form_obj = this.getInnerVariable('val_curform_obj');
 				var field_id = form_obj
 					.find('.g-recaptcha')
@@ -1006,27 +999,31 @@ if (!$uifm.isFunction(rocketfm)) {
 							var rockfm_slider_d = obj_form.find('.rockfm-input4-slider');
 							rockfm_slider_d.each(function(i) {
 								$(this).bootstrapSlider();
-								$(this).parent().parent().find('.slider-tick-label').hide();
 								$(this)
-										.parent()
-										.parent()
-										.find('.rockfm-input4-number')
-										.text($(this).val());
+									.parent()
+									.parent()
+									.find('.slider-tick-label')
+									.hide();
+								$(this)
+									.parent()
+									.parent()
+									.find('.rockfm-input4-number')
+									.text($(this).val());
 
-																obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
+								obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
 									$(this)
 										.parent()
 										.parent()
 										.find('.rockfm-input4-number')
 										.text(slideEvt.value);
 
-																				$(this)
+									$(this)
 										.parent()
-										.parent().find('.slider-tick-label').show();	
-
-																	});
-
-															});
+										.parent()
+										.find('.slider-tick-label')
+										.show();
+								});
+							});
 						}
 
 						if (obj_form.find('.rockfm-input4-spinner').length) {
@@ -1107,7 +1104,7 @@ if (!$uifm.isFunction(rocketfm)) {
 							rockfm_recaptcha.async = true;
 							rockfm_recaptcha.id = 'zgfm_form_lib_recaptchav3';
 							rockfm_recaptcha.defer = 'defer';
-							rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?render='+siteKey;
+							rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
 							var s = document.getElementsByTagName('script')[0];
 							s.parentNode.insertBefore(rockfm_recaptcha, s);
 						}
@@ -1296,6 +1293,17 @@ if (!$uifm.isFunction(rocketfm)) {
 							});
 						}
 
+						if (obj_form.find('.rockfm-input2-sel-styl2').length) {
+							tmp_load_obj = obj_form.find('.rockfm-input2-sel-styl2');
+							tmp_load_obj.each(function(i) {
+								$(this).select2({
+									placeholder: 'Select an option',
+									theme: 'classic',
+									width: '100%',
+								});
+							});
+						}
+
 						if (obj_form.find('.rockfm-input2-chk-styl1').length) {
 							tmp_load_obj = obj_form.find('.rockfm-input2-chk-styl1');
 							var tmp_chk_icon;
@@ -1390,7 +1398,7 @@ if (!$uifm.isFunction(rocketfm)) {
 								.addClass('rockfm-cond-hidden-children');
 						});
 
-							if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+						if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
 							if ('parentIFrame' in window) {
 								parentIFrame.size(); 
 							}
@@ -1416,15 +1424,14 @@ if (!$uifm.isFunction(rocketfm)) {
 
 						jQuery(document).trigger('zgfm.form.init_loaded', { form: obj_form });
 
-							obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
+						obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
 							e.preventDefault();
 							var obj_form_alt = $(this).closest('.rockfm-form');
 							rocketfm.setInnerVariable('submitting_form_id', obj_form_alt.find('._rockfm_form_id').val());
 
-								rocketfm.submitForm_process(obj_form_alt, e);
+							rocketfm.submitForm_process(obj_form_alt, e);
 						});
-
-											}
+					}
 				});
 
 			};
@@ -2015,7 +2022,6 @@ if (!$uifm.isFunction(rocketfm)) {
 	$('.uiform_modal_general').on('shown.bs.modal', function() {
 		rocketfm.modal_resizeWhenIframe();
 	});
-
 })($uifm);
 
 var zgfm_recaptcha_elems = {};
@@ -2218,6 +2224,11 @@ var zgfm_recaptcha_onloadCallback = function() {
 								response['value_field'] = tempvar.selectpicker('val');
 								response['input_field'] = input;
 								break;
+							case 2:
+								tempvar = getrow.find('.rockfm-input2-sel-styl2');
+								response['value_field'] = tempvar.val();
+								response['input_field'] = input;
+								break;
 							default:
 								tempvar = getrow.find('.uifm-input2-opt-main');
 								response['value_field'] = tempvar.val();
@@ -2234,7 +2245,14 @@ var zgfm_recaptcha_onloadCallback = function() {
 								tempvar = getrow.find('.rockfm-input2-sel-styl1');
 								response['value_field'] = tempvar.selectpicker('val');
 								response['input_field'] = input;
+								break;
+							case 2:
+								searchInput = $.map(getrow.find('.rockfm-input2-sel-styl2 option:selected'), function(elem) {
+									return $(elem).attr('value');
+								});
 
+								response['value_field'] = searchInput;
+								response['input_field'] = input;
 								break;
 							default:
 								searchInput = $.map(getrow.find('.uifm-input2-opt-main option:selected'), function(elem) {
@@ -2579,7 +2597,6 @@ if (!$uifm.isFunction(zgfm_front_calc)) {
 										tmp_f_obj.find('select option:selected').each(function() {
 											result = $(this).attr('data-uifm-inp-val') || '';
 										});
-
 										break;
 									case 8:
 										tmp_f_obj.find('input[type=radio]:checked').each(function() {
@@ -2616,6 +2633,10 @@ if (!$uifm.isFunction(zgfm_front_calc)) {
 										switch (parseInt(tmp_theme_type)) {
 											case 1:
 												tmp_field_inp = tmp_f_obj.find('.rockfm-input2-sel-styl1');
+												result = tmp_field_inp.find('select [data-opt-index="' + option + '"]').attr('data-uifm-inp-price');
+												break;
+											case 2:
+												tmp_field_inp = tmp_f_obj.find('.rockfm-input2-sel-styl2');
 												result = tmp_field_inp.find('select [data-opt-index="' + option + '"]').attr('data-uifm-inp-price');
 												break;
 											default:
@@ -2680,6 +2701,14 @@ if (!$uifm.isFunction(zgfm_front_calc)) {
 										switch (parseInt(tmp_theme_type)) {
 											case 1:
 												tmp_field_inp = tmp_f_obj.find('.rockfm-input2-sel-styl1');
+
+												tmp_field_inp.find('select [data-opt-index="' + option + '"]:selected').each(function() {
+													tmp_ischecked = true;
+												});
+
+												break;
+											case 2:
+												tmp_field_inp = tmp_f_obj.find('.rockfm-input2-sel-styl2');
 
 												tmp_field_inp.find('select [data-opt-index="' + option + '"]:selected').each(function() {
 													tmp_ischecked = true;
@@ -2755,6 +2784,14 @@ if (!$uifm.isFunction(zgfm_front_calc)) {
 										switch (parseInt(tmp_theme_type)) {
 											case 1:
 												tmp_field_inp = tmp_f_obj.find('.rockfm-input2-sel-styl1');
+
+												tmp_field_inp.find('select [data-opt-index="' + option + '"]:selected').each(function() {
+													tmp_ischecked = true;
+												});
+
+												break;
+											case 2:
+												tmp_field_inp = tmp_f_obj.find('.rockfm-input2-sel-styl2');
 
 												tmp_field_inp.find('select [data-opt-index="' + option + '"]:selected').each(function() {
 													tmp_ischecked = true;
@@ -3281,10 +3318,6 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 
 			this.costest_listenEvents = function(obj_form) {
 				var objsToSearch = obj_form.find('.rockfm-costest-field');
-
-
-
-
 			};
 			this.costest_summbox_linkPopUp = function(element) {
 				var el = $(element);
@@ -3652,7 +3685,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										price_sum += parseFloat(uifm_fld_price);
 										tmp_uifm_summ_list_inner += '<li>' + $(this).attr('data-uifm-inp-label');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3698,7 +3731,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										price_sum += parseFloat(uifm_fld_price);
 										tmp_uifm_summ_list_inner += '<li>' + $(this).attr('data-uifm-inp-label');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3749,7 +3782,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										tmp_uifm_fld_price += parseFloat(uifm_fld_price);
 										tmp_uifm_summ_list_inner += '<li>' + $(this).text();
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -3815,7 +3848,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										': </span>';
 								}
 
-								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + '  <div class="uifm-sbox-summ-fld-symbol">' +  uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>' + '</li></ul></span>';
+								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + '  <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>' + '</li></ul></span>';
 							}
 
 							tmp_uifm_summ_list += tmp_uifm_summ_list_inner;
@@ -3872,7 +3905,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 										': </span>';
 								}
 
-								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + '  <div class="uifm-sbox-summ-fld-symbol">' +  uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>' + '</li></ul></span>';
+								tmp_uifm_summ_list_inner += ' <span class="uiform-sbox-summ-fld-price"><ul><li>' + '  <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_sub_total) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>' + '</li></ul></span>';
 							}
 
 
@@ -3933,7 +3966,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 							price_sum += parseFloat(uifm_fld_price);
 							tmp_uifm_fld_price += parseFloat(uifm_fld_price);
 							if (parseFloat(uifm_fld_price) > 0) {
-								tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';								
+								tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>';
 							}
 
 
@@ -3993,7 +4026,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 												.closest('.uifm-dcheckbox-item')
 												.uiformDCheckbox('get_labelOpt');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -4045,7 +4078,7 @@ if (!$uifm.isFunction(zgfm_front_cost)) {
 												.closest('.uifm-dradiobtn-item')
 												.uiformDCheckbox('get_labelOpt');
 										if (parseFloat(uifm_fld_price) > 0) {
-											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol +'</div><div class="uifm-sbox-summ-fld-price">'+ zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code+'</div>';
+											tmp_uifm_summ_list_inner += ' : <div class="uifm-sbox-summ-fld-symbol">' + uifm_price_symbol + '</div><div class="uifm-sbox-summ-fld-price">' + zgfm_front_cost.format_money(obj_form, uifm_fld_price) + '</div><div class="uifm-sbox-summ-fld-pricecode"> ' + uifm_price_code + '</div>';
 										}
 										tmp_uifm_summ_list_inner += '</li>';
 									});
@@ -4127,15 +4160,11 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 				zgfm_front_cost.costest_refresh(obj_form);
 			};
 
-						this.triggerEvent_before = function(){
+			this.triggerEvent_before = function() {};
 
-				 			};
+			this.triggerEvent_after = function() {};
 
-						this.triggerEvent_after = function(){
-
-				 			};
-
-						this.event_isDefined_toEl = function(el, search_evt, list_events) {
+			this.event_isDefined_toEl = function(el, search_evt, list_events) {
 				var flag = false;
 				try {
 					$.each(list_events, function(i, event) {
@@ -4238,6 +4267,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									case 1:
 										tmp_field_inp = tmp_field.find('.rockfm-input2-sel-styl1');
 										break;
+									case 2:
+										tmp_field_inp = tmp_field.find('.rockfm-input2-sel-styl2');
+										break;
 									default:
 										tmp_field_inp = tmp_field.find('.uifm-input2-opt-main');
 										break;
@@ -4283,15 +4315,14 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										e.preventDefault();
 									}
 
-																		if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
+									if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
 										if ('parentIFrame' in window) {
 											parentIFrame.size(); 
 										}
 									}
 
 									runExtraTasks($(this));
-
-																	});
+								});
 
 								break;
 							case 8:
@@ -4308,15 +4339,14 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										break;
 								}
 
-																tmp_field_inp.on(tmp_action, function(e) {
+								tmp_field_inp.on(tmp_action, function(e) {
 									if (e) {
 										e.preventDefault();
+									}
 
-																			}
+									wp.hooks.applyFilters('zgfmfront.events_before');
 
-																		wp.hooks.applyFilters('zgfmfront.events_before');
-
-																		tmp_field_id = $(this).attr('data-idfield');
+									tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4342,9 +4372,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
-
-									 								});
+									wp.hooks.applyFilters('zgfmfront.events_after');
+								});
 
 								break;
 							case 10:
@@ -4358,7 +4387,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											}
 											wp.hooks.applyFilters('zgfmfront.events_before');
 
-																						tmp_field_id = $(this).attr('data-idfield');
+											tmp_field_id = $(this).attr('data-idfield');
 
 											if (obj_form.find('.rockfm-clogic-fcond').length) {
 												obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
@@ -4387,7 +4416,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											}
 											wp.hooks.applyFilters('zgfmfront.events_before');
 
-																						tmp_field_id = $(this).attr('data-idfield');
+											tmp_field_id = $(this).attr('data-idfield');
 											if (obj_form.find('.rockfm-clogic-fcond').length) {
 												obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 											}
@@ -4407,9 +4436,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 											wp.hooks.applyFilters('zgfmfront.events_after');
 										});
-
-
-																												}
+								}
 
 								break;
 							case 16:
@@ -4419,7 +4446,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									wp.hooks.applyFilters('zgfmfront.events_before');
 
-																		tmp_field_id = $(this).attr('data-idfield');
+									tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4438,7 +4465,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 18:
@@ -4448,7 +4475,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									wp.hooks.applyFilters('zgfmfront.events_before');
 
-																		tmp_field_id = $(this).attr('data-idfield');
+									tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4467,7 +4494,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 24:
@@ -4491,7 +4518,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 26:
@@ -4515,7 +4542,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 40:
@@ -4525,7 +4552,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									wp.hooks.applyFilters('zgfmfront.events_before');
 
-																		tmp_field_id = $(this).attr('data-idfield');
+									tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
 									}
@@ -4543,7 +4570,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 41:
@@ -4554,7 +4581,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 									wp.hooks.applyFilters('zgfmfront.events_before');
 
-																		tmp_field_id = $(this).attr('data-idfield');
+									tmp_field_id = $(this).attr('data-idfield');
 
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
 										obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
@@ -4567,7 +4594,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 
 									runExtraTasks($(this));
 
-																		wp.hooks.applyFilters('zgfmfront.events_after');
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 
 								break;
@@ -4581,8 +4608,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 		const { addFilter } = wp.hooks;
 		addFilter('zgfmfront.events_before', 'zgfm_front_helper/triggerEvent_before', zgfm_front_helper.triggerEvent_before);
 		addFilter('zgfmfront.events_after', 'zgfm_front_helper/triggerEvent_after', zgfm_front_helper.triggerEvent_after);
-
-			})($uifm, window);
+	})($uifm, window);
 }
 
 (function($) {
@@ -5151,7 +5177,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 				if (options == null) {
 					options = {};
 				}
-				  _this_obj=this;
+				_this_obj = this;
 				this.$element = $(element);
 				this.options = $.extend(
 					{},
@@ -5188,7 +5214,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 							$(element)
 								.parent()
 								.attr('data-thopt-width') || 100,
-						backend: this.$element.data('backend')||0,
+						backend: this.$element.data('backend') || 0,
 						baseClass: this.$element.data('base-class'),
 					},
 					options
@@ -5288,16 +5314,13 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 			uiformDCheckbox.prototype._constructor = uiformDCheckbox;
 
 			uiformDCheckbox.prototype._refresh = function() {
-
-if (parseInt(_this_obj.options.backend) === 1) {
-				 this.$canvas_parent = this.$element.closest('.uifm-input17-wrap').width();
+				if (parseInt(_this_obj.options.backend) === 1) {
+					this.$canvas_parent = this.$element.closest('.uifm-input17-wrap').width();
 				} else {
 					this.$canvas_parent = this.$element.closest('.rockfm-input17-wrap').width();
 				}
 
-
-
-				 				this._enableCheckboxVal(this.$opt_gal_checkbox, this);
+				this._enableCheckboxVal(this.$opt_gal_checkbox, this);
 				this._setValToChkBoxInput(this);
 				this._get_items();
 			};
@@ -5691,10 +5714,10 @@ if (parseInt(_this_obj.options.backend) === 1) {
 									.attr('data-inp17-opt-index');
 
 								if (parseInt(_this_obj.options.backend) === 1) {
-					var tmp_container = $(this).closest('.uifm-input17-wrap');
-				} else {
-					var tmp_container = $(this).closest('.rockfm-input17-wrap');
-				}
+									var tmp_container = $(this).closest('.uifm-input17-wrap');
+								} else {
+									var tmp_container = $(this).closest('.rockfm-input17-wrap');
+								}
 
 								var tmp_radiobtn_items = tmp_container.find('.uifm-dradiobtn-item');
 
@@ -5737,10 +5760,10 @@ if (parseInt(_this_obj.options.backend) === 1) {
 									.attr('data-inp17-opt-index');
 
 								if (parseInt(_this_obj.options.backend) === 1) {
-					var tmp_container = $(this).closest('.uifm-input17-wrap');
-				} else {
-					var tmp_container = $(this).closest('.rockfm-input17-wrap');
-				}
+									var tmp_container = $(this).closest('.uifm-input17-wrap');
+								} else {
+									var tmp_container = $(this).closest('.rockfm-input17-wrap');
+								}
 								var tmp_radiobtn_items = tmp_container.find('.uifm-dradiobtn-item');
 
 								var tmp_item_index;
