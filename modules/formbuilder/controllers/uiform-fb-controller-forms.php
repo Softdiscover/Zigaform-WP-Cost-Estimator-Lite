@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Intranet
  *
@@ -11,10 +12,10 @@
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
  */
-if ( ! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
-if ( class_exists('Uiform_Fb_Controller_Forms')) {
+if (class_exists('Uiform_Fb_Controller_Forms')) {
     return;
 }
 
@@ -60,9 +61,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     private $saveform_clogic          = array();
     private $current_data_summbox     = array();
 
-     /**
-      * @var
-      */
+    /**
+     * @var
+     */
     public $gen_post_src;
 
     /*
@@ -86,77 +87,77 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $this->wpdb = $wpdb;
 
         // ajax for saving form
-        add_action('wp_ajax_rocket_fbuilder_save_form', array( &$this, 'ajax_save_form' ));
+        add_action('wp_ajax_rocket_fbuilder_save_form', array(&$this, 'ajax_save_form'));
 
         // ajax for saving form
-        add_action('wp_ajax_rocket_fbuilder_save_newform', array( &$this, 'ajax_save_newform' ));
+        add_action('wp_ajax_rocket_fbuilder_save_newform', array(&$this, 'ajax_save_newform'));
 
         // ajax for saving form
-        add_action('wp_ajax_rocket_fbuilder_save_form_updopts', array( &$this, 'ajax_save_form_updateopts' ));
+        add_action('wp_ajax_rocket_fbuilder_save_form_updopts', array(&$this, 'ajax_save_form_updateopts'));
 
         // ajax for preview_clogic_graph
-        add_action('wp_ajax_rocket_fbuilder_preview_clogic_graph', array( &$this, 'ajax_preview_clogic_graph' ));
+        add_action('wp_ajax_rocket_fbuilder_preview_clogic_graph', array(&$this, 'ajax_preview_clogic_graph'));
 
         // refreshing duplication
-        add_action('wp_ajax_rocket_fbuilder_refreshpreviewpanel', array( &$this, 'ajax_refresh_previewpanel' ));
+        add_action('wp_ajax_rocket_fbuilder_refreshpreviewpanel', array(&$this, 'ajax_refresh_previewpanel'));
         // load form
-        add_action('wp_ajax_rocket_fbuilder_load_form', array( &$this, 'ajax_load_form' ));
+        add_action('wp_ajax_rocket_fbuilder_load_form', array(&$this, 'ajax_load_form'));
         // load form
-        add_action('wp_ajax_rocket_fbuilder_loadtemplate', array( &$this, 'ajax_load_templateform' ));
+        add_action('wp_ajax_rocket_fbuilder_loadtemplate', array(&$this, 'ajax_load_templateform'));
         // get image thumbnail
-        add_action('wp_ajax_rocket_fbuilder_getthumbimg', array( &$this, 'ajax_load_getthumbimg' ));
+        add_action('wp_ajax_rocket_fbuilder_getthumbimg', array(&$this, 'ajax_load_getthumbimg'));
         // load preview form
-        add_action('wp_ajax_rocket_fbuilder_load_preview_form', array( &$this, 'ajax_load_preview_form' ));
+        add_action('wp_ajax_rocket_fbuilder_load_preview_form', array(&$this, 'ajax_load_preview_form'));
         // delete form
-        add_action('wp_ajax_rocket_fbuilder_delete_form', array( &$this, 'ajax_delete_form_byid' ));
+        add_action('wp_ajax_rocket_fbuilder_delete_form', array(&$this, 'ajax_delete_form_byid'));
 
         // delete form
-        add_action('wp_ajax_rocket_fbuilder_delete_trashform', array( &$this, 'ajax_delete_trashform_byid' ));
+        add_action('wp_ajax_rocket_fbuilder_delete_trashform', array(&$this, 'ajax_delete_trashform_byid'));
 
         // list form update status
-        add_action('wp_ajax_rocket_fbuilder_listform_updatest', array( &$this, 'ajax_listform_updatest' ));
+        add_action('wp_ajax_rocket_fbuilder_listform_updatest', array(&$this, 'ajax_listform_updatest'));
 
         // list form update status
-        add_action('wp_ajax_rocket_fbuilder_list_trashform_updatest', array( &$this, 'ajax_list_trashform_updatest' ));
+        add_action('wp_ajax_rocket_fbuilder_list_trashform_updatest', array(&$this, 'ajax_list_trashform_updatest'));
 
         // dupicate form
-        add_action('wp_ajax_rocket_fbuilder_listform_duplicate', array( &$this, 'ajax_listform_duplicate' ));
+        add_action('wp_ajax_rocket_fbuilder_listform_duplicate', array(&$this, 'ajax_listform_duplicate'));
         // export form
-        add_action('wp_ajax_rocket_fbuilder_export_form', array( &$this, 'ajax_load_export_form' ));
+        add_action('wp_ajax_rocket_fbuilder_export_form', array(&$this, 'ajax_load_export_form'));
         // import form
-        add_action('wp_ajax_rocket_fbuilder_import_form', array( &$this, 'ajax_load_import_form' ));
+        add_action('wp_ajax_rocket_fbuilder_import_form', array(&$this, 'ajax_load_import_form'));
         // modal get shortcodes
-        add_action('wp_ajax_rocket_fbuilder_modal_form_getshorcodes', array( &$this, 'ajax_modal_form_getshorcodes' ));
+        add_action('wp_ajax_rocket_fbuilder_modal_form_getshorcodes', array(&$this, 'ajax_modal_form_getshorcodes'));
         // modal show success message
-        add_action('wp_ajax_rocket_fbuilder_form_showmodalsuccess', array( &$this, 'ajax_modal_form_showmodalsuccess' ));
+        add_action('wp_ajax_rocket_fbuilder_form_showmodalsuccess', array(&$this, 'ajax_modal_form_showmodalsuccess'));
 
         // rollback modal
-        add_action('wp_ajax_rocket_fbuilder_rollback_openmodal', array( &$this, 'ajax_rollback_openmodal' ));
+        add_action('wp_ajax_rocket_fbuilder_rollback_openmodal', array(&$this, 'ajax_rollback_openmodal'));
         // rollback process
-        add_action('wp_ajax_rocket_fbuilder_rollback_process', array( &$this, 'ajax_rollback_process' ));
+        add_action('wp_ajax_rocket_fbuilder_rollback_process', array(&$this, 'ajax_rollback_process'));
         // show variables
-        add_action('wp_ajax_rocket_fbuilder_variables_openmodal', array( &$this, 'ajax_variables_openmodal' ));
+        add_action('wp_ajax_rocket_fbuilder_variables_openmodal', array(&$this, 'ajax_variables_openmodal'));
 
         // show variables email page
-        add_action('wp_ajax_rocket_fbuilder_variables_emailpage', array( &$this, 'ajax_variables_emailpage' ));
+        add_action('wp_ajax_rocket_fbuilder_variables_emailpage', array(&$this, 'ajax_variables_emailpage'));
 
         // integrity
-        add_action('wp_ajax_rocket_fbuilder_integrity_openmodal', array( &$this, 'ajax_integrity_openmodal' ));
+        add_action('wp_ajax_rocket_fbuilder_integrity_openmodal', array(&$this, 'ajax_integrity_openmodal'));
 
         // email send sample
-        add_action('wp_ajax_rocket_fbuilder_email_sendsample', array( &$this, 'ajax_email_sendsample' ));
+        add_action('wp_ajax_rocket_fbuilder_email_sendsample', array(&$this, 'ajax_email_sendsample'));
 
         // pdf show sample
-        add_action('wp_ajax_rocket_fbuilder_pdf_showsample', array( &$this, 'ajax_pdf_showsample' ));
+        add_action('wp_ajax_rocket_fbuilder_pdf_showsample', array(&$this, 'ajax_pdf_showsample'));
 
         // handle form list
-        add_action('wp_ajax_zgfm_fbuilder_formlist_filter', array( &$this, 'ajax_formlist_sendfilter' ));
+        add_action('wp_ajax_zgfm_fbuilder_formlist_filter', array(&$this, 'ajax_formlist_sendfilter'));
 
         // handle trash form list
-        add_action('wp_ajax_zgfm_fbuilder_trashformlist_filter', array( &$this, 'ajax_trashformlist_sendfilter' ));
+        add_action('wp_ajax_zgfm_fbuilder_trashformlist_filter', array(&$this, 'ajax_trashformlist_sendfilter'));
 
         // refresh list form table
-        add_action('wp_ajax_zgfm_fbuilder_formlist_refresh', array( &$this, 'ajax_formlist_sendfilter' ));
+        add_action('wp_ajax_zgfm_fbuilder_formlist_refresh', array(&$this, 'ajax_formlist_sendfilter'));
     }
 
 
@@ -165,9 +166,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $full_page = ( isset($_POST['full_page']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['full_page'])) : '';
-        $form_id   = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
-        $message   = ( isset($_POST['message']) ) ? Uiform_Form_Helper::sanitizeInput_html($_POST['message']) : '';
+        $full_page = (isset($_POST['full_page'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['full_page'])) : '';
+        $form_id   = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $message   = (isset($_POST['message'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['message']) : '';
         $message   = urldecode($message);
 
         $data2 = array();
@@ -175,13 +176,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $pdf_paper_size = 'a4';
         $pdf_paper_orie = 'landscape';
 
-        if ( intval($form_id) > 0) {
+        if (intval($form_id) > 0) {
             $form_data        = $this->formsmodel->getFormById_2($form_id);
             $form_data_onsubm = json_decode($form_data->fmb_data2, true);
-            $pdf_charset      = ( isset($form_data_onsubm['main']['pdf_charset']) ) ? $form_data_onsubm['main']['pdf_charset'] : '';
-            $pdf_font         = ( isset($form_data_onsubm['main']['pdf_font']) ) ? urldecode($form_data_onsubm['main']['pdf_font']) : '';
-            $pdf_paper_size   = ( isset($form_data_onsubm['main']['pdf_paper_size']) ) ? $form_data_onsubm['main']['pdf_paper_size'] : 'a4';
-            $pdf_paper_orie   = ( isset($form_data_onsubm['main']['pdf_paper_orie']) ) ? $form_data_onsubm['main']['pdf_paper_orie'] : 'landscape';
+            $pdf_charset      = (isset($form_data_onsubm['main']['pdf_charset'])) ? $form_data_onsubm['main']['pdf_charset'] : '';
+            $pdf_font         = (isset($form_data_onsubm['main']['pdf_font'])) ? urldecode($form_data_onsubm['main']['pdf_font']) : '';
+            $pdf_paper_size   = (isset($form_data_onsubm['main']['pdf_paper_size'])) ? $form_data_onsubm['main']['pdf_paper_size'] : 'a4';
+            $pdf_paper_orie   = (isset($form_data_onsubm['main']['pdf_paper_orie'])) ? $form_data_onsubm['main']['pdf_paper_orie'] : 'landscape';
 
             $data2['font']    = $pdf_font;
             $data2['charset'] = $pdf_charset;
@@ -196,7 +197,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $pos  = strpos($message, '</body>');
         $pos2 = strpos($message, '</html>');
 
-        if ( $pos === false && $pos2 === false) {
+        if ($pos === false && $pos2 === false) {
             $full_page = 0;
         } else {
             $full_page = 1;
@@ -207,12 +208,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         $file_name = 'zgfm_pdf_sample';
 
-         // remove previous pdf sample
+        // remove previous pdf sample
         @unlink(UIFORM_FORMS_DIR . '/temp/' . $file_name . '.pdf');
 
         $output = uifm_generate_pdf($content, $file_name, $pdf_paper_size, $pdf_paper_orie, false);
         $status = '0';
-        if ( file_exists($output)) {
+        if (file_exists($output)) {
             $status = '1';
         } else {
             $status = '0';
@@ -236,10 +237,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $full_page = ( isset($_POST['full_page']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['full_page'])) : '';
-        $message   = ( isset($_POST['message']) ) ? Uiform_Form_Helper::sanitizeInput_html($_POST['message']) : '';
+        $full_page = (isset($_POST['full_page'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['full_page'])) : '';
+        $message   = (isset($_POST['message'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['message']) : '';
         $message   = urldecode($message);
-        $email_to  = ( isset($_POST['email_to']) ) ? Uiform_Form_Helper::sanitizeInput($_POST['email_to']) : '';
+        $email_to  = (isset($_POST['email_to'])) ? Uiform_Form_Helper::sanitizeInput($_POST['email_to']) : '';
 
         $mail_template_msg = self::render_template(
             'formbuilder/views/frontend/mail_global_template.php',
@@ -264,7 +265,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $mail_errors = self::$_modules['formbuilder']['frontend']->process_mail($data_mail);
 
         $json           = array();
-        $json['status'] = ( $mail_errors === true ) ? 1 : 0;
+        $json['status'] = ($mail_errors === true) ? 1 : 0;
 
         // return data to ajax callback
         header('Content-Type: application/json');
@@ -277,7 +278,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $log_id = ( isset($_POST['log_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['log_id'])) : '';
+        $log_id = (isset($_POST['log_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['log_id'])) : '';
 
         $query_obj = $this->model_form_log->getLogById($log_id);
 
@@ -307,14 +308,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
 
         $data = array();
 
         $query_obj = $this->model_form_log->getAvailableLogById($form_id);
 
         $log_array = array();
-        foreach ( $query_obj as $key => $value) {
+        foreach ($query_obj as $key => $value) {
             $temp                 = array();
             $temp['form_name']    = $value->log_frm_name;
             $temp['created_date'] = date('d-m-Y h:m:s', strtotime($value->updated_date));
@@ -341,7 +342,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         // check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 
-        $form_id = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
 
         $data = array();
 
@@ -362,11 +363,11 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
         $data     = array();
-        $form_id  = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
-        $fmb_data = ( isset($_POST['form_data']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
+        $form_id  = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $fmb_data = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
         // $fmb_data = str_replace("\'", "'",$fmb_data);
-        $fmb_data             = ( isset($fmb_data) && $fmb_data ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), json_decode($fmb_data, true)) : array();
-            $data['fmb_data'] = $fmb_data;
+        $fmb_data             = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
+        $data['fmb_data'] = $fmb_data;
 
         $json                 = array();
         $json['modal_header'] = '<h3>' . __('Form variables', 'FRocket_admin') . '</h3>';
@@ -384,12 +385,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
         $data     = array();
-        $form_id  = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
-        $fmb_data = ( isset($_POST['form_data']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
+        $form_id  = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $fmb_data = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
         // $fmb_data = str_replace("\'", "'",$fmb_data);
 
-        if ( ! empty($fmb_data)) {
-            $fmb_data = ( isset($fmb_data) && $fmb_data ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), json_decode($fmb_data, true)) : array();
+        if (!empty($fmb_data)) {
+            $fmb_data = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
         }
         $data['fmb_data'] = $fmb_data;
 
@@ -407,7 +408,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $number        = ( $_POST['number'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['number'])) : '';
+        $number        = ($_POST['number']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['number'])) : '';
         $fallback_file = file_get_contents(UIFORM_FORMS_DIR . '/assets/backend/json/template_' . $number . '.json');
         header('Content-Type: application/json');
         echo $fallback_file;
@@ -419,12 +420,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $id_img            = ( $_POST['img_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['img_id']) : '';
-        $img_full          = ( $_POST['img_src_full'] ) ? Uiform_Form_Helper::sanitizeInput_html($_POST['img_src_full']) : '';
+        $id_img            = ($_POST['img_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['img_id']) : '';
+        $img_full          = ($_POST['img_src_full']) ? Uiform_Form_Helper::sanitizeInput_html($_POST['img_src_full']) : '';
         $json              = array();
         $json['img_full']  = $img_full;
-        $thumb             = wp_get_attachment_image_src($id_img, array( 150, 150 ));
-        $json['img_thumb'] = ( ! empty($thumb[0]) ) ? $thumb[0] : $img_full;
+        $thumb             = wp_get_attachment_image_src($id_img, array(150, 150));
+        $json['img_thumb'] = (!empty($thumb[0])) ? $thumb[0] : $img_full;
         header('Content-Type: application/json');
         echo json_encode($json);
         wp_die();
@@ -435,7 +436,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $imp_form                      = ( isset($_POST['importcode']) && $_POST['importcode'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['importcode']) : '';
+        $imp_form                      = (isset($_POST['importcode']) && $_POST['importcode']) ? Uiform_Form_Helper::sanitizeInput($_POST['importcode']) : '';
         $dump_form                     = unserialize(Uiform_Form_Helper::base64url_decode($imp_form));
         $data_form                     = array();
         $data_form['fmb_data']         = json_decode($dump_form['fmb_data']);
@@ -458,19 +459,19 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
         $saveform_clogic = array();
-        $fmb_data        = ( isset($_POST['form_data']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
+        $fmb_data        = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
         $fmb_data        = str_replace("\'", "'", $fmb_data);
-        $fmb_data        = ( isset($fmb_data) && $fmb_data ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), json_decode($fmb_data, true)) : array();
+        $fmb_data        = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
 
         // creating again
         $steps_src        = $fmb_data['steps_src'];
         $tmp_var_typename = array();
         $tmp_var_fname    = array();
         $tmp_var_fstep    = array();
-        if ( ! empty($steps_src)) {
-            foreach ( $steps_src as $tabindex => $fields) {
-                if ( ! empty($fields)) {
-                    foreach ( $fields as $key => $value) {
+        if (!empty($steps_src)) {
+            foreach ($steps_src as $tabindex => $fields) {
+                if (!empty($fields)) {
+                    foreach ($fields as $key => $value) {
                         $data                 = array();
                         $data['fmf_uniqueid'] = $value['id'];
 
@@ -479,11 +480,11 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
                         $data['type_fby_id'] = $value['type'];
 
-                        $tmp_var_typename[ $value['id'] ] = $data['fmf_type_n'];
-                        $tmp_var_fname[ $value['id'] ]    = $data['fmf_fieldname'];
-                        $tmp_var_fstep[ $value['id'] ]    = intval($tabindex) + 1;
+                        $tmp_var_typename[$value['id']] = $data['fmf_type_n'];
+                        $tmp_var_fname[$value['id']]    = $data['fmf_fieldname'];
+                        $tmp_var_fstep[$value['id']]    = intval($tabindex) + 1;
 
-                        if ( isset($value['clogic']) && intval($value['clogic']['show_st']) === 1) {
+                        if (isset($value['clogic']) && intval($value['clogic']['show_st']) === 1) {
                             $tmp_clogic                     = array();
                             $tmp_clogic['field_cond']       = $value['id'];
                             $tmp_clogic['field_cond_fname'] = $data['fmf_fieldname'];
@@ -491,13 +492,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
                             $tmp_clogic['action'] = $value['clogic']['f_show'];
 
-                            foreach ( $value['clogic']['list'] as $key2 => $value2) {
-                                if ( empty($value2)) {
-                                    unset($value['clogic']['list'][ $key2 ]);
+                            foreach ($value['clogic']['list'] as $key2 => $value2) {
+                                if (empty($value2)) {
+                                    unset($value['clogic']['list'][$key2]);
                                 }
                             }
                             $tmp_clogic['list']        = array_filter($value['clogic']['list']);
-                            $tmp_clogic['req_match']   = ( intval($value['clogic']['f_all']) === 1 ) ? count($value['clogic']['list']) : 1;
+                            $tmp_clogic['req_match']   = (intval($value['clogic']['f_all']) === 1) ? count($value['clogic']['list']) : 1;
                             $saveform_clogic['cond'][] = $tmp_clogic;
                         }
                     }
@@ -506,41 +507,41 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         }
 
         $clogic_src = $saveform_clogic;
-        if ( ! empty($clogic_src)) {
+        if (!empty($clogic_src)) {
             // get fires
             $fields_fire = array();
-            foreach ( $clogic_src['cond'] as $key => $value) {
-                foreach ( $value['list'] as $key2 => $value2) {
-                    if ( ! empty($value2)) {
-                        if ( ! isset($fields_fire[ $value2['field_fire'] ]['list'][ $value['field_cond'] ])) {
-                            $fields_fire[ $value2['field_fire'] ]['list'][] = $value['field_cond'];
+            foreach ($clogic_src['cond'] as $key => $value) {
+                foreach ($value['list'] as $key2 => $value2) {
+                    if (!empty($value2)) {
+                        if (!isset($fields_fire[$value2['field_fire']]['list'][$value['field_cond']])) {
+                            $fields_fire[$value2['field_fire']]['list'][] = $value['field_cond'];
                         }
                     } else {
-                        unset($clogic_src['cond'][ $key ]['list'][ $key2 ]);
+                        unset($clogic_src['cond'][$key]['list'][$key2]);
                     }
                 }
             }
             $saveform_clogic = $clogic_src;
             // field fires
             $logic_field_fire = array();
-            foreach ( $fields_fire as $key => $value) {
+            foreach ($fields_fire as $key => $value) {
                 $temp_logic                     = array();
                 $temp_logic['field_fire']       = $key;
-                $temp_logic['field_fire_typen'] = isset($tmp_var_typename[ $key ]) ? $tmp_var_typename[ $key ] : 'undefined';
-                $temp_logic['field_fire_fname'] = isset($tmp_var_fname[ $key ]) ? $tmp_var_fname[ $key ] : 'undefined';
-                $temp_logic['field_fire_fstep'] = isset($tmp_var_fstep[ $key ]) ? $tmp_var_fstep[ $key ] : 'undefined';
+                $temp_logic['field_fire_typen'] = isset($tmp_var_typename[$key]) ? $tmp_var_typename[$key] : 'undefined';
+                $temp_logic['field_fire_fname'] = isset($tmp_var_fname[$key]) ? $tmp_var_fname[$key] : 'undefined';
+                $temp_logic['field_fire_fstep'] = isset($tmp_var_fstep[$key]) ? $tmp_var_fstep[$key] : 'undefined';
 
                 $tmp_list = array();
-                foreach ( $value['list'] as $value2) {
+                foreach ($value['list'] as $value2) {
                     $tmp_list[] = array(
                         'field_cond'       => $value2,
-                        'field_cond_typen' => isset($tmp_var_typename[ $value2 ]) ? $tmp_var_typename[ $value2 ] : 'undefined',
-                        'field_cond_fname' => isset($tmp_var_fname[ $value2 ]) ? $tmp_var_fname[ $value2 ] : 'undefined',
-                        'field_cond_fstep' => isset($tmp_var_fstep[ $value2 ]) ? $tmp_var_fstep[ $value2 ] : 'undefined',
+                        'field_cond_typen' => isset($tmp_var_typename[$value2]) ? $tmp_var_typename[$value2] : 'undefined',
+                        'field_cond_fname' => isset($tmp_var_fname[$value2]) ? $tmp_var_fname[$value2] : 'undefined',
+                        'field_cond_fstep' => isset($tmp_var_fstep[$value2]) ? $tmp_var_fstep[$value2] : 'undefined',
                     );
                 }
                 $temp_logic['list']       = $tmp_list;
-                $logic_field_fire[ $key ] = $temp_logic;
+                $logic_field_fire[$key] = $temp_logic;
             }
 
             $clogic_src['fire'] = $logic_field_fire;
@@ -563,10 +564,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $list_ids = ( isset($_POST['id']) && $_POST['id'] ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id']) : array();
+        $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
 
-        if ( $list_ids) {
-            foreach ( $list_ids as $value) {
+        if ($list_ids) {
+            foreach ($list_ids as $value) {
                 $data_form                = $this->formsmodel->getFormById($value);
                 $data                     = array();
                 $data['fmb_data']         = $data_form->fmb_data;
@@ -581,13 +582,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
                 $lastid = $this->wpdb->insert_id;
 
-                if ( intval($lastid) === 0) {
+                if (intval($lastid) === 0) {
                     // in case the record is not duplicated because of strip_invalid_text
                     // finally solved because the fmb_name was long than permitted
-                        $qrystr  = ' INSERT INTO ' . $this->formsmodel->table;
-                        $qrystr .= ' ( ' . implode(', ', array_keys($data)) . ') ';
-                        $qrystr .= " VALUES ('" . implode("', '", array_values($data)) . "')";
-                        $this->wpdb->query($qrystr);
+                    $qrystr  = ' INSERT INTO ' . $this->formsmodel->table;
+                    $qrystr .= ' ( ' . implode(', ', array_keys($data)) . ') ';
+                    $qrystr .= " VALUES ('" . implode("', '", array_values($data)) . "')";
+                    $this->wpdb->query($qrystr);
                 }
             }
         }
@@ -599,10 +600,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $list_ids = ( isset($_POST['id']) && $_POST['id'] ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id']) : array();
-        $form_st  = ( isset($_POST['form_st']) && $_POST['form_st'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
-        if ( $list_ids) {
-            foreach ( $list_ids as $value) {
+        $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
+        $form_st  = (isset($_POST['form_st']) && $_POST['form_st']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
+        if ($list_ids) {
+            foreach ($list_ids as $value) {
                 $where = array(
                     'fmb_id' => $value,
                 );
@@ -619,13 +620,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     {
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
-        $list_ids = ( isset($_POST['id']) && $_POST['id'] ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id']) : array();
-        $form_st  = ( isset($_POST['form_st']) && $_POST['form_st'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
-        if ( $list_ids) {
-            switch ( intval($form_st)) {
+        $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
+        $form_st  = (isset($_POST['form_st']) && $_POST['form_st']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
+        if ($list_ids) {
+            switch (intval($form_st)) {
                 case 1:
                 case 2:
-                    foreach ( $list_ids as $value) {
+                    foreach ($list_ids as $value) {
                         $where = array(
                             'fmb_id' => $value,
                         );
@@ -636,7 +637,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                     }
                     break;
                 case 0:
-                    foreach ( $list_ids as $value) {
+                    foreach ($list_ids as $value) {
                         $this->delete_form_process($value);
                     }
 
@@ -704,7 +705,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
         $this->delete_form_process($form_id);
     }
@@ -714,7 +715,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         $where   = array(
             'fmb_id' => $form_id,
         );
@@ -729,33 +730,25 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         header('Content-type: text/html');
         ob_start();
         ?>
 
-         <div id="uifm_frm_modal_html_loader"><img src="<?php echo UIFORM_FORMS_URL . '/assets/backend/image/ajax-loader-black.gif'; ?>"></div>
-        <iframe src="<?php echo site_url(); ?>/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=1&uifm_mode=lmode&id=<?php echo $form_id; ?>" 
-        scrolling="no" 
-        id="zgfm-iframe-<?php echo $form_id; ?>"
-        frameborder="0" 
-        style="border:none;width:100%;" 
-        allowTransparency="true"></iframe>
-        
+        <div id="uifm_frm_modal_html_loader"><img src="<?php echo UIFORM_FORMS_URL . '/assets/backend/image/ajax-loader-black.gif'; ?>"></div>
+        <iframe src="<?php echo site_url(); ?>/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=1&uifm_mode=lmode&id=<?php echo $form_id; ?>" scrolling="no" id="zgfm-iframe-<?php echo $form_id; ?>" frameborder="0" style="border:none;width:100%;" allowTransparency="true"></iframe>
+
         <script type="text/javascript">
-            
             document.getElementById('zgfm-iframe-<?php echo $form_id; ?>').onload = function() {
                 document.getElementById("uifm_frm_modal_html_loader").style.display = 'none';
-      iFrameResize({
-                                                    log                     : false,
-                                                    onScroll: function (coords) {
-                                                        /*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
-                                                    }
-                                            },'#zgfm-iframe-<?php echo $form_id; ?>');
-    };
-                    
-                    
-          </script> 
+                iFrameResize({
+                    log: false,
+                    onScroll: function(coords) {
+                        /*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
+                    }
+                }, '#zgfm-iframe-<?php echo $form_id; ?>');
+            };
+        </script>
         <?php
         $output = ob_get_clean();
         echo $output;
@@ -768,7 +761,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id             = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $form_id             = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         $data                = array();
         $data['content_top'] = __('Success! The form was created. Now just copy and paste the shortcode to your content', 'FRocket_admin');
         $data['form_id']     = $form_id;
@@ -787,7 +780,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id            = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $form_id            = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         $data               = array();
         $data['form_id']    = $form_id;
         $json               = array();
@@ -806,21 +799,21 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
         $data     = array();
-        $fmb_data = ( ! empty($_POST['form_data']) ) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_data']) : '';
+        $fmb_data = (!empty($_POST['form_data'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_data']) : '';
         $fmb_data = urldecode($fmb_data);
         // $fmb_data = str_replace("\'", "'", $fmb_data);
-        $fmb_data = ( ! empty($fmb_data) ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), json_decode($fmb_data, true)) : array();
+        $fmb_data = (!empty($fmb_data)) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
 
         $data['fmb_data'] = $fmb_data;
-        $data['fmb_name'] = ( ! empty($_POST['uifm_frm_main_title']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_title'])) : '';
+        $data['fmb_name'] = (!empty($_POST['uifm_frm_main_title'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_title'])) : '';
 
         // in case title is empty
-        if ( empty($data['fmb_name']) && ! empty($_POST['uifm_frm_main_id']) && intval($_POST['uifm_frm_main_id']) > 0) {
-            $tmp_form_id      = ( ! empty($_POST['uifm_frm_main_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : '';
+        if (empty($data['fmb_name']) && !empty($_POST['uifm_frm_main_id']) && intval($_POST['uifm_frm_main_id']) > 0) {
+            $tmp_form_id      = (!empty($_POST['uifm_frm_main_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : '';
             $tmp_form_title   = $this->formsmodel->getTitleFormById($tmp_form_id);
             $data['fmb_name'] = $tmp_form_title->fmb_name;
         }
-         
+
         $json                     = array();
         $tmp_html                 = $this->generate_previewpanel_html($data);
         $data['fmb_html_backend'] = Uiform_Form_Helper::encodeHex($tmp_html['output_html']);
@@ -836,10 +829,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
         $data                     = array();
-        $fmb_id                   = ( $_POST['uifm_frm_main_id'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : 0;
-        $data['fmb_html_backend'] = ( $_POST['form_html_backend'] ) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_html_backend']) : '';
+        $fmb_id                   = ($_POST['uifm_frm_main_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : 0;
+        $data['fmb_html_backend'] = ($_POST['form_html_backend']) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_html_backend']) : '';
         $json                     = array();
-        if ( intval($fmb_id) > 0) {
+        if (intval($fmb_id) > 0) {
             $where = array(
                 'fmb_id' => $fmb_id,
             );
@@ -859,17 +852,17 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
         $json = array();
         try {
-            if ( ! Uiform_Form_Helper::check_User_Access()) {
+            if (!Uiform_Form_Helper::check_User_Access()) {
                 throw new Exception(__('Error! User has no permission to edit this form', 'FRocket_admin'));
             }
             $data             = array();
-            $data['fmb_name'] = ( ! empty($_POST['uifm_frm_main_title']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_title'])) : '';
+            $data['fmb_name'] = (!empty($_POST['uifm_frm_main_title'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_title'])) : '';
             $this->wpdb->insert($this->formsmodel->table, $data);
             $idActivate = $this->wpdb->insert_id;
 
             $json['status'] = 'created';
             $json['id']     = $idActivate;
-        } catch ( Exception $e) {
+        } catch (Exception $e) {
         }
         // return data to ajax callback
         header('Content-Type: application/json');
@@ -883,49 +876,49 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
         try {
-            if ( ! Uiform_Form_Helper::check_User_Access()) {
+            if (!Uiform_Form_Helper::check_User_Access()) {
                 throw new Exception(__('Error! User has no permission to edit this form', 'FRocket_admin'));
             }
 
             ob_start();
 
             $data     = array();
-            $fmb_data = ( isset($_POST['form_data']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
+            $fmb_data = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
 
             // $fmb_data = str_replace("\'", "'",$fmb_data);
-            $fmb_data         = ( isset($fmb_data) && $fmb_data ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), json_decode($fmb_data, true)) : array();
+            $fmb_data         = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
             $data['fmb_data'] = json_encode($fmb_data);
 
             // addon data
-            $fmb_addon_data = ( isset($_POST['addon_data']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['addon_data'])) : '';
-            $fmb_addon_data = ( isset($fmb_addon_data) && $fmb_addon_data ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), json_decode($fmb_addon_data, true)) : array();
+            $fmb_addon_data = (isset($_POST['addon_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['addon_data'])) : '';
+            $fmb_addon_data = (isset($fmb_addon_data) && $fmb_addon_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_addon_data, true)) : array();
 
             // form_inputs
-            $fmb_data['fm_inputs'] = ( isset($_POST['form_inputs']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_inputs'])) : '';
+            $fmb_data['fm_inputs'] = (isset($_POST['form_inputs'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_inputs'])) : '';
 
             // more options
-            $data['fmb_rec_tpl_html'] = ( isset($_POST['uifm_frm_rec_tpl_html']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_html'])) : '';
-            $data['fmb_inv_tpl_html'] = ( isset($_POST['uifm_frm_inv_tpl_html']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_inv_tpl_html'])) : '';
-            $data['fmb_rec_tpl_st']   = ( isset($_POST['uifm_frm_rec_tpl_st']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_st'])) : '';
-            $data['fmb_inv_tpl_st']   = ( isset($_POST['uifm_frm_inv_tpl_st']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_inv_tpl_st'])) : '';
+            $data['fmb_rec_tpl_html'] = (isset($_POST['uifm_frm_rec_tpl_html'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_html'])) : '';
+            $data['fmb_inv_tpl_html'] = (isset($_POST['uifm_frm_inv_tpl_html'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_inv_tpl_html'])) : '';
+            $data['fmb_rec_tpl_st']   = (isset($_POST['uifm_frm_rec_tpl_st'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_st'])) : '';
+            $data['fmb_inv_tpl_st']   = (isset($_POST['uifm_frm_inv_tpl_st'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_inv_tpl_st'])) : '';
 
             $tmp_data2                = array();
             $tmp_data2['onsubm']      = isset($fmb_data['onsubm']) ? $fmb_data['onsubm'] : '';
             $tmp_data2['main']        = isset($fmb_data['main']) ? $fmb_data['main'] : '';
             $tmp_data2['calculation'] = isset($fmb_data['calculation']) ? $fmb_data['calculation'] : '';
-            $data['fmb_data2']        = ! empty($tmp_data2) ? json_encode($tmp_data2) : '';
-            $data['fmb_name']         = ( ! empty($_POST['uifm_frm_main_title']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_title'])) : '';
+            $data['fmb_data2']        = !empty($tmp_data2) ? json_encode($tmp_data2) : '';
+            $data['fmb_name']         = (!empty($_POST['uifm_frm_main_title'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_title'])) : '';
             $data['created_ip']       = $_SERVER['REMOTE_ADDR'];
             $data['created_by']       = 1;
             $data['created_date']     = date('Y-m-d h:i:s');
-            $fmb_id                   = ( isset($_POST['uifm_frm_main_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : 0;
+            $fmb_id                   = (isset($_POST['uifm_frm_main_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : 0;
 
             /*global for fonts*/
             global $global_fonts_stored;
             $global_fonts_stored = array();
 
             $json = array();
-            if ( intval($fmb_id) > 0) {
+            if (intval($fmb_id) > 0) {
                 $where = array(
                     'fmb_id' => $fmb_id,
                 );
@@ -945,131 +938,119 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             // all data fields
             $fmb_data['addons'] = $fmb_addon_data;
 
-            if ( intval($json['id']) === 0) {
-                            throw new Exception('Form id error');
+            if (intval($json['id']) === 0) {
+                throw new Exception('Form id error');
             }
-                $where = array(
-                    'fmb_id' => $json['id'],
-                );
+            $where = array(
+                'fmb_id' => $json['id'],
+            );
 
-                 // process action
-                $fmb_data = apply_filters('zgfm_saveForm_store', $fmb_data, $json['id']);
+            // process action
+            $fmb_data = apply_filters('zgfm_saveForm_store', $fmb_data, $json['id']);
 
-                // all data fields
-                $this->current_data_addon       = $fmb_data['addons'];
-                $this->current_data_form        = $fmb_data['steps_src'];
-                $this->current_data_num_tabs    = $fmb_data['num_tabs'];
-                $this->current_data_tab_cont    = $fmb_data['steps']['tab_cont'];
-                $this->current_data_steps       = $fmb_data['steps'];
-                $this->current_data_skin        = $fmb_data['skin'];
-                $this->current_data_wizard      = ( $fmb_data['wizard'] ) ? $fmb_data['wizard'] : array();
-                $this->current_data_onsubm      = ( $fmb_data['onsubm'] ) ? $fmb_data['onsubm'] : array();
-                $this->current_data_main        = ( $fmb_data['main'] ) ? $fmb_data['main'] : array();
-                $this->current_data_summbox     = ( $fmb_data['summbox'] ) ? $fmb_data['summbox'] : array();
-                $this->current_data_calculation = ( $fmb_data['calculation'] ) ? $fmb_data['calculation'] : array();
+            // all data fields
+            $this->current_data_addon       = $fmb_data['addons'];
+            $this->current_data_form        = $fmb_data['steps_src'];
+            $this->current_data_num_tabs    = $fmb_data['num_tabs'];
+            $this->current_data_tab_cont    = $fmb_data['steps']['tab_cont'];
+            $this->current_data_steps       = $fmb_data['steps'];
+            $this->current_data_skin        = $fmb_data['skin'];
+            $this->current_data_wizard      = ($fmb_data['wizard']) ? $fmb_data['wizard'] : array();
+            $this->current_data_onsubm      = ($fmb_data['onsubm']) ? $fmb_data['onsubm'] : array();
+            $this->current_data_main        = ($fmb_data['main']) ? $fmb_data['main'] : array();
+            $this->current_data_summbox     = ($fmb_data['summbox']) ? $fmb_data['summbox'] : array();
+            $this->current_data_calculation = ($fmb_data['calculation']) ? $fmb_data['calculation'] : array();
 
-                // save fields to table
-                $this->saved_form_id = $json['id'];
-                $this->save_data_fields($json['id']);
-                // save fields to table
-                $this->save_form_clogic();
-                // generate form html
-                $gen_return = $this->generate_form_html($json['id']);
+            // save fields to table
+            $this->saved_form_id = $json['id'];
+            $this->save_data_fields($json['id']);
+            // save fields to table
+            $this->save_form_clogic();
+            // generate form html
+            $gen_return = $this->generate_form_html($json['id']);
 
-                $data4                     = array();
-                $data4['fmb_html']         = $gen_return['output_html'];
-                $data4['fmb_html_backend'] = $this->generate_admin_form_html($json['id']);
+            $data4                     = array();
+            $data4['fmb_html']         = $gen_return['output_html'];
+            $data4['fmb_html_backend'] = $this->generate_admin_form_html($json['id']);
 
-                // get global style
-                $data2                     = array();
-                $data2['idform']           = $json['id'];
-                $data2['addition_css']     = $this->current_data_main['add_css'];
-                $data2['skin']             = $this->current_data_skin;
-                $data2['summbox']          = $this->current_data_summbox;
-                $gen_return['output_css'] .= self::render_template('formbuilder/views/forms/formhtml_css_global.php', $data2);
-                $data3                     = array();
-                $data3['fonts']            = $global_fonts_stored;
-                $gen_return['output_css']  = self::render_template('formbuilder/views/forms/formhtml_css_init.php', $data3) . $gen_return['output_css'];
-                $data4['fmb_html_css']     = $gen_return['output_css'];
-                $this->wpdb->update($this->formsmodel->table, $data4, $where);
-                // generate form css
-                ob_start();
-                $pathCssFile = UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $json['id'] . '.css';
-                $f           = fopen($pathCssFile, 'w');
-                fwrite($f, $gen_return['output_css']);
-                fclose($f);
-                ob_end_clean();
+            // get global style
+            $data2                     = array();
+            $data2['idform']           = $json['id'];
+            $data2['addition_css']     = $this->current_data_main['add_css'];
+            $data2['skin']             = $this->current_data_skin;
+            $data2['summbox']          = $this->current_data_summbox;
+            $gen_return['output_css'] .= self::render_template('formbuilder/views/forms/formhtml_css_global.php', $data2);
+            $data3                     = array();
+            $data3['fonts']            = $global_fonts_stored;
+            $gen_return['output_css']  = self::render_template('formbuilder/views/forms/formhtml_css_init.php', $data3) . $gen_return['output_css'];
+            $data4['fmb_html_css']     = $gen_return['output_css'];
+            $this->wpdb->update($this->formsmodel->table, $data4, $where);
+            // generate form css
 
-                // add to log
-                $save_log_st   = false;
-                $count_log_rec = $this->model_form_log->CountLogsByFormId($json['id']);
+            if ($this->createCustomFolder()) {
+                $newPublicDir = WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG;
+            } else {
+                $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
+            }
 
-                if ( intval($count_log_rec) > 0) {
-                    $last_rec = $this->model_form_log->getLastLogById($json['id']);
-                    $new_hash = md5($data_form->fmb_data);
-                    $old_hash = $last_rec->log_frm_hash;
-                    if ( $new_hash != $old_hash) {
-                        $save_log_st = true;
-                    }
-                } else {
+
+            ob_start();
+            $pathCssFile = $newPublicDir . '/rockfm_form' . $json['id'] . '.css';
+            $f           = fopen($pathCssFile, 'w');
+            fwrite($f, $gen_return['output_css']);
+            fclose($f);
+            ob_end_clean();
+
+            // add to log
+            $save_log_st   = false;
+            $count_log_rec = $this->model_form_log->CountLogsByFormId($json['id']);
+
+            if (intval($count_log_rec) > 0) {
+                $last_rec = $this->model_form_log->getLastLogById($json['id']);
+                $new_hash = md5($data_form->fmb_data);
+                $old_hash = $last_rec->log_frm_hash;
+                if ($new_hash != $old_hash) {
                     $save_log_st = true;
                 }
-                $log_lastid = 0;
-                if ( $save_log_st) {
-                    $data5                         = array();
-                    $data5['log_frm_data']         = $data['fmb_data'];
-                    $data5['log_frm_name']         = $data['fmb_name'];
-                    $data5['log_frm_html']         = '';
-                    $data5['log_frm_html_backend'] = $data4['fmb_html_backend'];
-                    $data5['log_frm_html_css']     = '';
-                    $data5['log_frm_id']           = $json['id'];
-                    $data5['log_frm_hash']         = md5($data_form->fmb_data);
-                    $data5['created_ip']           = $_SERVER['REMOTE_ADDR'];
-                    $data5['created_by']           = 1;
-                    $data5['created_date']         = date('Y-m-d h:i:s');
+            } else {
+                $save_log_st = true;
+            }
+            $log_lastid = 0;
+            if ($save_log_st) {
+                $data5                         = array();
+                $data5['log_frm_data']         = $data['fmb_data'];
+                $data5['log_frm_name']         = $data['fmb_name'];
+                $data5['log_frm_html']         = '';
+                $data5['log_frm_html_backend'] = $data4['fmb_html_backend'];
+                $data5['log_frm_html_css']     = '';
+                $data5['log_frm_id']           = $json['id'];
+                $data5['log_frm_hash']         = md5($data_form->fmb_data);
+                $data5['created_ip']           = $_SERVER['REMOTE_ADDR'];
+                $data5['created_by']           = 1;
+                $data5['created_date']         = date('Y-m-d h:i:s');
 
-                    $this->wpdb->insert($this->model_form_log->table, $data5);
-                    $log_lastid = $this->wpdb->insert_id;
-                     // remove oldest if limit is exceeded
-                    if ( intval($count_log_rec) > 50) {
-                        $tmp_log = $this->model_form_log->getOldLogById($json['id']);
+                $this->wpdb->insert($this->model_form_log->table, $data5);
+                $log_lastid = $this->wpdb->insert_id;
+                // remove oldest if limit is exceeded
+                if (intval($count_log_rec) > 50) {
+                    $tmp_log = $this->model_form_log->getOldLogById($json['id']);
 
-                        $where = array(
-                            'log_id' => $tmp_log->log_id,
-                        );
-                        $this->wpdb->delete($this->model_form_log->table, $where);
-                    }
+                    $where = array(
+                        'log_id' => $tmp_log->log_id,
+                    );
+                    $this->wpdb->delete($this->model_form_log->table, $where);
                 }
+            }
 
-                //do_action('zgfm_OnSaveForm_saveLog', $json['id'], $save_log_st, $log_lastid, $this->current_data_addon[ 'OnSaveForm_saveLog' ]['data']);
+            //do_action('zgfm_OnSaveForm_saveLog', $json['id'], $save_log_st, $log_lastid, $this->current_data_addon[ 'OnSaveForm_saveLog' ]['data']);
 
-                // checking errors
-                $output_error = ob_get_contents();
-                ob_end_clean();
-                if ( ! empty($output_error)) {
-                    throw new Exception($output_error);
-                }
-        } catch ( Exception $e) {
-            /*
-            there is no visitor table
-            $data = array();
-            $error = array();
-            $error['Message'] = $e->getMessage();
-            $error['Trace'] = $e->getTrace();
-            $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-            $user_agent = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : '';
-            $hash = hash('crc32', md5($ip . $user_agent));
-
-            $referer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
-            $data['vis_uniqueid'] = $hash;
-            $data['vis_user_agent'] = $user_agent;
-            $data['vis_page'] = $_SERVER['REQUEST_URI'];
-            $data['vis_referer'] = $referer;
-            $data['vis_error'] = Uiform_Form_Helper::array2xml($error);
-            $data['vis_ip'] = $ip;
-            $data['vis_last_date'] = date('Y-m-d H:i:s');
-            $this->wpdb->insert($this->model_vis_error->table, $data);*/
-
+            // checking errors
+            $output_error = ob_get_contents();
+            ob_end_clean();
+            if (!empty($output_error)) {
+                throw new Exception($output_error);
+            }
+        } catch (Exception $e) {
             $json            = array();
             $json['status']  = 'failed';
             $json['Message'] = $e->getMessage();
@@ -1081,19 +1062,72 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         wp_die();
     }
 
+    protected function createCustomFolder()
+    {
+
+        // Define the path where you want to create the folder
+        $folder_path = WP_CONTENT_DIR.'/uploads/softdiscover';
+        
+        // Check if the folder already exists
+        if (file_exists($folder_path.'/'.UIFORM_SLUG)) {
+            return true;
+        }
+
+        // Load WordPress filesystem API
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+
+        // Initialize the WordPress filesystem
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        // Initialize the WordPress filesystem
+        if (!WP_Filesystem()) {
+            // Failed to initialize WordPress filesystem, shouldn't happen
+            return false;
+        }
+
+
+        // Create the folder
+        WP_Filesystem();
+        global $wp_filesystem;
+        
+        if (!file_exists($folder_path)) {
+            $wp_filesystem->mkdir($folder_path);
+        }
+        
+        
+        $wp_filesystem->mkdir($folder_path.'/'.UIFORM_SLUG);
+        // Check if folder creation was successful
+        if (!$wp_filesystem->is_dir($folder_path)) {
+            // Failed to create folder, handle the error
+            return false;
+        } else {
+            // Folder created successfully
+            return true;
+        }
+
+
+        return true;
+    }
+
     protected function generate_form_getField($child_field)
     {
         $str_output   = '';
         $str_output_3 = '';
 
         $data = array();
-        $data = $this->current_data_form[ intval($child_field['num_tab']) ][ $child_field['id'] ];
+        $data = $this->current_data_form[intval($child_field['num_tab'])][$child_field['id']];
 
         $data['addon_extraclass'] = '';
 
         $data = apply_filters('zgfm_field_addon_extraclass', $data);
 
-        switch ( intval($child_field['type'])) {
+        switch (intval($child_field['type'])) {
             case 6:
                 // textbox
                 $str_output   .= self::$_modules['formbuilder']['fields']->formhtml_textbox($data, $child_field['num_tab']);
@@ -1287,12 +1321,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $return['output_html'] = $str_output;
 
         // add css inside namespace of the form
-            require_once UIFORM_FORMS_DIR . '/libraries/lesslib/lessc.inc.php';
-            $less      = new lessc();
-            $css_store = '';
+        require_once UIFORM_FORMS_DIR . '/libraries/lesslib/lessc.inc.php';
+        $less      = new lessc();
+        $css_store = '';
         try {
             $css_store = $less->compile('#rockfm_form_' . $this->saved_form_id . ' {' . $str_output_3 . '}');
-        } catch ( exception $e) {
+        } catch (exception $e) {
             $css_store = $str_output_3;
         }
 
@@ -1306,9 +1340,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     */
     private function isField_OnCoreData($core_data, $field_search)
     {
-        foreach ( $core_data as $key => $field) {
-            if ( isset($core_data[ $key ][ $field_search ]) && ! empty($core_data[ $key ][ $field_search ])) {
-                   return $core_data[ $key ][ $field_search ];
+        foreach ($core_data as $key => $field) {
+            if (isset($core_data[$key][$field_search]) && !empty($core_data[$key][$field_search])) {
+                return $core_data[$key][$field_search];
             }
         }
 
@@ -1321,9 +1355,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         $data = array();
 
-        if ( empty($this->current_data_form[ intval($child_field['num_tab']) ][ $child_field['id'] ])) {
+        if (empty($this->current_data_form[intval($child_field['num_tab'])][$child_field['id']])) {
             $tmp_data = $this->isField_OnCoreData($this->current_data_form, $child_field['id']);
-            if ( $tmp_data) {
+            if ($tmp_data) {
                 $data = $tmp_data;
             } else {
                 $return                = array();
@@ -1331,11 +1365,11 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 return $return;
             }
         } else {
-            $data = $this->current_data_form[ intval($child_field['num_tab']) ][ $child_field['id'] ];
+            $data = $this->current_data_form[intval($child_field['num_tab'])][$child_field['id']];
         }
 
         $data['quick_options'] = self::render_template('formbuilder/views/fields/templates/prevpanel_quickopts.php', $data, 'always');
-        switch ( intval($child_field['type'])) {
+        switch (intval($child_field['type'])) {
             case 6:
                 // textbox
                 $str_output .= self::render_template('formbuilder/views/fields/templates/prevpanel_textbox.php', $data, 'always');
@@ -1496,14 +1530,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     {
 
         $str_output = '';
-        switch ( intval($type)) {
+        switch (intval($type)) {
             case 1:
                 ob_start();
                 ?>
-                                <td  data-maxpercent="100" data-blocks="12" width="100%">
-                                        <div class="uiform-items-container uiform-grid-inner-col">
-                                        </div>
-                                    </td> 
+                <td data-maxpercent="100" data-blocks="12" width="100%">
+                    <div class="uiform-items-container uiform-grid-inner-col">
+                    </div>
+                </td>
                 <?php
                 $str_output .= ob_get_contents();
                 ob_end_clean();
@@ -1511,16 +1545,16 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             case 2:
                 ob_start();
                 ?>
-                                <td  data-maxpercent="50" data-blocks="6" width="50%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                <td data-maxpercent="50" data-blocks="6" width="50%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="100" data-blocks="6" width="50%">
-                                    <div class="uiform-items-container uiform-grid-inner-col">
+                    </div>
+                </td>
+                <td data-maxpercent="100" data-blocks="6" width="50%">
+                    <div class="uiform-items-container uiform-grid-inner-col">
 
-                                    </div>
-                                </td>
+                    </div>
+                </td>
                 <?php
                 $str_output .= ob_get_contents();
                 ob_end_clean();
@@ -1528,21 +1562,21 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             case 3:
                 ob_start();
                 ?>
-                                <td  data-maxpercent="33.3" data-blocks="4" width="33.3%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                <td data-maxpercent="33.3" data-blocks="4" width="33.3%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="66.6" data-blocks="4" width="33.3%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="66.6" data-blocks="4" width="33.3%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="100" data-blocks="4" width="33.3%">
-                                    <div class="uiform-items-container uiform-grid-inner-col">
+                    </div>
+                </td>
+                <td data-maxpercent="100" data-blocks="4" width="33.3%">
+                    <div class="uiform-items-container uiform-grid-inner-col">
 
-                                    </div>
-                                </td>
+                    </div>
+                </td>
                 <?php
                 $str_output .= ob_get_contents();
                 ob_end_clean();
@@ -1550,26 +1584,26 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             case 4:
                 ob_start();
                 ?>
-                                <td data-maxpercent="25" data-blocks="3" width="25%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                <td data-maxpercent="25" data-blocks="3" width="25%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="50" data-blocks="3" width="25%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="50" data-blocks="3" width="25%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td data-maxpercent="75" data-blocks="3" width="25%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="75" data-blocks="3" width="25%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="100" data-blocks="3" width="25%">
-                                    <div class="uiform-items-container uiform-grid-inner-col">
+                    </div>
+                </td>
+                <td data-maxpercent="100" data-blocks="3" width="25%">
+                    <div class="uiform-items-container uiform-grid-inner-col">
 
-                                    </div>
-                                </td>
+                    </div>
+                </td>
                 <?php
                 $str_output .= ob_get_contents();
                 ob_end_clean();
@@ -1577,51 +1611,51 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             case 5:
                 ob_start();
                 ?>
-                                <td  data-maxpercent="16.6" data-blocks="2" width="16.6%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                <td data-maxpercent="16.6" data-blocks="2" width="16.6%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="33.3" data-blocks="2" width="16.6%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="33.3" data-blocks="2" width="16.6%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="50" data-blocks="2" width="16.6%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="50" data-blocks="2" width="16.6%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="66.6" data-blocks="2" width="16.6%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="66.6" data-blocks="2" width="16.6%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="83.3" data-blocks="2" width="16.6%">
-                                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
+                    </div>
+                </td>
+                <td data-maxpercent="83.3" data-blocks="2" width="16.6%">
+                    <div class="uiform-items-container uiform-grid-inner-col rkfm-bend-fcontainer-wrap">
 
-                                    </div>
-                                </td>
-                                <td  data-maxpercent="100" data-blocks="2" width="16.6%">
-                                    <div class="uiform-items-container uiform-grid-inner-col">
+                    </div>
+                </td>
+                <td data-maxpercent="100" data-blocks="2" width="16.6%">
+                    <div class="uiform-items-container uiform-grid-inner-col">
 
-                                    </div>
-                                </td>
+                    </div>
+                </td>
                 <?php
                 $str_output .= ob_get_contents();
                 ob_end_clean();
                 break;
         }
-                return $str_output;
+        return $str_output;
     }
 
     protected function getChildren_genCol($type, $key, $cols)
     {
         $content = '';
         /*grid type*/
-        switch ( intval($type)) {
+        switch (intval($type)) {
             case 1:
-                switch ( intval($key)) {
+                switch (intval($key)) {
                     case 0:
                         $grid_maxpercent = '100';
                         $grid_blocks     = '12';
@@ -1630,7 +1664,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 }
                 break;
             case 2:
-                switch ( intval($key)) {
+                switch (intval($key)) {
                     case 0:
                         $grid_maxpercent = '50';
                         $grid_blocks     = '6';
@@ -1644,7 +1678,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 }
                 break;
             case 3:
-                switch ( intval($key)) {
+                switch (intval($key)) {
                     case 0:
                         $grid_maxpercent = '33.3';
                         $grid_blocks     = '4';
@@ -1663,7 +1697,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 }
                 break;
             case 4:
-                switch ( intval($key)) {
+                switch (intval($key)) {
                     case 0:
                         $grid_maxpercent = '25';
                         $grid_blocks     = '3';
@@ -1687,7 +1721,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 }
                 break;
             case 5:
-                switch ( intval($key)) {
+                switch (intval($key)) {
                     case 0:
                         $grid_maxpercent = '16.6';
                         $grid_blocks     = '2';
@@ -1724,12 +1758,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         ob_start();
         ?>
-        <td  data-maxpercent="<?php echo $grid_maxpercent; ?>" data-blocks="<?php echo $grid_blocks; ?>" width="<?php echo $grid_width; ?>">
-        <?php
-        $content .= ob_get_contents();
-        ob_end_clean();
+        <td data-maxpercent="<?php echo $grid_maxpercent; ?>" data-blocks="<?php echo $grid_blocks; ?>" width="<?php echo $grid_width; ?>">
+            <?php
+            $content .= ob_get_contents();
+            ob_end_clean();
 
-        return $content;
+            return $content;
     }
 
     protected function generate_previewpanel_getChildren($child_field)
@@ -1743,143 +1777,141 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             4 => 'four',
             5 => 'six',
         );
-        switch ( intval($child_field['type'])) {
+        switch (intval($child_field['type'])) {
             case 1:
             case 2:
             case 3:
             case 4:
             case 5:
-                    ob_start();
+                ob_start();
                 ?>
-                    <div id="<?php echo $child_field['id']; ?>"
-                         data-typefield="<?php echo intval($child_field['type']); ?>" 
-                         data-iscontainer="1" 
-                         class="uiform-gridsytem-table uiform-gridsystem-<?php echo $grid_order[ intval($child_field['type']) ]; ?> uiform-field">
-                    <div class="uiform-field-wrap">
-                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                            <tr>
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
-                    if ( isset($child_field['inner'])) {
-                        $count_str   = 0;
-                        $count_total = count($child_field['inner']);
-                        if ( isset($child_field['inner'])) {
-                            foreach ( $child_field['inner'] as $key => $value) {
-                                $str_output .= $this->getChildren_genCol($child_field['type'], $key, $value['cols']);
-                                if ( $count_str === $count_total) {
-                                      $fcontainer_class = '';
-                                } else {
-                                    $fcontainer_class = 'rkfm-bend-fcontainer-wrap';
-                                }
-                                ob_start();
-                                ?>
-                            <div class="uiform-items-container uiform-grid-inner-col <?php echo $fcontainer_class; ?>">
-                             
+                    <div id="<?php echo $child_field['id']; ?>" data-typefield="<?php echo intval($child_field['type']); ?>" data-iscontainer="1" class="uiform-gridsytem-table uiform-gridsystem-<?php echo $grid_order[intval($child_field['type'])]; ?> uiform-field">
+                        <div class="uiform-field-wrap">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
                                 <?php
                                 $str_output .= ob_get_contents();
                                 ob_end_clean();
+                                if (isset($child_field['inner'])) {
+                                    $count_str   = 0;
+                                    $count_total = count($child_field['inner']);
+                                    if (isset($child_field['inner'])) {
+                                        foreach ($child_field['inner'] as $key => $value) {
+                                            $str_output .= $this->getChildren_genCol($child_field['type'], $key, $value['cols']);
+                                            if ($count_str === $count_total) {
+                                                $fcontainer_class = '';
+                                            } else {
+                                                $fcontainer_class = 'rkfm-bend-fcontainer-wrap';
+                                            }
+                                            ob_start();
+                                            ?>
+                                                <div class="uiform-items-container uiform-grid-inner-col <?php echo $fcontainer_class; ?>">
 
-                                if ( ! empty($value['children'])) {
-                                    foreach ( $value['children'] as $key2 => $value2) {
-                                        // get field
-                                        $get_data = array();
-                                        // $str_output.='<div class="">';
-                                        if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
-                                            $get_data    = $this->generate_admin_form_getChildren($value2);
-                                            $str_output .= $get_data['output_html'];
-                                        } else {
-                                            $get_data    = $this->generate_previewpanel_getField($value2);
-                                            $str_output .= $get_data['output_html'];
+                                            <?php
+                                                $str_output .= ob_get_contents();
+                                                ob_end_clean();
+
+                                            if (!empty($value['children'])) {
+                                                foreach ($value['children'] as $key2 => $value2) {
+                                                    // get field
+                                                    $get_data = array();
+                                                    // $str_output.='<div class="">';
+                                                    if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                                                        $get_data    = $this->generate_admin_form_getChildren($value2);
+                                                        $str_output .= $get_data['output_html'];
+                                                    } else {
+                                                        $get_data    = $this->generate_previewpanel_getField($value2);
+                                                        $str_output .= $get_data['output_html'];
+                                                    }
+                                                }
+                                            }
+                                                $str_output .= '</div>';
+                                                $str_output .= '</div>';
+                                                $count_str++;
                                         }
                                     }
+                                } else {
+                                    $str_output .= $this->getChildren_innerGrid($child_field['type']);
                                 }
-                                $str_output .= '</div>';
-                                $str_output .= '</div>';
-                                $count_str++;
-                            }
-                        }
-                    } else {
-                        $str_output .= $this->getChildren_innerGrid($child_field['type']);
-                    }
-                    ob_start();
-                    ?>
-                     
-                            </tr>
+                                ob_start();
+                                ?>
+
+                                </tr>
                             </table>
-                            <?php // echo self::render_template('formbuilder/views/fields/templates/prevpanel_quickopts2.php',array(), 'always'); ?>
+                            <?php // echo self::render_template('formbuilder/views/fields/templates/prevpanel_quickopts2.php',array(), 'always');
+                            ?>
+                        </div>
                     </div>
-                    </div>
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
+                <?php
+                $str_output .= ob_get_contents();
+                ob_end_clean();
                 break;
             case 31:
                 /*panel*/
-                 ob_start();
+                ob_start();
                 ?>
-                    <div id="<?php echo $child_field['id']; ?>"  data-typefield="31" data-iscontainer="1" class="uiform-panelfld uiform-field  uiform-field-childs zgpb-field-template">
-            <div class="uiform-field-wrap">
-                 <div class="uifm-input31-wrap">
+                    <div id="<?php echo $child_field['id']; ?>" data-typefield="31" data-iscontainer="1" class="uiform-panelfld uiform-field  uiform-field-childs zgpb-field-template">
+                        <div class="uiform-field-wrap">
+                            <div class="uifm-input31-wrap">
                                 <div class="uifm-input31-container">
-                                     <div class="rkfm-inp18-row">
-                                         <div class="rkfm-inp18-col-sm-2">
-                                             <div class="uifm-inp31-txthtml-content"></div>
-                                         </div>
-                                         <div class="rkfm-inp18-col-sm-10">
-                                             <div class="uifm-input31-main-wrap">
-                                                 <div class="uiform-items-container uiform-grid-inner-col">
-                                                   
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
-                    if ( isset($child_field['inner'])) {
-                        $count_str   = 0;
-                        $count_total = count($child_field['inner']);
-                        if ( isset($child_field['inner'])) {
-                            foreach ( $child_field['inner'] as $key => $value) {
-                                if ( ! empty($value['children'])) {
-                                    foreach ( $value['children'] as $key2 => $value2) {
-                                        // get field
-                                        $get_data = array();
+                                    <div class="rkfm-inp18-row">
+                                        <div class="rkfm-inp18-col-sm-2">
+                                            <div class="uifm-inp31-txthtml-content"></div>
+                                        </div>
+                                        <div class="rkfm-inp18-col-sm-10">
+                                            <div class="uifm-input31-main-wrap">
+                                                <div class="uiform-items-container uiform-grid-inner-col">
 
-                                        if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
-                                            $get_data    = $this->generate_admin_form_getChildren($value2);
-                                            $str_output .= $get_data['output_html'];
-                                        } else {
-                                            $get_data    = $this->generate_previewpanel_getField($value2);
-                                            $str_output .= $get_data['output_html'];
-                                        }
-                                    }
-                                }
+                                                <?php
+                                                $str_output .= ob_get_contents();
+                                                ob_end_clean();
+                                                if (isset($child_field['inner'])) {
+                                                    $count_str   = 0;
+                                                    $count_total = count($child_field['inner']);
+                                                    if (isset($child_field['inner'])) {
+                                                        foreach ($child_field['inner'] as $key => $value) {
+                                                            if (!empty($value['children'])) {
+                                                                foreach ($value['children'] as $key2 => $value2) {
+                                                                    // get field
+                                                                    $get_data = array();
 
-                                $count_str++;
-                            }
-                        }
-                    }
-                    ob_start();
-                    ?>
-                                                        </div>
-                                                 
-                                                        </div>
-                                                    </div>
+                                                                    if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                                                                        $get_data    = $this->generate_admin_form_getChildren($value2);
+                                                                        $str_output .= $get_data['output_html'];
+                                                                    } else {
+                                                                        $get_data    = $this->generate_previewpanel_getField($value2);
+                                                                        $str_output .= $get_data['output_html'];
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            $count_str++;
+                                                        }
+                                                    }
+                                                }
+                                                ob_start();
+                                                ?>
                                                 </div>
-                                           </div>
-                                       </div>
-                           
-                       </div>
-                   </div>
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                <?php
+                $str_output .= ob_get_contents();
+                ob_end_clean();
 
                 break;
             default:
-                 ob_start();
+                ob_start();
                 ?>
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
+                <?php
+                $str_output .= ob_get_contents();
+                ob_end_clean();
 
                 break;
         }
@@ -1893,7 +1925,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     {
         $str_output   = '';
         $str_output_2 = '';
-        switch ( intval($child_field['type'])) {
+        switch (intval($child_field['type'])) {
             case 1:
             case 2:
             case 3:
@@ -1901,14 +1933,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             case 5:
                 // generating css
                 $data          = array();
-                $data          = $this->gen_post_src[ $child_field['num_tab'] ][ $child_field['id'] ];
+                $data          = $this->gen_post_src[$child_field['num_tab']][$child_field['id']];
                 $str_output_2 .= self::$_modules['formbuilder']['fields']->posthtml_gridsystem_css($data);
 
                 // generating html
-                if ( intval($child_field['count_children']) >= 0) {
+                if (intval($child_field['count_children']) >= 0) {
                     // generate class
                     $tmp_class = 'zgpbf-gridsystem-cont ';
-                    if ( isset($data['main']['skin']['custom_css']['ctm_class'])) {
+                    if (isset($data['main']['skin']['custom_css']['ctm_class'])) {
                         $tmp_class .= $data['main']['skin']['custom_css']['ctm_class'];
                     }
 
@@ -1916,27 +1948,27 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                     $str_output .= '<div class="sfdc-container-fluid">';
                     $str_output .= '<div class="sfdc-row">';
                     $count_str   = 0;
-                    if ( isset($child_field['inner'])) {
-                        foreach ( $child_field['inner'] as $key => $value) {
-                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-sm-' . $value['cols'] . '">';
+                    if (isset($child_field['inner'])) {
+                        foreach ($child_field['inner'] as $key => $value) {
+                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-xs-' . $value['cols'] . ' sfdc-col-sm-' . $value['cols'] . '">';
 
                             // generate class
                             $tmp_class = 'zgpb-fl-gs-block-inner ';
-                            if ( isset($data['blocks'][ $value['num_tab'] ]['skin']['custom_css']['ctm_class'])) {
-                                $tmp_class .= $data['blocks'][ $value['num_tab'] ]['skin']['custom_css']['ctm_class'];
+                            if (isset($data['blocks'][$value['num_tab']]['skin']['custom_css']['ctm_class'])) {
+                                $tmp_class .= $data['blocks'][$value['num_tab']]['skin']['custom_css']['ctm_class'];
                             }
 
-                            if ( $count_str === $key) {
+                            if ($count_str === $key) {
                             }
 
                             $str_output .= '<div class="' . $tmp_class . '">';
 
-                            if ( ! empty($value['children'])) {
-                                foreach ( $value['children'] as $key2 => $value2) {
+                            if (!empty($value['children'])) {
+                                foreach ($value['children'] as $key2 => $value2) {
                                     // get field
                                     $get_data    = array();
                                     $str_output .= '<div class="">';
-                                    if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                                    if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
                                         $get_data      = $this->generate_form_getChildren($value2);
                                         $str_output   .= $get_data['output_html'];
                                         $str_output_2 .= $get_data['output_css'];
@@ -1962,16 +1994,16 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             case 31:
                 /*panel*/
                 $temp_str_output = '';
-                if ( isset($child_field['count_children']) && intval($child_field['count_children']) > 0) {
+                if (isset($child_field['count_children']) && intval($child_field['count_children']) > 0) {
                     $count_str = 0;
-                    if ( isset($child_field['inner'])) {
-                        foreach ( $child_field['inner'] as $key => $value) {
-                            if ( ! empty($value['children'])) {
-                                foreach ( $value['children'] as $key2 => $value2) {
+                    if (isset($child_field['inner'])) {
+                        foreach ($child_field['inner'] as $key => $value) {
+                            if (!empty($value['children'])) {
+                                foreach ($value['children'] as $key2 => $value2) {
                                     // get field
                                     $get_data = array();
 
-                                    if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                                    if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
                                         $get_data         = $this->generate_form_getChildren($value2);
                                         $temp_str_output .= $get_data['output_html'];
                                         $str_output_2    .= $get_data['output_css'];
@@ -1987,11 +2019,11 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 }
 
                 $temp_content      = '';
-                    $data_tmp      = array();
-                    $data_tmp      = $this->current_data_form[ intval($child_field['num_tab']) ][ $child_field['id'] ];
-                    $temp_content  = self::render_template('formbuilder/views/fields/formhtml_panelfld.php', $data_tmp, 'always');
-                    $str_output   .= str_replace('[[%%fields%%]]', $temp_str_output, $temp_content);
-                    $str_output_2 .= self::render_template('formbuilder/views/fields/formhtml_panelfld_css.php', $data_tmp, 'always');
+                $data_tmp      = array();
+                $data_tmp      = $this->current_data_form[intval($child_field['num_tab'])][$child_field['id']];
+                $temp_content  = self::render_template('formbuilder/views/fields/formhtml_panelfld.php', $data_tmp, 'always');
+                $str_output   .= str_replace('[[%%fields%%]]', $temp_str_output, $temp_content);
+                $str_output_2 .= self::render_template('formbuilder/views/fields/formhtml_panelfld_css.php', $data_tmp, 'always');
                 break;
             default:
                 break;
@@ -2017,148 +2049,148 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             6 => 'six',
         );
 
-        switch ( intval($child_field['type'])) {
+        switch (intval($child_field['type'])) {
             case 1:
             case 2:
             case 3:
             case 4:
             case 5:
-                if ( intval($child_field['count_children']) >= 0) {
+                if (intval($child_field['count_children']) >= 0) {
                     ob_start();
                     ?>
-                    <div id="<?php echo $child_field['id']; ?>" data-typefield="<?php echo intval($child_field['type']); ?>" data-iscontainer="1"  class="zgpb-gridsytem-box zgpb-field-template uiform-field zgpb-gridsystem-<?php echo $grid_order[ intval($child_field['type']) ]; ?>">
-                        <div class="sfdc-container-fluid">
-                            <div class="sfdc-row">
+                        <div id="<?php echo $child_field['id']; ?>" data-typefield="<?php echo intval($child_field['type']); ?>" data-iscontainer="1" class="zgpb-gridsytem-box zgpb-field-template uiform-field zgpb-gridsystem-<?php echo $grid_order[intval($child_field['type'])]; ?>">
+                            <div class="sfdc-container-fluid">
+                                <div class="sfdc-row">
+                                <?php
+                                $str_output .= ob_get_contents();
+                                ob_end_clean();
+                                if (isset($child_field['inner'])) {
+                                    $count_str    = 1;
+                                    $count_total  = count($child_field['inner']);
+                                    $tmp_col_rest = 12;
+
+                                    foreach ($child_field['inner'] as $key => $value) {
+                                        // controling 12 cols
+                                        $tmp_col_rest2 = $tmp_col_rest - abs($value['cols']);
+                                        if ($tmp_col_rest2 < 12 && $tmp_col_rest2 > 0) {
+                                            $tmp_col      = abs($value['cols']);
+                                            $tmp_col_rest = $tmp_col_rest2;
+                                        } else {
+                                            $tmp_col = $tmp_col_rest;
+                                        }
+
+                                        $str_output .= '<div class="zgpb-fl-gs-block-style sfdc-col-xs-' . $tmp_col . ' sfdc-col-sm-' . $tmp_col . '" data-zgpb-blocknum="' . $value['num_tab'] . '" data-zgpb-width="" data-zgpb-blockcol="' . $tmp_col . '">';
+                                        $str_output .= '<div class="uiform-items-container zgpb-fl-gs-block-inner">';
+
+                                        if (!empty($value['children'])) {
+                                            foreach ($value['children'] as $key2 => $value2) {
+                                                // get field
+                                                $get_data = array();
+
+                                                if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                                                    $get_data    = $this->generate_admin_form_getChildren($value2);
+                                                    $str_output .= $get_data['output_html'];
+                                                } else {
+                                                    $get_data    = $this->generate_previewpanel_getField($value2);
+                                                    $str_output .= $get_data['output_html'];
+                                                }
+                                            }
+                                        }
+
+                                        $str_output .= '</div>';
+
+                                        if ($count_str < $count_total) {
+                                            ob_start();
+                                            ?>
+                                                <div class="zgpb-fl-gridsystem-opt">
+                                                    <div data-zgpb-side="1" class="zgpb-fl-gd-drag-line zgpb-fl-gd-drag-line-right">
+                                                        <div class="zgpb-fl-gd-opt-icon-handler"></div>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            $str_output .= ob_get_contents();
+                                            ob_end_clean();
+                                        } else {
+                                            ob_start();
+                                            ?>
+                                                <div class="zgpb-fl-gridsystem-opt"></div>
+                                            <?php
+                                            $str_output .= ob_get_contents();
+                                            ob_end_clean();
+                                        }
+
+                                        $str_output .= '</div>';
+                                        $count_str++;
+                                    }
+                                }
+
+                                ob_start();
+                                ?>
+                                </div>
+                            </div>
+                        </div>
                     <?php
                     $str_output .= ob_get_contents();
                     ob_end_clean();
-                    if ( isset($child_field['inner'])) {
-                        $count_str    = 1;
-                        $count_total  = count($child_field['inner']);
-                        $tmp_col_rest = 12;
-
-                        foreach ( $child_field['inner'] as $key => $value) {
-                            // controling 12 cols
-                            $tmp_col_rest2 = $tmp_col_rest - abs($value['cols']);
-                            if ( $tmp_col_rest2 < 12 && $tmp_col_rest2 > 0) {
-                                $tmp_col      = abs($value['cols']);
-                                $tmp_col_rest = $tmp_col_rest2;
-                            } else {
-                                $tmp_col = $tmp_col_rest;
-                            }
-
-                            $str_output .= '<div class="zgpb-fl-gs-block-style sfdc-col-sm-' . $tmp_col . '" data-zgpb-blocknum="' . $value['num_tab'] . '" data-zgpb-width="" data-zgpb-blockcol="' . $tmp_col . '">';
-                            $str_output .= '<div class="uiform-items-container zgpb-fl-gs-block-inner">';
-
-                            if ( ! empty($value['children'])) {
-                                foreach ( $value['children'] as $key2 => $value2) {
-                                    // get field
-                                    $get_data = array();
-
-                                    if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
-                                        $get_data    = $this->generate_admin_form_getChildren($value2);
-                                        $str_output .= $get_data['output_html'];
-                                    } else {
-                                        $get_data    = $this->generate_previewpanel_getField($value2);
-                                        $str_output .= $get_data['output_html'];
-                                    }
-                                }
-                            }
-
-                            $str_output .= '</div>';
-
-                            if ( $count_str < $count_total) {
-                                ob_start();
-                                ?>
-                                            <div class="zgpb-fl-gridsystem-opt">
-                                                <div data-zgpb-side="1" class="zgpb-fl-gd-drag-line zgpb-fl-gd-drag-line-right">
-                                                    <div class="zgpb-fl-gd-opt-icon-handler"></div>
-                                                </div>
-                                            </div>
-                                <?php
-                                $str_output .= ob_get_contents();
-                                ob_end_clean();
-                            } else {
-                                ob_start();
-                                ?>
-                                            <div class="zgpb-fl-gridsystem-opt"></div>
-                                <?php
-                                $str_output .= ob_get_contents();
-                                ob_end_clean();
-                            }
-
-                            $str_output .= '</div>';
-                            $count_str++;
-                        }
-                    }
-
-                    ob_start();
-                    ?>
-                            </div>
-                        </div>
-                    </div>
-                                <?php
-                                $str_output .= ob_get_contents();
-                                ob_end_clean();
                 }
                 break;
             case 31:
                 /*panel*/
-                 ob_start();
+                ob_start();
                 ?>
-                    <div id="<?php echo $child_field['id']; ?>"  data-typefield="31" data-iscontainer="1" class="uiform-panelfld uiform-field  uiform-field-childs zgpb-field-template">
-            <div class="uiform-field-wrap">
-                 <div class="uifm-input31-wrap">
+                    <div id="<?php echo $child_field['id']; ?>" data-typefield="31" data-iscontainer="1" class="uiform-panelfld uiform-field  uiform-field-childs zgpb-field-template">
+                        <div class="uiform-field-wrap">
+                            <div class="uifm-input31-wrap">
                                 <div class="uifm-input31-container">
-                                     <div class="rkfm-inp18-row">
-                                         <div class="rkfm-inp18-col-sm-2">
-                                             <div class="uifm-inp31-txthtml-content"></div>
-                                         </div>
-                                         <div class="rkfm-inp18-col-sm-10">
-                                             <div class="uifm-input31-main-wrap">
-                                                 <div class="uiform-items-container uiform-grid-inner-col zgpb-fl-gs-block-inner">
-                                                   
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
-                    if ( isset($child_field['inner'])) {
-                        $count_str   = 0;
-                        $count_total = count($child_field['inner']);
+                                    <div class="rkfm-inp18-row">
+                                        <div class="rkfm-inp18-col-sm-2">
+                                            <div class="uifm-inp31-txthtml-content"></div>
+                                        </div>
+                                        <div class="rkfm-inp18-col-sm-10">
+                                            <div class="uifm-input31-main-wrap">
+                                                <div class="uiform-items-container uiform-grid-inner-col zgpb-fl-gs-block-inner">
 
-                        foreach ( $child_field['inner'] as $key => $value) {
-                            if ( ! empty($value['children'])) {
-                                foreach ( $value['children'] as $key2 => $value2) {
-                                    // get field
-                                    $get_data = array();
+                                                <?php
+                                                $str_output .= ob_get_contents();
+                                                ob_end_clean();
+                                                if (isset($child_field['inner'])) {
+                                                    $count_str   = 0;
+                                                    $count_total = count($child_field['inner']);
 
-                                    if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
-                                        $get_data    = $this->generate_admin_form_getChildren($value2);
-                                        $str_output .= $get_data['output_html'];
-                                    } else {
-                                        $get_data    = $this->generate_previewpanel_getField($value2);
-                                        $str_output .= $get_data['output_html'];
-                                    }
-                                }
-                            }
+                                                    foreach ($child_field['inner'] as $key => $value) {
+                                                        if (!empty($value['children'])) {
+                                                            foreach ($value['children'] as $key2 => $value2) {
+                                                                // get field
+                                                                $get_data = array();
 
-                            $count_str++;
-                        }
-                    }
-                    ob_start();
-                    ?>
-                                                        </div>
-                                                 
-                                                        </div>
-                                                    </div>
+                                                                if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                                                                    $get_data    = $this->generate_admin_form_getChildren($value2);
+                                                                    $str_output .= $get_data['output_html'];
+                                                                } else {
+                                                                    $get_data    = $this->generate_previewpanel_getField($value2);
+                                                                    $str_output .= $get_data['output_html'];
+                                                                }
+                                                            }
+                                                        }
+
+                                                        $count_str++;
+                                                    }
+                                                }
+                                                ob_start();
+                                                ?>
                                                 </div>
-                                           </div>
-                                       </div>
-                           
-                       </div>
-                   </div>
-                    <?php
-                    $str_output .= ob_get_contents();
-                    ob_end_clean();
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                <?php
+                $str_output .= ob_get_contents();
+                ob_end_clean();
 
                 break;
             default:
@@ -2173,7 +2205,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     public function generate_form_container($id, $numtab, $str_output)
     {
         $data = array();
-        if ( intval($numtab) > 1) {
+        if (intval($numtab) > 1) {
             $data1                   = array();
             $data1['tab_title']      = $this->current_data_steps['tab_title'];
             $data1['tab_theme']      = $this->current_data_wizard;
@@ -2202,12 +2234,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     public function generate_previewpanel_container($id, $numtab, $str_output)
     {
         $data                        = array();
-            $data1                   = array();
-            $data1['tab_title']      = $this->current_data_steps['tab_title'];
-            $data1['tab_theme']      = $this->current_data_wizard;
-            $data['form_tab_head']   = self::render_template('formbuilder/views/forms/previewpanel_tabheader.php', $data1);
-            $data2                   = array();
-            $data['form_tab_footer'] = self::render_template('formbuilder/views/forms/previewpanel_tabfooter.php', $data2);
+        $data1                   = array();
+        $data1['tab_title']      = $this->current_data_steps['tab_title'];
+        $data1['tab_theme']      = $this->current_data_wizard;
+        $data['form_tab_head']   = self::render_template('formbuilder/views/forms/previewpanel_tabheader.php', $data1);
+        $data2                   = array();
+        $data['form_tab_footer'] = self::render_template('formbuilder/views/forms/previewpanel_tabfooter.php', $data2);
         $data['tab_count']           = $numtab;
         $data['form_content']        = $str_output;
         $data['form_id']             = $id;
@@ -2225,8 +2257,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data                    = array();
         $data['tabindex']        = $tabindex;
         $data['tab_html_fields'] = $str_output;
-            // apply function
-            $output .= self::render_template('formbuilder/views/forms/previewpanel_tabcontainer.php', $data, 'always');
+        // apply function
+        $output .= self::render_template('formbuilder/views/forms/previewpanel_tabcontainer.php', $data, 'always');
         return $output;
     }
 
@@ -2236,7 +2268,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data                    = array();
         $data['tabindex']        = $tabindex;
         $data['tab_html_fields'] = $str_output;
-        if ( intval($tab_cont_num) > 1) {
+        if (intval($tab_cont_num) > 1) {
             // apply function
             $output .= self::render_template('formbuilder/views/forms/formhtml_tabcontainer.php', $data, 'always');
         } else {
@@ -2251,7 +2283,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data                    = array();
         $data['tabindex']        = $tabindex;
         $data['tab_html_fields'] = $str_output;
-        if ( intval($tab_cont_num) > 1) {
+        if (intval($tab_cont_num) > 1) {
             // apply function
             $output .= self::render_template('formbuilder/views/forms/formhtml_tabcontainer.php', $data, 'always');
         } else {
@@ -2264,32 +2296,32 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     public function save_form_clogic()
     {
         $clogic_src = $this->saveform_clogic;
-        if ( ! empty($clogic_src)) {
+        if (!empty($clogic_src)) {
             // get fires
             $fields_fire = array();
-            foreach ( $clogic_src['cond'] as $key => $value) {
-                foreach ( $value['list'] as $key2 => $value2) {
-                    if ( ! empty($value2)) {
-                        if ( ! isset($fields_fire[ $value2['field_fire'] ]['list'][ $value['field_cond'] ])) {
-                            $fields_fire[ $value2['field_fire'] ]['list'][] = $value['field_cond'];
+            foreach ($clogic_src['cond'] as $key => $value) {
+                foreach ($value['list'] as $key2 => $value2) {
+                    if (!empty($value2)) {
+                        if (!isset($fields_fire[$value2['field_fire']]['list'][$value['field_cond']])) {
+                            $fields_fire[$value2['field_fire']]['list'][] = $value['field_cond'];
                         }
                     } else {
-                        unset($clogic_src['cond'][ $key ]['list'][ $key2 ]);
+                        unset($clogic_src['cond'][$key]['list'][$key2]);
                     }
                 }
             }
             $this->saveform_clogic = $clogic_src;
             // field fires
             $logic_field_fire = array();
-            foreach ( $fields_fire as $key => $value) {
+            foreach ($fields_fire as $key => $value) {
                 $temp_logic               = array();
                 $temp_logic['field_fire'] = $key;
                 $tmp_list                 = array();
-                foreach ( $value['list'] as $value2) {
-                    $tmp_list[] = array( 'field_cond' => $value2 );
+                foreach ($value['list'] as $value2) {
+                    $tmp_list[] = array('field_cond' => $value2);
                 }
                 $temp_logic['list']       = $tmp_list;
-                $logic_field_fire[ $key ] = $temp_logic;
+                $logic_field_fire[$key] = $temp_logic;
             }
 
             $clogic_src['fire']    = $logic_field_fire;
@@ -2302,19 +2334,19 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         /* check for enabled field for reports */
         $check_rec_querys = $this->model_fields->queryGetQtyFieldsEnabled($form_id);
-        if ( intval($check_rec_querys) === 1) {
+        if (intval($check_rec_querys) === 1) {
             $tmp_query_list  = array();
             $rec_querys_list = $this->model_fields->queryGetListFieldsEnabled($form_id);
 
-            foreach ( $rec_querys_list as $value) {
+            foreach ($rec_querys_list as $value) {
                 $tmp_query_list[] = $value->fmf_uniqueid;
             }
 
             // storing rec orders
             $tmp_recorder_list = array();
             $rec_querys_list   = $this->model_fields->queryGetListFieldsById($form_id);
-            foreach ( $rec_querys_list as $value) {
-                $tmp_recorder_list[ $value->fmf_uniqueid ] = $value->order_rec;
+            foreach ($rec_querys_list as $value) {
+                $tmp_recorder_list[$value->fmf_uniqueid] = $value->order_rec;
             }
         }
 
@@ -2329,13 +2361,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $steps_src = $fmb_data['steps_src'];
 
         $set_rec_querys = 0;
-        if ( ! empty($steps_src)) {
-            foreach ( $steps_src as $tabindex => $fields) {
-                if ( ! empty($fields)) {
-                    foreach ( $fields as $key => $value) {
+        if (!empty($steps_src)) {
+            foreach ($steps_src as $tabindex => $fields) {
+                if (!empty($fields)) {
+                    foreach ($fields as $key => $value) {
                         $data                 = array();
                         $data['fmf_uniqueid'] = $value['id'];
-                        switch ( intval($value['type'])) {
+                        switch (intval($value['type'])) {
                             case 6:
                             case 7:
                             case 8:
@@ -2360,20 +2392,20 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                             case 40:
                             case 41:
                             case 42:
-                                                        // assign selected fields to the report
-                                if ( intval($check_rec_querys) === 0 && $set_rec_querys < 5) {
+                                // assign selected fields to the report
+                                if (intval($check_rec_querys) === 0 && $set_rec_querys < 5) {
                                     $data['fmf_status_qu'] = 1;
                                     $set_rec_querys++;
-                                } elseif ( intval($check_rec_querys) === 1) {
-                                    if ( in_array($value['id'], $tmp_query_list)) {
-                                                            $data['fmf_status_qu'] = 1;
+                                } elseif (intval($check_rec_querys) === 1) {
+                                    if (in_array($value['id'], $tmp_query_list)) {
+                                        $data['fmf_status_qu'] = 1;
                                     }
                                 }
-                                        $data['fmf_fieldname'] = $value['field_name'];
-                                        $data['order_frm']     = $value['order_frm'];
+                                $data['fmf_fieldname'] = $value['field_name'];
+                                $data['order_frm']     = $value['order_frm'];
 
-                                if ( isset($tmp_recorder_list[ $value['id'] ]) && intval($tmp_recorder_list[ $value['id'] ]) > 0) {
-                                    $data['order_rec'] = $tmp_recorder_list[ $value['id'] ];
+                                if (isset($tmp_recorder_list[$value['id']]) && intval($tmp_recorder_list[$value['id']]) > 0) {
+                                    $data['order_rec'] = $tmp_recorder_list[$value['id']];
                                 } else {
                                     $data['order_rec'] = $value['order_frm'];
                                 }
@@ -2381,8 +2413,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                             case 19:
                             case 20:
                             case 27:
-                                    // asigning order to fields
-                                    $data['order_frm'] = $value['order_frm'];
+                                // asigning order to fields
+                                $data['order_frm'] = $value['order_frm'];
                                 break;
                         }
 
@@ -2391,18 +2423,18 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                         $data['form_fmb_id'] = $form_id;
                         $this->wpdb->insert($this->model_fields->table, $data);
 
-                        if ( isset($value['clogic']) && intval($value['clogic']['show_st']) === 1) {
+                        if (isset($value['clogic']) && intval($value['clogic']['show_st']) === 1) {
                             $tmp_clogic               = array();
                             $tmp_clogic['field_cond'] = $value['id'];
                             $tmp_clogic['action']     = $value['clogic']['f_show'];
 
-                            foreach ( $value['clogic']['list'] as $key2 => $value2) {
-                                if ( empty($value2)) {
-                                    unset($value['clogic']['list'][ $key2 ]);
+                            foreach ($value['clogic']['list'] as $key2 => $value2) {
+                                if (empty($value2)) {
+                                    unset($value['clogic']['list'][$key2]);
                                 }
                             }
                             $tmp_clogic['list']              = array_filter($value['clogic']['list']);
-                            $tmp_clogic['req_match']         = ( intval($value['clogic']['f_all']) === 1 ) ? count($value['clogic']['list']) : 1;
+                            $tmp_clogic['req_match']         = (intval($value['clogic']['f_all']) === 1) ? count($value['clogic']['list']) : 1;
                             $this->saveform_clogic['cond'][] = $tmp_clogic;
                         }
                     }
@@ -2414,7 +2446,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     public function generate_form_html($form_id = null)
     {
         /*
-         $data_form = $this->formsmodel->getFormById($form_id);
+     $data_form = $this->formsmodel->getFormById($form_id);
         $fmb_data = json_decode($data_form->fmb_data, true);*/
         // all fields position
         $tab_cont           = $this->current_data_tab_cont;
@@ -2425,14 +2457,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $str_output_2   = '';
         $str_output_tab = '';
 
-        foreach ( $tab_cont as $key => $value) {
+        foreach ($tab_cont as $key => $value) {
             // tabs
             $str_output = '';
-            if ( ! empty($value['content'])) {
-                foreach ( $value['content'] as $key2 => $value2) {
+            if (!empty($value['content'])) {
+                foreach ($value['content'] as $key2 => $value2) {
                     $get_data = array();
                     // fields
-                    if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                    if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
                         $get_data      = $this->generate_form_getChildren($value2);
                         $str_output   .= $get_data['output_html'];
                         $str_output_2 .= $get_data['output_css'];
@@ -2447,14 +2479,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             // set tab container
             $str_output_tab .= $this->generate_form_tabContent($tab_cont_num, $key, $str_output);
             // jump if it is one
-            if ( intval($tab_cont_num) === 1) {
+            if (intval($tab_cont_num) === 1) {
                 break 1;
             }
         }
 
         // generate form css
         $str_output_2 .= $this->generate_form_css($form_id);
-        if ( $tab_cont_num > 1) {
+        if ($tab_cont_num > 1) {
             $str_output_2 .= $this->generate_form_tab_css($form_id);
         }
 
@@ -2477,16 +2509,16 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $str_output_tab = '';
         $tab_cont_num   = $fmb_data['num_tabs'];
 
-        if ( ! empty($tab_cont)) {
-            foreach ( $tab_cont as $key => $value) {
+        if (!empty($tab_cont)) {
+            foreach ($tab_cont as $key => $value) {
                 // tabs
                 $str_output = '';
-                if ( ! empty($value['content'])) {
-                    foreach ( $value['content'] as $key2 => $value2) {
+                if (!empty($value['content'])) {
+                    foreach ($value['content'] as $key2 => $value2) {
                         $get_data = array();
 
                         // fields
-                        if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                        if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
                             $get_data    = $this->generate_admin_form_getChildren($value2);
                             $str_output .= $get_data['output_html'];
                         } else {
@@ -2499,13 +2531,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 // set tab container
                 $str_output_tab .= $this->generate_previewpanel_tabContent($tab_cont_num, $key, $str_output);
                 // jump if it is one
-                if ( intval($tab_cont_num) === 1) {
+                if (intval($tab_cont_num) === 1) {
                     break 1;
                 }
             }
         } else {
             // set tab container
-                $str_output_tab .= $this->generate_previewpanel_tabContent(0, 0, '');
+            $str_output_tab .= $this->generate_previewpanel_tabContent(0, 0, '');
         }
 
         $return                = array();
@@ -2525,23 +2557,23 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $this->current_data_form   = $steps_src;
         $this->current_data_steps  = $fmb_data['steps'];
         $this->current_data_skin   = $fmb_data['skin'];
-        $this->current_data_wizard = ( $fmb_data['wizard'] ) ? $fmb_data['wizard'] : array();
-        $this->current_data_onsubm = ( $fmb_data['onsubm'] ) ? $fmb_data['onsubm'] : array();
-        $this->current_data_main   = ( $fmb_data['main'] ) ? $fmb_data['main'] : array();
+        $this->current_data_wizard = ($fmb_data['wizard']) ? $fmb_data['wizard'] : array();
+        $this->current_data_onsubm = ($fmb_data['onsubm']) ? $fmb_data['onsubm'] : array();
+        $this->current_data_main   = ($fmb_data['main']) ? $fmb_data['main'] : array();
         // generating
 
         $str_output_tab = '';
         $tab_cont_num   = $fmb_data['num_tabs'];
 
-        if ( ! empty($tab_cont)) {
-            foreach ( $tab_cont as $key => $value) {
+        if (!empty($tab_cont)) {
+            foreach ($tab_cont as $key => $value) {
                 // tabs
                 $str_output = '';
-                if ( ! empty($value['content'])) {
-                    foreach ( $value['content'] as $key2 => $value2) {
+                if (!empty($value['content'])) {
+                    foreach ($value['content'] as $key2 => $value2) {
                         $get_data = array();
                         // fields
-                        if ( isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
+                        if (isset($value2['iscontainer']) && intval($value2['iscontainer']) === 1) {
                             $get_data = $this->generate_admin_form_getChildren($value2);
 
                             $str_output .= $get_data['output_html'];
@@ -2555,14 +2587,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 // set tab container
                 $str_output_tab .= $this->generate_previewpanel_tabContent($tab_cont_num, $key, $str_output);
                 // jump if it is one
-                if ( intval($tab_cont_num) === 1) {
+                if (intval($tab_cont_num) === 1) {
                     break 1;
                 }
             }
         } else {
             // there nos data
-             // set tab container
-                $str_output_tab .= $this->generate_previewpanel_tabContent(0, 0, '');
+            // set tab container
+            $str_output_tab .= $this->generate_previewpanel_tabContent(0, 0, '');
         }
 
         $return                = array();
@@ -2583,10 +2615,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id   = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $form_id   = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         $data_form = $this->formsmodel->getFormById($form_id);
 
-        if ( empty($data_form)) {
+        if (empty($data_form)) {
             return;
         }
 
@@ -2632,7 +2664,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
         $json    = array();
-        $form_id = ( isset($_POST['form_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
 
         $data_form           = $this->formsmodel->getFormById($form_id);
         $data_form->fmb_data = json_decode($data_form->fmb_data);
@@ -2643,10 +2675,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         $tmp_addon = array();
         foreach ( $tmp_addon_names as $key => $value ) {
-            $tmp_data = self::$_models['addon']['addon_details']->getAddonDataByForm( $value, $form_id );
-            if ( ! empty( $tmp_data ) ) {
-                $tmp_addon[ $value ] = json_decode( $tmp_data->adet_data, true );
-            }
+        $tmp_data = self::$_models['addon']['addon_details']->getAddonDataByForm( $value, $form_id );
+        if ( ! empty( $tmp_data ) ) {
+            $tmp_addon[ $value ] = json_decode( $tmp_data->adet_data, true );
+        }
         }
 
         $json['addons'] = $tmp_addon;*/
@@ -2661,17 +2693,17 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         $filter_data = get_option('zgfm_listform_searchfilter', true);
         $data2       = array();
-        if ( empty($filter_data)) {
+        if (empty($filter_data)) {
             $data2['per_page']   = intval($this->per_page);
             $data2['search_txt'] = '';
             $data2['orderby']    = 'asc';
         } else {
-            $data2['per_page']   = isset($filter_data['per_page'])?intval($filter_data['per_page']??''):'5';
-            $data2['search_txt'] = isset($filter_data['search_txt'])?$filter_data['search_txt']:'';
-            $data2['orderby']    = isset($filter_data['orderby'])?$filter_data['orderby']:'';
+            $data2['per_page']   = isset($filter_data['per_page']) ? intval($filter_data['per_page'] ?? '') : '5';
+            $data2['search_txt'] = isset($filter_data['search_txt']) ? $filter_data['search_txt'] : '';
+            $data2['orderby']    = isset($filter_data['orderby']) ? $filter_data['orderby'] : '';
         }
 
-        $offset          = ( isset($_GET['offset']) ) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
+        $offset          = (isset($_GET['offset'])) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         $data2['offset'] = $offset;
 
         $form_data = $this->formsmodel->ListTotals();
@@ -2685,25 +2717,25 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     }
 
 
-    /**
-     * Show trash list
-     *
-     * @return void
-     */
+        /**
+         * Show trash list
+         *
+         * @return void
+         */
     public function list_trash()
     {
 
         $filter_data = get_option('zgfm_listform_searchfilter', true);
         $data2       = array();
-        if ( empty($filter_data)) {
+        if (empty($filter_data)) {
             $data2['per_page']   = intval($this->per_page);
             $data2['orderby']    = 'asc';
         } else {
-            $data2['per_page']   = intval($filter_data['per_page']??'');
-            $data2['orderby']    = $filter_data['orderby']??'';
+            $data2['per_page']   = intval($filter_data['per_page'] ?? '');
+            $data2['orderby']    = $filter_data['orderby'] ?? '';
         }
 
-        $offset          = ( isset($_GET['offset']) ) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
+        $offset          = (isset($_GET['offset'])) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         $data2['offset'] = $offset;
 
         $form_data = $this->formsmodel->ListTotals();
@@ -2720,19 +2752,19 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     }
 
 
-    /**
-     * List trash forms
-     *
-     * @return void
-     */
+        /**
+         * List trash forms
+         *
+         * @return void
+         */
     public function ajax_trashformlist_sendfilter()
     {
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $data_filter = ( isset($_POST['data_filter']) && $_POST['data_filter'] ) ? $_POST['data_filter'] : '';
+        $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
 
-        $opt_save   = ( isset($_POST['opt_save']) && $_POST['opt_save'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
-        $opt_offset = ( isset($_POST['opt_offset']) && $_POST['opt_offset'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
+        $opt_save   = (isset($_POST['opt_save']) && $_POST['opt_save']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
+        $opt_offset = (isset($_POST['opt_offset']) && $_POST['opt_offset']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
 
         parse_str($data_filter, $data_filter_arr);
 
@@ -2743,7 +2775,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data['per_page']   = $per_page;
         $data['orderby']    = $orderby;
 
-        if ( intval($opt_save) === 1) {
+        if (intval($opt_save) === 1) {
             update_option('zgfm_listform_trash', $data);
         }
 
@@ -2760,12 +2792,12 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         wp_die();
     }
 
-    /**
-     * get forms in trash
-     *
-     * @param [type] $data
-     * @return void
-     */
+        /**
+         * get forms in trash
+         *
+         * @param [type] $data
+         * @return void
+         */
     public function ajax_trashformlist_refresh($data)
     {
 
@@ -2820,19 +2852,19 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         //return self::render_template( 'formbuilder/views/forms/list_forms_table.php', $data3 );
     }
 
-    /**
-     * list forms
-     *
-     * @return void
-     */
+        /**
+         * list forms
+         *
+         * @return void
+         */
     public function ajax_formlist_sendfilter()
     {
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $data_filter = ( isset($_POST['data_filter']) && $_POST['data_filter'] ) ? $_POST['data_filter'] : '';
+        $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
 
-        $opt_save   = ( isset($_POST['opt_save']) && $_POST['opt_save'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
-        $opt_offset = ( isset($_POST['opt_offset']) && $_POST['opt_offset'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
+        $opt_save   = (isset($_POST['opt_save']) && $_POST['opt_save']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
+        $opt_offset = (isset($_POST['opt_offset']) && $_POST['opt_offset']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
 
         parse_str($data_filter, $data_filter_arr);
 
@@ -2845,7 +2877,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data['search_txt'] = $search_txt;
         $data['orderby']    = $orderby;
 
-        if ( intval($opt_save) === 1) {
+        if (intval($opt_save) === 1) {
             update_option('zgfm_listform_searchfilter', $data);
         }
 
@@ -2921,72 +2953,72 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     public function create_uiform()
     {
         $data             = array();
-        $data['form_id']  = ( isset($_GET['form_id']) && $_GET['form_id'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_GET['form_id'])) : 0;
+        $data['form_id']  = (isset($_GET['form_id']) && $_GET['form_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_GET['form_id'])) : 0;
         $data['currency'] = Uiform_Form_Helper::getCurrency();
         $data['obj_sfm']  = Uiform_Form_Helper::get_font_library();
 
-        if ( intval($data['form_id']) > 0) {
+        if (intval($data['form_id']) > 0) {
             $formdata = $this->formsmodel->getFormById($data['form_id']);
         }
 
         $pdf_paper_size         = array(
-            '4a0'                      => array( 0, 0, 4767.87, 6740.79 ),
-            '2a0'                      => array( 0, 0, 3370.39, 4767.87 ),
-            'a0'                       => array( 0, 0, 2383.94, 3370.39 ),
-            'a1'                       => array( 0, 0, 1683.78, 2383.94 ),
-            'a2'                       => array( 0, 0, 1190.55, 1683.78 ),
-            'a3'                       => array( 0, 0, 841.89, 1190.55 ),
-            'a4'                       => array( 0, 0, 595.28, 841.89 ),
-            'a5'                       => array( 0, 0, 419.53, 595.28 ),
-            'a6'                       => array( 0, 0, 297.64, 419.53 ),
-            'a7'                       => array( 0, 0, 209.76, 297.64 ),
-            'a8'                       => array( 0, 0, 147.40, 209.76 ),
-            'a9'                       => array( 0, 0, 104.88, 147.40 ),
-            'a10'                      => array( 0, 0, 73.70, 104.88 ),
-            'b0'                       => array( 0, 0, 2834.65, 4008.19 ),
-            'b1'                       => array( 0, 0, 2004.09, 2834.65 ),
-            'b2'                       => array( 0, 0, 1417.32, 2004.09 ),
-            'b3'                       => array( 0, 0, 1000.63, 1417.32 ),
-            'b4'                       => array( 0, 0, 708.66, 1000.63 ),
-            'b5'                       => array( 0, 0, 498.90, 708.66 ),
-            'b6'                       => array( 0, 0, 354.33, 498.90 ),
-            'b7'                       => array( 0, 0, 249.45, 354.33 ),
-            'b8'                       => array( 0, 0, 175.75, 249.45 ),
-            'b9'                       => array( 0, 0, 124.72, 175.75 ),
-            'b10'                      => array( 0, 0, 87.87, 124.72 ),
-            'c0'                       => array( 0, 0, 2599.37, 3676.54 ),
-            'c1'                       => array( 0, 0, 1836.85, 2599.37 ),
-            'c2'                       => array( 0, 0, 1298.27, 1836.85 ),
-            'c3'                       => array( 0, 0, 918.43, 1298.27 ),
-            'c4'                       => array( 0, 0, 649.13, 918.43 ),
-            'c5'                       => array( 0, 0, 459.21, 649.13 ),
-            'c6'                       => array( 0, 0, 323.15, 459.21 ),
-            'c7'                       => array( 0, 0, 229.61, 323.15 ),
-            'c8'                       => array( 0, 0, 161.57, 229.61 ),
-            'c9'                       => array( 0, 0, 113.39, 161.57 ),
-            'c10'                      => array( 0, 0, 79.37, 113.39 ),
-            'ra0'                      => array( 0, 0, 2437.80, 3458.27 ),
-            'ra1'                      => array( 0, 0, 1729.13, 2437.80 ),
-            'ra2'                      => array( 0, 0, 1218.90, 1729.13 ),
-            'ra3'                      => array( 0, 0, 864.57, 1218.90 ),
-            'ra4'                      => array( 0, 0, 609.45, 864.57 ),
-            'sra0'                     => array( 0, 0, 2551.18, 3628.35 ),
-            'sra1'                     => array( 0, 0, 1814.17, 2551.18 ),
-            'sra2'                     => array( 0, 0, 1275.59, 1814.17 ),
-            'sra3'                     => array( 0, 0, 907.09, 1275.59 ),
-            'sra4'                     => array( 0, 0, 637.80, 907.09 ),
-            'letter'                   => array( 0, 0, 612.00, 792.00 ),
-            'half-letter'              => array( 0, 0, 396.00, 612.00 ),
-            'legal'                    => array( 0, 0, 612.00, 1008.00 ),
-            'ledger'                   => array( 0, 0, 1224.00, 792.00 ),
-            'tabloid'                  => array( 0, 0, 792.00, 1224.00 ),
-            'executive'                => array( 0, 0, 521.86, 756.00 ),
-            'folio'                    => array( 0, 0, 612.00, 936.00 ),
-            'commercial #10 envelope'  => array( 0, 0, 684, 297 ),
-            'catalog #10 1/2 envelope' => array( 0, 0, 648, 864 ),
-            '8.5x11'                   => array( 0, 0, 612.00, 792.00 ),
-            '8.5x14'                   => array( 0, 0, 612.00, 1008.0 ),
-            '11x17'                    => array( 0, 0, 792.00, 1224.00 ),
+            '4a0'                      => array(0, 0, 4767.87, 6740.79),
+            '2a0'                      => array(0, 0, 3370.39, 4767.87),
+            'a0'                       => array(0, 0, 2383.94, 3370.39),
+            'a1'                       => array(0, 0, 1683.78, 2383.94),
+            'a2'                       => array(0, 0, 1190.55, 1683.78),
+            'a3'                       => array(0, 0, 841.89, 1190.55),
+            'a4'                       => array(0, 0, 595.28, 841.89),
+            'a5'                       => array(0, 0, 419.53, 595.28),
+            'a6'                       => array(0, 0, 297.64, 419.53),
+            'a7'                       => array(0, 0, 209.76, 297.64),
+            'a8'                       => array(0, 0, 147.40, 209.76),
+            'a9'                       => array(0, 0, 104.88, 147.40),
+            'a10'                      => array(0, 0, 73.70, 104.88),
+            'b0'                       => array(0, 0, 2834.65, 4008.19),
+            'b1'                       => array(0, 0, 2004.09, 2834.65),
+            'b2'                       => array(0, 0, 1417.32, 2004.09),
+            'b3'                       => array(0, 0, 1000.63, 1417.32),
+            'b4'                       => array(0, 0, 708.66, 1000.63),
+            'b5'                       => array(0, 0, 498.90, 708.66),
+            'b6'                       => array(0, 0, 354.33, 498.90),
+            'b7'                       => array(0, 0, 249.45, 354.33),
+            'b8'                       => array(0, 0, 175.75, 249.45),
+            'b9'                       => array(0, 0, 124.72, 175.75),
+            'b10'                      => array(0, 0, 87.87, 124.72),
+            'c0'                       => array(0, 0, 2599.37, 3676.54),
+            'c1'                       => array(0, 0, 1836.85, 2599.37),
+            'c2'                       => array(0, 0, 1298.27, 1836.85),
+            'c3'                       => array(0, 0, 918.43, 1298.27),
+            'c4'                       => array(0, 0, 649.13, 918.43),
+            'c5'                       => array(0, 0, 459.21, 649.13),
+            'c6'                       => array(0, 0, 323.15, 459.21),
+            'c7'                       => array(0, 0, 229.61, 323.15),
+            'c8'                       => array(0, 0, 161.57, 229.61),
+            'c9'                       => array(0, 0, 113.39, 161.57),
+            'c10'                      => array(0, 0, 79.37, 113.39),
+            'ra0'                      => array(0, 0, 2437.80, 3458.27),
+            'ra1'                      => array(0, 0, 1729.13, 2437.80),
+            'ra2'                      => array(0, 0, 1218.90, 1729.13),
+            'ra3'                      => array(0, 0, 864.57, 1218.90),
+            'ra4'                      => array(0, 0, 609.45, 864.57),
+            'sra0'                     => array(0, 0, 2551.18, 3628.35),
+            'sra1'                     => array(0, 0, 1814.17, 2551.18),
+            'sra2'                     => array(0, 0, 1275.59, 1814.17),
+            'sra3'                     => array(0, 0, 907.09, 1275.59),
+            'sra4'                     => array(0, 0, 637.80, 907.09),
+            'letter'                   => array(0, 0, 612.00, 792.00),
+            'half-letter'              => array(0, 0, 396.00, 612.00),
+            'legal'                    => array(0, 0, 612.00, 1008.00),
+            'ledger'                   => array(0, 0, 1224.00, 792.00),
+            'tabloid'                  => array(0, 0, 792.00, 1224.00),
+            'executive'                => array(0, 0, 521.86, 756.00),
+            'folio'                    => array(0, 0, 612.00, 936.00),
+            'commercial #10 envelope'  => array(0, 0, 684, 297),
+            'catalog #10 1/2 envelope' => array(0, 0, 648, 864),
+            '8.5x11'                   => array(0, 0, 612.00, 792.00),
+            '8.5x14'                   => array(0, 0, 612.00, 1008.0),
+            '11x17'                    => array(0, 0, 792.00, 1224.00),
         );
         $data['pdf_paper_size'] = $pdf_paper_size;
 
@@ -3010,76 +3042,76 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         echo self::render_template('formbuilder/views/forms/preview_fields.php', $data);
     }
 
-    /**
-     * Register callbacks for actions and filters
-     *
-     * @mvc Controller
-     */
+        /**
+         * Register callbacks for actions and filters
+         *
+         * @mvc Controller
+         */
     public function register_hook_callbacks()
     {
     }
 
-    /**
-     * Initializes variables
-     *
-     * @mvc Controller
-     */
+        /**
+         * Initializes variables
+         *
+         * @mvc Controller
+         */
     public function init()
     {
 
         try {
-        } catch ( Exception $exception) {
+        } catch (Exception $exception) {
             add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
         }
     }
 
-    /*
+        /*
      * Instance methods
      */
 
-    /**
-     * Prepares sites to use the plugin during single or network-wide activation
-     *
-     * @mvc Controller
-     *
-     * @param bool $network_wide
-     */
+        /**
+         * Prepares sites to use the plugin during single or network-wide activation
+         *
+         * @mvc Controller
+         *
+         * @param bool $network_wide
+         */
     public function activate($network_wide)
     {
 
         return true;
     }
 
-    /**
-     * Rolls back activation procedures when de-activating the plugin
-     *
-     * @mvc Controller
-     */
+        /**
+         * Rolls back activation procedures when de-activating the plugin
+         *
+         * @mvc Controller
+         */
     public function deactivate()
     {
         return true;
     }
 
-    /**
-     * Checks if the plugin was recently updated and upgrades if necessary
-     *
-     * @mvc Controller
-     *
-     * @param string $db_version
-     */
+        /**
+         * Checks if the plugin was recently updated and upgrades if necessary
+         *
+         * @mvc Controller
+         *
+         * @param string $db_version
+         */
     public function upgrade($db_version = 0)
     {
         return true;
     }
 
-    /**
-     * Checks that the object is in a correct state
-     *
-     * @mvc Model
-     *
-     * @param string $property An individual property to check, or 'all' to check all of them
-     * @return bool
-     */
+        /**
+         * Checks that the object is in a correct state
+         *
+         * @mvc Model
+         *
+         * @param string $property An individual property to check, or 'all' to check all of them
+         * @return bool
+         */
     protected function is_valid($property = 'all')
     {
         return true;

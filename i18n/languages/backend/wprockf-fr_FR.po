@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.0
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.0 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.2
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.2 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Uiform Wordpress Cost Estimator\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-Basepath: .\n"
 
-#: zigaform-wp-estimator.php:191, zigaform-wp-estimator.php:184, zigaform-wp-estimator.php:199, zigaform-wp-estimator.php:205
+#: zigaform-wp-estimator.php:196, zigaform-wp-estimator.php:189, zigaform-wp-estimator.php:204, zigaform-wp-estimator.php:210
 msgid "Zigaform alert"
 msgstr "Zigaform alert"
 
@@ -67,7 +67,7 @@ msgstr "Succès ! Mis à jour avec succès"
 msgid "Form was created"
 msgstr "Formulaire a été créé"
 
-#: views/footer.php:35, modules/formbuilder/controllers/uiform-fb-controller-forms.php:773
+#: views/footer.php:35, modules/formbuilder/controllers/uiform-fb-controller-forms.php:766
 msgid ""
 "Success! The form was created. Now just copy and paste the shortcode to "
 "your content"
@@ -901,31 +901,31 @@ msgstr "Import Bulk Data"
 msgid "Column"
 msgstr "Column"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:328
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:329
 msgid "Rollback Form"
 msgstr "Rollback Form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:349
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:350
 msgid "Error message"
 msgstr "message d&#39;erreur personnalisé"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:372
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:373
 msgid "Form variables"
 msgstr "Nom du formulaire"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:776
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:769
 msgid "Success"
 msgstr "Message de réussite"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:794
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:787
 msgid "Shortcodes"
 msgstr "Shortcode"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:863, modules/formbuilder/controllers/uiform-fb-controller-forms.php:887
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:856, modules/formbuilder/controllers/uiform-fb-controller-forms.php:880
 msgid "Error! User has no permission to edit this form"
 msgstr "Error! User has no permission to edit this form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2710
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2742
 msgid "Forms in trash"
 msgstr "Liste par forme"
 

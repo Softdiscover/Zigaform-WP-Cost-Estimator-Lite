@@ -2953,7 +2953,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     public function load_form_resources_alt($id, $is_demo = 0)
     {
 
-        if ( file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
+        if ( file_exists(WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css')) {
+            wp_register_style(self::PREFIX . 'rockfm_form' . $id, site_url().'/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
+            wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
+        } elseif ( file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
             wp_register_style(self::PREFIX . 'rockfm_form' . $id, UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
             wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
         }
@@ -2970,11 +2973,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     /**
      * show version.
      *
-     * @author	Unknown
-     * @since	v0.0.1
-     * @version	v1.0.0	Sunday, January 28th, 2024.
-     * @access	public
-     * @return	void
+     * @author  Unknown
+     * @since   v0.0.1
+     * @version v1.0.0  Sunday, January 28th, 2024.
+     * @access  public
+     * @return  void
      */
     public function shortcode_show_version()
     {

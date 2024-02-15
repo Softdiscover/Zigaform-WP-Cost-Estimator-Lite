@@ -1,11 +1,11 @@
-<?php 
+<?php
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'No direct script access allowed' );
+if ( ! defined('ABSPATH')) {
+    exit('No direct script access allowed');
 }
 
 // forms
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->form (
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->form (
             `fmb_id` INT NOT NULL AUTO_INCREMENT ,
             `fmb_data` longtext ,
             `fmb_name` VARCHAR(255) NULL ,
@@ -29,10 +29,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             `fmb_rec_tpl_st` TINYINT NULL DEFAULT 0 ,
             `fmb_inv_tpl_st` TINYINT NULL DEFAULT 0 ,
             PRIMARY KEY (`fmb_id`) ) " . $charset . ';';
-		$wpdb->query( $sql );
-		// form request statitistics
+        $wpdb->query($sql);
+        // form request statitistics
 
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_history (
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->form_history (
                 `fbh_id` INT NOT NULL AUTO_INCREMENT,
                 `fbh_data` longtext,
                 `fbh_data_rec` longtext,
@@ -54,9 +54,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                 `vis_uniqueid` varchar(10) NOT NULL,
                 `fbh_error` text,    
             PRIMARY KEY (`fbh_id`) ) " . $charset . ';';
-		$wpdb->query( $sql );
-		// fields type
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_fields_type (
+        $wpdb->query($sql);
+        // fields type
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->form_fields_type (
         `fby_id` INT NOT NULL AUTO_INCREMENT ,
         `fby_name` VARCHAR(100) NULL ,
         `flag_status` SMALLINT NULL ,
@@ -67,11 +67,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         `created_by` VARCHAR(100) NULL ,
         `updated_by` VARCHAR(100) NULL ,
         PRIMARY KEY (`fby_id`) )" . $charset . ';';
-		$wpdb->query( $sql );
-		// insert types
-		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->form_fields_type, ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->form_fields_type VALUES 
+        $wpdb->query($sql);
+        // insert types
+        $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->form_fields_type, ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    $sql = "INSERT INTO $this->form_fields_type VALUES 
         ('1', '1 Col', '1', '1980-01-01 00:00:01', '2014-05-24 01:10:27', null, null, null, null),
         ('2', '2 Cols', '1', '1980-01-01 00:00:01', '2014-05-24 01:10:44', null, null, null, null),
         ('3', '3 Cols', '1', '1980-01-01 00:00:01', '2014-05-24 01:10:57', null, null, null, null),
@@ -115,11 +115,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         ('41', 'Dinamic Checkbox', '1', '1980-01-01 00:00:01', '2014-05-24 02:25:51', null, null, null, null),
         ('42', 'Dinamic RadioButton', '1', '1980-01-01 00:00:01', '2014-05-24 02:25:51', null, null, null, null),
         ('43', 'Date 2', '1', '1980-01-01 00:00:01', '2014-05-24 02:25:51', null, null, null, null);";
-			$wpdb->query( $sql );
-		}
+    $wpdb->query($sql);
+}
 
-		// fields
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_fields (
+        // fields
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->form_fields (
         `fmf_id` INT NOT NULL AUTO_INCREMENT,
         `fmf_uniqueid` varchar(255) DEFAULT NULL,
         `fmf_data` longtext NULL ,
@@ -137,10 +137,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         `order_frm` SMALLINT DEFAULT NULL,
         `order_rec` SMALLINT DEFAULT NULL, 
         PRIMARY KEY (`fmf_id`,`form_fmb_id`) ) " . $charset . ';';
-		$wpdb->query( $sql );
+        $wpdb->query($sql);
 
-		// settings
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->settings (
+        // settings
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->settings (
         `version` varchar(10) DEFAULT NULL,
         `type_email` SMALLINT NULL ,
         `smtp_host` VARCHAR(255) NULL ,
@@ -153,16 +153,16 @@ if ( ! defined( 'ABSPATH' ) ) {
          PRIMARY KEY (`id`)
         ) " . $charset . ';';
 
-		$wpdb->query( $sql );
-		// insert data
-		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->settings VALUES ('6.0.0', null, null, null, null, null, null, '', '1');";
-			$wpdb->query( $sql );
-		}
+        $wpdb->query($sql);
+        // insert data
+        $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    $sql = "INSERT INTO $this->settings VALUES ('6.0.2', null, null, null, null, null, null, '', '1');";
+    $wpdb->query($sql);
+}
 
-		// payment gateways
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->pay_gateways (
+        // payment gateways
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->pay_gateways (
         `pg_id` INT NOT NULL AUTO_INCREMENT,
         `pg_name` varchar(255) DEFAULT NULL,
         `pg_modtest` SMALLINT DEFAULT NULL,
@@ -173,26 +173,25 @@ if ( ! defined( 'ABSPATH' ) ) {
         PRIMARY KEY (`pg_id`)
         ) " . $charset . ';';
 
-		$wpdb->query( $sql );
-		// insert data
-		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->pay_gateways, ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-
-			if ( ZIGAFORM_F_LITE === 1 ) {
-				$sql = "INSERT INTO $this->pay_gateways VALUES 
+        $wpdb->query($sql);
+        // insert data
+        $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->pay_gateways, ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    if ( ZIGAFORM_F_LITE === 1) {
+        $sql = "INSERT INTO $this->pay_gateways VALUES 
                 ('1', 'Offline', '0', '', '1', '3', 'Offline payment description'),
                 ('2', 'Paypal', '0', '', '0', '0', 'paypal payment');";
-				$wpdb->query( $sql );
-			} else {
-				$sql = "INSERT INTO $this->pay_gateways VALUES 
+        $wpdb->query($sql);
+    } else {
+        $sql = "INSERT INTO $this->pay_gateways VALUES 
                 ('1', 'Offline', '0', '', '1', '3', 'Offline payment description'),
                 ('2', 'Paypal', '0', '', '1', '0', 'paypal payment');";
-				$wpdb->query( $sql );
-			}
-		}
+        $wpdb->query($sql);
+    }
+}
 
-		// payment records
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->pay_records (
+        // payment records
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->pay_records (
         `pgr_id` INT NOT NULL AUTO_INCREMENT,
         `type_pg_id` INT NOT NULL,
         `pgr_payment_status` varchar(100) DEFAULT NULL,
@@ -210,10 +209,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         PRIMARY KEY (`pgr_id`)
         ) " . $charset . ';';
 
-		$wpdb->query( $sql );
+        $wpdb->query($sql);
 
-		// payment logs
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->pay_logs (
+        // payment logs
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->pay_logs (
         `pgl_id` bigint NOT NULL AUTO_INCREMENT,
         `type_pg_id` INT NOT NULL,
         `pgl_data` longtext,
@@ -225,10 +224,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         PRIMARY KEY (`pgl_id`)
         ) " . $charset . ';';
 
-		$wpdb->query( $sql );
+        $wpdb->query($sql);
 
-		// visitor
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->visitor (
+        // visitor
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->visitor (
         `vis_id` bigint NOT NULL AUTO_INCREMENT,
         `fmb_id` INT NOT NULL ,
         `vis_uniqueid` varchar(10) DEFAULT NULL,
@@ -241,10 +240,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         PRIMARY KEY (`vis_id`)
         ) " . $charset . ';';
 
-		$wpdb->query( $sql );
+        $wpdb->query($sql);
 
-		// visitor error
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->visitor_error (
+        // visitor error
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->visitor_error (
         `vis_id` bigint unsigned NOT NULL AUTO_INCREMENT,
         `vis_uniqueid` varchar(10) NOT NULL,
         `vis_user_agent` varchar(250) DEFAULT NULL,
@@ -255,12 +254,12 @@ if ( ! defined( 'ABSPATH' ) ) {
         `vis_last_date` timestamp NULL ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (`vis_id`)
         ) " . $charset . ';';
-		$wpdb->query( $sql );
+        $wpdb->query($sql);
 
-		update_option( 'uifmcostest_version', UIFORM_VERSION );
+        update_option('uifmcostest_version', UIFORM_VERSION);
 
-		// form log
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_log (
+        // form log
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->form_log (
             `log_id` bigint NOT NULL AUTO_INCREMENT,
             `log_frm_data` longtext,
             `log_frm_name` varchar(255) DEFAULT NULL,
@@ -279,10 +278,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             PRIMARY KEY (`log_id`)
         ) " . $charset . ';';
 
-		 $wpdb->query( $sql );
+         $wpdb->query($sql);
 
-		 // addon
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon (
+         // addon
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon (
             `add_name` varchar(100) NOT NULL DEFAULT '',
             `add_title` text ,
             `add_info` text ,
@@ -309,37 +308,37 @@ if ( ! defined( 'ABSPATH' ) ) {
             PRIMARY KEY (`add_name`) 
         ) " . $charset . ';';
 
-		 $wpdb->query( $sql );
+         $wpdb->query($sql);
 
-			  // insert data
-			$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='func_anim'", ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->core_addon VALUES ('func_anim', 'Animation effect', 'You can animate your fields adding many animation effects. Also you can set up the delay and other options.', 1, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, 0, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
-			 $wpdb->query( $sql );
-		}
-			  // insert data
-			$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='webhook'", ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->core_addon VALUES ('webhook', 'WebHooks Add-On', 'You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. e.g. you can connect with Webhook of Zapier - https%3A%2F%2Fzapier.com%2Fpage%2Fwebhooks%2F', 1, 1, NULL, NULL, 1, 2, NULL, NULL, NULL, 0, '2019-12-30 01:36:23', '2019-12-30 01:34:27', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
-			 $wpdb->query( $sql );
-		}
+              // insert data
+            $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='func_anim'", ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    $sql = "INSERT INTO $this->core_addon VALUES ('func_anim', 'Animation effect', 'You can animate your fields adding many animation effects. Also you can set up the delay and other options.', 1, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, 0, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
+     $wpdb->query($sql);
+}
+              // insert data
+            $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='webhook'", ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    $sql = "INSERT INTO $this->core_addon VALUES ('webhook', 'WebHooks Add-On', 'You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. e.g. you can connect with Webhook of Zapier - https%3A%2F%2Fzapier.com%2Fpage%2Fwebhooks%2F', 1, 1, NULL, NULL, 1, 2, NULL, NULL, NULL, 0, '2019-12-30 01:36:23', '2019-12-30 01:34:27', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
+     $wpdb->query($sql);
+}
 
-			// insert data
-			$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='woocommerce'", ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->core_addon VALUES ('woocommerce', 'Woocommerce Add-On', 'Integrate your estimation form into woocommerce.  Add custom summary to a product form and collect more data when it is added to the cart.', 1, 1, '1.0', NULL, 1, 3, NULL, NULL, NULL, 0, '2020-01-29 23:46:55', '2020-01-29 23:42:54', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
-			$wpdb->query( $sql );
-		}
+            // insert data
+            $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='woocommerce'", ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    $sql = "INSERT INTO $this->core_addon VALUES ('woocommerce', 'Woocommerce Add-On', 'Integrate your estimation form into woocommerce.  Add custom summary to a product form and collect more data when it is added to the cart.', 1, 1, '1.0', NULL, 1, 3, NULL, NULL, NULL, 0, '2020-01-29 23:46:55', '2020-01-29 23:42:54', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
+    $wpdb->query($sql);
+}
 
-		 // insert data
-			$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='mgtranslate'", ARRAY_A );
-		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->core_addon VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
-			 $wpdb->query( $sql );
-		}
+         // insert data
+            $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='mgtranslate'", ARRAY_A);
+if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
+    $sql = "INSERT INTO $this->core_addon VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
+     $wpdb->query($sql);
+}
 
-		   // addon detail
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (
+           // addon detail
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (
             `add_name` varchar(45)  NOT NULL,
             `fmb_id` INT NOT NULL,
             `adet_data` longtext ,
@@ -353,10 +352,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             PRIMARY KEY (`add_name`, `fmb_id`) 
         ) " . $charset . ';';
 
-		 $wpdb->query( $sql );
+         $wpdb->query($sql);
 
-		// addon log
-		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_log (
+        // addon log
+        $sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_log (
             `add_log_id` bigint NOT NULL AUTO_INCREMENT,
             `add_name` varchar(45)  NOT NULL,
             `fmb_id` int NOT NULL,
@@ -372,4 +371,4 @@ if ( ! defined( 'ABSPATH' ) ) {
             PRIMARY KEY (`add_log_id`) 
         ) " . $charset . ';';
 
-		 $wpdb->query( $sql );
+         $wpdb->query($sql);
