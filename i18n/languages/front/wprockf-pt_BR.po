@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.3
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.3 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.6
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.6 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -30,27 +30,27 @@ msgstr "Resumo do pedido"
 msgid "Total cost"
 msgstr "Custo total"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1154, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2742
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1155, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2743
 msgid "warning! Form was not submitted"
 msgstr "AVVERTENZA! Non è stata presentata la forma"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1150, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2737
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1151, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2738
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1147
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1148
 msgid "Error! something went wrong."
 msgstr "Error! something went wrong."
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1498
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1499
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Erro! O arquivo excede o tamanho permitido de"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1505
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1506
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Erro! Tipo de arquivo não é permitido fazer upload"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1838, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1883
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1839, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1884
 msgid "New form request"
 msgstr "New form request"
 
@@ -94,11 +94,11 @@ msgstr "Quantidade"
 msgid "Description"
 msgstr "Descrição"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:180, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:215, modules/formbuilder/views/records/info_record.php:34
+#: modules/formbuilder/views/frontend/form_invoice.php:180, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:216, modules/formbuilder/views/records/info_record.php:34
 msgid "Sub total"
 msgstr "Sub total"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:188, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:220, modules/formbuilder/views/records/info_record.php:39
+#: modules/formbuilder/views/frontend/form_invoice.php:188, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:221, modules/formbuilder/views/records/info_record.php:39
 msgid "Tax"
 msgstr "Tax"
 
@@ -106,7 +106,7 @@ msgstr "Tax"
 msgid "Invoice Total"
 msgstr "Total da Fatura"
 
-#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:226, modules/formbuilder/views/frontend/payment_html.php:79, modules/formbuilder/views/records/info_record.php:44
+#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:227, modules/formbuilder/views/frontend/payment_html.php:79, modules/formbuilder/views/records/info_record.php:44
 msgid "Total"
 msgstr "Total"
 

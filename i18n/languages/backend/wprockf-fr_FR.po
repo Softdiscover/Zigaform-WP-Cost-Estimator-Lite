@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.3
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.3 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.6
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.6 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Uiform Wordpress Cost Estimator\n"
@@ -929,11 +929,11 @@ msgstr "Error! User has no permission to edit this form"
 msgid "Forms in trash"
 msgstr "Liste par forme"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2009
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2010
 msgid "Order summary"
 msgstr "Récapitulatif de la commande"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2662
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2663
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 

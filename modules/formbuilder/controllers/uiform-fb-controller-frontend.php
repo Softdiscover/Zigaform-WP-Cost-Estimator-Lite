@@ -1064,6 +1064,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data2['current_cost_symbol'] = ( isset($form_data_onsubm['main']['price_currency_symbol']) ) ? $form_data_onsubm['main']['price_currency_symbol'] : '$';
                     $data2['current_cost_cur']    = ( isset($form_data_onsubm['main']['price_currency']) ) ? $form_data_onsubm['main']['price_currency'] : 'USD';
                     $data2['show_only_value'] = ($vars['atr2'] === 'show_only_value')?'yes':'no';
+                    $data2['hide_total'] = ($vars['atr3'] === 'hide_total')?'yes':'no';
                     
                     $output                       = self::render_template('formbuilder/views/frontend/mail_generate_fields.php', $data2, 'always');
                     break;
