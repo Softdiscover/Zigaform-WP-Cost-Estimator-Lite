@@ -21,20 +21,20 @@ if ( class_exists('Uiform_InstallDB')) {
 class Uiform_InstallDB
 {
 
-    private $form;
-    private $form_history;
-    private $form_fields;
-    private $form_log;
-    private $form_fields_type;
-    private $settings;
-    private $core_addon;
-    private $core_addon_detail;
-    private $core_addon_log;
-    private $pay_gateways;
-    private $pay_records;
-    private $pay_logs;
-    private $visitor;
-    private $visitor_error;
+    public $form;
+    public $form_history;
+    public $form_fields;
+    public $form_log;
+    public $form_fields_type;
+    public $settings;
+    public $core_addon;
+    public $core_addon_detail;
+    public $core_addon_log;
+    public $pay_gateways;
+    public $pay_records;
+    public $pay_logs;
+    public $visitor;
+    public $visitor_error;
 
     public function __construct()
     {

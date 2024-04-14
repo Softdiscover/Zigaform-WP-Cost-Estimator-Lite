@@ -10,6 +10,8 @@ class Uiform_Backup
 {
     private $tables = array();
     private $suffix = 'd-M-Y_H-i-s';
+    private $wpdb;
+ 
     /**
      * Constructor
      *
