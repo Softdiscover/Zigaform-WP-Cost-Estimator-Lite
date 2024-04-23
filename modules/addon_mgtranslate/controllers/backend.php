@@ -12,7 +12,7 @@ use Gettext\Generator\MoGenerator;
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
+ * @link      https://wordpress-cost-estimator.zigaform.com
  */
 if ( ! defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -30,7 +30,7 @@ if ( class_exists('zfaddn_mgtranslate_back')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
+ * @link      https://wordpress-cost-estimator.zigaform.com
  */
 class zfaddn_mgtranslate_back extends Uiform_Base_Module
 {

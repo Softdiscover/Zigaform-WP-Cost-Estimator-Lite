@@ -51,7 +51,7 @@ if ( ! defined('ABSPATH')) {
                                         <h4><?php echo __('Get help from professionals', 'FRocket_admin'); ?></h4>
                                         <p>
                                            <a target="_blank"
-                                               href="https://softdiscover.com/zigaform/wordpress-cost-estimator/#contact"
+                                               href="https://wordpress-cost-estimator.zigaform.com/#contact"
                                                class="btn btn-info btn-lg">
                                               <?php echo __('Get support', 'FRocket_admin'); ?>
                                             </a>

@@ -75,7 +75,7 @@ if ( ! defined('ABSPATH')) {
                                             <?php
                                             $title           = __('Create amazing estimation forms with Zigaform', 'FRocket_admin');
                                             $summary         = __('Cost estimation form builder by zigaform.com', 'FRocket_admin');
-                                            $share_this_data = "st_url='https://softdiscover.com/zigaform/wordpress-cost-estimator/' st_title='{$title}' st_summary='{$summary}'";
+                                            $share_this_data = "st_url='https://wordpress-cost-estimator.zigaform.com/' st_title='{$title}' st_summary='{$summary}'";
                                             ?>
                                         <div id="zgfm-page-about-shbuttons" align="center">
                                             <span class='st_facebook_vcount' displayText='Facebook' <?php echo $share_this_data; ?> ></span>
