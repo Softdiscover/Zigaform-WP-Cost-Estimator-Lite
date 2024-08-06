@@ -134,7 +134,7 @@ class zgfm_core_addon extends Uiform_Base_Module
     {
         try {
         } catch ( Exception $exception) {
-            add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
+           //add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
         }
     }
 

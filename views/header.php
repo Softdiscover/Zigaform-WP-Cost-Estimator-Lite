@@ -22,66 +22,14 @@ if ( ! defined('ABSPATH')) {
         <li class="dropdown">
           <a href="#" class="sfdc-dropdown-toggle" data-toggle="sfdc-dropdown"> <span class="fa fa-file"></span> <?php echo __('Forms', 'FRocket_admin'); ?><span class="caret"></span></a>
           <ul class="sfdc-dropdown-menu" role="menu">
-            <li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform'; ?>"><?php echo __('New', 'FRocket_admin'); ?></a></li>
-            <?php if ( isset($_GET['zgfm_action']) && Uiform_Form_Helper::sanitizeInput($_GET['zgfm_action']) === 'create_uiform') { ?>
-            <li><a href="javascript:void(0);" onclick="javascript:rocketform.saveForm();"><?php echo __('Save', 'FRocket_admin'); ?></a></li>
-            <?php } ?>
+            <li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=choose_mode'; ?>"><?php echo __('New', 'FRocket_admin'); ?></a></li>
+           
             <li class="divider"></li>
             <li><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms'; ?>"><?php echo __('List forms', 'FRocket_admin'); ?></a></li>
           </ul>
         </li>
         <?php if ( isset($_GET['zgfm_action']) && Uiform_Form_Helper::sanitizeInput($_GET['zgfm_action']) === 'create_uiform') { ?>
-        <li class="divider-menu"></li>
-        <li class="dropdown">
-          <a href="#" class="sfdc-dropdown-toggle" data-toggle="sfdc-dropdown"><span class="fa fa-file-text-o"></span> <?php echo __('Templates', 'FRocket_admin'); ?> <span class="caret"></span></a>
-          <ul class="sfdc-dropdown-menu" role="menu">
-              <li><a onclick="javascript:rocketform.templates_load(1);" 
-                   href="javascript:void(0);"><?php echo __('Online event registration', 'FRocket_admin'); ?></a>
-              </li>
-              <li><a onclick="javascript:rocketform.templates_load(2);" 
-                   href="javascript:void(0);"><?php echo __('Reservation Request Form', 'FRocket_admin'); ?></a>
-              </li>
-              <li><a onclick="javascript:rocketform.templates_load(3);" 
-                   href="javascript:void(0);"><?php echo __('Purchase Order - Point Of Sale', 'FRocket_admin'); ?></a>
-              </li>
-              <li><a onclick="javascript:rocketform.templates_load(4);" 
-                   href="javascript:void(0);"><?php echo __('Website Design Request', 'FRocket_admin'); ?></a>
-              </li>
-              <li><a onclick="javascript:rocketform.templates_load(5);" 
-                   href="javascript:void(0);"><?php echo __('Order form', 'FRocket_admin'); ?></a>
-              </li>
-              <li><a onclick="javascript:rocketform.templates_load(6);" 
-                   href="javascript:void(0);"><?php echo __('Wedding planner', 'FRocket_admin'); ?></a>
-              </li>
-               
-              
-               <?php if ( ZIGAFORM_F_LITE === 1) { ?>
-               <?php } else { ?>
-                <li><a onclick="javascript:rocketform.templates_load(7);" 
-                   href="javascript:void(0);"><?php echo __('Conditional Logic', 'FRocket_admin'); ?></a>
-                </li>
-               <?php } ?>
-               
-                
-                <?php if ( ZIGAFORM_F_LITE === 1) { ?>
-                <?php } else { ?>
-                 <li><a onclick="javascript:rocketform.templates_load(8);" 
-                   href="javascript:void(0);"><?php echo __('Wizard form', 'FRocket_admin'); ?></a>
-              </li>
-                <?php } ?>
-                
-              
-              <li><a onclick="javascript:rocketform.templates_load(9);" 
-                   href="javascript:void(0);"><?php echo __('All fields', 'FRocket_admin'); ?></a>
-              </li>
-              <li><a onclick="javascript:rocketform.templates_load(10);" 
-                   href="javascript:void(0);"><?php echo __('Loan payment calculator', 'FRocket_admin'); ?></a>
-              </li>
-               <li><a onclick="javascript:rocketform.templates_load(11);" 
-                   href="javascript:void(0);"><?php echo __('Multivariable calculator', 'FRocket_admin'); ?></a>
-              </li>
-          </ul>
-        </li>
+      
         <li class="divider-menu"></li>
         <li class="dropdown">
           <a href="#" class="sfdc-dropdown-toggle" 
@@ -164,7 +112,7 @@ if ( ! defined('ABSPATH')) {
         
       
              <li >
-            <a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform&opt=import'; ?>">
+            <a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=import_form'; ?>">
                 <i class="fa fa-reply"></i> <?php echo __('Import', 'FRocket_admin'); ?></a></li>
         
                 
@@ -211,7 +159,7 @@ if ( ! defined('ABSPATH')) {
           <a href="#" class="sfdc-dropdown-toggle" data-toggle="sfdc-dropdown">
               <span class="fa fa-life-ring"></span> <?php echo __('Help', 'FRocket_admin'); ?><span class="caret"></span></a>
           <ul class="sfdc-dropdown-menu" role="menu">
-            <li><a href="https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/" target="_blank">
+            <li><a href="https://wordpress-cost-estimator.zigaform.com/docs/" target="_blank">
                 <?php echo __('Documentation', 'FRocket_admin'); ?>
                 </a>
             </li>

@@ -670,7 +670,7 @@ $uifm(document).ready(function ($) {
         }
         
     /*calc variables*/    
-    zgfm_back_calc.calc_table_refreshCodes();
+    //zgfm_back_calc.calc_table_refreshCodes();
       
 });
 

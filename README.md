@@ -28,7 +28,7 @@ There are 2 ways to install. Please follow the steps below:
 6. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled Zigaform Express
 
 if you have problems with installation, check here the documentation: 
-https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/installation/via-wordpress-panel/
+https://wordpress-cost-estimator.zigaform.com/docs/via-wordpress-panel/
 
 ## Support ##
 

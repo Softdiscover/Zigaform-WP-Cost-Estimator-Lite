@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: calculator, form builder, estimation, calculated, form,  estimate, estimation, estimator, cost estimation, calculation, price calculator, wizard, bootstrap, AJAX, contact, contact form, email, feedback, multilingual
 Requires at least: 5.0
 Tested up to: 6.5.2
-Stable tag: 6.1.2
+Stable tag: 7.0.0
 
 Create estimation forms using this powerful drag and drop estimation form builder which makes you to build estimation forms on few minutes
 
@@ -25,7 +25,7 @@ https://www.youtube.com/watch?v=oGgk2FC0p90&w=532&rel=0
     ♦ Form builder for adding input fields on the form
     ♦ Add one or more calculated fields
     ♦ Predefined forms templates
-	♦ Check other calculators made with zigaform : https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/examples/
+	♦ Check other calculators made with zigaform : https://wordpress-cost-estimator.zigaform.com/docs-category/examples/
 
 
 ### Features (Free Lite version):
@@ -312,7 +312,7 @@ Here are some sample formulas that can be used in the math formula feature:
  
 
 
-.... and note that the **return** value of that function will be the value assigned to the calculated field. More info here: https://kb.softdiscover.com/docs/zigaform-wordpress-cost-estimator/create-form/math-calculation/
+.... and note that the **return** value of that function will be the value assigned to the calculated field. More info here: https://wordpress-cost-estimator.zigaform.com/docs/math-calculation/
 
 
 == Installation ==
@@ -394,7 +394,7 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 6.1.2 = 
+= 7.0.0 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -435,5 +435,5 @@ https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
  *added custom reply to mail messages
 = 3.9.2.8 = 
 * minor changes
-= 6.1.2 = 
+= 7.0.0 = 
  * minor changes

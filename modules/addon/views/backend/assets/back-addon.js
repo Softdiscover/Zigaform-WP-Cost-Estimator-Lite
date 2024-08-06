@@ -32,7 +32,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 			};
 
 			this.load_addon = function() {
-				wp.hooks.applyFilters('zgfm.onLoadForm_loadAddon');
+				wp.hooks.doAction('zgfm.onLoadForm_loadAddon');
 			};
 
 			/*

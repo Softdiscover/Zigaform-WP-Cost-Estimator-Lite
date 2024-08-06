@@ -24,9 +24,12 @@ ob_start();
                     
                 </div>
                 <div class="uifm-sticky-topout-section"></div>
+              <div class="rockfm_form_hook_outertop"></div>
     <div class="uiform-main-form">
+        <div class="rockfm_form_hook_innertop"></div>
          <!-- sticky top section -->
                     <div class="uifm-sticky-top-section"></div>
+                    
                      <!--/ sticky top section -->
         <div class="uiform-step-list uiform-wiztheme0" style="display:none;">
                         <ul class="uiform-steps">

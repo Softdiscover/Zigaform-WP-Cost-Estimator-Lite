@@ -15,6 +15,7 @@ if ( ! defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
 ob_start();
+$nameField =  apply_filters('uifm_ms_render_field_front', "uiform_fields[".$id."][]", $id, $type);
 ?>
  <?php
     $defaul_class = 'sfdc-form-control uifm-input2-opt-main ';
@@ -33,11 +34,11 @@ ob_start();
      
      class="rockfm-input2-wrap"> 
     <select class="<?php echo $defaul_class; ?>"
-            name="uiform_fields[<?php echo $id; ?>][]"
+            name="<?php echo $nameField; ?>"
              multiple
             >
 <?php
-
+usort($input2['options'], ['Uiform_Form_Helper', 'compareByOrder']);
 foreach ( $input2['options'] as $key => $value) {
     $checked = '';
     if ( isset($value['checked']) && intval($value['checked']) === 1) {
@@ -46,8 +47,8 @@ foreach ( $input2['options'] as $key => $value) {
     ?>
     <option <?php echo $checked; ?>
         value="<?php
-        if ( isset($value['value'])) {
-            echo $key;
+        if ( isset($value['id'])) {
+            echo $value['id'];
         }
         ?>"
         data-uifm-inp-val="<?php
@@ -56,7 +57,7 @@ foreach ( $input2['options'] as $key => $value) {
         }
         ?>"
         data-uifm-inp-price="<?php echo ( isset($value['price']) ) ? $value['price'] : ''; ?>"
-        data-opt-index="<?php echo $key; ?>" ><?php echo $value['label']; ?></option>
+        data-opt-index="<?php echo $value['id']; ?>" ><?php echo $value['label']; ?></option>
     <?php
 }
 ?>

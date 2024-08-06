@@ -39,7 +39,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
     private $pagination  = '';
     private $per_page        = 5;
     private $wpdb        = '';
-
+    private $back_cache_tab_more='';
     /*
      * Magic methods
      */
@@ -79,7 +79,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
         $data_render = array();
-
+        $this->back_cache_tab_more = apply_filters('zgfm_back_field_opt_more', array());
         $array = array( 1, 2, 3, 4, 5, 6, 8, 9, 10, 11 );
         foreach ( $array as $type) {
             switch ( intval($type)) {
@@ -306,8 +306,12 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
                         break;
                 }
 
-                $data['modules_field_more'] = apply_filters('zgfm_back_field_opt_more', array());
-
+                //$data['modules_field_more'] = apply_filters('zgfm_back_field_opt_more', array());
+                if (intval(get_option('zgfm_fields_fastload', 0)) === 0) {
+                    $data['modules_field_more'] = $this->back_cache_tab_more;
+                } else {
+                    $data['modules_field_more'] = apply_filters('zgfm_back_field_opt_more', '');
+                }
                 $data['obj_sfm']            = Uiform_Form_Helper::get_font_library();
                 $output                    .= self::render_template('formbuilder/views/fields/modal/field_opt_text.php', $data, 'always');
                 break;
@@ -1308,9 +1312,9 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
 
         try {
             // $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-            // add_notice('ba');
+            ////add_notice('ba');
         } catch ( Exception $exception) {
-            add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
+           //add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
         }
     }
 

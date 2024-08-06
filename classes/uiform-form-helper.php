@@ -21,7 +21,12 @@ if ( class_exists('Uiform_Form_Helper')) {
 
 class Uiform_Form_Helper
 {
-
+    
+    public static function compareByOrder($a, $b)
+    {
+        return $a['order'] - $b['order'];
+    }
+    
     public static function human_filesize($bytes, $decimals = 2)
     {
         $size   = array( 'B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB' );
@@ -143,6 +148,11 @@ class Uiform_Form_Helper
      */
     public static function sanitizeInput_html($string)
     {
+    
+        if (!is_string($string)) {
+            return $string;
+        }
+        
         $string = stripslashes($string);
         $string = str_replace(array( '‘', '’', '“', '”' ), array( "'", "'", '"', '"' ), $string);
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');

@@ -29,6 +29,7 @@ ob_start();
       data-zgfm-recaptchav3-active="<?php echo $main['recaptchav3_enable'] ?? 0; ?>"
       data-zgfm-recaptchav3-sitekey="<?php echo $main['recaptchav3_sitekey'] ?? ''; ?>"
       data-zgfm-recaptchav3-errmsg="<?php echo __('Recaptcha failed, refresh page and try again', 'FRocket_admin'); ?>"
+      data-zgfm-is-ms="0"
       enctype="multipart/form-data" 
       id="rockfm_form_<?php echo $form_id; ?>">
      
@@ -208,6 +209,7 @@ ob_start();
     <?php foreach ( $calculation['variables'] as $key => $value) { ?>
 var zgfm_<?php echo $form_id; ?>_calculation_cont<?php echo $calculation['variables'][ $key ]['id']; ?> = function(){
         <?php
+         
         echo str_replace('[%formid%]', $form_id, urldecode($calculation['variables'][ $key ]['content_front']));
         ?>
        
@@ -240,7 +242,7 @@ var zgfm_<?php echo $form_id; ?>_calculation_cont<?php echo $calculation['variab
 </div>
 <?php
 $cntACmp = ob_get_contents();
-$cntACmp = Uiform_Form_Helper::sanitize_output($cntACmp);
+//$cntACmp = Uiform_Form_Helper::sanitize_output($cntACmp);
 ob_end_clean();
 echo $cntACmp;
 ?>
