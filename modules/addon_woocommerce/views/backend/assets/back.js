@@ -333,11 +333,11 @@ if (!$uifm.isFunction(zgfm_back_addon_woocomm)) {
 		window.zgfm_back_addon_woocomm = zgfm_back_addon_woocomm = $.zgfm_back_addon_woocomm = new zgfm_fn_woocomm();
 
 		//adding hook
-		const { addFilter } = wp.hooks;
+		const { addFilter, addAction } = wp.hooks;
 		//before submit form
-		addFilter('zgfm.onLoadForm_loadAddon', 'zgfm_back_addon_woocomm/load_settings', zgfm_back_addon_woocomm.load_settings);
-		addFilter('zgfm.onLoadForm_loadAddon', 'zgfm_back_addon_woocomm/onFieldCreation_post', zgfm_back_addon_woocomm.onFieldCreation_post);
+		addAction('zgfm.onLoadForm_loadAddon', 'zgfm_back_addon_woocomm/load_settings', zgfm_back_addon_woocomm.load_settings);
+		addAction('zgfm.onLoadForm_loadAddon', 'zgfm_back_addon_woocomm/onFieldCreation_post', zgfm_back_addon_woocomm.onFieldCreation_post);
 		addFilter('zgfm.getData_beforeSubmitForm', 'zgfm_back_addon_woocomm/get_currentDataToSave', zgfm_back_addon_woocomm.get_currentDataToSave);
-		addFilter('zgfm.tinyMCE_onChange', 'zgfm_back_addon_woocomm/tinyMCE_onChange', zgfm_back_addon_woocomm.tinyMCE_onChange);
+		addAction('zgfm.tinyMCE_onChange', 'zgfm_back_addon_woocomm/tinyMCE_onChange', zgfm_back_addon_woocomm.tinyMCE_onChange);
 	})($uifm, window);
 }
