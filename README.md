@@ -126,7 +126,7 @@ For support, visit our [contact page](https://wordpress-cost-estimator.zigaform.
 5. Configure your options and click **Save**.
 6. A shortcode will be generated. Copy and paste it into your post/page.
 
-[![Watch the tutorial](https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0)](https://www.youtube.com/watch?v=XcLBt94ZRZ8)
+[![Watch the tutorial](https://img.youtube.com/vi/uPypNQILtdE/0.jpg)](https://www.youtube.com/watch?v=uPypNQILtdE)
 
 ## What Makes Zigaform Great?
 
