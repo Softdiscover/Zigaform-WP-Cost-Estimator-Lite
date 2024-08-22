@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.0.2
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.0.2 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.0.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.0.5 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -54,19 +54,19 @@ msgstr "Ошибка! Тип файла не разрешено загружат
 msgid "New form request"
 msgstr "New form request"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:405
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:423
 msgid " , version : "
 msgstr " , version : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:405
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:423
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:453, modules/formbuilder/controllers/uiform-fb-controller-records.php:493, modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:149
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:471, modules/formbuilder/controllers/uiform-fb-controller-records.php:511, modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:149
 msgid "qty"
 msgstr "qty"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:456, modules/formbuilder/controllers/uiform-fb-controller-records.php:496, modules/formbuilder/views/frontend/form_invoice.php:108, modules/formbuilder/views/frontend/form_invoice.php:101
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:474, modules/formbuilder/controllers/uiform-fb-controller-records.php:514, modules/formbuilder/views/frontend/form_invoice.php:108, modules/formbuilder/views/frontend/form_invoice.php:101
 msgid "Amount"
 msgstr "Сумма"
 

@@ -1,278 +1,147 @@
-# Zigaform - Wordpress Calculator & Cost Estimation Form Builder Lite
-
-**Zigaform - Wordpress Calculator & Cost Estimation Form Builder**  is a real-time drag and drop form builder which makes you to build your estimation forms on few easy steps. it can estimate any service for your clients and you can proceed checkout using payment gateway.  Also it provides an advanced grid system and skin customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
-
-https://www.youtube.com/watch?v=q4yTvQpof34&w=532&rel=0
-
-See more at https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/
-
-## Installation ## 
-
-The latest version of the Zigaform plugin ZIP file can be [**downloaded**](https://github.com/Softdiscover/Zigaform-WP-Cost-Estimator-Lite/zipball/master) from https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/
- 
-There are 2 ways to install. Please follow the steps below: 
-
-= Via FTP =
-1. After your download unzip `Zigaform - Calculator & Cost Estimation Form Builder` from your download .zip
-2. Open your FTP client
-3. Upload the `Zigaform Estimator Lite` folder to /wp-content/plugins/ directory on your hosting server
-4. Activate the Zigaform - Calculator & Cost Estimation Form Builder Lite plugin through the 'Plugins' menu in WordPress
-5. Configure the plugin by going to the `Zigaform - Calculator & Cost Estimation Form Builder Lite` menu that appears in your admin menu
-
-= Via backend of WordPress =
-1. After your download, log into backend of your WordPress 
-2. Go to Plugins > Add New
-3. Click the Upload link
-4. Click Browse and locate the file that you downloaded and click *Install Now*
-5. After Wordpress has finished unpacking the file click on *Activate Plugin*
-6. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled Zigaform Express
-
-if you have problems with installation, check here the documentation: 
-https://wordpress-cost-estimator.zigaform.com/docs/via-wordpress-panel/
-
-## Support ##
-
-Please see https://wordpress-cost-estimator.zigaform.com/#contact for more details.
-
-### Features :
-* real-time drag and drop form builder which makes to build estimation forms
-* Cost estimation and calculation feature (math formula)
-* Offline Payment Gateway included
-* 42+ form elements ready to be used
-* Full skin customizer with live preview
-* Math calculation (Complex calculation supported)
-* Advanced grid system for building form estimators
-* Dinamic validation for your form (email, letter, numbers and so on)
-* Advanced summary estimate box (sticky feature)
-* skin customizer with live preview
-* Many form templates available
-* over 650 custom fonts with live preview
-* over 769 icons to use on your form elements
-* A lot of form elements ready to be used
-* create custom form fields
-* dinamic validation for your form
-* multiple forms in one wordpress page
-* graphic chart entry report by form
-* advanced search for entries
-* Import and export your custom forms
-* option to duplicate forms
-* Accept multiple files uploads using the forms
-* detailed entries report by form
-* ajax powered forms
-* Bootstrap integrated
-* Get live email notifications on form submissions
-* Unlimited forms
-* retina activated
-* Duplicate form function
-* toured guide option
-* Multi Language support (Spanish, Italian, French, Russian, German, Portuguese, Chinese) 
-* Fully responsive form 
-* Cross Browser : ie8, ie9, ie10, chrome, firefox, safari, opera 
-* No programming skills required
-* Easily add/delete/edit/manage forms, fields, entries and tons of features
-* upload images and files via ajax
-* Language Switcher
-
-><strong>Zigaform - Calculator & Cost Estimator Form Builder Premium</strong><br>
->If you like Zigaform - Calculator & Cost Estimator Form Builder Lite, you might want to give our premium offering a try. All features locked on express version are unlocked on premium version:
->
-
->1. Paypal payment integration
->2. Advanced conditional logic feature
->3. Wizard forms supported. real-time wizard form editor with live preview (two themes available)
->4 Invoicing feature (listing invoices, detailed)
->5. Export all your submissions to CSV
->6. Extended HTML documentation.
->7. Priority Support and plus many other features.
->
->Try out [Zigaform - Cost Estimation & Payment Form Builder Premium](http://goo.gl/C261zv)
+# Zigaform - WordPress Calculator & Cost Estimation Form Builder Lite
+
+**Zigaform - WordPress Calculator & Cost Estimation Form Builder** is a powerful, real-time drag-and-drop form builder. It allows you to create detailed estimation forms in just a few easy steps. Estimate any service for your clients, and enable checkout through integrated payment gateways. With an advanced grid system, skin customizer, and a robust admin section, Zigaform offers extensive customization options without requiring any programming skills.
+
+[![Watch Zigaform in action](https://img.youtube.com/vi/6dSZ9aqGrTc/0.jpg)](https://www.youtube.com/watch?v=6dSZ9aqGrTc)
+
+Learn more at [Zigaform WP Cost Estimator Lite](https://softdiscover.github.io/Zigaform-WP-Cost-Estimator-Lite/).
+
+## Support Development
+
+You can support the continued development of Zigaform by donating via PayPal:
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=KSJM2QUTEXM56)
+
+
+## Installation
 
-More info in https://wordpress-cost-estimator.zigaform.com/
+Download the latest version of the Zigaform plugin ZIP file from [**this link**](https://github.com/Softdiscover/Zigaform-WP-Cost-Estimator-Lite/zipball/master).
 
- 
-** OVERALL FEATURES
-------------------------------------------------------------
+### Installation via FTP
 
- 
-** DRAG AND DROP FORM BUILDER
-------------------------------------------------------------
+1. Unzip the `Zigaform - Calculator & Cost Estimation Form Builder` ZIP file.
+2. Open your FTP client.
+3. Upload the `Zigaform Estimator Lite` folder to the `/wp-content/plugins/` directory on your server.
+4. Activate the plugin through the 'Plugins' menu in WordPress.
+5. Configure the plugin via the `Zigaform - Calculator & Cost Estimation Form Builder Lite` menu in your admin panel.
 
-Zigaform comes with a drag and drop builder that allows you to easily build forms in minutes, not hours. You can easily add and remove form fields with just one simple click. You can easily re-arrange them as needed with drag & drop. All forms created with zigaform are 100% responsive and mobile-friendly. You have the ability to create multi-page forms, add file-upload, create smart conditional logic, and so much more.
+### Installation via WordPress Backend
 
-With the simple and intuitive drag and drop form builder, you don’t need any coding experience. Just arrange form elements and customize the settings and you are good to go. Change themes or designs with just clicks of a few buttons.
+1. Log in to your WordPress backend.
+2. Go to Plugins > Add New.
+3. Click the **Upload Plugin** button.
+4. Browse for the downloaded ZIP file and click **Install Now**.
+5. Once installed, click **Activate Plugin**.
+6. The `Zigaform` menu item will appear on the left-hand navigation.
 
- 
-** SMART CONDITIONAL LOGIC [PRO VERSION]
-------------------------------------------------------------
+For installation assistance, refer to the [documentation](https://wordpress-cost-estimator.zigaform.com/docs/via-wordpress-panel/).
 
-Zigaform provides a visual editor for conditional logic. It allows you to create smart dynamic forms that help you collect the most relevant information. With conditional logic, your forms will dynamically change based on the selections the user makes while filling out your forms. You can choose to show or hide fields based on a selected item. The goal of our conditional logic is to allow you to create smart powerful and useful forms that give you the best results.
+## Features
 
- 
-** ONLINE PAYMENT WITH PAYPAL PAYMENT [PRO VERSION]
-------------------------------------------------------------
+- **Real-time Drag & Drop Builder:** Create estimation forms with ease.
+- **Cost Estimation & Calculation:** Supports complex math formulas.
+- **Offline Payment Gateway:** Integrated for seamless transactions.
+- **42+ Form Elements:** Ready to use, fully customizable.
+- **Advanced Grid System:** Build professional, responsive forms.
+- **Dynamic Validation:** Ensures data integrity (e.g., email, letters, numbers).
+- **Advanced Summary Estimate Box:** Includes sticky feature.
+- **Skin Customizer:** Customize forms with a live preview.
+- **Multiple Form Templates:** Choose from a variety of templates.
+- **650+ Custom Fonts & 769+ Icons:** For rich form customization.
+- **Detailed Entries Report:** Track and analyze form submissions.
+- **AJAX-powered Forms:** No page reloads on form submission.
+- **Responsive Design:** Fully optimized for all devices.
+- **Multi-Language Support:** Includes Spanish, Italian, French, Russian, German, Portuguese, and Chinese.
+- **No Programming Skills Required:** Simple setup and management.
+- **Translation Ready**: Easy to translate into any language.
 
-it supports paypal payment. Enable your users to pay you via PayPal Payments Standard as part of the Forms submission process.
+### Field Types
 
- 
-** INVOICING FEATURE [PRO VERSION]
-------------------------------------------------------------
+Zigaform offers a wide range of field types:
 
-it supports invoicing feature. It allows you to create customized invoices and let your customers download the pdf file.
+- Text input (single line)
+- Textarea (multiple lines)
+- Checkbox
+- Radio (multiple choice)
+- Select dropdown
+- HTML
+- File Upload
+- Image Upload
+- Password
+- Slider
+- Range
+- Spinner
+- CAPTCHA
+- reCAPTCHA
+- Hidden field
+- Star rating
+- Color picker
+- Date picker
+- Time picker
+- Date and Time picker
+- Prepended/Appended textbox
+- Panel
+- Divider
+- Heading
+- Wizard buttons
+- Switch
+- Dynamic Checkboxes
+- Dynamic Radiobuttons
 
- 
-** CUSTOM FORMULA AND MATH CALCULATION
-------------------------------------------------------------
+All these field types are included in the free version!
 
-zigaform allows you to create custom formula using math calculations and support any kind of calculation. you can create a basic estimation form up to complex estimation form
+### Entries Management
 
- 
-** AUTOMATED NOTIFICATION E-MAILS
-------------------------------------------------------------
+- **Dashboard Integration**: Manage submitted entries from the WordPress dashboard.
+- **Export/Import**: Bulk export to CSV, bulk delete, advanced filtering, and search across entries.
+- **Custom Confirmation Messages**: Customize what users see after form submission, or redirect them to a custom URL.
+- **Notification Emails**: Send customized email notifications after form submission, including user entries and additional information.
 
-Zigaform allows you to create custom email notifications to get notified when new entries are submitted. Personalize these emails by editing the subject, writing the message, and including options like entry details, carbon copy and tons of options.
 
- 
-** ADVANCED GRID SYSTEM
-------------------------------------------------------------
+### Additional Premium Features
 
-Zigaform offers an advanced grid system to allows you to create unique form layouts in a fully customizable and responsive grid system. It supports unlimited grid nesting.
+Upgrade to **Zigaform - Cost Estimation & Payment Form Builder Premium** for advanced functionalities:
 
- 
-** MULTI-PAGE FORMS (WIZARD FORM)
-------------------------------------------------------------
+1. PayPal Integration
+2. Advanced Conditional Logic
+3. Wizard Forms with Live Preview
+4. Invoicing Features
+5. CSV Export for Submissions
+6. Extended Documentation and Priority Support
 
-The page break field allows you to break up your form into multiple pages and even show a progress bar that let's your user know where they are in the process.
+Try [Zigaform Premium](http://goo.gl/C261zv) for more details.
 
- 
-** 42+ ADVANCED FIELDS
-------------------------------------------------------------
+## Support
 
-Zigaform has tons of field types to make a great form that will help your website succeed for you.
-	* Text input (single line) 	* Textarea (multiple lines) 	* Checkbox 	* Radio (multiple choice) 	* Select dropdown 	* HTML 	* File Upload 	* Columns 	* File Upload 	* Image Upload 	* Password 	* Slider 	* Range 	* Spinner 	* Captcha 	* Recaptcha 	* hidden field 	* star rating 	* color picker 	* date picker 	* Time picker 	* Date and Time 	* ReCaptcha 	* Prepended, Appended textbox 	* Panel 	* Divider 	* Heading 	* Wizard buttons 	* Switch 	* Dinamic Checkboxes 	* Dinamic Radiobutton
+For support, visit our [contact page](https://wordpress-cost-estimator.zigaform.com/#contact).
 
- 
-** CAPTCHA SPAM PROTECTION
-------------------------------------------------------------
+## Frequently Asked Questions
 
-Zigaform offers support for Google reCaptcha to prevent spammers and spambots. Spam prevention is one of the first steps in WordPress security. If spambots are able to break through your security efforts, they can alter the content of your site, inject malicious code, or even remove your ability to log in.
+### How do I create an estimation form?
 
-To protect your site, you want to make it as easy as you can for your visitors to fill in your contact form, while making it as hard as possible for spambots to get through your security.
+1. Go to `Zigaform Estimator Lite` in the menu.
+2. Click on the **Add New Form** button.
+3. Enter the form title in the pop-up window.
+4. Drag and drop or click to add form elements.
+5. Configure your options and click **Save**.
+6. A shortcode will be generated. Copy and paste it into your post/page.
 
- 
-** DETAILED SUBMITTED ENTRIES 
-------------------------------------------------------------
+[![Watch the tutorial](https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0)](https://www.youtube.com/watch?v=XcLBt94ZRZ8)
 
-This plugin allows you to view submitted entries within the WordPress admin area, and send submitted form data via email. Other options include a custom autoreply and filters to strip unwanted data. Zigaform also enables you to use built-in or custom validators to force specific data from the user.
+## What Makes Zigaform Great?
 
-Some key features: 	* Bulk Export to CSV 	* Bulk Delete 	* Advanced Filtering 	* Search across all entries 	* Collect submitted data as well as date submitted and IP Address
+- **Unlimited Forms & Fields:** No restrictions on the number of forms, fields, or submissions.
+- **Highly Customizable:** Easily fine-tune every aspect of your forms, including CSS and HTML.
+- **Developer-Friendly:** Extensive options for developers to customize forms.
+- **Responsive & Optimized:** All forms are mobile-friendly and optimized for speed.
+- **Easy Integration:** Add forms to your site via shortcode, widget, or template function.
+- **Comprehensive Documentation:** Extensive guides and support available.
 
- 
-** FULLY RESPONSIVE DESIGN
-------------------------------------------------------------
+For more information, visit [Zigaform's official site](https://wordpress-cost-estimator.zigaform.com/).
 
-Zigaform designs are carefully crafted to fit all your devices. Be it mobile, iPad or a PC, it makes sure that your forms are readable and interactive to get maximum conversion rate.
 
-All of the elements are designed using either CSS or font icons. Meaning, your forms will look simply stunning on retina and high resolution devices. Say goodbye to pixelations and glitches and enjoy an interface that scales.
+## License
 
- 
-** CONTROL EVERY ELEMENT
-------------------------------------------------------------
+WordPress is free software, and is released under the terms of the GNU General Public License version 3 or (at your option) any later version. See [LICENSE.md](LICENSE.md) for complete license details.
 
-An abundance of settings so you can fine tune every part of your form: from general settings down to individual fields, submit actions and emails.
-
- 
-** EFFORTLESS WORDPRESS INTEGRATION
-------------------------------------------------------------
-
-Add a Zigaform Form to your site easily with a widget, shortcode, or append it automatically to any content you choose.
-
- 
-** TRANSLATION READY - MULTI LANGUAGE SUPPORT 
-------------------------------------------------------------
-
-Translation-ready, for easy conversion to any language. it supports Spanish, Italian, French, Russian, German, Portuguese, and Chinese
-
- 
-** HEAVY ON SECURITY
-------------------------------------------------------------
-
-Zigaform has built-in security for strictly fighting spams and bots. Built on top of transparent nonce security. it is almost impossible to pass an automated submission.
-
-Still not satisfied? Go ahead and optionally use Google reCaptcha or simple Captcha on your form.
-
- 
-** FAST & SCALABLE
-------------------------------------------------------------
-
-Minified resources are loaded only when needed and are “enqueued” on the footer to keep your website as fast as it was, leaving a minimum footprint.
-
-Our system can easily handle many form elements with conditional logic.
-
-Zigaform is quickly becoming a popular choice among users and developers. It allows you to quickly create beautiful contact forms and comes with all the goodies you would need from a premium form builder.
-
- 
-** FREE SUPPORT AND UPGRADES. [PRO VERSION]
-------------------------------------------------------------
-
-Their support is immaculate and the zigaform is one of the best you’ll find for WordPress. Highly recommended for WP users of all backgrounds & experience levels.
-
- 
-** WHAT MAKES ZIGAFORM GREAT?
-------------------------------------------------------------
-
-* The unlimited number of forms, fields, emails, actions, or submissions. 	
-* A bulk of settings so that you can fine-tune every part of your form: from general settings to individual fields, submit actions and emails. 	
-* Really easy to use and can be easily used by beginners. 	
-* Comes with a drag-and-drop builder that allows you to build contact forms, donation forms, subscription forms, and surveys within minutes. 	
-* Offers tons of customization options including the ability to use custom CSS and HTML code. 	
-* More than just a contact form plugin. Helps improve website speed and security. 	
-* Allows you to create multi-page forms that can be used to divide long forms which improve user experience and usability. 	
-* Unlimited the amount of submissions/entries allowed for each form. 	
-* Allows you to customize everything you want including field labels, CSS, and the HTML code. 	
-* Offers support for Google reCaptcha to prevent spammers and spambots. 	
-* Allows you to create complex forms with conditional logic. 	
-* Over 42 field types to choose from. 	
-* Ajax-powered form submission allows your users to submit the form without a refresh or redirection. 	
-* Offers dozens of customization features. 	
-* No restrictions on the number of forms or submissions or fields. 	
-* Support for Google reCaptcha to prevent spam. 	
-* It is translation ready and can be easily translated to any language. 	
-* Comes with a JavaScript Datepicker input field. 	
-* Send a confirmation receipt email to the user. 	
-* Fully customize the forms by editing the CSS yourself. 	
-* Easily export entries and submissions to a CSV file. 	
-* Shortcodes can be used on any page, post or even widgets. 	
-* Allows you to set up data validation for the forms. 	
-* Send a copy of the submitted message to the user. 	
-* Allow users to attach files to their messages. 	
-* Customize the “Reply-To” email address. 	
-* Add additional data about the sender like IP address and Date/Time to the message. 	
-* Zigaform gives you an effortless WordPress integration. You can add a zigaform Forms to your site easily with a shortcode, widget, template function, or append it automatically to any content you choose. 	
-* It is translation-ready, for easy conversion to any language. 	
-* Style customizations: Its visual styler lets you change the look and feel of your form. You can change field colors and sizes, add backgrounds and borders, and more. 	
-* Enhanced features: The plugin is constantly being improved with more advanced features. With Zigaform, the possibilities for creating a powerful form are endless. 	
-* Developer friendly: If you’re a developer who needs to customize your form to any extent for clients, Zigaform might be the right solution. 	
-* 100% responsive forms: Your WordPress forms will always look great on any size device. 	
-* Optimized for speed: it is highly optimized for web and server performance. It doesn’t negatively impact the page speed of your site. 	
-* Ease of use: it comes with a drag and drop form builder that lets you create 100% mobile responsive forms without having you to touch a single line of code. It’s the easiest and most intuitive form builder 	
-* Enhanced functionalities: The plugin is continuously improved with enhanced functionalities. The team at Zigaform takes security very seriously. 	
-* Documentation is available: Best of all, you can find an extensive documentation on the zigaform website, which comes in handy if you need any assistance on using the form or troubleshooting the commonly found errors. 	
-* Zigaform lets you create unlimited forms with essential field types including single line text, email, URL, paragraph text, radio, checkbox, dropdown, and reCaptcha. 	
-* It saves your time and increases form completions by preloading data in your forms. 	
-* Build complex forms with conditional logic. You can automatically hide or show fields or entire pages in your form based on selections your users make. [PRO VERSION]
-
- 
-== Frequently Asked Questions ==
-
-= How do I create an estimation form? =
-
-1. Click on the Zigaform Estimator Lite menu > click on add new form button
-2. A pop-up will appear, enter the title of your form 
-3. Drag and drop or click to add form elements to form
-4. Tune your options and click on save form button to save your changes
-5. A pop-up with shortcode will appear. just copy the shortcode and paste to your post/page.
-
-https://www.youtube.com/watch?v=XcLBt94ZRZ8&w=532&rel=0
-
- 
-
+<br/><br/><p align="center"><img src="https://s.w.org/style/images/codeispoetry.png?1" alt="Code is Poetry." /></p>
