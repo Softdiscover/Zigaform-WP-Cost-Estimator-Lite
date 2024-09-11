@@ -104,10 +104,10 @@ ob_start();
         <?php } ?>
       
     <?php if ( isset($main['price_currency_symbol'])) { ?>
-        <input type="hidden" class="_rockfm_form_price_symbol" value="<?php echo urldecode($main['price_currency_symbol']); ?>">
+        <input type="hidden" class="_rockfm_form_price_symbol" value="<?php echo esc_attr(urldecode($main['price_currency_symbol'])); ?>">
     <?php } ?>
     <?php if ( isset($main['price_currency'])) { ?>
-        <input type="hidden" class="_rockfm_form_price_currency" value="<?php echo $main['price_currency']; ?>">
+        <input type="hidden" class="_rockfm_form_price_currency" value="<?php echo esc_attr($main['price_currency']); ?>">
     <?php } ?>    
         
     <!--/ sticky content -->
@@ -140,10 +140,10 @@ ob_start();
     <!--/ sticky bottom out section -->
     
     <?php if ( ! empty($clogic)) { ?>
-        <input type="hidden" class="rockfm_clogic_data" value="<?php echo htmlentities(Uiform_Form_Helper::raw_json_encode($clogic), ENT_QUOTES, 'UTF-8'); ?>">
+        <textarea hidden="hidden" class="rockfm_clogic_data" style="display:none"><?php echo esc_html(htmlentities(Uiform_Form_Helper::raw_json_encode($clogic), ENT_QUOTES, 'UTF-8')); ?></textarea>
     <?php } ?>
-        <input type="hidden" class="rockfm_main_data" value="<?php echo htmlentities(Uiform_Form_Helper::raw_json_encode($main), ENT_QUOTES, 'UTF-8'); ?>">
-   
+        <textarea hidden="hidden" class="rockfm_main_data" style="display:none"><?php echo esc_html(htmlentities(Uiform_Form_Helper::raw_json_encode($main), ENT_QUOTES, 'UTF-8')); ?></textarea>
+        
     <div class="space10"></div>
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
         <div id="blueimp-gallery<?php echo $form_id; ?>" class="blueimp-gallery">

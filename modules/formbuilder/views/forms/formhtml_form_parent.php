@@ -39,21 +39,21 @@ ob_start();
         <input type="hidden" value="1" class="_rockfm_type_submit" name="_rockfm_type_submit">
         <input type="hidden" value="rocket_ms_front_submitajaxmode" name="action">
         <?php if ( isset($main['price_currency_symbol'])) { ?>
-        <input type="hidden" class="_rockfm_form_price_symbol" value="<?php echo urldecode($main['price_currency_symbol']); ?>">
+        <input type="hidden" class="_rockfm_form_price_symbol" value="<?php echo esc_attr(urldecode($main['price_currency_symbol'])); ?>">
     <?php } ?>
     <?php if ( isset($main['price_currency'])) { ?>
-        <input type="hidden" class="_rockfm_form_price_currency" value="<?php echo $main['price_currency']; ?>">
+        <input type="hidden" class="_rockfm_form_price_currency" value="<?php echo esc_attr($main['price_currency']); ?>">
     <?php } ?>  
     <div class="rockfm_form_hook_outertop"><?php echo $outertop; ?></div>
     <div class="uiform-main-form">
         <div class="rockfm_form_hook_innertop"><?php echo $innertop; ?></div>
            <?php echo $formInitHtml; ?>
     </div>
-     
-        <input type="hidden" class="rockfm_main_data" value="<?php echo htmlentities(Uiform_Form_Helper::raw_json_encode($main), ENT_QUOTES, 'UTF-8'); ?>">
-        <input type="hidden" class="rockfm_connection_data" value="<?php echo htmlentities(Uiform_Form_Helper::raw_json_encode($connections), ENT_QUOTES, 'UTF-8'); ?>">
-        <input type="hidden" class="rockfm_connection_extra" value="<?php echo htmlentities(Uiform_Form_Helper::raw_json_encode(apply_filters('zgfm_front_ms_aditional_js', [])), ENT_QUOTES, 'UTF-8'); ?>">
-        <input type="hidden" class="rockfm_data_initform" value="<?php echo $formInit; ?>">
+      
+        <textarea hidden="hidden" class="rockfm_main_data" style="display:none"><?php echo esc_html(htmlentities(Uiform_Form_Helper::raw_json_encode($main), ENT_QUOTES, 'UTF-8')); ?></textarea>
+        <textarea hidden="hidden" class="rockfm_connection_data" style="display:none"><?php echo esc_html(htmlentities(Uiform_Form_Helper::raw_json_encode($connections), ENT_QUOTES, 'UTF-8')); ?></textarea>
+        <textarea hidden="hidden" class="rockfm_connection_extra" style="display:none"><?php echo esc_html(htmlentities(Uiform_Form_Helper::raw_json_encode(apply_filters('zgfm_front_ms_aditional_js', [])), ENT_QUOTES, 'UTF-8')); ?></textarea>
+        <textarea hidden="hidden" class="rockfm_data_initform" style="display:none"><?php echo esc_html($formInit); ?></textarea>
         
         <?php if ( isset($progresscost['enable_st']) && intval($progresscost['enable_st']) === 1) { ?>
         
