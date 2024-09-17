@@ -1952,7 +1952,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
                 $mail_usr_recipient = (isset($form_data_onsubm['onsubm']['mail_usr_recipient'])) ? $form_data_onsubm['onsubm']['mail_usr_recipient'] : '';
                 $mail_replyto       = (isset($form_data_onsubm['onsubm']['mail_replyto'])) ? $form_data_onsubm['onsubm']['mail_replyto'] : '';
-
+                
+                
+                
                 $data_mail                = array();
                 $data_mail['from_mail']   = html_entity_decode(do_shortcode($mail_from_email));
                 $data_mail['from_name']   = html_entity_decode(do_shortcode($mail_from_name));
@@ -1962,8 +1964,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 $data_mail['to']          = trim($email_recipient);
                 $data_mail['cc']          = array_map('trim', explode(',', $email_cc));
                 $data_mail['bcc']         = array_map('trim', explode(',', $email_bcc));
-
+                
                 $tmp_replyto = $this->model_formrecords->getFieldOptRecord($idActivate, '', $mail_replyto, 'input');
+                 
                 if (!empty($tmp_replyto)) {
                     $data_mail['mail_replyto'] = $tmp_replyto;
                 }
@@ -2028,8 +2031,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data_mail['subject']            = html_entity_decode(do_shortcode($mail_usr_subject));
                     $data_mail['attachments']        = $attachments;
                     $data_mail['attachement_status'] = $attachment_status;
-
+                    
                     $data_mail['to']  = $this->model_formrecords->getFieldOptRecord($idActivate, '', $mail_usr_recipient, 'input');
+                     
                     $data_mail['cc']  = array_map('trim', explode(',', $mail_usr_cc));
                     $data_mail['bcc'] = array_map('trim', explode(',', $mail_usr_bcc));
                     if (!empty($mail_usr_replyto)) {

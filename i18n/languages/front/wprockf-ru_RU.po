@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.1.2
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.1.2 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.1.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.1.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -30,11 +30,11 @@ msgstr "Сводка заказа"
 msgid "Total cost"
 msgstr "Общая стоимость"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1172, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1201, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2864
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1172, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1201, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2868
 msgid "warning! Form was not submitted"
 msgstr "предупреждение! Форма не отправлена"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1169, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1197, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2859
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1169, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1197, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2863
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
@@ -50,7 +50,7 @@ msgstr "Ошибка! Файл превышает допустимый разм�
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Ошибка! Тип файла не разрешено загружать"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1951, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1996
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1951, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1999
 msgid "New form request"
 msgstr "New form request"
 
