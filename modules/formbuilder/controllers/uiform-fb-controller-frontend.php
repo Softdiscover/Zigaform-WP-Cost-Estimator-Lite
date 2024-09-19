@@ -3082,6 +3082,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         if (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css')) {
             wp_register_style(self::PREFIX . 'rockfm_form' . $id, site_url() . '/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
             wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
+        } elseif (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/css/rockfm_form' . $id . '.css')) {
+            wp_register_style(self::PREFIX . 'rockfm_form' . $id, site_url() . '/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/css/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
+            wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
         } elseif (file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
             wp_register_style(self::PREFIX . 'rockfm_form' . $id, UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
             wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
