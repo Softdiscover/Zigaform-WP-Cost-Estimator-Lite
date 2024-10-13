@@ -28,7 +28,7 @@ if ( ! defined('ABSPATH')) {
             `fmb_inv_tpl_html` longtext NULL ,
             `fmb_rec_tpl_st` TINYINT NULL DEFAULT 0 ,
             `fmb_inv_tpl_st` TINYINT NULL DEFAULT 0 ,
-            `fmb_type` TINYINT NULL DEFAULT 0 ,
+            `fmb_type` TINYINT(1) NULL DEFAULT 0 ,
 			`fmb_parent` BIGINT DEFAULT 0 ,
             PRIMARY KEY (`fmb_id`) ) " . $charset . ';';
         $wpdb->query($sql);
@@ -54,7 +54,7 @@ if ( ! defined('ABSPATH')) {
                 `fbh_referer` longtext,
                 `fbh_params` longtext,
                 `vis_uniqueid` varchar(10) NOT NULL,
-                `fbh_error` text,    
+                `fbh_error` longtext,    
             PRIMARY KEY (`fbh_id`) ) " . $charset . ';';
         $wpdb->query($sql);
         // fields type
@@ -159,7 +159,7 @@ if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) ===
         // insert data
         $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A);
 if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
-    $sql = "INSERT INTO $this->settings VALUES ('7.2.4', null, null, null, null, null, null, '', '1');";
+    $sql = "INSERT INTO $this->settings VALUES ('7.2.5', null, null, null, null, null, null, '', '1');";
     $wpdb->query($sql);
 }
 
@@ -220,7 +220,7 @@ if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) ===
         `pgl_data` longtext,
         `pgl_data2` longtext,
         `pgl_error` longtext,
-        `pgl_message` text,
+        `pgl_message` longtext,
         `pgr_id` INT NOT NULL ,
         `vis_last_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`pgl_id`)

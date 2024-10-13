@@ -114,7 +114,7 @@
 		}
 
 		// Listen for deactivate
-		$("#the-list [data-slug='" + plugin.slug + "'] .deactivate>a").on('click', function(event) {
+		$("#the-list [data-plugin='" + plugin.slug + "'] .deactivate>a").on('click', function(event) {
 			self.onDeactivateClicked(event);
 		});
 	};
