@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.2.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.2.9 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.1 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.2.9\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-29 01:59+0000\n"
+"POT-Creation-Date: 2024-11-07 19:18+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Charts"
 msgstr ""
 
-#: views/header.php:134, modules/formbuilder/views/forms/create_form.php:76, modules/formbuilder/views/forms/create_form_main.php:129, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:69, modules/formbuilder/views/settings/view_settings.php:31, modules/formbuilder/views/fields/modal/settings_field_input_14.php:24, modules/formbuilder/views/fields/modal/settings_field_input_15.php:24
+#: views/header.php:134, modules/formbuilder/views/forms/create_form.php:76, modules/formbuilder/views/forms/create_form_main.php:129, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:68, modules/formbuilder/views/settings/view_settings.php:31, modules/formbuilder/views/fields/modal/settings_field_input_14.php:24, modules/formbuilder/views/fields/modal/settings_field_input_15.php:24
 msgid "Settings"
 msgstr ""
 
@@ -1566,11 +1566,11 @@ msgstr ""
 msgid "skin section. you can change skin options of your form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form_main.php:133, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:99, modules/formbuilder/views/fields/modal/field_opt_column.php:78, modules/formbuilder/views/fields/modal/settings_field_input_4.php:126
+#: modules/formbuilder/views/forms/create_form_main.php:133, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:98, modules/formbuilder/views/fields/modal/field_opt_column.php:78, modules/formbuilder/views/fields/modal/settings_field_input_4.php:126
 msgid "Skin"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form_main.php:138, modules/formbuilder/views/forms/settings_form_progressbar.php:100, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:110, modules/formbuilder/views/settings/view_settings.php:39
+#: modules/formbuilder/views/forms/create_form_main.php:138, modules/formbuilder/views/forms/settings_form_progressbar.php:100, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:108, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:191, modules/formbuilder/views/settings/view_settings.php:39
 msgid "Global"
 msgstr ""
 
@@ -2726,7 +2726,7 @@ msgstr ""
 msgid "Theme 1"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:75, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:45, modules/formbuilder/views/forms/settings_form_wizard.php:125, modules/formbuilder/views/fields/modal/settings_field_input_2.php:221
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:75, modules/formbuilder/views/forms/settings_form_wizard.php:125, modules/formbuilder/views/fields/modal/settings_field_input_2.php:221
 msgid "Theme 2"
 msgstr ""
 
@@ -2734,15 +2734,15 @@ msgstr ""
 msgid "Theme 3"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:84, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:53, modules/formbuilder/views/fields/modal/field_opt_column.php:627
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:84, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:52, modules/formbuilder/views/fields/modal/field_opt_column.php:627
 msgid "Position"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:89, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:58
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:89, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:57
 msgid "Outer Top"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:90, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:59
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:90, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:58
 msgid "Inner Top"
 msgstr ""
 
@@ -2754,7 +2754,7 @@ msgstr ""
 msgid "Inactive mode"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:135, modules/formbuilder/views/forms/settings_form_progressbar.php:188, modules/formbuilder/views/forms/settings_form_progressbar.php:243, modules/formbuilder/views/forms/settings_form_progressbar.php:295, modules/formbuilder/views/forms/settings_form_progressbar.php:338, modules/formbuilder/views/forms/settings_form_progressbar.php:391, modules/formbuilder/views/forms/settings_form_progressbar.php:458, modules/formbuilder/views/forms/settings_form_progressbar.php:499, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:156, modules/formbuilder/views/forms/settings_form_skin.php:143, modules/formbuilder/views/forms/settings_form_submission.php:58, modules/formbuilder/views/forms/settings_form_summbox.php:257, modules/formbuilder/views/forms/settings_form_wizard.php:141, modules/formbuilder/views/forms/settings_form_wizard.php:209, modules/formbuilder/views/forms/settings_form_wizard.php:299, modules/formbuilder/views/forms/settings_form_wizard.php:366, modules/formbuilder/views/fields/modal/settings_field_input_1.php:591, modules/formbuilder/views/fields/modal/settings_field_input_12.php:267, modules/formbuilder/views/fields/modal/settings_field_input_13.php:246, modules/formbuilder/views/fields/modal/settings_field_input_18.php:257
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:135, modules/formbuilder/views/forms/settings_form_progressbar.php:188, modules/formbuilder/views/forms/settings_form_progressbar.php:243, modules/formbuilder/views/forms/settings_form_progressbar.php:295, modules/formbuilder/views/forms/settings_form_progressbar.php:338, modules/formbuilder/views/forms/settings_form_progressbar.php:391, modules/formbuilder/views/forms/settings_form_progressbar.php:458, modules/formbuilder/views/forms/settings_form_progressbar.php:499, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:154, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:237, modules/formbuilder/views/forms/settings_form_skin.php:143, modules/formbuilder/views/forms/settings_form_submission.php:58, modules/formbuilder/views/forms/settings_form_summbox.php:257, modules/formbuilder/views/forms/settings_form_wizard.php:141, modules/formbuilder/views/forms/settings_form_wizard.php:209, modules/formbuilder/views/forms/settings_form_wizard.php:299, modules/formbuilder/views/forms/settings_form_wizard.php:366, modules/formbuilder/views/fields/modal/settings_field_input_1.php:591, modules/formbuilder/views/fields/modal/settings_field_input_12.php:267, modules/formbuilder/views/fields/modal/settings_field_input_13.php:246, modules/formbuilder/views/fields/modal/settings_field_input_18.php:257
 msgid "Background color"
 msgstr ""
 
@@ -2762,11 +2762,11 @@ msgstr ""
 msgid "Text color"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:161, modules/formbuilder/views/forms/settings_form_progressbar.php:213, modules/formbuilder/views/forms/settings_form_progressbar.php:268, modules/formbuilder/views/forms/settings_form_progressbar.php:364, modules/formbuilder/views/forms/settings_form_progressbar.php:416, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:169, modules/formbuilder/views/forms/settings_form_wizard.php:177, modules/formbuilder/views/forms/settings_form_wizard.php:244, modules/formbuilder/views/forms/settings_form_wizard.php:334
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:161, modules/formbuilder/views/forms/settings_form_progressbar.php:213, modules/formbuilder/views/forms/settings_form_progressbar.php:268, modules/formbuilder/views/forms/settings_form_progressbar.php:364, modules/formbuilder/views/forms/settings_form_progressbar.php:416, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:167, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:250, modules/formbuilder/views/forms/settings_form_wizard.php:177, modules/formbuilder/views/forms/settings_form_wizard.php:244, modules/formbuilder/views/forms/settings_form_wizard.php:334
 msgid "Number text color"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar.php:180, modules/formbuilder/views/forms/settings_form_progressbar.php:383, modules/formbuilder/views/forms/settings_form_progressbar.php:491, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:148, modules/formbuilder/views/forms/settings_form_wizard.php:201
+#: modules/formbuilder/views/forms/settings_form_progressbar.php:180, modules/formbuilder/views/forms/settings_form_progressbar.php:383, modules/formbuilder/views/forms/settings_form_progressbar.php:491, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:146, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:229, modules/formbuilder/views/forms/settings_form_wizard.php:201
 msgid "Active Mode"
 msgstr ""
 
@@ -2806,15 +2806,15 @@ msgstr ""
 msgid "theme"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar_cost.php:78
+#: modules/formbuilder/views/forms/settings_form_progressbar_cost.php:77
 msgid "Cost at 100% "
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar_cost.php:118, modules/formbuilder/views/forms/settings_form_skin.php:136, modules/formbuilder/views/forms/settings_form_submission.php:51, modules/formbuilder/views/forms/settings_form_summbox.php:250, modules/formbuilder/views/fields/modal/field_opt_column.php:385, modules/formbuilder/views/fields/modal/settings_field_input_1.php:584, modules/formbuilder/views/fields/modal/settings_field_input_12.php:260, modules/formbuilder/views/fields/modal/settings_field_input_13.php:239, modules/formbuilder/views/fields/modal/settings_field_input_18.php:250
+#: modules/formbuilder/views/forms/settings_form_progressbar_cost.php:116, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:199, modules/formbuilder/views/forms/settings_form_skin.php:136, modules/formbuilder/views/forms/settings_form_submission.php:51, modules/formbuilder/views/forms/settings_form_summbox.php:250, modules/formbuilder/views/fields/modal/field_opt_column.php:385, modules/formbuilder/views/fields/modal/settings_field_input_1.php:584, modules/formbuilder/views/fields/modal/settings_field_input_12.php:260, modules/formbuilder/views/fields/modal/settings_field_input_13.php:239, modules/formbuilder/views/fields/modal/settings_field_input_18.php:250
 msgid "Background"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_progressbar_cost.php:130, modules/formbuilder/views/fields/modal/field_opt_column.php:827
+#: modules/formbuilder/views/forms/settings_form_progressbar_cost.php:128, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:211, modules/formbuilder/views/fields/modal/field_opt_column.php:827
 msgid "Shadow color"
 msgstr ""
 

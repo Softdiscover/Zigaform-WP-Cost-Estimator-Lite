@@ -150,11 +150,11 @@ if ( ! defined('ABSPATH')) {
     <div class="col-sm-12">
       
       <p>
-          <a href="https://1.envato.market/DdzY2"
+          <a href="https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/"
              target="_blank"
              class="btn btn-info btn-lg"><i class="fa fa-cloud-download"></i> <span><?php echo __('DOWNLOAD', 'FRocket_admin'); ?></span></a>
         <a 
-            href="https://1.envato.market/DdzY2"
+            href="https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/"
              target="_blank"
             class="btn btn-success btn-lg"><i class="fa fa-eye" aria-hidden="true"></i> <span><?php echo __('GET STARTED', 'FRocket_admin'); ?></span></a>
       </p>

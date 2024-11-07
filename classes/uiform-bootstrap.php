@@ -126,7 +126,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module
                 $notice_content = esc_html__('And hey, if you do, you can check the PRO version and get access to more features!', 'FRocket_admin');
                 $button_content = esc_html__('Go Zigaform Pro', 'FRocket_admin');
             } else {
-                $notice_url     = 'https://1.envato.market/DdzY2';
+                $notice_url     = 'https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/';
                 $notice_heading = esc_html__('Thanks for installing Zigaform. We hope you like it!', 'FRocket_admin');
                 $notice_content = esc_html__('And hey, if you do, give it a 5-star rating on Codencayon to help us spread the word and boost our motivation.', 'FRocket_admin');
                 $button_content = esc_html__('Go Zigaform', 'FRocket_admin');
@@ -771,7 +771,7 @@ JS;
               $plugin_page = admin_url('admin.php?page=zgfm_form_builder');
               $meta[]      = "<a href='https://wordpress-cost-estimator.zigaform.com//#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __('Support', 'FRocket_admin') . '</a>';
             if ( ZIGAFORM_F_LITE === 1) {
-                $meta[] = "<a href='https://1.envato.market/DdzY2' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __('Get Premium', 'FRocket_admin') . '</a>';
+                $meta[] = "<a href='https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __('Get Premium', 'FRocket_admin') . '</a>';
                 // $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
             }
 

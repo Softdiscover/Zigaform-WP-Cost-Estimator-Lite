@@ -42,7 +42,6 @@ if (!defined('ABSPATH')) {
                 <div class="sfdc-form-group">
                     <select id="uifm_frm_pbar_cost_theme_type" class="sfdc-form-control">
                         <option value="default"><?php echo __('Theme 1', 'FRocket_admin'); ?></option>
-                        <option value="theme2"><?php echo __('Theme 2', 'FRocket_admin'); ?></option>
                     </select>
                 </div>
             </div>
@@ -102,9 +101,8 @@ if (!defined('ABSPATH')) {
         </div>
         <div class="space20"></div>
         
-        
-        
-        <div class="sfdc-row" >
+        <div class="zgfm_costpbar_theme_options_container" id="zgfm_costpbar_theme_options_default">
+         <div class="sfdc-row" >
             <div class="sfdc-col-md-12">
                 <div class="sfdc-form-group">
                     <label><?php echo __('Global', 'FRocket_admin'); ?></label>
@@ -182,6 +180,90 @@ if (!defined('ABSPATH')) {
                 </div>
 
             </div>
+        </div>
+        </div>
+        
+        
+        <div class="zgfm_costpbar_theme_options_container" id="zgfm_costpbar_theme_options_theme2">
+         <div class="sfdc-row" >
+            <div class="sfdc-col-md-12">
+                <div class="sfdc-form-group">
+                    <label><?php echo __('Global', 'FRocket_admin'); ?></label>
+                    <div class="">
+                        <div class="sfdc-col-md-1">
+
+                        </div>
+                        <div class="sfdc-col-md-11">
+                            <div class="sfdc-row" >
+                                <div class="sfdc-col-md-5">
+                                    <label><?php echo __('Background', 'FRocket_admin'); ?></label>
+                                </div>
+                                <div class="sfdc-col-sm-7">
+                                    <div data-form-store="skin_tab_default_bgcolor" class="sfdc-input-group uifm-evt-progressbarcost-color">
+                                        <span class="sfdc-input-group-addon"><i></i></span>
+                                        <input type="text" value="" id="uifm_frm_pbar_cost_theme2_bg"  class="sfdc-form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space20"></div>
+                            <div class="sfdc-row" >
+                                <div class="sfdc-col-md-5">
+                                    <label><?php echo __('Shadow color', 'FRocket_admin'); ?></label>
+                                </div>
+                                <div class="sfdc-col-sm-7">
+                                    <div data-form-store="skin_tab_default_shadowcolor" class="sfdc-input-group uifm-evt-progressbarcost-color">
+                                        <span class="sfdc-input-group-addon"><i></i></span>
+                                        <input type="text" value="" id="uifm_frm_pbar_cost_theme2_shadowcolor"  class="sfdc-form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="sfdc-row" >
+            <div class="sfdc-col-md-12">
+                <div class="sfdc-form-group">
+                    <label><?php echo __('Active Mode', 'FRocket_admin'); ?></label>
+                    <div class="">
+                        <div class="sfdc-col-md-1">
+
+                        </div>
+                        <div class="sfdc-col-md-11">
+                            <div class="sfdc-row" >
+                                <div class="sfdc-col-md-5">
+                                    <label><?php echo __('Background color', 'FRocket_admin'); ?></label>
+                                </div>
+                                <div class="sfdc-col-sm-7">
+                                    <div data-form-store="skin_tab_default_active_bg" class="sfdc-input-group uifm-evt-progressbarcost-color">
+                                        <span class="sfdc-input-group-addon"><i></i></span>
+                                        <input type="text" value="" id="uifm_frm_pbar_cost_theme2_active_bg"  class="sfdc-form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space20"></div>
+                            <div class="sfdc-row" >
+                               
+                                <div class="sfdc-col-md-5">
+                                    <label><?php echo __('Number text color', 'FRocket_admin'); ?></label>
+                                </div>
+                                <div class="sfdc-col-sm-7">
+                                    <div data-form-store="skin_tab_default_active_txt" class="sfdc-input-group uifm-evt-progressbarcost-color">
+                                        <span class="sfdc-input-group-addon"><i></i></span>
+                                        <input type="text" value="" id="uifm_frm_pbar_cost_theme2_active_txt"  class="sfdc-form-control" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         </div>
         
     </div>

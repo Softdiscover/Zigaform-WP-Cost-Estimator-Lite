@@ -49,7 +49,7 @@ if ( ! defined('ABSPATH')) {
                                                src="<?php echo UIFORM_FORMS_URL; ?>/assets/backend/image/about/zigaform-rate-icon.png">
                                             </a>
                                             <div id="zgfm-page-about-leavestars" >
-                                                    <a href="https://1.envato.market/DdzY2"
+                                                    <a href="https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/"
                                                        target="_blank"><?php echo __('Leave 5 Stars', 'FRocket_admin'); ?></a>
                                             </div>
                                     </div>
