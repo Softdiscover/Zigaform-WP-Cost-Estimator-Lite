@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.1
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.1 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.8
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.8 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.1\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.8\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-07 19:18+0000\n"
+"POT-Creation-Date: 2024-11-14 20:23+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#: views/footer-global.php:19, modules/addon_mgtranslate/controllers/backend.php:98, modules/formbuilder/views/forms/create_form_main.php:437, modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/create_form_modals.php:146, modules/formbuilder/views/forms/formhtml_form.php:234, modules/formbuilder/views/forms/formhtml_form_parent.php:120, modules/formbuilder/views/forms/modal1_footer.php:19, modules/formbuilder/views/forms/templates_fields.php:1908, modules/formbuilder/views/fields/render_front/block_label.php:89, modules/formbuilder/views/fields/templates/prevpanel_main.php:44, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:21
+#: views/footer-global.php:19, modules/addon_mgtranslate/controllers/backend.php:98, modules/formbuilder/views/forms/create_form_main.php:437, modules/formbuilder/views/forms/create_form_modals.php:31, modules/formbuilder/views/forms/create_form_modals.php:146, modules/formbuilder/views/forms/formhtml_form.php:237, modules/formbuilder/views/forms/formhtml_form_parent.php:120, modules/formbuilder/views/forms/modal1_footer.php:19, modules/formbuilder/views/forms/templates_fields.php:1908, modules/formbuilder/views/fields/render_front/block_label.php:89, modules/formbuilder/views/fields/templates/prevpanel_main.php:44, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:21
 msgid "Close"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:35, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1265
+#: views/footer.php:35, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1266
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "smartphone"
 msgstr ""
 
-#: views/header.php:53, modules/formbuilder/views/forms/create_form.php:186
+#: views/header.php:53, modules/formbuilder/views/forms/create_form.php:191
 msgid "Records"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Charts"
 msgstr ""
 
-#: views/header.php:134, modules/formbuilder/views/forms/create_form.php:76, modules/formbuilder/views/forms/create_form_main.php:129, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:68, modules/formbuilder/views/settings/view_settings.php:31, modules/formbuilder/views/fields/modal/settings_field_input_14.php:24, modules/formbuilder/views/fields/modal/settings_field_input_15.php:24
+#: views/header.php:134, modules/formbuilder/views/forms/create_form.php:81, modules/formbuilder/views/forms/create_form_main.php:129, modules/formbuilder/views/forms/settings_form_progressbar_cost.php:68, modules/formbuilder/views/settings/view_settings.php:31, modules/formbuilder/views/fields/modal/settings_field_input_14.php:24, modules/formbuilder/views/fields/modal/settings_field_input_15.php:24
 msgid "Settings"
 msgstr ""
 
@@ -163,7 +163,7 @@ msgid "Backup"
 msgstr ""
 
 #: views/header.php:144
-msgid "Payment Gateways"
+msgid "Payment Methods"
 msgstr ""
 
 #: views/header.php:149
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Zigaform Community"
 msgstr ""
 
-#: views/header.php:176, modules/addon/views/backend/list_extensions.php:28, modules/formbuilder/views/forms/create_form.php:57, modules/formbuilder/views/forms/create_form.php:57
+#: views/header.php:176, modules/addon/views/backend/list_extensions.php:28, modules/formbuilder/views/forms/create_form.php:62, modules/formbuilder/views/forms/create_form.php:62
 msgid "Extensions"
 msgstr ""
 
@@ -810,55 +810,55 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:600
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:601
 msgid "Rollback Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:621
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:622
 msgid "Error message"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:644, modules/formbuilder/views/forms/create_form_main.php:438
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:645, modules/formbuilder/views/forms/create_form_main.php:438
 msgid "Form variables"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1278
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1279
 msgid "Success"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1280
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1281
 msgid "Go to List"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1280
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1281
 msgid "Back to Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1296
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1297
 msgid "Shortcodes"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1367, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1406, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1550, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1721, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1877, modules/multistep/controllers/dashboard.php:118
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1368, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1407, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1551, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1723, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1879, modules/multistep/controllers/dashboard.php:118
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1412
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1413
 msgid "form id not found"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1490, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1703, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1860
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1491, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1705, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1862
 msgid "Error on saving form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:3783
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:3785
 msgid "Forms in trash"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2126
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2212
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2788
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2887
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -910,11 +910,11 @@ msgstr ""
 msgid "Records in trash"
 msgstr ""
 
-#: modules/gateways/controllers/uiform-pg-controller-records.php:306
+#: modules/gateways/controllers/uiform-pg-controller-records.php:307
 msgid "Invoices list"
 msgstr ""
 
-#: modules/gateways/controllers/uiform-pg-controller-records.php:340
+#: modules/gateways/controllers/uiform-pg-controller-records.php:341
 msgid "Invoices in trash"
 msgstr ""
 
@@ -1078,7 +1078,7 @@ msgstr ""
 msgid "To form values"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:101, modules/addon_webhook/views/backend/get_content.php:140, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:35, modules/formbuilder/views/forms/create_form.php:320, modules/formbuilder/views/forms/list_forms_table.php:42, modules/formbuilder/views/records/list_records.php:39, modules/formbuilder/views/records/list_records_getdatatable.php:27, modules/formbuilder/views/settings/backup_settings.php:70, modules/gateways/views/records/list_records.php:42, modules/gateways/views/settings/view_settings.php:49, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:119
+#: modules/addon_webhook/views/backend/get_content.php:101, modules/addon_webhook/views/backend/get_content.php:140, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:35, modules/formbuilder/views/forms/create_form.php:330, modules/formbuilder/views/forms/list_forms_table.php:42, modules/formbuilder/views/records/list_records.php:39, modules/formbuilder/views/records/list_records_getdatatable.php:27, modules/formbuilder/views/settings/backup_settings.php:70, modules/gateways/views/records/list_records.php:42, modules/gateways/views/settings/view_settings.php:49, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:119
 msgid "Options"
 msgstr ""
 
@@ -1214,7 +1214,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:52, modules/formbuilder/views/forms/create_form.php:324
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:52, modules/formbuilder/views/forms/create_form.php:334
 msgid "Rollback"
 msgstr ""
 
@@ -1410,123 +1410,127 @@ msgstr ""
 msgid "Global settings"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:75, modules/multistep/views/dashboard/list.php:53
+#: modules/formbuilder/views/forms/create_form.php:58, modules/formbuilder/views/forms/create_form.php:59
+msgid "Checkout"
+msgstr ""
+
+#: modules/formbuilder/views/forms/create_form.php:80, modules/multistep/views/dashboard/list.php:53
 msgid "Add New Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:98
+#: modules/formbuilder/views/forms/create_form.php:103
 msgid "Connection Settings"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:99
+#: modules/formbuilder/views/forms/create_form.php:104
 msgid "Add conditional logic for connection"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:110
+#: modules/formbuilder/views/forms/create_form.php:115
 msgid "Fallback"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:112
+#: modules/formbuilder/views/forms/create_form.php:117
 msgid "It is used when connections do not meet the conditions."
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:132
+#: modules/formbuilder/views/forms/create_form.php:137
 msgid "All conditions must be met"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:133
+#: modules/formbuilder/views/forms/create_form.php:138
 msgid "At least one of the conditions must be satisfied"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:135
+#: modules/formbuilder/views/forms/create_form.php:140
 msgid "Add new condition"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:140
+#: modules/formbuilder/views/forms/create_form.php:145
 msgid "Delete Connection"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:141
+#: modules/formbuilder/views/forms/create_form.php:146
 msgid "Delete All conditions"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:180
+#: modules/formbuilder/views/forms/create_form.php:185
 msgid "Main"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:181
+#: modules/formbuilder/views/forms/create_form.php:186
 msgid "Recaptcha v3"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:182, modules/formbuilder/views/forms/templates_fields.php:2006, modules/formbuilder/views/fields/modal/settings_field_input.php:80, modules/formbuilder/views/fields/modal/settings_field_input.php:87, modules/formbuilder/views/fields/modal/settings_field_input_2.php:158
+#: modules/formbuilder/views/forms/create_form.php:187, modules/formbuilder/views/forms/templates_fields.php:2006, modules/formbuilder/views/fields/modal/settings_field_input.php:80, modules/formbuilder/views/fields/modal/settings_field_input.php:87, modules/formbuilder/views/fields/modal/settings_field_input_2.php:158
 msgid "Price"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:183, modules/formbuilder/views/fields/modal/field_opt_column.php:931, modules/formbuilder/views/fields/modal/settings_form_more.php:194
+#: modules/formbuilder/views/forms/create_form.php:188, modules/formbuilder/views/fields/modal/field_opt_column.php:931, modules/formbuilder/views/fields/modal/settings_form_more.php:194
 msgid "Additional"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:184
+#: modules/formbuilder/views/forms/create_form.php:189
 msgid "PDF"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:185, modules/formbuilder/views/fields/modal/settings_field_validate.php:103, modules/formbuilder/views/fields/modal/settings_field_validate.php:325
+#: modules/formbuilder/views/forms/create_form.php:190, modules/formbuilder/views/fields/modal/settings_field_validate.php:103, modules/formbuilder/views/fields/modal/settings_field_validate.php:325
 msgid "Email"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:297
+#: modules/formbuilder/views/forms/create_form.php:307
 msgid "Dev Options"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:301
+#: modules/formbuilder/views/forms/create_form.php:311
 msgid "test"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:302
+#: modules/formbuilder/views/forms/create_form.php:312
 msgid "Show data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:304
+#: modules/formbuilder/views/forms/create_form.php:314
 msgid "Multistep - Show data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:305
+#: modules/formbuilder/views/forms/create_form.php:315
 msgid "Multistep - Show data, selected form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:306
+#: modules/formbuilder/views/forms/create_form.php:316
 msgid "Multistep - show settings"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:307
+#: modules/formbuilder/views/forms/create_form.php:317
 msgid "Multistep - Limpiar form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:308
+#: modules/formbuilder/views/forms/create_form.php:318
 msgid "Multistep - Refresh Current Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:310
+#: modules/formbuilder/views/forms/create_form.php:320
 msgid "Generate field static data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:325, modules/formbuilder/views/forms/settings_form_calc.php:84, modules/formbuilder/views/forms/settings_form_email.php:482, modules/formbuilder/views/forms/settings_form_email.php:489, modules/formbuilder/views/forms/settings_form_summbox.php:98
+#: modules/formbuilder/views/forms/create_form.php:335, modules/formbuilder/views/forms/settings_form_calc.php:106, modules/formbuilder/views/forms/settings_form_email.php:482, modules/formbuilder/views/forms/settings_form_email.php:489, modules/formbuilder/views/forms/settings_form_summbox.php:98
 msgid "Variables"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:327
+#: modules/formbuilder/views/forms/create_form.php:337
 msgid "C.Logic Graph"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:329
+#: modules/formbuilder/views/forms/create_form.php:339
 msgid "Refresh & Clean Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:336
+#: modules/formbuilder/views/forms/create_form.php:346
 msgid "preview"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:346, modules/formbuilder/views/forms/create_form.php:342
+#: modules/formbuilder/views/forms/create_form.php:356, modules/formbuilder/views/forms/create_form.php:352
 msgid "Save form"
 msgstr ""
 
@@ -1910,15 +1914,15 @@ msgstr ""
 msgid "Recaptcha failed, refresh page and try again"
 msgstr ""
 
-#: modules/formbuilder/views/forms/formhtml_form.php:99, modules/formbuilder/views/forms/settings_form_main_record.php:24
+#: modules/formbuilder/views/forms/formhtml_form.php:102, modules/formbuilder/views/forms/settings_form_main_record.php:24
 msgid "Summary"
 msgstr ""
 
-#: modules/formbuilder/views/forms/formhtml_form.php:171, modules/formbuilder/views/forms/formhtml_form_multistep.php:59, modules/formbuilder/views/forms/templates_fields.php:165, modules/formbuilder/views/fields/modal/settings_field_input_1.php:35
+#: modules/formbuilder/views/forms/formhtml_form.php:174, modules/formbuilder/views/forms/formhtml_form_multistep.php:59, modules/formbuilder/views/forms/templates_fields.php:165, modules/formbuilder/views/fields/modal/settings_field_input_1.php:35
 msgid "Previous"
 msgstr ""
 
-#: modules/formbuilder/views/forms/formhtml_form.php:174, modules/formbuilder/views/forms/formhtml_form_multistep.php:62, modules/formbuilder/views/forms/templates_fields.php:168, modules/formbuilder/views/forms/templates_fields.php:1690, modules/formbuilder/views/fields/modal/settings_field_input_1.php:34, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:32
+#: modules/formbuilder/views/forms/formhtml_form.php:177, modules/formbuilder/views/forms/formhtml_form_multistep.php:62, modules/formbuilder/views/forms/templates_fields.php:168, modules/formbuilder/views/forms/templates_fields.php:1690, modules/formbuilder/views/fields/modal/settings_field_input_1.php:34, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:32
 msgid "Next"
 msgstr ""
 
@@ -2030,7 +2034,7 @@ msgstr ""
 msgid "Copy and paste the shortcode to your desired page"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:59, modules/formbuilder/views/settings/system_check.php:223, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/editoffline.php:55, modules/gateways/views/settings/editpaypal.php:107, modules/gateways/views/settings/view_settings.php:48
+#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:59, modules/formbuilder/views/settings/system_check.php:275, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/editoffline.php:55, modules/gateways/views/settings/editpaypal.php:107, modules/gateways/views/settings/view_settings.php:48
 msgid "Status"
 msgstr ""
 
@@ -2114,80 +2118,128 @@ msgstr ""
 msgid "Conditional Logic Graph"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:23
-msgid "ENABLE CUSTOM MATH CALCULATION"
+#: modules/formbuilder/views/forms/settings_form_calc.php:27
+msgid "ENABLE COST ESTIMATION"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:32
-msgid "this will enable math calculation."
+#: modules/formbuilder/views/forms/settings_form_calc.php:36
+msgid "this will enable cost estimation for the whole form."
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_calc.php:48
+msgid "ENABLE CUSTOM MATH CALCULATION"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_calc.php:57
+msgid "this will enable custom math calculation."
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_calc.php:72
 msgid "Add New Optional Variable"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:51
+#: modules/formbuilder/views/forms/settings_form_calc.php:75
 msgid "Regenerate all variables"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:89
+#: modules/formbuilder/views/forms/settings_form_calc.php:111
 msgid "CHOOSE FIELD"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:107
+#: modules/formbuilder/views/forms/settings_form_calc.php:129
 msgid "CHOOSE ACTION"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:124
+#: modules/formbuilder/views/forms/settings_form_calc.php:146
 msgid "CHOOSE OPTION"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:141
+#: modules/formbuilder/views/forms/settings_form_calc.php:163
 msgid "DATA TYPE"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:147
+#: modules/formbuilder/views/forms/settings_form_calc.php:169
 msgid "Select an option"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:148
+#: modules/formbuilder/views/forms/settings_form_calc.php:170
 msgid "Numeric"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:149
+#: modules/formbuilder/views/forms/settings_form_calc.php:171
 msgid "Character"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:162, modules/formbuilder/views/forms/settings_form_calc.php:226
+#: modules/formbuilder/views/forms/settings_form_calc.php:184, modules/formbuilder/views/forms/settings_form_calc.php:248
 msgid "COPY AND PASTE VARIABLE"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:175, modules/formbuilder/views/forms/settings_form_calc.php:239
+#: modules/formbuilder/views/forms/settings_form_calc.php:197, modules/formbuilder/views/forms/settings_form_calc.php:261
 msgid "Place the cursor on the source code and press button"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:181, modules/formbuilder/views/forms/settings_form_calc.php:245
+#: modules/formbuilder/views/forms/settings_form_calc.php:203, modules/formbuilder/views/forms/settings_form_calc.php:267
 msgid "ADD VARIABLE"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:202
+#: modules/formbuilder/views/forms/settings_form_calc.php:224
 msgid "Optional Variables"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:207
+#: modules/formbuilder/views/forms/settings_form_calc.php:229
 msgid "CHOOSE OPTIONAL VARIABLE"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:273
+#: modules/formbuilder/views/forms/settings_form_calc.php:295
 msgid "Temporal variable title"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:288, modules/formbuilder/views/forms/settings_form_progressbar.php:553, modules/formbuilder/views/forms/settings_form_wizard.php:99, modules/formbuilder/views/forms/settings_form_wizard.php:430, modules/formbuilder/views/records/list_records.php:75, modules/formbuilder/views/records/list_records.php:78, modules/formbuilder/views/settings/backup_settings.php:97, modules/gateways/views/records/list_records.php:81, modules/gateways/views/records/list_records.php:84
+#: modules/formbuilder/views/forms/settings_form_calc.php:310, modules/formbuilder/views/forms/settings_form_progressbar.php:553, modules/formbuilder/views/forms/settings_form_wizard.php:99, modules/formbuilder/views/forms/settings_form_wizard.php:430, modules/formbuilder/views/records/list_records.php:75, modules/formbuilder/views/records/list_records.php:78, modules/formbuilder/views/settings/backup_settings.php:97, modules/gateways/views/records/list_records.php:81, modules/gateways/views/records/list_records.php:84
 msgid "Delete"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_calc.php:306
+#: modules/formbuilder/views/forms/settings_form_calc.php:328
 msgid "Form Variables"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:24
+msgid "Enable Payment"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:33
+msgid "it will allow to show a payment page after submitting form"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:43
+msgid "Allow users to download PDFs (Invoice and Record)"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:53
+msgid "this will be shown in the payment page"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:62
+msgid "Enable Payment Method Management"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:82
+msgid "Select payment methods "
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:103, modules/gateways/views/settings/editoffline.php:44, modules/gateways/views/settings/editpaypal.php:87
+msgid "Return URL"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:104
+msgid "Enter Return URL"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:106, modules/gateways/views/settings/editpaypal.php:97
+msgid "Cancel URL"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_checkout.php:107
+msgid "Enter Cancel URL"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_email.php:24
@@ -2450,55 +2502,39 @@ msgstr ""
 msgid "Custom template "
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:24
-msgid "ENABLE COST ESTIMATION"
-msgstr ""
-
-#: modules/formbuilder/views/forms/settings_form_main.php:33
-msgid "this will enable cost estimation for the whole form."
-msgstr ""
-
-#: modules/formbuilder/views/forms/settings_form_main.php:46
-msgid "ENABLE PAYMENT"
-msgstr ""
-
-#: modules/formbuilder/views/forms/settings_form_main.php:55
-msgid "it will allow to show a payment page after submitting form"
-msgstr ""
-
-#: modules/formbuilder/views/forms/settings_form_main.php:65
+#: modules/formbuilder/views/forms/settings_form_main.php:25
 msgid "REFRESH AND CLEAN FORM"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:71
+#: modules/formbuilder/views/forms/settings_form_main.php:31
 msgid "Refresh"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:74, modules/formbuilder/views/forms/settings_form_main.php:90
+#: modules/formbuilder/views/forms/settings_form_main.php:34, modules/formbuilder/views/forms/settings_form_main.php:50
 msgid "this is used in order to fix if something is not showing fine on the preview editor panel"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:81
+#: modules/formbuilder/views/forms/settings_form_main.php:41
 msgid "REFRESH FORM FROM DATA"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:87
+#: modules/formbuilder/views/forms/settings_form_main.php:47
 msgid "Refresh From Data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:98
+#: modules/formbuilder/views/forms/settings_form_main.php:58
 msgid "AUTOSCROLL AFTER LOADING FORM"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:107
+#: modules/formbuilder/views/forms/settings_form_main.php:67
 msgid "if you want to stop the autoscroll when the form is loaded"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:120
+#: modules/formbuilder/views/forms/settings_form_main.php:80
 msgid "ENABLE NO CONFLICT OPTION"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main.php:129
+#: modules/formbuilder/views/forms/settings_form_main.php:89
 msgid "if you see something weird when the form is loaded, maybe there is a conflict with your site, just enable this option"
 msgstr ""
 
@@ -2594,7 +2630,7 @@ msgstr ""
 msgid "CONTROL WHOLE HTML CONTENT OF MAIL NOTIFICATION"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_email.php:35, modules/formbuilder/views/forms/settings_form_main_pdf.php:146
+#: modules/formbuilder/views/forms/settings_form_main_email.php:35, modules/formbuilder/views/forms/settings_form_main_pdf.php:125
 msgid "Enable control whole html content"
 msgstr ""
 
@@ -2611,54 +2647,46 @@ msgid "Disable email submission for this form"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_main_pdf.php:24
-msgid "SHOW PDF ON FRONTEND"
-msgstr ""
-
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:34
-msgid "this will be shown in the payment page"
-msgstr ""
-
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:45
 msgid "Dimensions of paper sizes in points"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:62
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:41
 msgid "Orientation of Paper"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:67
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:46
 msgid "landscape"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:68
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:47
 msgid "letter"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:69
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:48
 msgid "portrait"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:77
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:56
 msgid "Options below are only included in the pdf when your html content doesn't have Body and Html tag "
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:85
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:64
 msgid "SELECT CHARACTER ENCONDING"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:117
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:96
 msgid "TEXT FONT"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:136
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:115
 msgid "CONTROL WHOLE HTML CONTENT OF PDF"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:150
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:129
 msgid "When you active this option, you have to add html, head, and body tag in the template because it allows you to have whole control of html content for pdf generation. remember this is only for all pdf content of zigaform"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_main_pdf.php:164
+#: modules/formbuilder/views/forms/settings_form_main_pdf.php:143
 msgid "PDF EXPORT"
 msgstr ""
 
@@ -2691,7 +2719,7 @@ msgid "This is required. Get Secret key from recaptcha site. "
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_main_record.php:28
-msgid "you information is shown on next:"
+msgid "you information is shown on next"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_main_record.php:52
@@ -3263,38 +3291,58 @@ msgid "allow_url_fopen php directive is disabled and Recaptcha will not work"
 msgstr ""
 
 #: modules/formbuilder/views/settings/system_check.php:146
+msgid "Information"
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:150
+msgid "PHP Version"
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:163
+msgid "Your PHP version is outdated. Consider updating."
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:174
+msgid "MySQL Version"
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:188
+msgid "Your MySQL version is outdated. Consider updating."
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:198
 msgid "PHP Extensions"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:149
+#: modules/formbuilder/views/settings/system_check.php:201
 msgid "Simple XML"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:160
+#: modules/formbuilder/views/settings/system_check.php:212
 msgid "simplexml extension is important for the software. ask your webhost if this extension is not installed"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:170
+#: modules/formbuilder/views/settings/system_check.php:222
 msgid "GD"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:182
+#: modules/formbuilder/views/settings/system_check.php:234
 msgid "GD extension is important for generating images in Captcha field. Ask your webhost if this extension is not installed. "
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:196
+#: modules/formbuilder/views/settings/system_check.php:248
 msgid "FreeType"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:208
+#: modules/formbuilder/views/settings/system_check.php:260
 msgid "FreeType support is not enabled. Ask your webhost if this extension is not installed."
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:220
+#: modules/formbuilder/views/settings/system_check.php:272
 msgid "Files integrity"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:234
+#: modules/formbuilder/views/settings/system_check.php:286
 msgid "Files are missing or modified. it is just informative."
 msgstr ""
 
@@ -3390,10 +3438,6 @@ msgstr ""
 msgid "Type name payment gateway"
 msgstr ""
 
-#: modules/gateways/views/settings/editoffline.php:44, modules/gateways/views/settings/editpaypal.php:87
-msgid "Return URL"
-msgstr ""
-
 #: modules/gateways/views/settings/editoffline.php:48, modules/gateways/views/settings/editpaypal.php:91
 msgid "Type return URL"
 msgstr ""
@@ -3436,10 +3480,6 @@ msgstr ""
 
 #: modules/gateways/views/settings/editpaypal.php:82
 msgid "Individuals items"
-msgstr ""
-
-#: modules/gateways/views/settings/editpaypal.php:97
-msgid "Cancel URL"
 msgstr ""
 
 #: modules/gateways/views/settings/editpaypal.php:101

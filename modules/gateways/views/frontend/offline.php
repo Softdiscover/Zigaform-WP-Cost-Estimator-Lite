@@ -16,27 +16,31 @@ if ( ! defined('ABSPATH')) {
 }
 ?>
 <div class="uiform-pg-order-cont uiform-pg-paypal-box">
-    <div class="">
-        <div class="pull-left uiform-pg-row-cont uiform-pg-radio-btn">
-            <input 
-                data-type="1"
-                type="radio" name="typepayment"></div>
-        <div class=" col-xs-10 col-sm-3 
-             col-md-5 
-             uiform-pg-row-cont uiform-pg-card-number uiform-pg-paypal">
-            <span></span> 
-            <div class="uiform-pg-lable-wrap">
-                <label><?php echo $pg_name; ?></label>
+    <label>
+        <div class="uiform-pg-row">
+            <div class="uiform-pg-label">
+                <div class="uiform-pg-row-cont uiform-pg-radio-btn">
+                    <input
+                        data-type="1"
+                        type="radio"
+                        name="typepayment">
+                </div>
+                <div class="uiform-pg-row-cont uiform-pg-card-number uiform-pg-paypal">
+                    <div class="uiform-pg-label-wrap">
+                        <?php echo $pg_name; ?>
+                    </div>
+                </div>
             </div>
+            <div class="uiform-pg-description">
+                <?php echo $pg_description; ?>
+            </div>
+
         </div>
-        <div class="col-xs-12 col-sm-7 col-md-6 uiform-pg-row-cont">
-<?php echo $pg_description; ?>
-        </div>
-    </div> 
-    <form class="uifm_offline_form" name="offline_form" method="post">
-        <input name="form_id" type="hidden" value="<?php echo $form_id; ?>" />
-        <input name="item_number" type="hidden" value="<?php echo $item_number; ?>" />
-        <input name="offline_return_url" type="hidden" value="<?php echo $offline_return_url; ?>" />
-    </form>
-    <div class="sfdc-clearfix"></div>
+
+        <form class="uifm_offline_form" name="offline_form" method="post">
+            <input name="form_id" type="hidden" value="<?php echo $form_id; ?>" />
+            <input name="item_number" type="hidden" value="<?php echo $item_number; ?>" />
+            <input name="offline_return_url" type="hidden" value="<?php echo $offline_return_url; ?>" />
+        </form>
+    </label>
 </div>

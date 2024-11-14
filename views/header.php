@@ -141,7 +141,7 @@ if ( ! defined('ABSPATH')) {
         </li>
         <li class="divider-menu"></li>
         <li ><a href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=settings&zgfm_action=view_settings'; ?>">
-            <i class="fa fa-money"></i> <?php echo __('Payment Gateways', 'FRocket_admin'); ?>
+            <i class="fa fa-money"></i> <?php echo __('Payment Methods', 'FRocket_admin'); ?>
             </a>
         </li>
         <li class="divider-menu"></li>

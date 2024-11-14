@@ -15,7 +15,32 @@ if ( ! defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
 ?>
-    <div id="zgfm-calc-tab-header">
+   
+ 
+
+   <div id="zgfm-calc-tab-header">
+    
+    <div class="sfdc-row ">
+                            <div class="sfdc-col-md-6">
+                                <div class="sfdc-form-group">
+                                    <div class="sfdc-col-md-4">
+                                        <label for=""><?php echo __('ENABLE COST ESTIMATION', 'FRocket_admin'); ?></label>
+                                    </div>
+                                    <div class="sfdc-col-md-8">
+                                        <input class="switch-field"
+                                                       id="uifm_frm_main_pricest"
+                                                       name="uifm_frm_main_pricest"
+                                                       type="checkbox"/>
+                                         <a href="javascript:void(0);"
+                                           data-toggle="tooltip" data-placement="right" 
+                                           data-original-title="<?php echo __('this will enable cost estimation for the whole form.', 'FRocket_admin'); ?>"
+                                           ><span class="fa fa-question-circle"></span></a>
+                                    </div>    
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space10 zgfm-opt-divider-stl2"></div>
                         <div class="sfdc-row ">
                             <div class="sfdc-col-md-6">
                                 <div class="sfdc-form-group">
@@ -29,7 +54,7 @@ if ( ! defined('ABSPATH')) {
                                                        type="checkbox"/>
                                          <a href="javascript:void(0);"
                                            data-toggle="tooltip" data-placement="right" 
-                                           data-original-title="<?php echo __('this will enable math calculation.', 'FRocket_admin'); ?>"
+                                           data-original-title="<?php echo __('this will enable custom math calculation.', 'FRocket_admin'); ?>"
                                            ><span class="fa fa-question-circle"></span></a>
                                     </div>    
 
@@ -40,16 +65,14 @@ if ( ! defined('ABSPATH')) {
                
 
                 <div class="space10"></div>
-                <div class="sfdc-row ">
+                <div id="zgfm-calculation-custom-math-section" class="sfdc-row ">
                     <div class="sfdc-col-md-7">
                         <div class="sfdc-col-md-12">
+                               <a href="javascript:void(0);" onclick="javascript:zgfm_back_calc.calc_addNew_CalcVar();" class="sfdc-btn sfdc-btn-warning">
+                            <span class="fa fa-plus"></span> <?php echo __('Add New Optional Variable', 'FRocket_admin'); ?> </a> 
                             
-                            <a href="javascript:void(0);" onclick="javascript:zgfm_back_calc.calc_addNew_CalcVar();" class="sfdc-btn sfdc-btn-warning">
-                            <span class="fa fa-plus"></span> <?php echo __('Add New Optional Variable', 'FRocket_admin'); ?> </a>
-                            
-                             <a href="javascript:void(0);" data-dialog-callback="javascript:zgfm_back_calc.calc_dev_cleanAll();" class="sfdc-btn sfdc-btn-info uiform-confirmation-func-action">
+                            <a href="javascript:void(0);" data-dialog-callback="javascript:zgfm_back_calc.calc_dev_cleanAll();" class="sfdc-btn sfdc-btn-info uiform-confirmation-func-action">
                              <?php echo __('Regenerate all variables', 'FRocket_admin'); ?> </a>
-                            
                         </div>
                         <div class="space20"></div>
                         <div>
@@ -66,7 +89,6 @@ if ( ! defined('ABSPATH')) {
                                     <!-- Tab panes -->
                                     <div class="sfdc-tab-content">
                                           
-                                        
                                     </div>
                                 </div>
                                 <div class="sfdc-clearfix"></div>
@@ -323,3 +345,37 @@ if ( ! defined('ABSPATH')) {
     </div>
                     
 </div>
+<script type="text/javascript">
+//<![CDATA[
+
+jQuery(document).ready(function ($) {
+     
+        $('#uifm_frm_calc_enable').on('switchChange.bootstrapSwitchZgpb', function (event, state) {
+        
+            var f_val = (state) ? 1 : 0;
+            if (f_val === 1) {
+                $('#zgfm-calculation-custom-math-section').show();
+                
+            } else {
+                $('#zgfm-calculation-custom-math-section').hide();
+               
+                
+            }
+        });
+
+        var selectedValue = $('#uifm_frm_calc_enable').bootstrapSwitchZgpb('state');
+        if (selectedValue) {
+            $('#zgfm-calculation-custom-math-section').show();
+            
+        } else {
+            $('#zgfm-calculation-custom-math-section').hide();
+            
+        }
+ 
+ 
+      
+});
+
+
+//]]>
+</script>

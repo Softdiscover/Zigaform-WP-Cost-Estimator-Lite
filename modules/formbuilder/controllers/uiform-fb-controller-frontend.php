@@ -48,9 +48,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     private $current_cost       = array();
     private $current_form_id    = '';
     private $form_rec_msg_summ  = '';
-
+    private $model_record;
     private $format_price_conf = array();
-
+    private $form_cur;
+    private $form_cur_data2    = array();
+    
     protected $modules;
 
     const PREFIX = 'wprofmr_';
@@ -70,7 +72,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $this->model_vis_error    = self::$_models['visitor']['error'];
         $this->model_gateways     = self::$_models['gateways']['gateways'];
         $this->model_gateways_rec = self::$_models['gateways']['records'];
-
+        $this->model_record = self::$_models['formbuilder']['form_records'];
         global $wpdb;
         $this->wpdb = $wpdb;
         // Shortcodes
@@ -314,13 +316,17 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         if (intval($pdf_show_onpage) === 1) {
             $resp['show_summary_title'] = '<a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_infoinvoice(' . $id_rec . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . __('Export to PDF', 'frocket_front') . '</a>';
         }
-
-        $data            = array();
-        $data['base_url'] = UIFORM_FORMS_URL . '/';
-        $data['form_id']  = $form_id;
-        $data['url_form']  = site_url() . '/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=show_invoice&uifm_mode=pdf&is_html=1&id=' . $id_rec;
-
-        $resp['show_summary'] = Uiform_Form_Helper::encodeHex(self::render_template('formbuilder/views/frontend/form_invoice_custom.php', $data));
+        
+      
+        if ( isset($temp->fmb_inv_tpl_st) && intval($temp->fmb_inv_tpl_st) === 1) {
+            $template_msg = do_shortcode($temp->fmb_inv_tpl_html);
+            $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+            $resp['show_summary'] = $template_msg;
+        }  else {
+            
+              $resp['show_summary'] = $this->get_summaryInvoice_process($id_rec);
+        }
+        
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
         echo json_encode($resp);
@@ -342,7 +348,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $form_data        = $this->formsmodel->getFormById_2($form_id);
         $form_data_onsubm = json_decode($form_data->fmb_data2, true);
         $pdf_show_onpage  = (isset($form_data_onsubm['main']['pdf_show_onpage'])) ? $form_data_onsubm['main']['pdf_show_onpage'] : '0';
-
+        $this->flag_submitted = $id_rec;
         $resp = array();
 
         $resp['show_summary_title'] = __('Order summary', 'frocket_front');
@@ -354,15 +360,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             }
         }
 
-        if (isset($temp->fmb_rec_tpl_st) && intval($temp->fmb_rec_tpl_st) === 1) {
-            $data             = array();
-            $data['base_url'] = UIFORM_FORMS_URL . '/';
-            $data['form_id']  = $form_id;
-            $data['url_form'] = site_url() . '/?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&uifm_action=show_record&uifm_mode=pdf&is_html=1&id=' . $id_rec;
-
-            $resp['show_summary'] = Uiform_Form_Helper::encodeHex(self::render_template('formbuilder/views/frontend/form_summary_custom.php', $data));
+        if ( isset($temp->fmb_rec_tpl_st) && intval($temp->fmb_rec_tpl_st) === 1) {
+                $template_msg = do_shortcode($temp->fmb_rec_tpl_html);
+                $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+            $resp['show_summary'] = $template_msg;
         } else {
-            $resp['show_summary'] = Uiform_Form_Helper::encodeHex($this->get_summaryRecord($id_rec));
+            $resp['show_summary'] = do_shortcode($this->getDefaultSummaryTemplate());
         }
 
         // return data to ajax callback
@@ -371,18 +374,59 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         wp_die();
     }
 
+    public function getDefaultSummaryTemplate(){
+        ob_start();
+        ?>
+        <div class="zgfm-front-summary-table">
+<table cellspacing="5" cellpadding="5" border="0">
+<tbody>
+<tr>
+<th>Summary</th>
+</tr>
+<tr>
+<td valign="top"><br />Your information is shown below:<br /><br />[uifm_var opt="rec_summ"]<br /><br /></td>
+</tr>
+</tbody>
+</table>
+</div>
+        <?php
+        $cntACmp = ob_get_contents();
+        $cntACmp = Uiform_Form_Helper::sanitize_output($cntACmp);
+        ob_end_clean();
+        
+        return $cntACmp;
+    }
+    
     public function get_summaryInvoice()
     {
-        $id_rec  = isset($_GET['id']) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) : '';
-        $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : '';
-
-        $name_fields   = $this->model_formrecords->getNameInvoiceField($id_rec);
+        $id_rec  = ( isset($_GET['id']) ) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) : '';
+        
+        return $this->get_summaryInvoice_process($id_rec);
+    }
+    
+    public function get_summaryInvoice_process($id_rec)
+    {
+ 
         $form_rec_data = $this->model_gateways_rec->getInvoiceDataByFormRecId($id_rec);
-        if (empty($form_id)) {
-            $form_id = $form_rec_data->fmb_id;
+        $form_id = $form_rec_data->fmb_id;
+        
+        if(intval($form_rec_data->fmb_type) === 1){
+            $name_fields = [];
+            $children = $this->formsmodel->getChildFormByParentId($form_id);
+            foreach ($children as $key => $child) {
+                $fieldnamesArr = $this->formsmodel->getFieldNamesById($child->fmb_id);
+                $name_fields = array_merge($name_fields, $fieldnamesArr);
+            }
+            
+            $mainData=$form_rec_data->fmb_data2;
+            
+        }else{
+            
+            $mainData=$form_rec_data->fmb_data;
+            $name_fields   = $this->model_record->getNameInvoiceField($id_rec);
         }
-
-        $form_data          = json_decode($form_rec_data->fmb_data, true);
+        
+        $form_data          = json_decode($mainData, true);
         $form_data_currency = (isset($form_data['main']['price_currency'])) ? $form_data['main']['price_currency'] : '';
         $form_data_invoice  = (isset($form_data['invoice'])) ? $form_data['invoice'] : '';
 
@@ -403,7 +447,16 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $record_user     = json_decode($data_record->fbh_data, true);
         $new_record_user = array();
         foreach ($record_user as $key => $value) {
-            if (isset($name_fields_check[$key]) && isset($value['price_st']) && intval($value['price_st']) === 1) {
+            $isFieldChecked = false;
+                if(intval($form_rec_data->fmb_type) === 1){
+                    list($fieldName) = explode('_', $key);
+                    $key = $fieldName;
+                    $isFieldChecked = (isset($name_fields_check[ $fieldName ]))? true: false;
+                }else{
+                    $isFieldChecked = isset($name_fields_check[ $key ])? true: false;
+                }
+        
+            if ( $isFieldChecked && isset($value['price_st']) && intval($value['price_st']) === 1) {
                 $field_name      = '';
                 $field_id        = '';
                 $tmp_invoice_row = array();
@@ -413,31 +466,52 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
                 $tmp_invoice_row['item_uniqueid'] = $key;
                 $tmp_invoice_row['item_id']       = $field_id;
-                // $tmp_invoice_row['item_desc']=$value['label'];
-
-                if (is_array($value['input'])) {
-                    foreach ($value['input'] as $key2 => $value2) {
+                
+                if ( is_array($value['input'])) {
+                
+                    if(isset($value['input']['amount'])){
                         $tmp_invoice_row['item_qty']  = 1;
-                        $tmp_invoice_row['item_desc'] = '';
-                        if (isset($value2['qty'])) {
-                            $tmp_invoice_row['item_qty'] = $value2['qty'];
-                        } else {
+                            $tmp_invoice_row['item_desc'] = '';
+                            if ( isset($value['input']['amount'])) {
+                                if ( isset($value['input']['qty'])) {
+                                    $tmp_invoice_row['item_qty']    = $value['input']['qty'];
+                                    $tmp_invoice_row['item_amount'] = $value['input']['amount'];
+                                } else {
+                                    $tmp_invoice_row['item_amount'] = $value['input']['amount'];
+                                }
+                            }
+    
+                            $tmp_inp_label = $value['label'];
+                            if ( ! empty($value['input']['label'])) {
+                                $tmp_inp_label .= ' - ' . $value['input']['label'];
+                            }
+                            $tmp_invoice_row['item_desc'] = $tmp_inp_label;
+    
+                            $new_record_user[] = $tmp_invoice_row;
+                    }else{
+                        foreach ( $value['input'] as $key2 => $value2) {
+                            $tmp_invoice_row['item_qty']  = 1;
+                            $tmp_invoice_row['item_desc'] = '';
+                            if ( isset($value2['amount'])) {
+                                if ( isset($value2['qty'])) {
+                                    $tmp_invoice_row['item_qty']    = $value2['qty'];
+                                    $tmp_invoice_row['item_amount'] = $value2['amount'];
+                                } else {
+                                    $tmp_invoice_row['item_amount'] = $value2['amount'];
+                                }
+                            }
+    
+                            $tmp_inp_label = $value['label'];
+                            if ( ! empty($value2['label'])) {
+                                $tmp_inp_label .= ' - ' . $value2['label'];
+                            }
+                            $tmp_invoice_row['item_desc'] = $tmp_inp_label;
+    
+                            $new_record_user[] = $tmp_invoice_row;
                         }
-
-                        if (isset($value2['amount'])) {
-                            $tmp_invoice_row['item_amount'] = $value2['amount'];
-                        } else {
-                            $tmp_invoice_row['item_amount'] = isset($value2['cost']) ? $value2['cost'] : 0;
-                        }
-
-                        $tmp_inp_label = $value['label'];
-                        if (!empty($value2['label'])) {
-                            $tmp_inp_label .= ' - ' . $value2['label'];
-                        }
-                        $tmp_invoice_row['item_desc'] = $tmp_inp_label;
-
-                        $new_record_user[] = $tmp_invoice_row;
                     }
+                
+                    
                 } else {
                     $tmp_invoice_row['item_qty']    = 1;
                     $tmp_invoice_row['item_desc']  .= ' ' . $value['input'];
@@ -581,6 +655,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $data['form_currency']     = $form_data_currency;
         $data['record_info']       = $new_record_user;
         $data['price_format']      = $format_price_conf;
+        $data['is_custom_calc']      = (isset($form_data['calculation']['enable_st'])) ? intval($form_data['calculation']['enable_st']) : 0;;
         $form_summary              = self::render_template('formbuilder/views/frontend/form_summary.php', $data);
         return $form_summary;
     }
@@ -604,7 +679,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $data['pgr_payment_status'] = 'completed';
         $data['pgr_data']           = json_encode($_POST);
         $where                      = array(
-            'pgr_id' => $item_number,
+            'fbh_id' => $item_number,
         );
         $this->wpdb->update($this->model_gateways_rec->table, $data, $where);
 
@@ -1062,7 +1137,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data             = $this->model_formrecords->getFormDataById($rec_id);
                     $tmp_data         = json_decode($data->fbh_data, true);
                     $form_data_onsubm = json_decode($data->fmb_data2, true);
-
+                    
+                    $formDataFirst= json_decode($data->fmb_data, true);
+                    
                     // price numeric format
                     $format_price_conf                        = array();
                     $format_price_conf['price_format_st']     = (isset($form_data_onsubm['main']['price_format_st'])) ? $form_data_onsubm['main']['price_format_st'] : '0';
@@ -1079,6 +1156,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data2['current_cost_cur']    = (isset($form_data_onsubm['main']['price_currency'])) ? $form_data_onsubm['main']['price_currency'] : 'USD';
                     $data2['show_only_value'] = ($vars['atr2'] === 'show_only_value') ? 'yes' : 'no';
                     $data2['hide_total'] = ($vars['atr3'] === 'hide_total') ? 'yes' : 'no';
+                    $data2['is_custom_calc'] = (isset($formDataFirst['calculation']['enable_st'])) ? intval($formDataFirst['calculation']['enable_st']) : 0;
 
                     $output                       = self::render_template('formbuilder/views/frontend/mail_generate_fields.php', $data2, 'always');
                     break;
@@ -1712,7 +1790,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         }
 
 
-        return [$form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status];
+        return [$form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status, $form_cost_total];
     }
     public function process_form($isMultiStep = false)
     {
@@ -1735,7 +1813,16 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $form_data        = $this->formsmodel->getFormById_2($form_id);
             $form_data_onsubm = json_decode($form_data->fmb_data2, true);
             $form_data_name   = $form_data->fmb_name;
-
+            
+            // store to obj var
+            $this->form_cur = $form_data;
+            $this->form_cur_data2 = json_decode($form_data->fmb_data2, true);
+            
+            // prepare message
+            $tmp_template_msg   = ( isset($form_data_onsubm['onsubm']['mail_template_msg']) ) ? urldecode($form_data_onsubm['onsubm']['mail_template_msg']) : '';
+            $tmp_sm_successtext = ( isset($form_data_onsubm['onsubm']['sm_successtext']) ) ? urldecode($form_data_onsubm['onsubm']['sm_successtext']) : '';
+            $message            = $tmp_template_msg;
+            
             // math formula result
             $zgfm_calc_math        = ($_POST['zgfm_calc_math']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['zgfm_calc_math'])) : 0;
             $form_data_calc_enable = (isset($form_data_onsubm['calculation']['enable_st'])) ? $form_data_onsubm['calculation']['enable_st'] : '0';
@@ -1775,11 +1862,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
             // fields
             if ($isMultiStep) {
-                list($form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status) = [[], [], [], [], false];
+                list($form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status, $form_cost_total) = [[], [], [], [], false,0];
 
                 if (!empty($form_fields)) {
                     foreach ($form_fields as $key2 => $value2) {
-                        list($form_f_tmp2, $form_f_rec_tmp2, $form_errors2, $attachments2, $attachment_status2) = $this->process_form_fields($value2, $key2);
+                        list($form_f_tmp2, $form_f_rec_tmp2, $form_errors2, $attachments2, $attachment_status2, $form_cost_total) = $this->process_form_fields($value2, $key2);
                         
                         $newArray = [];
                         foreach ($form_f_tmp2 as $key3 => $value3) {
@@ -1804,7 +1891,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 }
             } else {
                 // fields
-                list($form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status) = $this->process_form_fields($form_fields, $form_id);
+                list($form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status, $form_cost_total) = $this->process_form_fields($form_fields, $form_id);
             }
 
             // process tax
@@ -1812,11 +1899,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $tmp_price_tax_val = (isset($form_data_onsubm['main']['price_tax_val'])) ? $form_data_onsubm['main']['price_tax_val'] : '0';
             $tmp_payment_st = (isset($form_data_onsubm['main']['price_st'])) ? $form_data_onsubm['main']['price_st'] : '0';
 
-            // check if math calc is enabled
-
-            if (intval($form_data_calc_enable) === 1  || intval($tmp_payment_st)===1) {
-                $form_cost_total = isset($zgfm_calc_math) ? $zgfm_calc_math : 0;
-            } 
+             
+             // check if math calc is enabled
+             $form_cost_total = (isset($zgfm_calc_math) && intval($zgfm_calc_math) > 0) ? $zgfm_calc_math : $form_cost_total;
+            
             // check if tax is enabled
             if (intval($tmp_price_tax_st) === 1) {
                 $form_cost_subtotal = floatval($form_cost_total);
@@ -1921,7 +2007,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $data3['type_pg_id']         = 1;
 
             $this->wpdb->insert($this->model_gateways_rec->table, $data3);
-
+            $id_payrec            = $this->wpdb->insert_id;
             // is demo
             if ($is_demo === 0) {
                 // preparing mail
@@ -2075,7 +2161,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             do_action('zgfm_onSubmitForm_pos', self::$_form_data['form_id'], self::$_form_data['record_id']);
 
             if (intval($data['payment_st']) === 1) {
-                $id_payrec            = $this->wpdb->insert_id;
+                
                 $data['id_payrec']    = $id_payrec;
                 $this->form_response  = $data;
                 $data['payment_html'] = $this->get_payment_html();
@@ -2159,7 +2245,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $data2                   = array();
             $data2['rec_id']         = $rec_id;
             $data2['html_wholecont'] = $full_page;
-            $data2['content']        = $content;
+            $data2['content']        = do_shortcode($content);
             $data2['is_html']        = $is_html;
             $tmp_res                 = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
 
@@ -2184,32 +2270,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         ob_start();
         ?>
-        <link href="<?php echo UIFORM_FORMS_URL; ?>/assets/common/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-
-        <style type="text/css">
-            .uifm_invoice_container h3 {
-                margin-left: -20px;
-            }
-
-            .uifm_invoice_container .invoice_date {
-                margin-left: -20px;
-                margin-bottom: 20px;
-            }
-
-            .uifm_invoice_container {
-                margin: 10px 20px 20px;
-            }
-
-            html,
-            body {
-                /*background:#eee;*/
-            }
-
-            table {
-                background: #fff;
-            }
+        <style>
+            <?php echo file_get_contents(UIFORM_FORMS_DIR . "/assets/common/css/invoice.css"); ?>
         </style>
-
         <?php
         $head_extra = ob_get_contents();
         ob_end_clean();
@@ -2220,7 +2283,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         <!-- if p tag is removed, title will dissapear, idk -->
         <p>&nbsp;</p>
         <?php
-        echo self::$_modules['formbuilder']['frontend']->get_summaryInvoice($rec_id);
+        //echo self::$_modules['formbuilder']['frontend']->get_summaryInvoice($rec_id);
+        echo $this->get_summaryInvoice($rec_id);
         ?>
 
         <?php
@@ -2256,7 +2320,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $data2['content']    = $content;
         $data2['is_html']    = $is_html;
         // $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
-        $tmp_res = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
+        //$tmp_res = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
+        
+        $tmp_res = $this->pdf_global_template($data2);
+        
         if (intval($is_html) === 1) {
             header('Content-type: text/html');
 
@@ -2466,7 +2533,39 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $data['currency'] = (isset($this->form_response['currency'])) ? $this->form_response['currency'] : array();
         $gateways         = $this->model_gateways->getAvailableGateways();
 
+        //paypal constants
+        $paypal_return_url = isset($pg_data['paypal_return_url']) ? $pg_data['paypal_return_url'] : '';
+        $paypal_cancel_url = isset($pg_data['paypal_cancel_url']) ? $pg_data['paypal_cancel_url'] : '';
+        
+        //custom payment methods
+        $customPaymentMethod=$this->form_cur_data2['main']['payment_method_st'];
+        $allowPaymentMethod=[];        
+        if(intval($customPaymentMethod) === 1){
+            $allowPaymentMethod = $this->form_cur_data2['main']['payment_method_list'];
+            $allowPaymentMethod = array_map('intval', $allowPaymentMethod);
+            
+            $payment_paypal_return_url = $this->form_cur_data2['main']['payment_paypal_return_url'];
+            if(!empty($payment_paypal_return_url)){
+                $paypal_return_url = $payment_paypal_return_url;
+            }
+            
+            $payment_paypal_cancel_url = $this->form_cur_data2['main']['payment_paypal_cancel_url'];
+            if(!empty($payment_paypal_cancel_url)){
+                $paypal_cancel_url = $payment_paypal_cancel_url;
+            }
+        }
+         
+        $data['fmb_rec_tpl_st']=$this->form_cur->fmb_rec_tpl_st;
+        $data['fmb_inv_tpl_st']=$this->form_cur->fmb_inv_tpl_st;
+        
+        $data['calculation_enable_st'] =  intval($this->form_cur_data2['calculation']['enable_st']);
+        
         foreach ($gateways as $key => $value) {
+        
+            if(!empty($allowPaymentMethod) && !in_array(intval($value->pg_id), $allowPaymentMethod, true)){
+                continue;
+            }
+        
             switch (intval($value->pg_id)) {
                 case 1:
                     // offline
@@ -2495,8 +2594,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data2['pg_description']    = (isset($value->pg_description)) ? $value->pg_description : '';
                     $data2['item_number']       = (isset($this->form_response['id_payrec'])) ? $this->form_response['id_payrec'] : '';
                     $data2['paypal_email']      = (isset($pg_data['paypal_email'])) ? $pg_data['paypal_email'] : '';
-                    $data2['paypal_return_url'] = isset($pg_data['paypal_return_url']) ? $pg_data['paypal_return_url'] : '';
-                    $data2['paypal_cancel_url'] = isset($pg_data['paypal_cancel_url']) ? $pg_data['paypal_cancel_url'] : '';
+                    $data2['paypal_return_url'] = $paypal_return_url;
+                    $data2['paypal_cancel_url'] = $paypal_cancel_url;
                     $data2['paypal_currency']   = isset($pg_data['paypal_currency']) ? $pg_data['paypal_currency'] : '';
                     $data2['paypal_method']     = isset($pg_data['paypal_method']) ? $pg_data['paypal_method'] : 0;
 

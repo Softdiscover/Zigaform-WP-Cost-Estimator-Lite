@@ -16,25 +16,28 @@ if ( ! defined('ABSPATH')) {
 }
 ?>
 <div class="uiform-pg-order-cont uiform-pg-paypal-box">
-                        <div class="">
-                            <div class="pull-left uiform-pg-row-cont uiform-pg-radio-btn">
-                                <input 
-                                    data-type="2"
-                                    type="radio"
-                                    name="typepayment">
-                            </div>
-                            <div class=" col-xs-10 col-sm-3 
-                                 col-md-5 
-                                 uiform-pg-row-cont uiform-pg-card-number uiform-pg-paypal">
-                                <span></span> 
-                                <div class="uiform-pg-lable-wrap">
-                                    <label><?php echo $pg_name; ?></label>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-7 col-md-6 uiform-pg-row-cont">
-                                <?php echo $pg_description; ?>
-                            </div>
-                        </div>  
+<label>
+
+<div class="uiform-pg-row">
+
+        <div class="uiform-pg-label">
+            <div class="uiform-pg-row-cont uiform-pg-radio-btn">
+                <input 
+                    data-type="2"
+                    type="radio" 
+                    name="typepayment">
+            </div>
+            <div class="uiform-pg-row-cont uiform-pg-card-number uiform-pg-paypal">
+                <div class="uiform-pg-label-wrap">
+                    <?php echo $pg_name; ?>
+                </div>
+            </div>
+        </div>
+        <div class="uiform-pg-description">
+            <?php echo $pg_description; ?>
+        </div>
+    </div>
+     
     
 <?php
 if ( intval($mod_test) == 1) {
@@ -74,8 +77,6 @@ if ( intval($mod_test) == 1) {
     <input name="notify_url" type="hidden"  value="<?php echo site_url('?uifm_costestimator_api_handler&zgfm_action=uifm_est_api_handler&paygat=2&uifm_mode=ipn'); ?>" />
     <input name="return" type="hidden" value="<?php echo $paypal_return_url; ?>" />
     <input name="cancel_return" type="hidden" value="<?php echo $paypal_cancel_url; ?>" />
-</form>
-<div class="space05"></div>
-    
-                        <div class="sfdc-clearfix"></div>
-                    </div>
+    </form>
+</label>
+</div>

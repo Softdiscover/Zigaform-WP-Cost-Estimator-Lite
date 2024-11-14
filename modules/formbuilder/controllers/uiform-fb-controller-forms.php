@@ -65,7 +65,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     private $is_multistep         = false;
     private $current_data_conn = [];
     private $model_addon_details;
-
+    private $model_gateways;
     private $current_mm_form_init;
     // private $current_mm_form_child_id;
     private $current_mm_children;
@@ -91,6 +91,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $this->model_vis_error = self::$_models['visitor']['error'];
         $this->model_form_log  = self::$_models['formbuilder']['form_log'];
         $this->model_addon_details = self::$_models['addon']['addon_details'];
+        $this->model_gateways = self::$_models['gateways']['gateways'];
         global $wpdb;
         $this->wpdb = $wpdb;
         
@@ -1574,7 +1575,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
             $data['fmb_rec_tpl_html'] = (isset($_POST['uifm_frm_rec_tpl_html'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_html'])) : '';
             $data['fmb_rec_tpl_st']   = (isset($_POST['uifm_frm_rec_tpl_st'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_st'])) : '';
-
+            $data['fmb_inv_tpl_st']   = ( isset($_POST['uifm_frm_inv_tpl_st']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_inv_tpl_st'])) : '';
+            $data['fmb_inv_tpl_html'] = ( isset($_POST['uifm_frm_inv_tpl_html']) ) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_inv_tpl_html'])) : '';
 
             //$tmp_data2            = array();
             //$tmp_data2['onsubm']  = isset($fmb_data['onsubm']) ? $fmb_data['onsubm'] : '';
@@ -4075,6 +4077,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data['fields_fastload'] = get_option('zgfm_fields_fastload', 0);
         $data['obj_sfm']            = Uiform_Form_Helper::get_font_library();
         //$data['modules_tab_extension'] = self::$_modules['addon']['backend']->addons_doActions( 'back_exttab_block', true );
+        $data['payment_methods_available'] = $this->model_gateways->getAvailableGateways();
+        
         $data['modules_tab_extension'] = apply_filters('zgfm_back_exttab_block', array());
 
         echo self::loadPartial('layout_editform.php', 'formbuilder/views/forms/create_form.php', $data);

@@ -175,8 +175,8 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module
 
         parse_str($data_filter, $data_filter_arr);
 
-        $per_page   = $data_filter_arr['zgfm-listform-pref-perpage'];
-        $orderby    = $data_filter_arr['zgfm-listform-pref-orderby'];
+        $per_page   = intval($data_filter_arr['zgfm-listform-pref-perpage'])?:0;
+        $orderby    = intval($data_filter_arr['zgfm-listform-pref-orderby'])?:0;
 
         $data               = array();
         $data['per_page']   = $per_page;
@@ -289,6 +289,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module
 
     public function list_records()
     {
+ 
         $filter_data = get_option('zgfm_listinvoices_searchfilter', true);
         $data2       = array();
         if ( empty($filter_data)) {

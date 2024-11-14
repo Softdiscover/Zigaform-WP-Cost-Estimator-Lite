@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.1
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.1 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.8
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.8 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -14,43 +14,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.3.1\n"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:313, modules/formbuilder/views/frontend/form_invoice.php:22
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:315, modules/formbuilder/views/frontend/form_invoice.php:23
 msgid "Invoice"
 msgstr "Fattura"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:315, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:353
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:317, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:359
 msgid "Export to PDF"
 msgstr "Export to PDF"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:348
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:354
 msgid "Order summary"
 msgstr "Riepilogo ordine"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:656
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:731
 msgid "Total cost"
 msgstr "Costo totale"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1172, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1201, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2868
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1250, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1279, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2967
 msgid "warning! Form was not submitted"
 msgstr "AVVERTENZA! Non è stata presentata la forma"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1169, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1197, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2863
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1247, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1275, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2962
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1194
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1272
 msgid "Error! something went wrong."
 msgstr "Error! something went wrong."
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1513
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1591
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Errore! Il file supera la dimensione consentita di"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1520
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1598
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Errore! Tipo di file non è autorizzato a caricare"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1951, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1999
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2037, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2085
 msgid "New form request"
 msgstr "New form request"
 
@@ -62,15 +62,15 @@ msgstr " , version : "
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:471, modules/formbuilder/controllers/uiform-fb-controller-records.php:511, modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:149
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:471, modules/formbuilder/controllers/uiform-fb-controller-records.php:511, modules/formbuilder/views/frontend/mail_generate_fields.php:116, modules/formbuilder/views/frontend/mail_generate_fields.php:154
 msgid "qty"
 msgstr "qty"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:474, modules/formbuilder/controllers/uiform-fb-controller-records.php:514, modules/formbuilder/views/frontend/form_invoice.php:108, modules/formbuilder/views/frontend/form_invoice.php:101
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:474, modules/formbuilder/controllers/uiform-fb-controller-records.php:514, modules/formbuilder/views/frontend/form_invoice.php:83, modules/formbuilder/views/frontend/form_invoice.php:76
 msgid "Amount"
 msgstr "Importo"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:23
+#: modules/formbuilder/views/frontend/form_invoice.php:24
 msgid "Date"
 msgstr "Dati"
 
@@ -78,43 +78,43 @@ msgstr "Dati"
 msgid "From"
 msgstr "Dal"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:61
+#: modules/formbuilder/views/frontend/form_invoice.php:49
 msgid "To"
 msgstr "to"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:105, modules/formbuilder/views/frontend/form_invoice.php:98
+#: modules/formbuilder/views/frontend/form_invoice.php:80, modules/formbuilder/views/frontend/form_invoice.php:74
 msgid "Item ID"
 msgstr "ID Elemento"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:106
+#: modules/formbuilder/views/frontend/form_invoice.php:81
 msgid "Quantity"
 msgstr "Quantità"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:107, modules/formbuilder/views/frontend/form_invoice.php:100
+#: modules/formbuilder/views/frontend/form_invoice.php:82, modules/formbuilder/views/frontend/form_invoice.php:75
 msgid "Description"
 msgstr "Descrizione"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:180, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:216, modules/formbuilder/views/records/info_record.php:34
+#: modules/formbuilder/views/frontend/form_invoice.php:140, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:222, modules/formbuilder/views/records/info_record.php:34
 msgid "Sub total"
 msgstr "Sub total"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:188, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:221, modules/formbuilder/views/records/info_record.php:39
+#: modules/formbuilder/views/frontend/form_invoice.php:144, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:227, modules/formbuilder/views/records/info_record.php:39
 msgid "Tax"
 msgstr "Tax"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:197
+#: modules/formbuilder/views/frontend/form_invoice.php:149
 msgid "Invoice Total"
 msgstr "Totale fattura"
 
-#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:227, modules/formbuilder/views/frontend/payment_html.php:79, modules/formbuilder/views/records/info_record.php:44
+#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:233, modules/formbuilder/views/frontend/payment_html.php:82, modules/formbuilder/views/records/info_record.php:44
 msgid "Total"
 msgstr "Totale"
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:63, modules/formbuilder/views/frontend/mail_generate_fields.php:61, modules/formbuilder/views/frontend/mail_generate_fields.php:92, modules/formbuilder/views/frontend/mail_generate_fields.php:90, modules/formbuilder/views/frontend/mail_generate_fields.php:127, modules/formbuilder/views/frontend/mail_generate_fields.php:125, modules/formbuilder/views/frontend/mail_generate_fields.php:162, modules/formbuilder/views/frontend/mail_generate_fields.php:160
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:64, modules/formbuilder/views/frontend/mail_generate_fields.php:62, modules/formbuilder/views/frontend/mail_generate_fields.php:96, modules/formbuilder/views/frontend/mail_generate_fields.php:94, modules/formbuilder/views/frontend/mail_generate_fields.php:132, modules/formbuilder/views/frontend/mail_generate_fields.php:130, modules/formbuilder/views/frontend/mail_generate_fields.php:168, modules/formbuilder/views/frontend/mail_generate_fields.php:166
 msgid "amount"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:112, modules/formbuilder/views/frontend/mail_generate_fields.php:149
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:116, modules/formbuilder/views/frontend/mail_generate_fields.php:154
 msgid "Units"
 msgstr "Units"
 
@@ -122,34 +122,34 @@ msgstr "Units"
 msgid "Choose Payment Method"
 msgstr "SCEGLI LA MODALITÀ DI PAGAMENTO"
 
-#: modules/formbuilder/views/frontend/payment_html.php:28
+#: modules/formbuilder/views/frontend/payment_html.php:29
 msgid "Payment Option"
 msgstr "Opzione di pagamento"
 
-#: modules/formbuilder/views/frontend/payment_html.php:52
+#: modules/formbuilder/views/frontend/payment_html.php:54
 msgid "Order Summary"
 msgstr "Riepilogo dell'ordine"
 
-#: modules/formbuilder/views/frontend/payment_html.php:61
+#: modules/formbuilder/views/frontend/payment_html.php:65
 msgid "See summary"
 msgstr "Vedi sommario"
 
-#: modules/formbuilder/views/frontend/payment_html.php:70
+#: modules/formbuilder/views/frontend/payment_html.php:75
 msgid "See invoice"
 msgstr "Vedere fattura"
 
-#: modules/formbuilder/views/frontend/payment_html.php:85
+#: modules/formbuilder/views/frontend/payment_html.php:88
 msgid "Agree To The"
 msgstr "Accetto i"
 
-#: modules/formbuilder/views/frontend/payment_html.php:85
+#: modules/formbuilder/views/frontend/payment_html.php:88
 msgid "Terms &amp; Conditions"
 msgstr "Terms & Conditions"
 
-#: modules/formbuilder/views/frontend/payment_html.php:96
+#: modules/formbuilder/views/frontend/payment_html.php:99
 msgid "Complete Order"
 msgstr "Ordina adesso"
 
-#: modules/formbuilder/views/frontend/payment_html.php:102
+#: modules/formbuilder/views/frontend/payment_html.php:105
 msgid "Select Payment"
 msgstr "Seleziona metodo di pagamento"

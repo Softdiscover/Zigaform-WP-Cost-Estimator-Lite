@@ -74,7 +74,7 @@ class Uiform_Model_Form_Records
             $this->tbform
         );
 
-        if ( $per_page != '' || $segment != '') {
+        if ( (int) $per_page > 0) {
             $segment = ( ! empty($segment) ) ? $segment : 0;
             $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
         }
@@ -111,7 +111,7 @@ class Uiform_Model_Form_Records
 
         $query .= sprintf(' ORDER BY c.created_date %s ', $orderby);
 
-        if ( $per_page != '' && $segment != '') {
+        if ( (int) $per_page > 0) {
             $segment = ( ! empty($segment) ) ? $segment : 0;
             $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
         }
@@ -149,7 +149,7 @@ class Uiform_Model_Form_Records
 
         $query .= sprintf(' ORDER BY c.created_date %s ', $orderby);
 
-        if ( $per_page != '' || $segment != '') {
+        if ( (int) $per_page > 0) {
             $segment = ( ! empty($segment) ) ? $segment : 0;
             $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
         }
@@ -447,25 +447,25 @@ class Uiform_Model_Form_Records
         );
         return $this->wpdb->get_results($query);
     }
-
-    public function getNameInvoiceField($id_field)
+    
+    public function getNameInvoiceField($id_rec)
     {
-        $query = sprintf(
-            'select f.fmf_uniqueid,f.fmf_id, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
-		from %s f 
-		join %s t on f.type_fby_id=t.fby_id 
-		join %s fm on fm.fmb_id=f.form_fmb_id
-		join %s rc on rc.form_fmb_id=fm.fmb_id
-		where rc.fbh_id=%s and t.fby_id in (8,9,10,11,16,18,39,40,41,42)',
+        $query  = sprintf(
+            'select f.fmf_uniqueid,f.fmf_id, fm.fmb_type, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
+        from %s f 
+        join %s t on f.type_fby_id=t.fby_id 
+        join %s fm on fm.fmb_id=f.form_fmb_id
+        join %s rc on rc.form_fmb_id=fm.fmb_id
+        where rc.fbh_id=%s and t.fby_id in (8,9,10,11,16,18,39,40,41,42)',
             $this->tbformfields,
             $this->tbformtype,
             $this->tbform,
             $this->table,
-            (int) $id_field
+            (int) $id_rec
         );
         return $this->wpdb->get_results($query);
     }
-
+    
     public function getChartDataByIdForm($id_field)
     {
         $query = 'SELECT 

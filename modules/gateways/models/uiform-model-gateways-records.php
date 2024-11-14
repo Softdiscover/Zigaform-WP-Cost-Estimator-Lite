@@ -51,7 +51,7 @@ class Uiform_Model_Gateways_Records
     {
         $query = sprintf(
             '
-            select uf.pgr_id,uf.type_pg_id,uf.pgr_payment_status,uf.pgr_payment_amount,uf.pgr_currency,uf.pgr_data,uf.flag_status,uf.created_date,uf.updated_date,uf.fbh_id
+            select uf.pgr_id, uf.type_pg_id,uf.pgr_payment_status,uf.pgr_payment_amount,uf.pgr_currency,uf.pgr_data,uf.flag_status,uf.created_date,uf.updated_date,uf.fbh_id
             from %s uf
             where uf.pgr_id=%s
             ',
@@ -65,7 +65,7 @@ class Uiform_Model_Gateways_Records
     public function getInvoiceDataByFormRecId($id_rec)
     {
         $query = sprintf(
-            'select  f.fmb_name,f.fmb_id,f.fmb_data,frec.fbh_total_amount,pr.pgr_id,pr.created_date,f.fmb_inv_tpl_html,f.fmb_inv_tpl_st
+            'select  f.fmb_name,f.fmb_id,f.fmb_data, f.fmb_data2, f.fmb_type, frec.fbh_total_amount,pr.pgr_id,pr.created_date,f.fmb_inv_tpl_html,f.fmb_inv_tpl_st
         from %s frec
         join %s f on f.fmb_id=frec.form_fmb_id
         join %s pr on pr.fbh_id=frec.fbh_id
@@ -118,7 +118,7 @@ class Uiform_Model_Gateways_Records
             $this->tbform
         );
 
-        if ( $per_page != '' || $segment != '') {
+        if ( (int) $per_page > 0) {
             $segment = ( ! empty($segment) ) ? $segment : 0;
             $query  .= sprintf(' limit %s,%s', $segment, $per_page);
         }
@@ -157,10 +157,11 @@ class Uiform_Model_Gateways_Records
 
         $query .= sprintf(' ORDER BY gr.created_date %s ', $orderby);
 
-        if ( $per_page != '' || $segment != '') {
+        if ( (int) $per_page > 0) {
             $segment = ( ! empty($segment) ) ? $segment : 0;
             $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
         }
+        
         return $this->wpdb->get_results($query);
     }
 
@@ -194,7 +195,7 @@ class Uiform_Model_Gateways_Records
 
         $query .= sprintf(' ORDER BY gr.created_date %s ', $orderby);
 
-        if ( $per_page != '' || $segment != '') {
+        if ( (int) $per_page > 0) {
             $segment = ( ! empty($segment) ) ? $segment : 0;
             $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
         }
@@ -238,7 +239,7 @@ class Uiform_Model_Gateways_Records
 			',
             $this->table
         );
-
+ 
         return $this->wpdb->get_row($query);
     }
 }

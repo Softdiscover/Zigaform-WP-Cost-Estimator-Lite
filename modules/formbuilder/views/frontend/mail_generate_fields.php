@@ -17,8 +17,7 @@ if (!defined('ABSPATH')) {
 }
 ob_start();
 ?>
-<table class="zgfm-mail-tmp-table" cellpadding="0" cellspacing="0">
-
+<table class="zgfm-mail-tmp-table" style="width:100%;" cellpadding="0" cellspacing="0">
     <?php
     if (!empty($data)) {
         foreach ($data as $key => $value) {
@@ -49,12 +48,14 @@ ob_start();
 
                                             if ($show_only_value !== 'yes') {
                                                 if (
+                                                    $is_custom_calc === 0  && 
                                                     isset($value['price_st'])
                                                     && intval($current_cost_st) === 1
                                                     && intval($value['price_st']) === 1
                                                     && isset($value2['cost'])
                                                 ) {
                                                     if (
+                                                        
                                                         isset($form_data_calc_enable)
                                                         && intval($form_data_calc_enable) === 1
                                                     ) {
@@ -62,6 +63,8 @@ ob_start();
                                                     } else {
                                                         $tmp_output_st_inner .= ' - ' . __('amount', 'frocket_front') . ': ' . $current_cost_symbol . ' ' . Uiform_Form_Helper::cformat_numeric($format_price_conf, $value2['cost']) . ' ' . $current_cost_cur;
                                                     }
+                                                     
+                                                    
                                                 }
                                             }
 
@@ -78,6 +81,7 @@ ob_start();
                                             $tmp_output_st .=  $value['input']['cost'];
                                         } else {
                                             if (
+                                                $is_custom_calc === 0  && 
                                                 isset($value['price_st'])
                                                 && intval($current_cost_st) === 1
                                                 && intval($value['price_st']) === 1
@@ -109,10 +113,11 @@ ob_start();
                                             $tmp_output_st .=  $value['input_cost_amt'];
                                         } else {
                                             if (intval($value['input']['qty']) > 0) {
-                                                $tmp_output_st .= '  ' . __('qty', 'frocket_front') . ':  ' . $value['input']['qty'] . ' ' . __('Units', 'frocket_front') . ' - ';
+                                                $tmp_output_st .= '  ' . __('qty', 'frocket_front') . ':  ' . $value['input']['qty'] . ' ' . __('Units', 'frocket_front') ;
                                             }
 
                                             if (
+                                                $is_custom_calc === 0  && 
                                                 isset($value['price_st'])
                                                 && intval($current_cost_st) === 1
                                                 && intval($value['price_st']) === 1
@@ -122,9 +127,9 @@ ob_start();
                                                     isset($form_data_calc_enable)
                                                     && intval($form_data_calc_enable) === 1
                                                 ) {
-                                                    $tmp_output_st .=  __('amount', 'frocket_front') . ':  ' . Uiform_Form_Helper::cformat_numeric($format_price_conf, $value['input_cost_amt']);
+                                                    $tmp_output_st .= ' - '.__('amount', 'frocket_front') . ':  ' . Uiform_Form_Helper::cformat_numeric($format_price_conf, $value['input_cost_amt']);
                                                 } else {
-                                                    $tmp_output_st .=  __('amount', 'frocket_front') . ': ' . $current_cost_symbol . ' ' . Uiform_Form_Helper::cformat_numeric($format_price_conf, $value['input_cost_amt']) . ' ' . $current_cost_cur;
+                                                    $tmp_output_st .= ' - '. __('amount', 'frocket_front') . ': ' . $current_cost_symbol . ' ' . Uiform_Form_Helper::cformat_numeric($format_price_conf, $value['input_cost_amt']) . ' ' . $current_cost_cur;
                                                 }
                                             }
                                         }
@@ -149,6 +154,7 @@ ob_start();
                                                     $tmp_output_st_inner .= ' - ' . __('qty', 'frocket_front') . ':  ' . $value2['qty'] . ' ' . __('Units', 'frocket_front');
                                                 }
                                                 if (
+                                                    $is_custom_calc === 0  && 
                                                     isset($value['price_st'])
                                                     && intval($current_cost_st) === 1
                                                     && intval($value['price_st']) === 1
