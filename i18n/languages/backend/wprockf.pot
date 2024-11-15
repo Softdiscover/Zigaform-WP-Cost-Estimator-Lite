@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.8
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.8 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.9
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.9 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.8\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.9\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-14 20:23+0000\n"
+"POT-Creation-Date: 2024-11-15 01:59+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -2034,7 +2034,7 @@ msgstr ""
 msgid "Copy and paste the shortcode to your desired page"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:59, modules/formbuilder/views/settings/system_check.php:275, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/editoffline.php:55, modules/gateways/views/settings/editpaypal.php:107, modules/gateways/views/settings/view_settings.php:48
+#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:59, modules/formbuilder/views/settings/system_check.php:276, modules/gateways/views/records/list_records.php:41, modules/gateways/views/settings/editoffline.php:55, modules/gateways/views/settings/editpaypal.php:107, modules/gateways/views/settings/view_settings.php:48
 msgid "Status"
 msgstr ""
 
@@ -3306,43 +3306,43 @@ msgstr ""
 msgid "MySQL Version"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:188
+#: modules/formbuilder/views/settings/system_check.php:189
 msgid "Your MySQL version is outdated. Consider updating."
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:198
+#: modules/formbuilder/views/settings/system_check.php:199
 msgid "PHP Extensions"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:201
+#: modules/formbuilder/views/settings/system_check.php:202
 msgid "Simple XML"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:212
+#: modules/formbuilder/views/settings/system_check.php:213
 msgid "simplexml extension is important for the software. ask your webhost if this extension is not installed"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:222
+#: modules/formbuilder/views/settings/system_check.php:223
 msgid "GD"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:234
+#: modules/formbuilder/views/settings/system_check.php:235
 msgid "GD extension is important for generating images in Captcha field. Ask your webhost if this extension is not installed. "
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:248
+#: modules/formbuilder/views/settings/system_check.php:249
 msgid "FreeType"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:260
+#: modules/formbuilder/views/settings/system_check.php:261
 msgid "FreeType support is not enabled. Ask your webhost if this extension is not installed."
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:272
+#: modules/formbuilder/views/settings/system_check.php:273
 msgid "Files integrity"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:286
+#: modules/formbuilder/views/settings/system_check.php:287
 msgid "Files are missing or modified. it is just informative."
 msgstr ""
 

@@ -263,8 +263,7 @@ class Uiform_Model_Form
             $this->table,
             (int) $id_form
         );
-        $query2 = $this->db->query($query);
-        return $query2->result();
+        return $this->wpdb->get_results($query);
     }
     
     public function getFormById_2($id)

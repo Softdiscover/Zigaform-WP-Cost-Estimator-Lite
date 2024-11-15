@@ -171,28 +171,29 @@ if ( ! defined('ABSPATH')) {
 
     <!-- MySQL Version -->
     <div class="sfdc-form-group">
-        <label class="sfdc-col-sm-2 control-label"><?php echo __('MySQL Version', 'FRocket_admin'); ?></label>
-        <div class="sfdc-col-sm-10">
-            <div class="span4">
-                <?php
-                    $this->load->database();
-                    $mysql_version = $this->db->query("SELECT VERSION() AS version")->row()->version;
-                    if (version_compare($mysql_version, '5.6.0', '>=')) {
-                        ?>
-                        <i class="fa fa-thumbs-up"></i> <?php echo $mysql_version; ?>
-                        <?php
-                    } else {
-                        ?>
-                        <i class="fa fa-exclamation-triangle"></i>
-                        <div class="sfdc-alert sfdc-alert-danger">
-                            <?php echo __('Your MySQL version is outdated. Consider updating.', 'FRocket_admin'); ?>
-                        </div>
-                        <?php
-                    }
-                ?>
-            </div>
+    <label class="sfdc-col-sm-2 control-label"><?php echo __('MySQL Version', 'FRocket_admin'); ?></label>
+    <div class="sfdc-col-sm-10">
+        <div class="span4">
+            <?php
+                global $wpdb;
+                $mysql_version = $wpdb->get_var("SELECT VERSION() AS version");
+
+                if (version_compare($mysql_version, '5.6.0', '>=')) {
+                    ?>
+                    <i class="fa fa-thumbs-up"></i> <?php echo esc_html($mysql_version); ?>
+                    <?php
+                } else {
+                    ?>
+                    <i class="fa fa-exclamation-triangle"></i>
+                    <div class="sfdc-alert sfdc-alert-danger">
+                        <?php echo __('Your MySQL version is outdated. Consider updating.', 'FRocket_admin'); ?>
+                    </div>
+                    <?php
+                }
+            ?>
         </div>
     </div>
+</div>
 </div>
 <div class="space20"></div>
                              <h3><?php echo __('PHP Extensions', 'FRocket_admin'); ?></h3>
