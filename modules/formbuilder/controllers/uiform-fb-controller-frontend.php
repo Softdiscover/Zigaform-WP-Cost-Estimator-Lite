@@ -302,7 +302,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         }
 
         $id_rec = (isset($_POST['form_r_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_r_id']) : '';
-
+        $this->flag_submitted = $id_rec;
+        
         $temp = $this->model_formrecords->getFormDataById($id_rec);
 
         $form_id          = $temp->form_fmb_id;
@@ -319,8 +320,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         
       
         if ( isset($temp->fmb_inv_tpl_st) && intval($temp->fmb_inv_tpl_st) === 1) {
-            $template_msg = do_shortcode($temp->fmb_inv_tpl_html);
+            $template_msg = $temp->fmb_inv_tpl_html;
             $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+            $template_msg = do_shortcode($template_msg);
             $resp['show_summary'] = $template_msg;
         }  else {
             
