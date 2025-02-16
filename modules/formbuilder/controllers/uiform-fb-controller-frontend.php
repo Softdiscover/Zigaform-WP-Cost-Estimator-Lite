@@ -767,6 +767,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $atts
         );
 
+// Automatically sanitize & validate each attribute.
+$vars = array_map(function($v) {
+    return sanitize_text_field($v);
+}, $vars);
+
         $result = '';
         $output = '';
 
@@ -829,6 +834,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 ),
                 $atts
             );
+
+
+// Automatically sanitize & validate each attribute.
+$vars = array_map(function($v) {
+    return sanitize_text_field($v);
+}, $vars);
 
             if (strpos($vars['id'], '_') !== false) {
                 $tmpResult = explode('_', $vars['id']);
@@ -2844,17 +2855,19 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 return;
             }
 
-            extract(
-                shortcode_atts(
-                    array(
-                        'id'      => 1,
-                        'ajax'    => false,
-                        'lmode'   => 0,
-                        'is_demo' => '0'
-                    ),
-                    $attributes
-                )
-            );
+            $atts = array_map('sanitize_text_field', shortcode_atts(
+                [
+                    'id'         => 1,
+                    'ajax'       => false,
+                    'lmode'      => 0,
+                    'is_demo'    => '0',
+                    'min_width'  => '',
+                    'min_height' => '',
+                ],
+                $attributes
+            ));
+            
+            extract($atts);
 
             switch (intval($lmode)) {
                 case 1:
