@@ -718,7 +718,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     private function processImportExportCode($dump_form , $is_template = false )
     {
         $redirectUrl = '';
-        if ((isset($dump_form['app_ver']) && in_array($dump_form['app_ver'], ['7.0.0','7.4.8'], true) ) ||
+        if ((isset($dump_form['app_ver']) && in_array($dump_form['app_ver'], ['7.0.0','7.4.9'], true) ) ||
 
         $is_template === true ||
 
