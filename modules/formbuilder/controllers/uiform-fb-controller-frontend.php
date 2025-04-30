@@ -52,7 +52,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     private $format_price_conf = array();
     private $form_cur;
     private $form_cur_data2    = array();
-    
+
     protected $modules;
 
     const PREFIX = 'wprofmr_';
@@ -247,12 +247,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             ),
             $atts
         );
-        
+
         // Automatically sanitize & validate each attribute.
         $vars = array_map(function($v) {
             return sanitize_text_field($v);
         }, $vars);
-        
+
         ob_start();
         ?>
         <span class="uiform-stickybox-summary">
@@ -308,7 +308,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         $id_rec = (isset($_POST['form_r_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_r_id']) : '';
         $this->flag_submitted = $id_rec;
-        
+
         $temp = $this->model_formrecords->getFormDataById($id_rec);
 
         $form_id          = $temp->form_fmb_id;
@@ -322,18 +322,18 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         if (intval($pdf_show_onpage) === 1) {
             $resp['show_summary_title'] = '<a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_infoinvoice(' . $id_rec . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . __('Export to PDF', 'frocket_front') . '</a>';
         }
-        
-      
+
+
         if ( isset($temp->fmb_inv_tpl_st) && intval($temp->fmb_inv_tpl_st) === 1) {
             $template_msg = $temp->fmb_inv_tpl_html;
             $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
             $template_msg = do_shortcode($template_msg);
             $resp['show_summary'] = $template_msg;
         }  else {
-            
+
               $resp['show_summary'] = $this->get_summaryInvoice_process($id_rec);
         }
-        
+
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
         echo json_encode($resp);
@@ -400,23 +400,23 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $cntACmp = ob_get_contents();
         $cntACmp = Uiform_Form_Helper::sanitize_output($cntACmp);
         ob_end_clean();
-        
+
         return $cntACmp;
     }
-    
+
     public function get_summaryInvoice()
     {
         $id_rec  = ( isset($_GET['id']) ) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) : '';
-        
+
         return $this->get_summaryInvoice_process($id_rec);
     }
-    
+
     public function get_summaryInvoice_process($id_rec)
     {
- 
+
         $form_rec_data = $this->model_gateways_rec->getInvoiceDataByFormRecId($id_rec);
         $form_id = $form_rec_data->fmb_id;
-        
+
         if(intval($form_rec_data->fmb_type) === 1){
             $name_fields = [];
             $children = $this->formsmodel->getChildFormByParentId($form_id);
@@ -424,15 +424,15 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 $fieldnamesArr = $this->formsmodel->getFieldNamesById($child->fmb_id);
                 $name_fields = array_merge($name_fields, $fieldnamesArr);
             }
-            
+
             $mainData=$form_rec_data->fmb_data2;
-            
+
         }else{
-            
+
             $mainData=$form_rec_data->fmb_data;
             $name_fields   = $this->model_record->getNameInvoiceField($id_rec);
         }
-        
+
         $form_data          = json_decode($mainData, true);
         $form_data_currency = (isset($form_data['main']['price_currency'])) ? $form_data['main']['price_currency'] : '';
         $form_data_invoice  = (isset($form_data['invoice'])) ? $form_data['invoice'] : '';
@@ -462,7 +462,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 }else{
                     $isFieldChecked = isset($name_fields_check[ $key ])? true: false;
                 }
-        
+
             if ( $isFieldChecked && isset($value['price_st']) && intval($value['price_st']) === 1) {
                 $field_name      = '';
                 $field_id        = '';
@@ -473,9 +473,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
                 $tmp_invoice_row['item_uniqueid'] = $key;
                 $tmp_invoice_row['item_id']       = $field_id;
-                
+
                 if ( is_array($value['input'])) {
-                
+
                     if(isset($value['input']['amount'])){
                         $tmp_invoice_row['item_qty']  = 1;
                             $tmp_invoice_row['item_desc'] = '';
@@ -487,13 +487,13 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                                     $tmp_invoice_row['item_amount'] = $value['input']['amount'];
                                 }
                             }
-    
+
                             $tmp_inp_label = $value['label'];
                             if ( ! empty($value['input']['label'])) {
                                 $tmp_inp_label .= ' - ' . $value['input']['label'];
                             }
                             $tmp_invoice_row['item_desc'] = $tmp_inp_label;
-    
+
                             $new_record_user[] = $tmp_invoice_row;
                     }else{
                         foreach ( $value['input'] as $key2 => $value2) {
@@ -507,18 +507,18 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                                     $tmp_invoice_row['item_amount'] = $value2['amount'];
                                 }
                             }
-    
+
                             $tmp_inp_label = $value['label'];
                             if ( ! empty($value2['label'])) {
                                 $tmp_inp_label .= ' - ' . $value2['label'];
                             }
                             $tmp_invoice_row['item_desc'] = $tmp_inp_label;
-    
+
                             $new_record_user[] = $tmp_invoice_row;
                         }
                     }
-                
-                    
+
+
                 } else {
                     $tmp_invoice_row['item_qty']    = 1;
                     $tmp_invoice_row['item_desc']  .= ' ' . $value['input'];
@@ -954,7 +954,7 @@ $vars = array_map(function($v) {
         $vars = array_map(function($v) {
             return sanitize_text_field($v);
         }, $vars);
-        
+
         switch (strval($vars['atr1'])) {
             case 'label':
                 ob_start();
@@ -1008,12 +1008,12 @@ $vars = array_map(function($v) {
             ),
             $atts
         );
-        
+
         // Automatically sanitize & validate each attribute.
         $vars = array_map(function($v) {
             return sanitize_text_field($v);
         }, $vars);
-        
+
         $output = '';
 
         if (!empty($vars['opt'])) {
@@ -1094,7 +1094,7 @@ $vars = array_map(function($v) {
         $vars = array_map(function($v) {
             return sanitize_text_field($v);
         }, $vars);
-        
+
         $output = '';
 
         $rec_id = $this->flag_submitted;
@@ -1170,9 +1170,9 @@ $vars = array_map(function($v) {
                     $data             = $this->model_formrecords->getFormDataById($rec_id);
                     $tmp_data         = json_decode($data->fbh_data, true);
                     $form_data_onsubm = json_decode($data->fmb_data2, true);
-                    
+
                     $formDataFirst= json_decode($data->fmb_data, true);
-                    
+
                     // price numeric format
                     $format_price_conf                        = array();
                     $format_price_conf['price_format_st']     = (isset($form_data_onsubm['main']['price_format_st'])) ? $form_data_onsubm['main']['price_format_st'] : '0';
@@ -1846,16 +1846,16 @@ $vars = array_map(function($v) {
             $form_data        = $this->formsmodel->getFormById_2($form_id);
             $form_data_onsubm = json_decode($form_data->fmb_data2, true);
             $form_data_name   = $form_data->fmb_name;
-            
+
             // store to obj var
             $this->form_cur = $form_data;
             $this->form_cur_data2 = json_decode($form_data->fmb_data2, true);
-            
+
             // prepare message
             $tmp_template_msg   = ( isset($form_data_onsubm['onsubm']['mail_template_msg']) ) ? urldecode($form_data_onsubm['onsubm']['mail_template_msg']) : '';
             $tmp_sm_successtext = ( isset($form_data_onsubm['onsubm']['sm_successtext']) ) ? urldecode($form_data_onsubm['onsubm']['sm_successtext']) : '';
             $message            = $tmp_template_msg;
-            
+
             // math formula result
             $zgfm_calc_math        = ($_POST['zgfm_calc_math']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['zgfm_calc_math'])) : 0;
             $form_data_calc_enable = (isset($form_data_onsubm['calculation']['enable_st'])) ? $form_data_onsubm['calculation']['enable_st'] : '0';
@@ -1900,19 +1900,19 @@ $vars = array_map(function($v) {
                 if (!empty($form_fields)) {
                     foreach ($form_fields as $key2 => $value2) {
                         list($form_f_tmp2, $form_f_rec_tmp2, $form_errors2, $attachments2, $attachment_status2, $form_cost_total) = $this->process_form_fields($value2, $key2);
-                        
+
                         $newArray = [];
                         foreach ($form_f_tmp2 as $key3 => $value3) {
                             $newIndex = $key3.'_'.$key2;
                             $newArray[$newIndex] = $value3;
                         }
-                        
+
                         $newArray2 = [];
                         foreach ($form_f_rec_tmp2 as $key3 => $value3) {
                             $newIndex = $key3.'_'.$key2;
                             $newArray2[$newIndex] = $value3;
                         }
-                        
+
                         $form_f_tmp = array_merge($form_f_tmp, $newArray);
                         $form_f_rec_tmp = array_merge($form_f_rec_tmp, $newArray2);
                         $form_errors = array_merge($form_errors, $form_errors2);
@@ -1932,10 +1932,10 @@ $vars = array_map(function($v) {
             $tmp_price_tax_val = (isset($form_data_onsubm['main']['price_tax_val'])) ? $form_data_onsubm['main']['price_tax_val'] : '0';
             $tmp_payment_st = (isset($form_data_onsubm['main']['price_st'])) ? $form_data_onsubm['main']['price_st'] : '0';
 
-             
+
              // check if math calc is enabled
              $form_cost_total = (isset($zgfm_calc_math) && intval($zgfm_calc_math) > 0) ? $zgfm_calc_math : $form_cost_total;
-            
+
             // check if tax is enabled
             if (intval($tmp_price_tax_st) === 1) {
                 $form_cost_subtotal = floatval($form_cost_total);
@@ -2071,9 +2071,9 @@ $vars = array_map(function($v) {
 
                 $mail_usr_recipient = (isset($form_data_onsubm['onsubm']['mail_usr_recipient'])) ? $form_data_onsubm['onsubm']['mail_usr_recipient'] : '';
                 $mail_replyto       = (isset($form_data_onsubm['onsubm']['mail_replyto'])) ? $form_data_onsubm['onsubm']['mail_replyto'] : '';
-                
-                
-                
+
+
+
                 $data_mail                = array();
                 $data_mail['from_mail']   = html_entity_decode(do_shortcode($mail_from_email));
                 $data_mail['from_name']   = html_entity_decode(do_shortcode($mail_from_name));
@@ -2083,9 +2083,9 @@ $vars = array_map(function($v) {
                 $data_mail['to']          = trim($email_recipient);
                 $data_mail['cc']          = array_map('trim', explode(',', $email_cc));
                 $data_mail['bcc']         = array_map('trim', explode(',', $email_bcc));
-                
+
                 $tmp_replyto = $this->model_formrecords->getFieldOptRecord($idActivate, '', $mail_replyto, 'input');
-                 
+
                 if (!empty($tmp_replyto)) {
                     $data_mail['mail_replyto'] = $tmp_replyto;
                 }
@@ -2150,9 +2150,9 @@ $vars = array_map(function($v) {
                     $data_mail['subject']            = html_entity_decode(do_shortcode($mail_usr_subject));
                     $data_mail['attachments']        = $attachments;
                     $data_mail['attachement_status'] = $attachment_status;
-                    
+
                     $data_mail['to']  = $this->model_formrecords->getFieldOptRecord($idActivate, '', $mail_usr_recipient, 'input');
-                     
+
                     $data_mail['cc']  = array_map('trim', explode(',', $mail_usr_cc));
                     $data_mail['bcc'] = array_map('trim', explode(',', $mail_usr_bcc));
                     if (!empty($mail_usr_replyto)) {
@@ -2194,7 +2194,7 @@ $vars = array_map(function($v) {
             do_action('zgfm_onSubmitForm_pos', self::$_form_data['form_id'], self::$_form_data['record_id']);
 
             if (intval($data['payment_st']) === 1) {
-                
+
                 $data['id_payrec']    = $id_payrec;
                 $this->form_response  = $data;
                 $data['payment_html'] = $this->get_payment_html();
@@ -2354,9 +2354,9 @@ $vars = array_map(function($v) {
         $data2['is_html']    = $is_html;
         // $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
         //$tmp_res = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
-        
+
         $tmp_res = $this->pdf_global_template($data2);
-        
+
         if (intval($is_html) === 1) {
             header('Content-type: text/html');
 
@@ -2565,40 +2565,18 @@ $vars = array_map(function($v) {
         $data['fbh_id']   = (isset($this->form_response['fbh_id'])) ? $this->form_response['fbh_id'] : '';
         $data['currency'] = (isset($this->form_response['currency'])) ? $this->form_response['currency'] : array();
         $gateways         = $this->model_gateways->getAvailableGateways();
-
-        //paypal constants
-        $paypal_return_url = isset($pg_data['paypal_return_url']) ? $pg_data['paypal_return_url'] : '';
-        $paypal_cancel_url = isset($pg_data['paypal_cancel_url']) ? $pg_data['paypal_cancel_url'] : '';
         
-        //custom payment methods
-        $customPaymentMethod=$this->form_cur_data2['main']['payment_method_st'];
-        $allowPaymentMethod=[];        
-        if(intval($customPaymentMethod) === 1){
-            $allowPaymentMethod = $this->form_cur_data2['main']['payment_method_list'];
-            $allowPaymentMethod = array_map('intval', $allowPaymentMethod);
-            
-            $payment_paypal_return_url = $this->form_cur_data2['main']['payment_paypal_return_url'];
-            if(!empty($payment_paypal_return_url)){
-                $paypal_return_url = $payment_paypal_return_url;
-            }
-            
-            $payment_paypal_cancel_url = $this->form_cur_data2['main']['payment_paypal_cancel_url'];
-            if(!empty($payment_paypal_cancel_url)){
-                $paypal_cancel_url = $payment_paypal_cancel_url;
-            }
-        }
-         
         $data['fmb_rec_tpl_st']=$this->form_cur->fmb_rec_tpl_st;
         $data['fmb_inv_tpl_st']=$this->form_cur->fmb_inv_tpl_st;
-        
+
         $data['calculation_enable_st'] =  intval($this->form_cur_data2['calculation']['enable_st']);
-        
+
         foreach ($gateways as $key => $value) {
-        
+
             if(!empty($allowPaymentMethod) && !in_array(intval($value->pg_id), $allowPaymentMethod, true)){
                 continue;
             }
-        
+
             switch (intval($value->pg_id)) {
                 case 1:
                     // offline
@@ -2618,6 +2596,29 @@ $vars = array_map(function($v) {
                         break 1;
                     }
                     $pg_data                    = json_decode($value->pg_data, true);
+
+                    //paypal constants
+                    $paypal_return_url = isset($pg_data['paypal_return_url']) ? $pg_data['paypal_return_url'] : '';
+                    $paypal_cancel_url = isset($pg_data['paypal_cancel_url']) ? $pg_data['paypal_cancel_url'] : '';
+
+                    //custom payment methods
+                    $customPaymentMethod=$this->form_cur_data2['main']['payment_method_st'];
+                    $allowPaymentMethod=[];
+                    if(intval($customPaymentMethod) === 1){
+                        $allowPaymentMethod = $this->form_cur_data2['main']['payment_method_list'];
+                        $allowPaymentMethod = array_map('intval', $allowPaymentMethod);
+
+                        $payment_paypal_return_url = $this->form_cur_data2['main']['payment_paypal_return_url'];
+                        if(!empty($payment_paypal_return_url)){
+                            $paypal_return_url = $payment_paypal_return_url;
+                        }
+
+                        $payment_paypal_cancel_url = $this->form_cur_data2['main']['payment_paypal_cancel_url'];
+                        if(!empty($payment_paypal_cancel_url)){
+                            $paypal_cancel_url = $payment_paypal_cancel_url;
+                        }
+                    }
+
                     $data2                      = array();
                     $data2['amount']            = (isset($this->form_response['amount'])) ? $this->form_response['amount'] : 0;
                     $data2['amount']            = number_format(round($data2['amount'], 2, PHP_ROUND_HALF_EVEN), 2, '.', '');
@@ -2886,7 +2887,7 @@ $vars = array_map(function($v) {
                 ],
                 $attributes
             ));
-            
+
             extract($atts);
 
             switch (intval($lmode)) {

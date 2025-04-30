@@ -1370,9 +1370,14 @@ JS;
 
                     // }
                 }
+                
+                //add zigaform to gutenberg - admin
+                $this->zigaform_register_form_shortcode_block_admin();
             } else {
                 // load frontend
                 $this->loadFrontendControllers();
+                //add zigaform to gutenberg - frontend
+                $this->zigaform_register_form_shortcode_block_frontend();
             }
 
             // add lang dir
@@ -1384,8 +1389,75 @@ JS;
         }
     }
 
+    public function zigaform_register_form_shortcode_block_admin() {
+        $src_dir   = UIFORM_FORMS_DIR . '/assets/gutenberg/form-shortcode';
+        $build_dir = UIFORM_FORMS_DIR . '/assets/backend/js/gutenberg/form-shortcode';
+
+        // Scripts
+        wp_register_script(
+            'zigaform-form-shortcode-editor-script',
+            UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/index.js',
+            [
+                'wp-blocks',
+                'wp-element',
+                'wp-block-editor',
+                'wp-components',
+            ],
+            filemtime("$build_dir/index.js")
+        );
+
+        // Localized data
+        $data = apply_filters('zigaform_leg_blocks_get_forms', []);
+        wp_localize_script(
+            'zigaform-form-shortcode-editor-script',
+            'zigaformData',
+            $data
+        );
+
+        // Editor-only CSS
+        wp_register_style(
+            'zigaform-form-shortcode-editor',
+            UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/editor.css',
+            [],
+            filemtime("$build_dir/editor.css")
+        );
+
+        // Editor style  
+        wp_register_style(
+            'zigaform-form-shortcode-style',
+            UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/style.css',
+            [],
+            filemtime("$build_dir/style.css")
+        );
+
+        register_block_type(
+            $src_dir,
+            [
+                'editor_script'   => 'zigaform-form-shortcode-editor-script',
+                'style'           => 'zigaform-form-shortcode-style',
+                'editor_style'    => 'zigaform-form-shortcode-editor',
+                'render_callback' => [ $this, 'zigaform_render_form_block' ],
+            ]
+        );
+    }
 
 
+    public function zigaform_register_form_shortcode_block_frontend() {
+        $src_dir   = UIFORM_FORMS_DIR . '/assets/gutenberg/form-shortcode';
+
+        register_block_type(
+            $src_dir,
+            [
+                'style'           => 'zigaform-form-shortcode-style',
+                'render_callback' => [ $this, 'zigaform_render_form_block' ],
+            ]
+        );
+    }
+    public function zigaform_render_form_block( $attrs ) {
+        $form_id = isset( $attrs['formId'] ) ? (int) $attrs['formId'] : 0;
+        return $form_id ? do_shortcode( "[zigaform-estimator id=\"{$form_id}\"]" ) : '';
+    }
+ 
     /**
      * Checks if the plugin was recently updated and upgrades if necessary
      *

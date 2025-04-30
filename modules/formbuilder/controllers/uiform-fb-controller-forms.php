@@ -201,7 +201,29 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         
         add_filter('zgfm_front_ms_aditional_css', [&$this, 'ms_progressbarcost_css'], 1, 2);
         
+        //blocks
+        add_filter('zigaform_leg_blocks_get_forms', [&$this, 'blocks_get_forms']);
+   
     }
+
+    public function blocks_get_forms($default)
+    {
+        $result =[
+            'forms' => []
+        ];
+    
+        $rdata = $this->formsmodel->getAvailableForms();
+        if (empty($rdata)) {
+            return $result;
+        }
+    
+        foreach ($rdata as $form) {
+            $result['forms'][]=[ 'id' => $form->fmb_id, 'name' => $form->fmb_name ];
+        }
+    
+        return $result;
+    }
+
 
     public function ms_filter_form_js($default)
     {
@@ -718,7 +740,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
     private function processImportExportCode($dump_form , $is_template = false )
     {
         $redirectUrl = '';
-        if ((isset($dump_form['app_ver']) && in_array($dump_form['app_ver'], ['7.0.0','7.4.9'], true) ) ||
+        if ((isset($dump_form['app_ver']) && in_array($dump_form['app_ver'], ['7.0.0','7.5.1'], true) ) ||
 
         $is_template === true ||
 
