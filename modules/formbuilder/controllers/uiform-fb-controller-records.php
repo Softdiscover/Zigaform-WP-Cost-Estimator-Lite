@@ -305,6 +305,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     {
         $data               = array();
         $data['list_forms'] = $this->formsmodel->getListForms();
+        $data['chosen_form'] = isset($_GET['form_id'])?(int)$_GET['form_id']:0;
         echo self::loadPartial('layout.php', 'formbuilder/views/records/list_records_byforms.php', $data);
     }
 

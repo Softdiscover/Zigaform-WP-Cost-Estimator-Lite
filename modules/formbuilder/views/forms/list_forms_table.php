@@ -96,6 +96,10 @@ if ( ! defined('ABSPATH')) {
                                             <i class="fa fa-pencil-square-o"></i> <?php echo __('Edit', 'FRocket_admin'); ?></a>
                                     <?php } ?>
                                             </li>
+                                            <li><a
+                                                    class="zgfm-btn zgfm-btn-indigo"
+                                                    href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms&form_id=' . $row->fmb_id; ?>">
+                                                <i class="fa fa-archive"></i> <?php echo __('Records', 'FRocket_admin'); ?></a></li>
                                     <li><a 
                                            class="guidetour-flist-del sfdc-btn sfdc-btn-sm sfdc-btn-danger uiform-confirmation-func-action"
                                             data-intro="<?php echo __('Move to trash', 'FRocket_admin'); ?>"

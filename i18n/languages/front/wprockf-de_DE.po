@@ -1,5 +1,5 @@
-# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.5.1
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.5.1 package.
+# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.5.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.5.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -54,19 +54,19 @@ msgstr "Fehler! Dateityp ist nicht erlaubt, hochzuladen"
 msgid "New form request"
 msgstr "New form request"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:423
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:424
 msgid " , version : "
 msgstr " , version : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:423
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:424
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:471, modules/formbuilder/controllers/uiform-fb-controller-records.php:511, modules/formbuilder/views/frontend/mail_generate_fields.php:116, modules/formbuilder/views/frontend/mail_generate_fields.php:154
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:472, modules/formbuilder/controllers/uiform-fb-controller-records.php:512, modules/formbuilder/views/frontend/mail_generate_fields.php:116, modules/formbuilder/views/frontend/mail_generate_fields.php:154
 msgid "qty"
 msgstr "qty"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:474, modules/formbuilder/controllers/uiform-fb-controller-records.php:514, modules/formbuilder/views/frontend/form_invoice.php:83, modules/formbuilder/views/frontend/form_invoice.php:76
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:475, modules/formbuilder/controllers/uiform-fb-controller-records.php:515, modules/formbuilder/views/frontend/form_invoice.php:83, modules/formbuilder/views/frontend/form_invoice.php:76
 msgid "Amount"
 msgstr "Betrag"
 

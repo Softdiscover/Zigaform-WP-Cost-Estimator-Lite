@@ -200,7 +200,7 @@ class Zigaform_c_notice
             if (ZIGAFORM_F_LITE === 1) {
                 $url = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
             } else {
-                $url = 'https://codecanyon.net/item/zigaform-wordpress-calculator-cost-estimation-form-builder/reviews/13663682';
+                $url = 'https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/?utm_source=installed&utm_medium=referral';
             }
 
             $text = sprintf(__('Please rate <strong>Zigaform</strong> <a href="%1$s" target="_blank" rel="noopener" >&#9733;&#9733;&#9733;&#9733;&#9733;</a> on <a href="%2$s" target="_blank">WordPress.org</a> to help us spread the word. Thank you from the Zigaform team!', 'FRocket_admin'), $url, $url);
