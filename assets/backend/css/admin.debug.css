@@ -11698,12 +11698,6 @@ th.tabco3 {
 }
 
 @charset "UTF-8";
-.sfdc-wrap * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .sfdc-wrap a {
   text-decoration: none !important;
 }
@@ -12083,6 +12077,7 @@ p {
 
 #uiformc-menu-sec6 .uiformc-tab-content-inner2 {
   background-color: #f9f9f9 !important;
+  overflow: hidden;
 }
 
 #uiformc-menu-sec6 .uiformc-tab-content-inner2 #zgfm-tab-calc-sourcecode-wrapper {
