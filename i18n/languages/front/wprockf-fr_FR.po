@@ -1,5 +1,5 @@
-# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.5.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.5.9 package.
+# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.6.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.6.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -30,27 +30,27 @@ msgstr "Récapitulatif de la commande"
 msgid "Total cost"
 msgstr "Montant total/Total cost"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1283, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1312, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:3003
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1285, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1314, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:3005
 msgid "warning! Form was not submitted"
 msgstr "Attention! Formulaire n&#39;a pas été soumis"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1280, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1308, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2998
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1282, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1310, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:3000
 msgid "Success! your form was submitted"
 msgstr "Success! your form was submitted"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1305
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1307
 msgid "Error! something went wrong."
 msgstr "Error! something went wrong."
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1624
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1626
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Erreur! Le fichier dépasse la taille autorisée de"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1631
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1633
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Erreur! Type de fichier est pas autorisé à télécharger"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2070, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2118
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2072, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:2120
 msgid "New form request"
 msgstr "New form request"
 
@@ -62,7 +62,7 @@ msgstr " , version : "
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:472, modules/formbuilder/controllers/uiform-fb-controller-records.php:512, modules/formbuilder/views/frontend/mail_generate_fields.php:116, modules/formbuilder/views/frontend/mail_generate_fields.php:154
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:472, modules/formbuilder/controllers/uiform-fb-controller-records.php:512, modules/formbuilder/views/frontend/mail_generate_fields.php:121, modules/formbuilder/views/frontend/mail_generate_fields.php:159
 msgid "qty"
 msgstr "qty"
 
@@ -94,11 +94,11 @@ msgstr "﻿Quantité"
 msgid "Description"
 msgstr "Description"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:140, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:222, modules/formbuilder/views/records/info_record.php:34
+#: modules/formbuilder/views/frontend/form_invoice.php:140, modules/formbuilder/views/frontend/form_summary.php:72, modules/formbuilder/views/frontend/mail_generate_fields.php:227, modules/formbuilder/views/records/info_record.php:34
 msgid "Sub total"
 msgstr "Sub total"
 
-#: modules/formbuilder/views/frontend/form_invoice.php:144, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:227, modules/formbuilder/views/records/info_record.php:39
+#: modules/formbuilder/views/frontend/form_invoice.php:144, modules/formbuilder/views/frontend/form_summary.php:77, modules/formbuilder/views/frontend/mail_generate_fields.php:232, modules/formbuilder/views/records/info_record.php:39
 msgid "Tax"
 msgstr "Tax"
 
@@ -106,15 +106,15 @@ msgstr "Tax"
 msgid "Invoice Total"
 msgstr "Facture total"
 
-#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:233, modules/formbuilder/views/frontend/payment_html.php:82, modules/formbuilder/views/records/info_record.php:44
+#: modules/formbuilder/views/frontend/form_summary.php:82, modules/formbuilder/views/frontend/mail_generate_fields.php:238, modules/formbuilder/views/frontend/payment_html.php:82, modules/formbuilder/views/records/info_record.php:44
 msgid "Total"
 msgstr "Total"
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:64, modules/formbuilder/views/frontend/mail_generate_fields.php:62, modules/formbuilder/views/frontend/mail_generate_fields.php:96, modules/formbuilder/views/frontend/mail_generate_fields.php:94, modules/formbuilder/views/frontend/mail_generate_fields.php:132, modules/formbuilder/views/frontend/mail_generate_fields.php:130, modules/formbuilder/views/frontend/mail_generate_fields.php:168, modules/formbuilder/views/frontend/mail_generate_fields.php:166
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:69, modules/formbuilder/views/frontend/mail_generate_fields.php:67, modules/formbuilder/views/frontend/mail_generate_fields.php:101, modules/formbuilder/views/frontend/mail_generate_fields.php:99, modules/formbuilder/views/frontend/mail_generate_fields.php:137, modules/formbuilder/views/frontend/mail_generate_fields.php:135, modules/formbuilder/views/frontend/mail_generate_fields.php:173, modules/formbuilder/views/frontend/mail_generate_fields.php:171
 msgid "amount"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:116, modules/formbuilder/views/frontend/mail_generate_fields.php:154
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:121, modules/formbuilder/views/frontend/mail_generate_fields.php:159
 msgid "Units"
 msgstr "Units"
 
