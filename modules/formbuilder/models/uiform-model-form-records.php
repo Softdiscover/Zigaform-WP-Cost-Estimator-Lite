@@ -402,7 +402,7 @@ class Uiform_Model_Form_Records
     public function getFormDataById($id_rec)
     {
         $query = sprintf(
-            'select f.fmb_type,  f.created_ip, f.fmb_name,frec.form_fmb_id,f.fmb_data,f.fmb_data2,frec.fbh_total_amount,f.fmb_rec_tpl_st,f.fmb_rec_tpl_html,frec.fbh_data,f.fmb_inv_tpl_html,f.fmb_inv_tpl_st
+            'select f.fmb_type, frec.vis_uniqueid,  f.created_ip, f.fmb_name,frec.form_fmb_id,f.fmb_data,f.fmb_data2,frec.fbh_total_amount,f.fmb_rec_tpl_st,f.fmb_rec_tpl_html,frec.fbh_data,f.fmb_inv_tpl_html,f.fmb_inv_tpl_st
 		from %s frec
 		join %s f on f.fmb_id=frec.form_fmb_id
 		where frec.flag_status>=0
@@ -447,7 +447,7 @@ class Uiform_Model_Form_Records
         );
         return $this->wpdb->get_results($query);
     }
-    
+
     public function getNameInvoiceField($id_rec)
     {
         $query  = sprintf(
@@ -465,7 +465,7 @@ class Uiform_Model_Form_Records
         );
         return $this->wpdb->get_results($query);
     }
-    
+
     public function getChartDataByIdForm($id_field)
     {
         $query = 'SELECT 
@@ -546,7 +546,7 @@ class Uiform_Model_Form_Records
             $ui_field,
             $idform
         );
-        
+
         $row = $this->wpdb->get_row($query);
         if (! empty($row)) {
             return $row;

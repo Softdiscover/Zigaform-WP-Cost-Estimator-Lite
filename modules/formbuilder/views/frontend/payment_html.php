@@ -21,7 +21,7 @@ if ( ! defined('ABSPATH')) {
             <div class="sfdc-col-md-12">
                 <h1 ><?php echo __('Choose Payment Method', 'frocket_front'); ?></h1>
             </div>
-        </div>      
+        </div>
         <div class="sfdc-row">
             <div class="sfdc-col-sm-7 col-md-8 uiform-pg-section-1">
                 <div class="uiform-pg-table-header-box">
@@ -41,11 +41,11 @@ if ( ! defined('ABSPATH')) {
                         }
                     }
                     ?>
-                   <!--\ content here --> 
+                   <!--\ content here -->
 
                     <div class="sfdc-clearfix"></div>
                 </div>
-                
+
             </div>
 
             <div class="uiform-pg-section-2 col-sm-5 col-md-4">
@@ -56,20 +56,20 @@ if ( ! defined('ABSPATH')) {
                 </div>
                 <div class="row uiform-pg-summary-body">
                     <div class="col-xs-10 col-xs-offset-1">
-                    
-                     
-                        <p class="uiform-pg-summbox-p text-right"> 
-                            <a 
+
+
+                        <p class="uiform-pg-summbox-p text-right">
+                            <a
                                 onclick="javascript:rocketfm.payment_seeSummary(this);return false;"
                                 href="javascript:void(0);">
                                    <i class="fa fa-list-ul"></i> <?php echo __('See summary', 'frocket_front'); ?>
                                 </a>
                         </p>
-                       
-                        
+
+
                           <?php if ( ZIGAFORM_F_LITE !== 1) { ?>
-                            <p class="uiform-pg-summbox-p text-right"> 
-                                <a 
+                            <p class="uiform-pg-summbox-p text-right">
+                                <a
                                     onclick="javascript:rocketfm.payment_seeInvoice(this);return false;"
                                     href="javascript:void(0);">
                                        <i class="fa fa-file-text-o"></i> <?php echo __('See invoice', 'frocket_front'); ?>
@@ -77,9 +77,9 @@ if ( ! defined('ABSPATH')) {
 
                             </p>
                           <?php } ?>
-                         
-                        
-                        <p class="uiform-pg-summbox-p text-right"> <?php echo __('Total', 'frocket_front'); ?>:&nbsp;&nbsp; 
+
+
+                        <p class="uiform-pg-summbox-p text-right"> <?php echo __('Total', 'frocket_front'); ?>:&nbsp;&nbsp;
                             <span class="uiform-pg-summbox-total "><?php echo urldecode($currency['symbol']); ?> <span class="uiform-pg-summbox-amount"> <?php echo round($amount, 2); ?></span> <?php echo $currency['cur']; ?></span>
                         </p>
                         <div style="display:none;" class="uiform-pg-summbox-agreement text-right">
@@ -92,7 +92,7 @@ if ( ! defined('ABSPATH')) {
                 </div>
 
                 <div class="row uiform-pg-complete-box">
-  
+
                             <a onclick="javascript:rocketfm.payment_completebtn(this);return false;"
                                href="javascript:void(0);"
                                class="sfdc-btn sfdc-btn-success sfdc-btn-lg">
@@ -105,4 +105,5 @@ if ( ! defined('ABSPATH')) {
         <input type="hidden" class="uifm_pg_msg_selectpay" value="<?php echo __('Select Payment', 'frocket_front'); ?>" >
     </div>
     <input type="hidden" class="_uifm_pg_record_id" value="<?php echo $fbh_id; ?>">
+    <input type="hidden" class="_uifm_record_nonce" value="<?php echo $record_nonce; ?>">
 </div>

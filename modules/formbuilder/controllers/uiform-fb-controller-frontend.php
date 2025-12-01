@@ -239,13 +239,13 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     public function shortcode_uifm_summary($atts)
     {
         $vars = shortcode_atts(
-            array(
-                'rows'            => '5',
-                'heading'         => '',
-                'hide_cur_code'   => '0',
-                'hide_cur_symbol' => '0',
-            ),
-            $atts
+                array(
+                        'rows'            => '5',
+                        'heading'         => '',
+                        'hide_cur_code'   => '0',
+                        'hide_cur_symbol' => '0',
+                ),
+                $atts
         );
 
         // Automatically sanitize & validate each attribute.
@@ -277,10 +277,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     public function shortcode_uifm_summary_link($atts)
     {
         $vars = shortcode_atts(
-            array(
-                'value' => 'Show summary',
-            ),
-            $atts
+                array(
+                        'value' => 'Show summary',
+                ),
+                $atts
         );
 
         ob_start();
@@ -298,104 +298,201 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         return '<span class="uiform-stickybox-inp-price">0</span>';
     }
 
-    public function ajax_payment_seeinvoice()
-    {
+    public function ajax_payment_seeinvoice() {
 
-        $nonceCheck = apply_filters('zgfm_front_nonce_check', true);
-        if ($nonceCheck) {
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        $nonceCheck = apply_filters( 'zgfm_front_nonce_check', true );
+        if ( $nonceCheck ) {
+            check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
         }
 
-        $id_rec = (isset($_POST['form_r_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_r_id']) : '';
+        $id_rec = isset( $_POST['form_r_id'] )
+                ? Uiform_Form_Helper::sanitizeInput( $_POST['form_r_id'] )
+                : '';
+        $id_form = isset( $_POST['form_id'] )
+                ? Uiform_Form_Helper::sanitizeInput( $_POST['form_id'] )
+                : '';
         $this->flag_submitted = $id_rec;
 
-        $temp = $this->model_formrecords->getFormDataById($id_rec);
+        $temp = $this->model_formrecords->getFormDataById( $id_rec );
 
-        $form_id          = $temp->form_fmb_id;
-        $form_data        = $this->formsmodel->getFormById_2($form_id);
-        $form_data_onsubm = json_decode($form_data->fmb_data2, true);
-        $pdf_show_onpage  = (isset($form_data_onsubm['main']['pdf_show_onpage'])) ? $form_data_onsubm['main']['pdf_show_onpage'] : '0';
-
-        $resp = array();
-
-        $resp['show_summary_title'] = __('Invoice', 'frocket_front');
-        if (intval($pdf_show_onpage) === 1) {
-            $resp['show_summary_title'] = '<a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_infoinvoice(' . $id_rec . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . __('Export to PDF', 'frocket_front') . '</a>';
+        if ( ! $temp ) {
+            header( 'Content-Type: application/json; charset=UTF-8' );
+            echo wp_json_encode(
+                    array(
+                            'success' => false,
+                            'error'   => 'Record not found',
+                    )
+            );
+            wp_die();
         }
 
+        // --- SECURITY: CHECK AUTHORIZATION WITHOUT COOKIES ---
+        $is_authorized = false;
 
-        if ( isset($temp->fmb_inv_tpl_st) && intval($temp->fmb_inv_tpl_st) === 1) {
-            $template_msg = $temp->fmb_inv_tpl_html;
-            $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
-            $template_msg = do_shortcode($template_msg);
-            $resp['show_summary'] = $template_msg;
-        }  else {
+        // 1. Allow if user is admin/editor (or equivalent).
+        if ( current_user_can( 'manage_options' ) ) {
+            $is_authorized = true;
+        } else {
+            // 2. Require a record-specific nonce.
+            $record_nonce = isset( $_POST['record_nonce'] )
+                    ? sanitize_text_field( wp_unslash( $_POST['record_nonce'] ) )
+                    : '';
 
-              $resp['show_summary'] = $this->get_summaryInvoice_process($id_rec);
-        }
-
-        // return data to ajax callback
-        header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
-        wp_die();
-    }
-
-    public function ajax_payment_seesummary()
-    {
-
-        $nonceCheck = apply_filters('zgfm_front_nonce_check', true);
-        if ($nonceCheck) {
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
-        }
-
-        $id_rec = (isset($_POST['form_r_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_r_id']) : '';
-
-        $temp             = $this->model_formrecords->getFormDataById($id_rec);
-        $form_id          = $temp->form_fmb_id;
-        $form_data        = $this->formsmodel->getFormById_2($form_id);
-        $form_data_onsubm = json_decode($form_data->fmb_data2, true);
-        $pdf_show_onpage  = (isset($form_data_onsubm['main']['pdf_show_onpage'])) ? $form_data_onsubm['main']['pdf_show_onpage'] : '0';
-        $this->flag_submitted = $id_rec;
-        $resp = array();
-
-        $resp['show_summary_title'] = __('Order summary', 'frocket_front');
-        if (intval($pdf_show_onpage) === 1) {
-            if (ZIGAFORM_F_LITE === 1) {
-                $resp['show_summary_title'] .= '';
-            } else {
-                $resp['show_summary_title'] .= ' <a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_inforecord(' . $id_rec . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . __('Export to PDF', 'frocket_front') . '</a>';
+            if ( $record_nonce && wp_verify_nonce( $record_nonce, 'zgfm_view_record_' . $id_rec.'_'.$id_form ) ) {
+                $is_authorized = true;
             }
         }
 
-        if ( isset($temp->fmb_rec_tpl_st) && intval($temp->fmb_rec_tpl_st) === 1) {
-                $template_msg = do_shortcode($temp->fmb_rec_tpl_html);
-                $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+        if ( ! $is_authorized ) {
+            header( 'Content-Type: application/json; charset=UTF-8' );
+            echo wp_json_encode(
+                    array(
+                            'success' => false,
+                            'error'   => 'Unauthorized access',
+                    )
+            );
+            wp_die();
+        }
+        // --- END SECURITY ---
+
+        $form_id          = $temp->form_fmb_id;
+        $form_data        = $this->formsmodel->getFormById_2( $form_id );
+        $form_data_onsubm = json_decode( $form_data->fmb_data2, true );
+        $pdf_show_onpage  = isset( $form_data_onsubm['main']['pdf_show_onpage'] )
+                ? $form_data_onsubm['main']['pdf_show_onpage']
+                : '0';
+
+        $resp = array();
+
+        $resp['show_summary_title'] = __( 'Invoice', 'frocket_front' );
+        if ( intval( $pdf_show_onpage ) === 1 ) {
+            $resp['show_summary_title'] = '<a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_infoinvoice(' . intval( $id_rec ) . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . esc_html__( 'Export to PDF', 'frocket_front' ) . '</a>';
+        }
+
+        if ( isset( $temp->fmb_inv_tpl_st ) && intval( $temp->fmb_inv_tpl_st ) === 1 ) {
+            $template_msg = $temp->fmb_inv_tpl_html;
+            $template_msg = html_entity_decode( $template_msg, ENT_QUOTES, 'UTF-8' );
+            $template_msg = do_shortcode( $template_msg );
             $resp['show_summary'] = $template_msg;
         } else {
-            $resp['show_summary'] = do_shortcode($this->getDefaultSummaryTemplate());
+            $resp['show_summary'] = $this->get_summaryInvoice_process( $id_rec );
         }
 
         // return data to ajax callback
-        header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        header( 'Content-Type: application/json; charset=UTF-8' );
+        echo wp_json_encode( $resp );
         wp_die();
     }
+
+
+    public function ajax_payment_seesummary() {
+
+        $nonceCheck = apply_filters( 'zgfm_front_nonce_check', true );
+        if ( $nonceCheck ) {
+            check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+        }
+
+        $id_rec = isset( $_POST['form_r_id'] )
+                ? Uiform_Form_Helper::sanitizeInput( $_POST['form_r_id'] )
+                : '';
+
+        $id_form = isset( $_POST['form_id'] )
+                ? Uiform_Form_Helper::sanitizeInput( $_POST['form_id'] )
+                : '';
+
+
+        $temp = $this->model_formrecords->getFormDataById( $id_rec );
+
+        if ( ! $temp ) {
+            header( 'Content-Type: application/json; charset=UTF-8' );
+            echo wp_json_encode(
+                    array(
+                            'success' => false,
+                            'error'   => 'Record not found',
+                    )
+            );
+            wp_die();
+        }
+
+        // --- SECURITY: CHECK AUTHORIZATION WITHOUT COOKIES ---
+        $is_authorized = false;
+
+        // 1. Allow if user is admin/editor (or equivalent).
+        if ( current_user_can( 'manage_options' ) ) {
+            $is_authorized = true;
+        } else {
+            // 2. Require a record-specific nonce.
+            $record_nonce = isset( $_POST['record_nonce'] )
+                    ? sanitize_text_field( wp_unslash( $_POST['record_nonce'] ) )
+                    : '';
+
+            if ( $record_nonce && wp_verify_nonce( $record_nonce, 'zgfm_view_record_' . $id_rec.'_'.$id_form ) ) {
+                $is_authorized = true;
+            }
+        }
+
+        if ( ! $is_authorized ) {
+            header( 'Content-Type: application/json; charset=UTF-8' );
+            echo wp_json_encode(
+                    array(
+                            'success' => false,
+                            'error'   => 'Unauthorized access',
+                    )
+            );
+            wp_die();
+        }
+        // --- END SECURITY ---
+
+        $form_id          = $temp->form_fmb_id;
+        $form_data        = $this->formsmodel->getFormById_2( $form_id );
+        $form_data_onsubm = json_decode( $form_data->fmb_data2, true );
+        $pdf_show_onpage  = isset( $form_data_onsubm['main']['pdf_show_onpage'] )
+                ? $form_data_onsubm['main']['pdf_show_onpage']
+                : '0';
+
+        $this->flag_submitted = $id_rec;
+
+        $resp = array();
+
+        $resp['show_summary_title'] = __( 'Order summary', 'frocket_front' );
+        if ( intval( $pdf_show_onpage ) === 1 ) {
+            if ( ZIGAFORM_F_LITE === 1 ) {
+                $resp['show_summary_title'] .= '';
+            } else {
+                $resp['show_summary_title'] .= ' <a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_inforecord(' . intval( $id_rec ) . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . esc_html__( 'Export to PDF', 'frocket_front' ) . '</a>';
+            }
+        }
+
+        if ( isset( $temp->fmb_rec_tpl_st ) && intval( $temp->fmb_rec_tpl_st ) === 1 ) {
+            $template_msg = do_shortcode( $temp->fmb_rec_tpl_html );
+            $template_msg = html_entity_decode( $template_msg, ENT_QUOTES, 'UTF-8' );
+            $resp['show_summary'] = $template_msg;
+        } else {
+            $resp['show_summary'] = do_shortcode( $this->getDefaultSummaryTemplate() );
+        }
+
+        // return data to ajax callback
+        header( 'Content-Type: application/json; charset=UTF-8' );
+        echo wp_json_encode( $resp );
+        wp_die();
+    }
+
 
     public function getDefaultSummaryTemplate(){
         ob_start();
         ?>
         <div class="zgfm-front-summary-table">
-<table cellspacing="5" cellpadding="5" border="0">
-<tbody>
-<tr>
-<th>Summary</th>
-</tr>
-<tr>
-<td valign="top"><br />Your information is shown below:<br /><br />[uifm_var opt="rec_summ"]<br /><br /></td>
-</tr>
-</tbody>
-</table>
-</div>
+            <table cellspacing="5" cellpadding="5" border="0">
+                <tbody>
+                <tr>
+                    <th>Summary</th>
+                </tr>
+                <tr>
+                    <td valign="top"><br />Your information is shown below:<br /><br />[uifm_var opt="rec_summ"]<br /><br /></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <?php
         $cntACmp = ob_get_contents();
         $cntACmp = Uiform_Form_Helper::sanitize_output($cntACmp);
@@ -455,13 +552,13 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $new_record_user = array();
         foreach ($record_user as $key => $value) {
             $isFieldChecked = false;
-                if(intval($form_rec_data->fmb_type) === 1){
-                    list($fieldName) = explode('_', $key);
-                    $key = $fieldName;
-                    $isFieldChecked = (isset($name_fields_check[ $fieldName ]))? true: false;
-                }else{
-                    $isFieldChecked = isset($name_fields_check[ $key ])? true: false;
-                }
+            if(intval($form_rec_data->fmb_type) === 1){
+                list($fieldName) = explode('_', $key);
+                $key = $fieldName;
+                $isFieldChecked = (isset($name_fields_check[ $fieldName ]))? true: false;
+            }else{
+                $isFieldChecked = isset($name_fields_check[ $key ])? true: false;
+            }
 
             if ( $isFieldChecked && isset($value['price_st']) && intval($value['price_st']) === 1) {
                 $field_name      = '';
@@ -478,23 +575,23 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
                     if(isset($value['input']['amount'])){
                         $tmp_invoice_row['item_qty']  = 1;
-                            $tmp_invoice_row['item_desc'] = '';
-                            if ( isset($value['input']['amount'])) {
-                                if ( isset($value['input']['qty'])) {
-                                    $tmp_invoice_row['item_qty']    = $value['input']['qty'];
-                                    $tmp_invoice_row['item_amount'] = $value['input']['amount'];
-                                } else {
-                                    $tmp_invoice_row['item_amount'] = $value['input']['amount'];
-                                }
+                        $tmp_invoice_row['item_desc'] = '';
+                        if ( isset($value['input']['amount'])) {
+                            if ( isset($value['input']['qty'])) {
+                                $tmp_invoice_row['item_qty']    = $value['input']['qty'];
+                                $tmp_invoice_row['item_amount'] = $value['input']['amount'];
+                            } else {
+                                $tmp_invoice_row['item_amount'] = $value['input']['amount'];
                             }
+                        }
 
-                            $tmp_inp_label = $value['label'];
-                            if ( ! empty($value['input']['label'])) {
-                                $tmp_inp_label .= ' - ' . $value['input']['label'];
-                            }
-                            $tmp_invoice_row['item_desc'] = $tmp_inp_label;
+                        $tmp_inp_label = $value['label'];
+                        if ( ! empty($value['input']['label'])) {
+                            $tmp_inp_label .= ' - ' . $value['input']['label'];
+                        }
+                        $tmp_invoice_row['item_desc'] = $tmp_inp_label;
 
-                            $new_record_user[] = $tmp_invoice_row;
+                        $new_record_user[] = $tmp_invoice_row;
                     }else{
                         foreach ( $value['input'] as $key2 => $value2) {
                             $tmp_invoice_row['item_qty']  = 1;
@@ -613,8 +710,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 case 9:
                 case 11:
                     $new_record_user[] = array(
-                        'field' => $value['label'],
-                        'value' => $value['input_value'],
+                            'field' => $value['label'],
+                            'value' => $value['input_value'],
                     );
                     break;
                 case 12:
@@ -626,20 +723,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     }
 
                     $new_record_user[] = array(
-                        'field'             => $value['label'],
-                        'field_name'        => $field_name,
-                        'type'              => $value['type'],
-                        'price_lbl_show_st' => isset($field_data['price']['lbl_show_st']) ? $field_data['price']['lbl_show_st'] : '0',
-                        'value'             => $value_new,
+                            'field'             => $value['label'],
+                            'field_name'        => $field_name,
+                            'type'              => $value['type'],
+                            'price_lbl_show_st' => isset($field_data['price']['lbl_show_st']) ? $field_data['price']['lbl_show_st'] : '0',
+                            'value'             => $value_new,
                     );
                     break;
                 default:
                     $new_record_user[] = array(
-                        'field'             => $value['label'],
-                        'field_name'        => $field_name,
-                        'type'              => $value['type'],
-                        'price_lbl_show_st' => isset($field_data['price']['lbl_show_st']) ? $field_data['price']['lbl_show_st'] : '0',
-                        'value'             => $value['input'],
+                            'field'             => $value['label'],
+                            'field_name'        => $field_name,
+                            'type'              => $value['type'],
+                            'price_lbl_show_st' => isset($field_data['price']['lbl_show_st']) ? $field_data['price']['lbl_show_st'] : '0',
+                            'value'             => $value['input'],
                     );
                     break;
             }
@@ -686,7 +783,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $data['pgr_payment_status'] = 'completed';
         $data['pgr_data']           = json_encode($_POST);
         $where                      = array(
-            'fbh_id' => $item_number,
+                'fbh_id' => $item_number,
         );
         $this->wpdb->update($this->model_gateways_rec->table, $data, $where);
 
@@ -734,10 +831,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     {
 
         $vars = shortcode_atts(
-            array(
-                'heading' => __('Total cost', 'frocket_front'),
-            ),
-            $atts
+                array(
+                        'heading' => __('Total cost', 'frocket_front'),
+                ),
+                $atts
         );
 
         ob_start();
@@ -764,18 +861,18 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     {
 
         $vars = shortcode_atts(
-            array(
-                'id'   => '',
-                'atr1' => 'input',
-                'opt'  => '', // quick option
-            ),
-            $atts
+                array(
+                        'id'   => '',
+                        'atr1' => 'input',
+                        'opt'  => '', // quick option
+                ),
+                $atts
         );
 
 // Automatically sanitize & validate each attribute.
-$vars = array_map(function($v) {
-    return sanitize_text_field($v);
-}, $vars);
+        $vars = array_map(function($v) {
+            return sanitize_text_field($v);
+        }, $vars);
 
         $result = '';
         $output = '';
@@ -830,21 +927,21 @@ $vars = array_map(function($v) {
 
         try {
             $vars = shortcode_atts(
-                array(
-                    'id'   => '',
-                    'atr1' => 'input',
-                    'atr2' => '',
-                    'atr3' => '',
-                    'atr4' => '',
-                ),
-                $atts
+                    array(
+                            'id'   => '',
+                            'atr1' => 'input',
+                            'atr2' => '',
+                            'atr3' => '',
+                            'atr4' => '',
+                    ),
+                    $atts
             );
 
 
 // Automatically sanitize & validate each attribute.
-$vars = array_map(function($v) {
-    return sanitize_text_field($v);
-}, $vars);
+            $vars = array_map(function($v) {
+                return sanitize_text_field($v);
+            }, $vars);
 
             if (strpos($vars['id'], '_') !== false) {
                 $tmpResult = explode('_', $vars['id']);
@@ -944,11 +1041,11 @@ $vars = array_map(function($v) {
     {
 
         $vars = shortcode_atts(
-            array(
-                'id'   => '',
-                'atr1' => 'input',
-            ),
-            $atts
+                array(
+                        'id'   => '',
+                        'atr1' => 'input',
+                ),
+                $atts
         );
         // Automatically sanitize & validate each attribute.
         $vars = array_map(function($v) {
@@ -1000,13 +1097,13 @@ $vars = array_map(function($v) {
     public function shortcode_uifm_form_fvar($atts)
     {
         $vars   = shortcode_atts(
-            array(
-                'atr1' => '',
-                'atr2' => '',
-                'atr3' => '',
-                'opt'  => '', // quick option
-            ),
-            $atts
+                array(
+                        'atr1' => '',
+                        'atr2' => '',
+                        'atr3' => '',
+                        'opt'  => '', // quick option
+                ),
+                $atts
         );
 
         // Automatically sanitize & validate each attribute.
@@ -1081,15 +1178,15 @@ $vars = array_map(function($v) {
     {
 
         $vars   = shortcode_atts(
-            array(
-                'atr1' => '0', // source 0=>fmb_data2; 1=>fmb_data
-                'atr2' => '',
-                'atr3' => '',
-                'atr4' => '',
-                'hide_fields' => '',
-                'opt'  => '', // quick option
-            ),
-            $atts
+                array(
+                        'atr1' => '0', // source 0=>fmb_data2; 1=>fmb_data
+                        'atr2' => '',
+                        'atr3' => '',
+                        'atr4' => '',
+                        'hide_fields' => '',
+                        'opt'  => '', // quick option
+                ),
+                $atts
         );
         // Automatically sanitize & validate each attribute.
         $vars = array_map(function($v) {
@@ -1279,7 +1376,7 @@ $vars = array_map(function($v) {
         if (isset($this->flag_submitted) && intval($this->flag_submitted) > 0) {
             $resp['success']      = (isset($resp['success'])) ? $resp['success'] : 0;
             $resp['show_message'] = (isset($resp['show_message'])) ? Uiform_Form_Helper::encodeHex($resp['show_message']) :
-                '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Success! your form was submitted', 'frocket_front') . '</div>';
+                    '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Success! your form was submitted', 'frocket_front') . '</div>';
         } else {
             $resp['success']      = 0;
             $resp['show_message'] = '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('warning! Form was not submitted', 'frocket_front') . '</div>';
@@ -1304,10 +1401,10 @@ $vars = array_map(function($v) {
             $resp['payment_st'] = (isset($resp['payment_st'])) ? $resp['payment_st'] : 0;
             if (intval($resp['payment_st']) === 1) {
                 $resp['show_message'] = (isset($resp['payment_html'])) ? Uiform_Form_Helper::encodeHex(do_shortcode($resp['payment_html'])) :
-                    '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Error! something went wrong.', 'frocket_front') . '</div>';
+                        '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Error! something went wrong.', 'frocket_front') . '</div>';
             } else {
                 $resp['show_message'] = (isset($resp['show_message'])) ? Uiform_Form_Helper::encodeHex(do_shortcode($resp['show_message'])) :
-                    '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Success! your form was submitted', 'frocket_front') . '</div>';
+                        '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Success! your form was submitted', 'frocket_front') . '</div>';
             }
         } else {
             $resp['success']      = 0;
@@ -1482,123 +1579,123 @@ $vars = array_map(function($v) {
                     case 11:
                         /*multiselect*/
                         $tmp_fdata                         = json_decode($tmp_field_name->data, true);
-                                $tmp_field_cost_total              = 0;
-                                $tmp_options                       = array();
-                                $tmp_field_label                   = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                                $form_f_tmp[ $key ]['type']        = $tmp_field_name->type;
-                                $form_f_tmp[ $key ]['fieldname']   = $tmp_field_name->fieldname;
-                                $form_f_tmp[ $key ]['label']       = $tmp_field_label;
-                                $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
-                                $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
+                        $tmp_field_cost_total              = 0;
+                        $tmp_options                       = array();
+                        $tmp_field_label                   = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['type']        = $tmp_field_name->type;
+                        $form_f_tmp[ $key ]['fieldname']   = $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['label']       = $tmp_field_label;
+                        $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
+                        $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
 
-                                $tmp_f_values = array();
+                        $tmp_f_values = array();
 
-                                $tmp_inp_label = array();
-                                $tmp_inp_value = array();
+                        $tmp_inp_label = array();
+                        $tmp_inp_value = array();
 
-                                if ( is_array($value)) {
-                                    // for records
-                                    $tmp_options_rec = array();
-                                    foreach ( $value as $key2 => $value2) {
-                                        $tmp_options_row          = array();
-                                        $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][ $value2 ]['label']) ? $tmp_fdata['input2']['options'][ $value2 ]['label'] : '';
-                                        $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][ $value2 ]['value']) ? $tmp_fdata['input2']['options'][ $value2 ]['value'] : '';
-                                        $tmp_options_rec[]        = $tmp_options_row['value'];
-                                        $tmp_f_values[]           = $value2;
+                        if ( is_array($value)) {
+                            // for records
+                            $tmp_options_rec = array();
+                            foreach ( $value as $key2 => $value2) {
+                                $tmp_options_row          = array();
+                                $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][ $value2 ]['label']) ? $tmp_fdata['input2']['options'][ $value2 ]['label'] : '';
+                                $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][ $value2 ]['value']) ? $tmp_fdata['input2']['options'][ $value2 ]['value'] : '';
+                                $tmp_options_rec[]        = $tmp_options_row['value'];
+                                $tmp_f_values[]           = $value2;
+                            }
+                            $form_f_rec_tmp[ $key ] = implode('^,^', $tmp_options_rec);
+                            // end for records
+
+                            foreach ( $value as $key2 => $value2) {
+                                $tmp_options_row          = array();
+                                $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][ $value2 ]['label']) ? $tmp_fdata['input2']['options'][ $value2 ]['label'] : '';
+
+                                $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][ $value2 ]['value']) ? $tmp_fdata['input2']['options'][ $value2 ]['value'] : '';
+
+                                // store label
+                                $tmp_inp_label[] = $tmp_options_row['label'];
+                                $tmp_inp_value[] = $tmp_options_row['value'];
+
+                                if ( isset($tmp_fdata['input2']['options'][ $value2 ]) && $tmp_fdata['input2']['options'][ $value2 ]) {
+                                    $tmp_options_row['cost']   = floatval($tmp_fdata['input2']['options'][ $value2 ]['price']?? 0);
+                                    $tmp_options_row['amount'] = $tmp_options_row['cost'];
+
+                                    if ( isset($tmp_fdata['price']['enable_st'])
+                                            && intval($this->current_cost['st']) === 1
+                                            && intval($tmp_fdata['price']['enable_st']) === 1) {
+                                        /*cost estimate*/
+                                        $form_cost_total += $tmp_options_row['cost'];
                                     }
-                                    $form_f_rec_tmp[ $key ] = implode('^,^', $tmp_options_rec);
-                                    // end for records
 
-                                    foreach ( $value as $key2 => $value2) {
-                                        $tmp_options_row          = array();
-                                        $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][ $value2 ]['label']) ? $tmp_fdata['input2']['options'][ $value2 ]['label'] : '';
-
-                                        $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][ $value2 ]['value']) ? $tmp_fdata['input2']['options'][ $value2 ]['value'] : '';
-
-                                        // store label
-                                        $tmp_inp_label[] = $tmp_options_row['label'];
-                                        $tmp_inp_value[] = $tmp_options_row['value'];
-
-                                        if ( isset($tmp_fdata['input2']['options'][ $value2 ]) && $tmp_fdata['input2']['options'][ $value2 ]) {
-                                            $tmp_options_row['cost']   = floatval($tmp_fdata['input2']['options'][ $value2 ]['price']?? 0);
-                                            $tmp_options_row['amount'] = $tmp_options_row['cost'];
-
-                                            if ( isset($tmp_fdata['price']['enable_st'])
-                                                    && intval($this->current_cost['st']) === 1
-                                                    && intval($tmp_fdata['price']['enable_st']) === 1) {
-                                                /*cost estimate*/
-                                                $form_cost_total += $tmp_options_row['cost'];
-                                            }
-
-                                            $tmp_field_cost_total                 = $tmp_field_cost_total + $tmp_options_row['cost'];
-                                            $form_f_tmp[ $key ]['input_cost_amt'] = floatval($tmp_field_cost_total);
-                                        }
-
-                                        if ( isset($tmp_fdata['input2']['options'][ $value2 ]) && $tmp_fdata['input2']['options'][ $value2 ]) {
-                                            $tmp_options[ $value2 ] = $tmp_options_row;
-                                        }
-                                    }
+                                    $tmp_field_cost_total                 = $tmp_field_cost_total + $tmp_options_row['cost'];
+                                    $form_f_tmp[ $key ]['input_cost_amt'] = floatval($tmp_field_cost_total);
                                 }
 
-                                $form_f_tmp[ $key ]['input_label'] = implode('^,^', $tmp_inp_label);
-                                $form_f_tmp[ $key ]['input_value'] = implode('^,^', $tmp_inp_value);
+                                if ( isset($tmp_fdata['input2']['options'][ $value2 ]) && $tmp_fdata['input2']['options'][ $value2 ]) {
+                                    $tmp_options[ $value2 ] = $tmp_options_row;
+                                }
+                            }
+                        }
 
-                                $form_f_tmp[ $key ]['chosen'] = implode(',', $tmp_f_values);
-                                /*saving data to field array*/
-                                $form_f_tmp[ $key ]['input'] = $tmp_options;
+                        $form_f_tmp[ $key ]['input_label'] = implode('^,^', $tmp_inp_label);
+                        $form_f_tmp[ $key ]['input_value'] = implode('^,^', $tmp_inp_value);
 
-                                break;
+                        $form_f_tmp[ $key ]['chosen'] = implode(',', $tmp_f_values);
+                        /*saving data to field array*/
+                        $form_f_tmp[ $key ]['input'] = $tmp_options;
+
+                        break;
                     case 8:
                         /*radiobutton*/
                     case 10:
                         /*select*/
 
                         $tmp_fdata                       = json_decode($tmp_field_name->data, true);
-                                 $tmp_field_cost_total            = 0;
-                                 $tmp_options                     = array();
-                                 $tmp_field_label                 = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                                 $form_f_tmp[ $key ]['type']      = $tmp_field_name->type;
-                                 $form_f_tmp[ $key ]['fieldname'] = $tmp_field_name->fieldname;
-                                 $form_f_tmp[ $key ]['label']     = $tmp_field_label;
+                        $tmp_field_cost_total            = 0;
+                        $tmp_options                     = array();
+                        $tmp_field_label                 = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[ $key ]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['label']     = $tmp_field_label;
 
-                                 $form_f_tmp[ $key ]['chosen']      = implode(',', array( $value ));
-                                 $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
-                                 $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
+                        $form_f_tmp[ $key ]['chosen']      = implode(',', array( $value ));
+                        $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
+                        $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
 
-                                 // foreach ($value as $key2=>$value2) {
-                                     $tmp_options_row          = array();
-                                     $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][ $value ]['label']) ? $tmp_fdata['input2']['options'][ $value ]['label'] : '';
-                                     $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][ $value ]['value']) ? $tmp_fdata['input2']['options'][ $value ]['value'] : '';
+                        // foreach ($value as $key2=>$value2) {
+                        $tmp_options_row          = array();
+                        $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][ $value ]['label']) ? $tmp_fdata['input2']['options'][ $value ]['label'] : '';
+                        $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][ $value ]['value']) ? $tmp_fdata['input2']['options'][ $value ]['value'] : '';
 
-                                     // for records
-                                     $form_f_rec_tmp[ $key ] = $tmp_options_row['label'];
+                        // for records
+                        $form_f_rec_tmp[ $key ] = $tmp_options_row['label'];
 
-                                if ( isset($tmp_fdata['input2']['options'][ $value ])) {
-                                    $tmp_options_row['cost']   = floatval($tmp_fdata['input2']['options'][ $value ]['price']??0);
-                                    $tmp_options_row['amount'] = $tmp_options_row['cost'];
+                        if ( isset($tmp_fdata['input2']['options'][ $value ])) {
+                            $tmp_options_row['cost']   = floatval($tmp_fdata['input2']['options'][ $value ]['price']??0);
+                            $tmp_options_row['amount'] = $tmp_options_row['cost'];
 
-                                    if ( isset($tmp_fdata['price']['enable_st'])
-                                          && intval($this->current_cost['st']) === 1
-                                          && intval($tmp_fdata['price']['enable_st']) === 1) {
-                                             /*cost estimate*/
-                                             $form_cost_total += $tmp_options_row['amount'];
-                                    }
+                            if ( isset($tmp_fdata['price']['enable_st'])
+                                    && intval($this->current_cost['st']) === 1
+                                    && intval($tmp_fdata['price']['enable_st']) === 1) {
+                                /*cost estimate*/
+                                $form_cost_total += $tmp_options_row['amount'];
+                            }
 
-                                         $tmp_field_cost_total                 = $tmp_field_cost_total + $tmp_options_row['cost'];
-                                         $form_f_tmp[ $key ]['input_cost_amt'] = floatval($tmp_field_cost_total);
-                                }
+                            $tmp_field_cost_total                 = $tmp_field_cost_total + $tmp_options_row['cost'];
+                            $form_f_tmp[ $key ]['input_cost_amt'] = floatval($tmp_field_cost_total);
+                        }
 
-                                if ( isset($tmp_fdata['input2']['options'][ $value ])) {
-                                    $tmp_options[ $value ] = $tmp_options_row;
-                                }
-                                      // }
+                        if ( isset($tmp_fdata['input2']['options'][ $value ])) {
+                            $tmp_options[ $value ] = $tmp_options_row;
+                        }
+                        // }
 
-                                      $form_f_tmp[ $key ]['input_label'] = $tmp_options_row['label'];
-                                      $form_f_tmp[ $key ]['input_value'] = $tmp_options_row['value'];
-                                      /*saving data to field array*/
-                                      $form_f_tmp[ $key ]['input'] = $tmp_options;
+                        $form_f_tmp[ $key ]['input_label'] = $tmp_options_row['label'];
+                        $form_f_tmp[ $key ]['input_value'] = $tmp_options_row['value'];
+                        /*saving data to field array*/
+                        $form_f_tmp[ $key ]['input'] = $tmp_options;
 
-                                break;
+                        break;
 
                     case 12:
                         /*file input field*/
@@ -1618,8 +1715,8 @@ $vars = array_map(function($v) {
                         $custom_attach_st   = (isset($tmp_fdata['input16']['attach_st'])) ? intval($tmp_fdata['input16']['attach_st']) : 0;
 
                         if (
-                            isset($_FILES['uiform_fields']['name'][$key])
-                            && !empty($_FILES['uiform_fields']['name'][$key])
+                                isset($_FILES['uiform_fields']['name'][$key])
+                                && !empty($_FILES['uiform_fields']['name'][$key])
                         ) {
                             $fileSize = $_FILES['uiform_fields']['size'][$key];
                             if (floatval($fileSize) > $custom_maxsize * 1024 * 1024) {
@@ -1669,77 +1766,77 @@ $vars = array_map(function($v) {
                         /*spinner*/
                         $tmp_fdata = json_decode($tmp_field_name->data, true);
 
-                                $tmp_field_label                   = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                                $form_f_tmp[ $key ]['type']        = $tmp_field_name->type;
-                                $form_f_tmp[ $key ]['fieldname']   = $tmp_field_name->fieldname;
-                                $form_f_tmp[ $key ]['label']       = $tmp_field_label;
-                                $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
-                                $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
+                        $tmp_field_label                   = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['type']        = $tmp_field_name->type;
+                        $form_f_tmp[ $key ]['fieldname']   = $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['label']       = $tmp_field_label;
+                        $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
+                        $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
 
-                                // foreach ($value as $key2=>$value2) {
-                                    $tmp_options_row = array();
+                        // foreach ($value as $key2=>$value2) {
+                        $tmp_options_row = array();
 
-                                       $tmp_options_row['cost'] = floatval($tmp_fdata['price']['unit_price']);
+                        $tmp_options_row['cost'] = floatval($tmp_fdata['price']['unit_price']);
 
-                                       $tmp_options_row['qty']   = floatval($value);
-                                       $tmp_options_row['value'] = floatval($value);
-                                       // for records
-                                       $form_f_rec_tmp[ $key ] = $value;
+                        $tmp_options_row['qty']   = floatval($value);
+                        $tmp_options_row['value'] = floatval($value);
+                        // for records
+                        $form_f_rec_tmp[ $key ] = $value;
 
-                                if ( isset($tmp_fdata['price']['enable_st'])
-                                                && intval($this->current_cost['st']) === 1
-                                                && intval($tmp_fdata['price']['enable_st']) === 1) {
-                                    /*cost estimate*/
-                                    $form_cost_total += floatval($value) * floatval($tmp_fdata['price']['unit_price']);
-                                }
+                        if ( isset($tmp_fdata['price']['enable_st'])
+                                && intval($this->current_cost['st']) === 1
+                                && intval($tmp_fdata['price']['enable_st']) === 1) {
+                            /*cost estimate*/
+                            $form_cost_total += floatval($value) * floatval($tmp_fdata['price']['unit_price']);
+                        }
 
-                                    $tmp_options_row['amount'] = floatval($value) * floatval($tmp_fdata['price']['unit_price']);
+                        $tmp_options_row['amount'] = floatval($value) * floatval($tmp_fdata['price']['unit_price']);
 
-                                // }
-                                /*saving data to field array*/
-                                $form_f_tmp[ $key ]['input']          = $tmp_options_row;
-                                $form_f_tmp[ $key ]['input_cost_amt'] = floatval($value) * floatval($tmp_fdata['price']['unit_price']);
-                                break;
+                        // }
+                        /*saving data to field array*/
+                        $form_f_tmp[ $key ]['input']          = $tmp_options_row;
+                        $form_f_tmp[ $key ]['input_cost_amt'] = floatval($value) * floatval($tmp_fdata['price']['unit_price']);
+                        break;
 
                     case 40:
                         /*switch*/
                         $tmp_fdata = json_decode($tmp_field_name->data, true);
 
-                                $tmp_options                       = array();
-                                $tmp_field_label                   = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                                $form_f_tmp[ $key ]['type']        = $tmp_field_name->type;
-                                $form_f_tmp[ $key ]['fieldname']   = $tmp_field_name->fieldname;
-                                $form_f_tmp[ $key ]['label']       = $tmp_field_label;
-                                $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
-                                $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
+                        $tmp_options                       = array();
+                        $tmp_field_label                   = ( ! empty($tmp_fdata['label']['text']) ) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['type']        = $tmp_field_name->type;
+                        $form_f_tmp[ $key ]['fieldname']   = $tmp_field_name->fieldname;
+                        $form_f_tmp[ $key ]['label']       = $tmp_field_label;
+                        $form_f_tmp[ $key ]['price_st']    = isset($tmp_fdata['price']['enable_st']) ? $tmp_fdata['price']['enable_st'] : 0;
+                        $form_f_tmp[ $key ]['lbl_show_st'] = isset($tmp_fdata['price']['lbl_show_st']) ? $tmp_fdata['price']['lbl_show_st'] : 0;
 
-                                // foreach ($value as $key2=>$value2) {
+                        // foreach ($value as $key2=>$value2) {
 
-                                if ( $value === 'on') {
-                                    $tmp_options_row['label'] = ( ! empty($tmp_fdata['input15']['txt_yes']) ) ? $tmp_fdata['input15']['txt_yes'] : $value;
-                                    $form_f_rec_tmp[ $key ]   = 1;
-                                } else {
-                                    $tmp_options_row['label'] = ( ! empty($tmp_fdata['input15']['txt_no']) ) ? $tmp_fdata['input15']['txt_no'] : $value;
-                                    $form_f_rec_tmp[ $key ]   = 0;
-                                }
+                        if ( $value === 'on') {
+                            $tmp_options_row['label'] = ( ! empty($tmp_fdata['input15']['txt_yes']) ) ? $tmp_fdata['input15']['txt_yes'] : $value;
+                            $form_f_rec_tmp[ $key ]   = 1;
+                        } else {
+                            $tmp_options_row['label'] = ( ! empty($tmp_fdata['input15']['txt_no']) ) ? $tmp_fdata['input15']['txt_no'] : $value;
+                            $form_f_rec_tmp[ $key ]   = 0;
+                        }
 
-                                if ( isset($tmp_fdata['price']['unit_price'])) {
-                                    $tmp_options_row['cost']   = floatval($tmp_fdata['price']['unit_price']);
-                                    $tmp_options_row['amount'] = $tmp_options_row['cost'];
+                        if ( isset($tmp_fdata['price']['unit_price'])) {
+                            $tmp_options_row['cost']   = floatval($tmp_fdata['price']['unit_price']);
+                            $tmp_options_row['amount'] = $tmp_options_row['cost'];
 
-                                    if ( isset($tmp_fdata['price']['enable_st'])
-                                            && intval($this->current_cost['st']) === 1
-                                            && intval($tmp_fdata['price']['enable_st']) === 1) {
-                                        /*cost estimate*/
-                                        $form_cost_total += $tmp_options_row['amount'];
-                                    }
-                                }
+                            if ( isset($tmp_fdata['price']['enable_st'])
+                                    && intval($this->current_cost['st']) === 1
+                                    && intval($tmp_fdata['price']['enable_st']) === 1) {
+                                /*cost estimate*/
+                                $form_cost_total += $tmp_options_row['amount'];
+                            }
+                        }
 
-                                // }
-                                /*saving data to field array*/
-                                $form_f_tmp[ $key ]['input']          = $tmp_options_row;
-                                $form_f_tmp[ $key ]['input_cost_amt'] = floatval($tmp_fdata['price']['unit_price']);
-                                break;
+                        // }
+                        /*saving data to field array*/
+                        $form_f_tmp[ $key ]['input']          = $tmp_options_row;
+                        $form_f_tmp[ $key ]['input_cost_amt'] = floatval($tmp_fdata['price']['unit_price']);
+                        break;
 
                     case 41:
                         /*dyn checkbox*/
@@ -1758,46 +1855,46 @@ $vars = array_map(function($v) {
                         // for records
                         $tmp_summary = array();
 
-                    foreach ( $value as $key2 => $value2) {
-                        $tmp_summary_inner = '';
+                        foreach ( $value as $key2 => $value2) {
+                            $tmp_summary_inner = '';
 
-                        if ( isset($tmp_fdata['input17']['options'][ $key2 ]['label'])) {
-                            $tmp_summary_inner .= $tmp_fdata['input17']['options'][ $key2 ]['label'];
+                            if ( isset($tmp_fdata['input17']['options'][ $key2 ]['label'])) {
+                                $tmp_summary_inner .= $tmp_fdata['input17']['options'][ $key2 ]['label'];
+                            }
+
+                            if ( intval($value2) > 1) {
+                                $tmp_summary_inner .= ' - qty: ' . $value2;
+                            }
+                            $tmp_summary[] = $tmp_summary_inner;
                         }
 
-                        if ( intval($value2) > 1) {
-                            $tmp_summary_inner .= ' - qty: ' . $value2;
-                        }
-                        $tmp_summary[] = $tmp_summary_inner;
-                    }
-
-                    $form_f_rec_tmp[ $key ] = implode('^,^', $tmp_summary);
+                        $form_f_rec_tmp[ $key ] = implode('^,^', $tmp_summary);
                         // end for records
 
-                    foreach ( $value as $key2 => $value2) {
-                        $tmp_options_row          = array();
-                        $tmp_options_row['label'] = $tmp_fdata['input17']['options'][ $key2 ]['label'];
+                        foreach ( $value as $key2 => $value2) {
+                            $tmp_options_row          = array();
+                            $tmp_options_row['label'] = $tmp_fdata['input17']['options'][ $key2 ]['label'];
 
-                        if ( $tmp_fdata['input17']['options'][ $key2 ]) {
-                            $tmp_options_row['cost']   = floatval($tmp_fdata['input17']['options'][ $key2 ]['price']);
-                            $tmp_options_row['qty']    = $value2;
-                            $tmp_options_row['amount'] = floatval($value2) * floatval($tmp_fdata['input17']['options'][ $key2 ]['price']);
+                            if ( $tmp_fdata['input17']['options'][ $key2 ]) {
+                                $tmp_options_row['cost']   = floatval($tmp_fdata['input17']['options'][ $key2 ]['price']);
+                                $tmp_options_row['qty']    = $value2;
+                                $tmp_options_row['amount'] = floatval($value2) * floatval($tmp_fdata['input17']['options'][ $key2 ]['price']);
 
-                            if ( isset($tmp_fdata['price']['enable_st'])
-                                    && intval($this->current_cost['st']) === 1
-                                    && intval($tmp_fdata['price']['enable_st']) === 1) {
-                                /*cost estimate*/
-                                $form_cost_total      += $tmp_options_row['amount'];
-                                $tmp_field_cost_total += $tmp_options_row['amount'];
+                                if ( isset($tmp_fdata['price']['enable_st'])
+                                        && intval($this->current_cost['st']) === 1
+                                        && intval($tmp_fdata['price']['enable_st']) === 1) {
+                                    /*cost estimate*/
+                                    $form_cost_total      += $tmp_options_row['amount'];
+                                    $tmp_field_cost_total += $tmp_options_row['amount'];
+                                }
                             }
-                        }
 
-                        $tmp_options[] = $tmp_options_row;
-                    }
+                            $tmp_options[] = $tmp_options_row;
+                        }
                         /*saving data to field array*/
                         $form_f_tmp[ $key ]['input']          = $tmp_options;
                         $form_f_tmp[ $key ]['input_cost_amt'] = $tmp_field_cost_total;
-                    break;
+                        break;
 
                     default:
                         $tmp_fdata                       = json_decode($tmp_field_name->data, true);
@@ -2566,6 +2663,7 @@ $vars = array_map(function($v) {
         $data['amount']   = (isset($this->form_response['amount'])) ? $this->form_response['amount'] : 0;
         $data['fbh_id']   = (isset($this->form_response['fbh_id'])) ? $this->form_response['fbh_id'] : '';
         $data['currency'] = (isset($this->form_response['currency'])) ? $this->form_response['currency'] : array();
+        $data['form_id']            = (isset($this->form_response['form_id'])) ? $this->form_response['form_id'] : '';
         $gateways         = $this->model_gateways->getAvailableGateways();
 
         $data['fmb_rec_tpl_st']=$this->form_cur->fmb_rec_tpl_st;
@@ -2586,7 +2684,7 @@ $vars = array_map(function($v) {
                     $data2                       = array();
                     $data2['pg_name']            = (isset($value->pg_name)) ? $value->pg_name : '';
                     $data2['pg_description']     = (isset($value->pg_description)) ? $value->pg_description : '';
-                    $data2['form_id']            = (isset($this->form_response['form_id'])) ? $this->form_response['form_id'] : '';
+                    $data2['form_id']            = $data['form_id'];
                     $data2['item_number']        = (isset($this->form_response['id_payrec'])) ? $this->form_response['id_payrec'] : '';
                     $data2['offline_return_url'] = isset($pg_data['offline_return_url']) ? $pg_data['offline_return_url'] : '';
                     $gateways[$key]->html_view = self::render_template('gateways/views/frontend/offline.php', $data2);
@@ -2755,6 +2853,7 @@ $vars = array_map(function($v) {
             }
         }
         $data['gateways'] = $gateways;
+        $data['record_nonce'] = wp_create_nonce( 'zgfm_view_record_' . $data['fbh_id'].'_'.$data['form_id'] );
 
         $output = self::render_template('formbuilder/views/frontend/payment_html.php', $data);
         return $output;
