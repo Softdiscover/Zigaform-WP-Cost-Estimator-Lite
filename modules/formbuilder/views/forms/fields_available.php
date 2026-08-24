@@ -602,7 +602,7 @@ if ( ! defined('ABSPATH')) {
           </div>
          
            
-            <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+            <?php if ( ZIGAFORM_C_LITE === 1) { ?>
             <?php } else { ?>
                                                <!-- Wizard elements -->
                                                

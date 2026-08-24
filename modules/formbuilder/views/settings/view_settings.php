@@ -126,7 +126,7 @@ if (!defined('ABSPATH')) {
                                                     </div>
 
                                                 </div>
-                                                <?php if (ZIGAFORM_F_LITE !== 1) { ?>
+                                                <?php if (ZIGAFORM_C_LITE !== 1) { ?>
                                                     <div class="space10 zgfm-opt-divider-stl1"></div>
                                                     <div class="sfdc-col-md-12">
                                                         <div class="sfdc-form-group">

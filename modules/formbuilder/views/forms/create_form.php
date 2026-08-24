@@ -333,7 +333,7 @@ if (!defined('ABSPATH')) {
           <ul class="sfdc-dropdown-menu" aria-labelledby="about-us">
             <li><a onclick="javascript:rocketform.rollback_openModal();" href="javascript:void(0);"><i class="fa fa-retweet" aria-hidden="true"></i> <?php echo __('Rollback', 'FRocket_admin'); ?></a></li>
             <li><a onclick="javascript:rocketform.variables_openModal();" href="javascript:void(0);"><i class="fa fa-table" aria-hidden="true"></i> <?php echo __('Variables', 'FRocket_admin'); ?></a></li>
-            <?php if (ZIGAFORM_F_LITE === 0) { ?>
+            <?php if (ZIGAFORM_C_LITE === 0) { ?>
               <li><a onclick="javascript:rocketform.clogicgraph_popup();" href="javascript:void(0);"><span class="fa fa-map"></span> <?php echo __('C.Logic Graph', 'FRocket_admin'); ?></a></li>
             <?php } ?>
             <li><a onclick="javascript:rocketform.refreshPreviewSection();" href="javascript:void(0);"><span class="fa fa-refresh"></span> <?php echo __('Refresh & Clean Form', 'FRocket_admin'); ?></a></li>
@@ -377,11 +377,9 @@ if (!defined('ABSPATH')) {
 <?php if (intval($fields_fastload) !== 1) { ?>
   <!-- modals -->
     <?php
-    for ($i = 1; $i <= 11; $i++) {
-        if ($i == 7) {
-            continue;
-        }
-        include UIFORM_FORMS_DIR . '/modules/formbuilder/views/fields/render_back/fieldoptions_data_' . $i . '.php';
+    $field_option_templates = array( 1, 6, 8, 10 );
+    foreach ( $field_option_templates as $field_option_template) {
+        include UIFORM_FORMS_DIR . '/modules/formbuilder/views/fields/render_back/fieldoptions_data_' . $field_option_template . '.php';
     }
 
     ?>

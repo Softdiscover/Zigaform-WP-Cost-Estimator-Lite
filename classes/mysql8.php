@@ -159,7 +159,7 @@ if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) ===
         // insert data
         $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A);
 if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
-    $sql = "INSERT INTO $this->settings VALUES ('7.6.9', null, null, null, null, null, null, '', '1');";
+    $sql = "INSERT INTO $this->settings VALUES ('7.7.19', null, null, null, null, null, null, '', '1');";
     $wpdb->query($sql);
 }
 
@@ -179,7 +179,7 @@ if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) ===
         // insert data
         $uifm_check_total = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->pay_gateways, ARRAY_A);
 if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) === 0) {
-    if ( ZIGAFORM_F_LITE === 1) {
+    if ( ZIGAFORM_C_LITE === 1) {
         $sql = "INSERT INTO $this->pay_gateways VALUES 
                 ('1', 'Offline', '0', '', '1', '3', 'Offline payment description'),
                 ('2', 'Paypal', '0', '', '0', '0', 'paypal payment');";
@@ -339,6 +339,69 @@ if ( isset($uifm_check_total['total']) && intval($uifm_check_total['total']) ===
     $sql = "INSERT INTO $this->core_addon VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
      $wpdb->query($sql);
 }
+
+$sql = "INSERT INTO $this->core_addon (
+    `add_name`,
+    `add_title`,
+    `add_info`,
+    `add_system`,
+    `add_hasconfig`,
+    `add_version`,
+    `add_icon`,
+    `add_installed`,
+    `add_order`,
+    `add_params`,
+    `add_log`,
+    `addonscol`,
+    `flag_status`,
+    `created_date`,
+    `updated_date`,
+    `created_ip`,
+    `updated_ip`,
+    `created_by`,
+    `updated_by`,
+    `add_xml`,
+    `add_load_back`,
+    `add_load_front`,
+    `is_field`
+) VALUES (
+    'cost_estimation',
+    'Cost Estimation',
+    'Required calculation engine for the cost estimation form builder.',
+    1,
+    0,
+    '1.0',
+    NULL,
+    1,
+    99,
+    '{\"locked\":true}',
+    NULL,
+    NULL,
+    1,
+    '2026-06-15 00:00:00',
+    '2026-06-15 00:00:00',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    1,
+    1,
+    0
+) ON DUPLICATE KEY UPDATE
+    `add_title` = VALUES(`add_title`),
+    `add_info` = VALUES(`add_info`),
+    `add_system` = 1,
+    `add_hasconfig` = 0,
+    `add_installed` = 1,
+    `add_order` = 99,
+    `add_params` = VALUES(`add_params`),
+    `flag_status` = 1,
+    `updated_date` = VALUES(`updated_date`),
+    `add_load_back` = 1,
+    `add_load_front` = 1,
+    `is_field` = 0;";
+$wpdb->query($sql);
 
            // addon detail
         $sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (

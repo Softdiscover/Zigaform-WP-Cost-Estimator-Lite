@@ -16,6 +16,29 @@ if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
 ob_start();
+$form_id_safe = absint($form_id);
+$custom_css_url = '';
+$custom_css_candidates = array(
+    array(
+        'path' => WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/css/rockfm_form' . $form_id_safe . '.css',
+        'url'  => site_url('/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/css/rockfm_form' . $form_id_safe . '.css'),
+    ),
+    array(
+        'path' => WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $form_id_safe . '.css',
+        'url'  => site_url('/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $form_id_safe . '.css'),
+    ),
+    array(
+        'path' => UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $form_id_safe . '.css',
+        'url'  => UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $form_id_safe . '.css',
+    ),
+);
+
+foreach ($custom_css_candidates as $custom_css_candidate) {
+    if (file_exists($custom_css_candidate['path'])) {
+        $custom_css_url = add_query_arg('ver', filemtime($custom_css_candidate['path']), $custom_css_candidate['url']);
+        break;
+    }
+}
 ?>
 <html lang="en">
 
@@ -30,7 +53,7 @@ ob_start();
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script type="text/javascript">
-        var rockfm_vars = <?php echo json_encode($rockfm_vars_arr, JSON_PRETTY_PRINT); ?>;
+        var rockfm_vars = <?php echo wp_json_encode($rockfm_vars_arr, JSON_PRETTY_PRINT); ?>;
     </script>
 
     <?php
@@ -42,19 +65,11 @@ ob_start();
     }
     ?>
     <?php
-     if (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/css/rockfm_form' . $form_id . '.css')) {
+     if (!empty($custom_css_url)) {
         ?>
-        <link rel='stylesheet' id='ebor-fonts-css' href='<?php echo site_url(); ?>/wp-content/uploads/softdiscover/<?php echo UIFORM_SLUG; ?>/css/rockfm_form<?php echo $form_id; ?>.css?<?php echo date('Ymdgis'); ?>' type='text/css' media='all' />
+        <link rel='stylesheet' id='ebor-fonts-css' href='<?php echo esc_url($custom_css_url); ?>' type='text/css' media='all' />
         <?php
-    } elseif (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $form_id . '.css')) {
-        ?>
-        <link rel='stylesheet' id='ebor-fonts-css' href='<?php echo site_url(); ?>/wp-content/uploads/softdiscover/<?php echo UIFORM_SLUG; ?>/rockfm_form<?php echo $form_id; ?>.css?<?php echo date('Ymdgis'); ?>' type='text/css' media='all' />
-        <?php
-    } elseif (file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $form_id . '.css')) {
-        ?>
-        <link rel='stylesheet' id='ebor-fonts-css' href='<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/css/rockfm_form<?php echo $form_id; ?>.css?<?php echo date('Ymdgis'); ?>' type='text/css' media='all' />
-        <?php
-    }
+     }
     ?>
 
 
@@ -67,8 +82,8 @@ ob_start();
             }
         }
     </script>
-    <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.3.1/iframeResizer.min.js"></script>
-    <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.3.1/iframeResizer.contentWindow.min.js"></script>
+    <script type="text/javascript" src="<?php echo esc_url(UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.3.1/iframeResizer.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo esc_url(UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.3.1/iframeResizer.contentWindow.min.js'); ?>"></script>
 
 
     <script type="text/javascript">

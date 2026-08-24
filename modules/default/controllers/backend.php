@@ -61,10 +61,14 @@ class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module
      */
     public function dismiss_upgrade_notice($ajax = true)
     {
-            update_site_option('zgfm-c-hide_upgrade_notice', 1);
-            // No Need to send json response for other requests
         if ( $ajax) {
-                wp_send_json_success();
+            Uiform_Form_Helper::verify_admin_ajax();
+        }
+
+        update_site_option('zgfm-c-hide_upgrade_notice', 1);
+        // No Need to send json response for other requests
+        if ( $ajax) {
+            wp_send_json_success();
         }
     }
 

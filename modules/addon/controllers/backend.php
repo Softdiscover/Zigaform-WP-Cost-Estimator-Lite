@@ -66,11 +66,24 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module
      */
     public function listaddon_updateStatus()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data       = array();
         $add_name   = ( $_POST['add_name'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['add_name'])) : '';
         $add_status = ( $_POST['add_status'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['add_status'])) : '0';
+
+        if ( $this->model_addon->isRequiredAddon($add_name)) {
+            $this->model_addon->ensureRequiredAddons();
+
+            $json = array(
+                'status'  => 'locked',
+                'message' => 'This addon is required by the cost estimation form builder.',
+            );
+
+            header('Content-Type: application/json');
+            Uiform_Form_Helper::send_json_legacy($json);
+            wp_die();
+        }
 
         $data['flag_status'] = $add_status;
         $json                = array();
@@ -85,7 +98,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
@@ -102,6 +115,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module
         global $wp_version;
         $data          = array();
         $data['query'] = $this->model_addon->getListAddons(100, 0);
+        $data['locked_addons'] = $this->model_addon->getRequiredAddonNames();
         $data['wp_version'] = $wp_version;
         echo self::loadPartial('layout.php', 'addon/views/backend/list_extensions.php', $data);
     }

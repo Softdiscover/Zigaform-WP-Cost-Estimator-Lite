@@ -120,7 +120,7 @@ if (! defined('ABSPATH')) {
           <div class="panel-body">
             <form role="form">
               <fieldset>
-                <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+                <?php if ( ZIGAFORM_C_LITE === 1) { ?>
                   <div class="form-group">
                     <a href="https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post" target="_blank">
                       <img id="zgfm-page-about-rate-icon" src="<?php echo UIFORM_FORMS_URL; ?>/assets/backend/image/about/zigaform-rate-icon.png">

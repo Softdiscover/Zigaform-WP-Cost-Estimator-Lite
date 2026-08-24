@@ -83,14 +83,16 @@ class Uiform_Model_Gateways
 
     public function getGatewayById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select c.pg_id,c.pg_name,c.pg_modtest,c.pg_data,c.flag_status,c.pg_order,c.pg_description
             from %s c
-            where c.pg_id=%s
+            where c.pg_id=%%d
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);

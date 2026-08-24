@@ -43,7 +43,13 @@ if (! defined('ABSPATH')) {
                                         <div class="zgfm-ext-buttons">
                                                      
                                                         <?php
-                                                        if (ZIGAFORM_F_LITE === 0 || strval($value->add_name) === 'woocommerce' || strval($value->add_name) === 'mgtranslate') {
+                                                        $locked_addons = isset($locked_addons) ? $locked_addons : array();
+                                                        $is_required_addon = in_array(strval($value->add_name), $locked_addons, true);
+                                                        if ($is_required_addon) {
+                                                            ?>
+                                                            <button type="button" class="btn btn-success" disabled="disabled"><?php echo __('Enabled', 'FRocket_admin'); ?> <i class="fa fa-lock"></i></button>
+                                                            <?php
+                                                        } elseif (ZIGAFORM_C_LITE === 0 || strval($value->add_name) === 'woocommerce' || strval($value->add_name) === 'mgtranslate') {
                                                             ?>
                                                             <?php if (!isset($value->required_wp) ||
                                                             version_compare($wp_version, $value->required_wp, '>=') && version_compare(PHP_VERSION, $value->required_php, '>=')) { ?>

@@ -25,8 +25,8 @@ ob_start();
 
                 foreach ( $record_info as $value) {
                     ?>
-                    <?php if ( is_array($value['value'])) { ?>   
-                 <li><b><?php echo $value['field']; ?></b> 
+	                    <?php if ( is_array($value['value'])) { ?>   
+	                 <li><b><?php echo esc_html($value['field']); ?></b> 
                      <ul>
                          <?php
                             foreach ( $value['value'] as $key2 => $value2) {
@@ -34,7 +34,7 @@ ob_start();
                          <li>
                                 <?php
 
-                                echo isset($value2['label']) ? $value2['label'] : '';
+	                                echo isset($value2['label']) ? esc_html($value2['label']) : '';
 
                                 /*
                                 if(isset($value2['qty']) && floatval($value2['qty'])>0){
@@ -52,7 +52,7 @@ ob_start();
 
                                      && floatval($value2['amount']) > 0) {
                                     ?>
-                                    <?php echo Uiform_Form_Helper::cformat_numeric($price_format, $value2['amount']) . ' ' . $form_currency; ?>
+	                                    <?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $value2['amount']) . ' ' . $form_currency); ?>
                                 <?php } ?>
                          </li>
                           
@@ -60,7 +60,7 @@ ob_start();
                      </ul>
                  </li>
                     <?php } else { ?>
-                 <li><b><?php echo $value['field']; ?></b> : <?php echo $value['value']; ?></li>
+	                 <li><b><?php echo esc_html($value['field']); ?></b> : <?php echo esc_html($value['value']); ?></li>
                     <?php } ?>
                     <?php
                 }
@@ -69,17 +69,17 @@ ob_start();
                 </ul> 
                 
                 <?php if ( isset($form_subtotal_amount) && floatval($form_subtotal_amount) > 0) { ?>
-                    <span class="uiform-inforecord-subtotal-amount"><b><?php echo __('Sub total', 'frocket_front'); ?></b> : <?php echo Uiform_Form_Helper::cformat_numeric($price_format, $form_subtotal_amount); ?></span>
+	                    <span class="uiform-inforecord-subtotal-amount"><b><?php echo esc_html__('Sub total', 'frocket_front'); ?></b> : <?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $form_subtotal_amount)); ?></span>
                       <br>
                 <?php } ?>
                    
                 <?php if ( isset($form_tax) && floatval($form_tax) > 0) { ?>
-                    <span class="uiform-inforecord-tax"><b><?php echo __('Tax', 'frocket_front'); ?></b> : <?php echo Uiform_Form_Helper::cformat_numeric($price_format, $form_tax); ?></span>
+	                    <span class="uiform-inforecord-tax"><b><?php echo esc_html__('Tax', 'frocket_front'); ?></b> : <?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $form_tax)); ?></span>
                      <br>
                 <?php } ?>
                     
                  <?php if ( floatval($form_total_amount) > 0) { ?>
-                    <span class="uiform-inforecord-total-amount"><b><?php echo __('Total', 'frocket_front'); ?></b> : <?php echo Uiform_Form_Helper::cformat_numeric($price_format, $form_total_amount) . ' ' . $form_currency; ?></span>
+	                    <span class="uiform-inforecord-total-amount"><b><?php echo esc_html__('Total', 'frocket_front'); ?></b> : <?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $form_total_amount) . ' ' . $form_currency); ?></span>
                  <?php } ?>
                     
             </div>

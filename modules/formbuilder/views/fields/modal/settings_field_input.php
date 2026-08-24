@@ -16,60 +16,20 @@ if ( ! defined('ABSPATH')) {
 }
 ?>
 <div class="uiform-set-field-wrap" id="uiform-set-field-input-panel">
-     <!--container for text box, textarea ,.. -->    
-            <?php require 'settings_field_input_1.php'; ?>
-        <!--\end container -->
-        <!--container for options ,.. -->    
-            <?php require 'settings_field_input_2.php'; ?>
-        <!--\end container -->
-        <!--container for custom html ,.. -->    
-            <?php require 'settings_field_input_3.php'; ?>
-        <!--\end container -->
-        <!--container for custom html ,.. -->    
-            <?php require 'settings_field_input_4.php'; ?>
-        <!--\end container -->
-        <!--container ,.. -->    
-            <?php require 'settings_field_input_5.php'; ?>
-        <!--\end container -->
-        <!--container  ,.. -->    
-            <?php require 'settings_field_input_6.php'; ?>
-        <!--\end container -->
-        <!--container  ,.. -->    
-            <?php require 'settings_field_input_7.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_8.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_9.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_11.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_14.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_12.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_13.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_15.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_16.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_17.php'; ?>
-        <!--\end container -->
-        <!--container  -->    
-            <?php require 'settings_field_input_18.php'; ?>
-        <!--\end container -->
-         <!--container  -->    
-            <?php require 'settings_field_input_19.php'; ?>
-        <!--\end container -->
+        <?php
+        $available_input_partials = array( 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14, 12, 13, 15, 16, 17, 18, 19 );
+        $selected_input_partials  = ( ! empty($load_all_inputs) )
+            ? $available_input_partials
+            : ( isset($input_partials) && is_array($input_partials) ? $input_partials : array() );
+
+        foreach ( $selected_input_partials as $input_partial) {
+            $input_partial = intval($input_partial);
+            if ( ! in_array($input_partial, $available_input_partials, true)) {
+                continue;
+            }
+            require dirname(__FILE__) . '/settings_field_input_' . $input_partial . '.php';
+        }
+        ?>
         
         <div class="uifm-set-section-inputprice">
         <div class="space20"></div>

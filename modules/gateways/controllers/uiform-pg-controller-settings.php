@@ -56,7 +56,7 @@ class Uiform_Pg_Controller_Settings extends Uiform_Base_Module
     public function ajax_save_options()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $pg_id   = ( $_POST['pg_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['pg_id']) : 0;
         $pg_name = ( $_POST['pg_name'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['pg_name']) : '';
@@ -101,7 +101,7 @@ class Uiform_Pg_Controller_Settings extends Uiform_Base_Module
         }
 
         header('Content-Type: application/json');
-        echo json_encode($json2);
+        Uiform_Form_Helper::send_json_legacy($json2);
         wp_die();
     }
 

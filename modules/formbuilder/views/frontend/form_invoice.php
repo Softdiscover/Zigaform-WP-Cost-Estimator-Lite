@@ -20,47 +20,47 @@ ob_start();
     <div class="invoice-row">
         <div class="invoice-col-12">
         <div class="invoice-container">
-                <h3><?php echo __('Invoice', 'frocket_front'); ?> #<?php echo $invoice_id; ?></h3>
-                <span class="invoice-date"><?php echo __('Date', 'frocket_front'); ?>: <?php echo $invoice_date; ?></span>
+                <h3><?php echo esc_html__('Invoice', 'frocket_front'); ?> #<?php echo esc_html($invoice_id); ?></h3>
+                <span class="invoice-date"><?php echo esc_html__('Date', 'frocket_front'); ?>: <?php echo esc_html($invoice_date); ?></span>
                 <br>
                 <div class="invoice-row" style="margin-top:20px;">
                     <div class="invoice-col-6">
                         <ul class="invoice-list-from">
-                            <li><b><?php echo __('From', 'frocket_front'); ?></b></li>
+                            <li><b><?php echo esc_html__('From', 'frocket_front'); ?></b></li>
                             <?php if (!empty($invoice_from_info1)) { ?>
-                                <li><?php echo $invoice_from_info1; ?></li>
+                                <li><?php echo esc_html($invoice_from_info1); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_from_info2)) { ?>
-                                <li><?php echo $invoice_from_info2; ?></li>
+                                <li><?php echo esc_html($invoice_from_info2); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_from_info3)) { ?>
-                                <li><?php echo $invoice_from_info3; ?></li>
+                                <li><?php echo esc_html($invoice_from_info3); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_from_info4)) { ?>
-                                <li><?php echo $invoice_from_info4; ?></li>
+                                <li><?php echo esc_html($invoice_from_info4); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_from_info5)) { ?>
-                                <li><?php echo $invoice_from_info5; ?></li>
+                                <li><?php echo esc_html($invoice_from_info5); ?></li>
                             <?php } ?>
                         </ul>
                     </div>
                     <div class="invoice-col-6">
                         <ul class="invoice-list-to">
-                            <li><b><?php echo __('To', 'frocket_front'); ?></b></li>
+                            <li><b><?php echo esc_html__('To', 'frocket_front'); ?></b></li>
                             <?php if (!empty($invoice_to_info1)) { ?>
-                                <li><?php echo $invoice_to_info1; ?></li>
+                                <li><?php echo esc_html($invoice_to_info1); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_to_info2)) { ?>
-                                <li><?php echo $invoice_to_info2; ?></li>
+                                <li><?php echo esc_html($invoice_to_info2); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_to_info3)) { ?>
-                                <li><?php echo $invoice_to_info3; ?></li>
+                                <li><?php echo esc_html($invoice_to_info3); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_to_info4)) { ?>
-                                <li><?php echo $invoice_to_info4; ?></li>
+                                <li><?php echo esc_html($invoice_to_info4); ?></li>
                             <?php } ?>
                             <?php if (!empty($invoice_to_info5)) { ?>
-                                <li><?php echo $invoice_to_info5; ?></li>
+                                <li><?php echo esc_html($invoice_to_info5); ?></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -71,16 +71,16 @@ ob_start();
                     <tbody>
                         <?php if (isset($form_mathcalc_st) && intval($form_mathcalc_st) === 1) { ?>
                             <tr>
-                                <th style="width:20%;"><?php echo __('Item ID', 'frocket_front'); ?></th>
-                                <th colspan="2"><?php echo __('Description', 'frocket_front'); ?></th>
-                                <th style="width:15%;"><?php echo __('Amount', 'frocket_front'); ?></th>
+                                <th style="width:20%;"><?php echo esc_html__('Item ID', 'frocket_front'); ?></th>
+                                <th colspan="2"><?php echo esc_html__('Description', 'frocket_front'); ?></th>
+                                <th style="width:15%;"><?php echo esc_html__('Amount', 'frocket_front'); ?></th>
                             </tr>
                         <?php } else { ?>
                             <tr>
-                                <th style="width:20%;"><?php echo __('Item ID', 'frocket_front'); ?></th>
-                                <th style="width:20%;"><?php echo __('Quantity', 'frocket_front'); ?></th>
-                                <th><?php echo __('Description', 'frocket_front'); ?></th>
-                                <th style="width:15%;"><?php echo __('Amount', 'frocket_front'); ?></th>
+                                <th style="width:20%;"><?php echo esc_html__('Item ID', 'frocket_front'); ?></th>
+                                <th style="width:20%;"><?php echo esc_html__('Quantity', 'frocket_front'); ?></th>
+                                <th><?php echo esc_html__('Description', 'frocket_front'); ?></th>
+                                <th style="width:15%;"><?php echo esc_html__('Amount', 'frocket_front'); ?></th>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -98,16 +98,16 @@ ob_start();
                                     if ($tmp_counter == 1) {
                             ?>
                                         <tr>
-                                            <td><?php echo $tmp_counter; ?></td>
-                                            <td colspan="2"><?php echo $value['item_desc']; ?></td>
-                                            <td rowspan="3" style="border:1px solid #ccc;"><?php echo Uiform_Form_Helper::cformat_numeric($price_format, $tmp_total); ?></td>
+                                            <td><?php echo absint($tmp_counter); ?></td>
+                                            <td colspan="2"><?php echo esc_html($value['item_desc']); ?></td>
+                                            <td rowspan="3" style="border:1px solid #ccc;"><?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $tmp_total)); ?></td>
                                         </tr>
                                     <?php
                                     } else {
                                     ?>
                                         <tr>
-                                            <td><?php echo $tmp_counter; ?></td>
-                                            <td colspan="2"><?php echo $value['item_desc']; ?></td>
+                                            <td><?php echo absint($tmp_counter); ?></td>
+                                            <td colspan="2"><?php echo esc_html($value['item_desc']); ?></td>
                                         </tr>
                                     <?php
                                     }
@@ -120,12 +120,12 @@ ob_start();
                                 foreach ($record_info as $key => $value) {
                             ?>
                                     <tr>
-                                        <td><?php echo $value['item_id']; ?></td>
-                                        <td><?php echo $value['item_qty']; ?></td>
-                                        <td><?php echo $value['item_desc']; ?></td>
+                                        <td><?php echo esc_html($value['item_id']); ?></td>
+                                        <td><?php echo esc_html($value['item_qty']); ?></td>
+                                        <td><?php echo esc_html($value['item_desc']); ?></td>
                                         <td>
                                             <?php if (isset($value['item_amount'])) {
-                                                echo Uiform_Form_Helper::cformat_numeric($price_format, $value['item_amount']);
+                                                echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $value['item_amount']));
                                             } ?>
                                         </td>
                                     </tr>
@@ -137,17 +137,17 @@ ob_start();
                     <tfoot>
                         <?php if (isset($form_tax_enable) && intval($form_tax_enable) === 1) { ?>
                             <tr>
-                                <th colspan="3" class="invoice-total-txt"><?php echo __('Sub total', 'frocket_front'); ?></th>
-                                <th class="invoice-amount-total"><?php echo Uiform_Form_Helper::cformat_numeric($price_format, $form_subtotal_amount); ?></th>
+                                <th colspan="3" class="invoice-total-txt"><?php echo esc_html__('Sub total', 'frocket_front'); ?></th>
+                                <th class="invoice-amount-total"><?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $form_subtotal_amount)); ?></th>
                             </tr>
                             <tr>
-                                <th colspan="3" class="invoice-total-txt"><?php echo __('Tax', 'frocket_front'); ?></th>
-                                <th class="invoice-amount-total"><?php echo Uiform_Form_Helper::cformat_numeric($price_format, $form_tax); ?></th>
+                                <th colspan="3" class="invoice-total-txt"><?php echo esc_html__('Tax', 'frocket_front'); ?></th>
+                                <th class="invoice-amount-total"><?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $form_tax)); ?></th>
                             </tr>
                         <?php } ?>
                         <tr>
-                            <th colspan="3" class="invoice-total-txt"><?php echo __('Invoice Total', 'frocket_front'); ?></th>
-                            <th class="invoice-amount-total"><?php echo Uiform_Form_Helper::cformat_numeric($price_format, $form_total_amount); ?> <?php echo $form_currency; ?></th>
+                            <th colspan="3" class="invoice-total-txt"><?php echo esc_html__('Invoice Total', 'frocket_front'); ?></th>
+                            <th class="invoice-amount-total"><?php echo esc_html(Uiform_Form_Helper::cformat_numeric($price_format, $form_total_amount)); ?> <?php echo esc_html($form_currency); ?></th>
                         </tr>
                     </tfoot>
                 </table>

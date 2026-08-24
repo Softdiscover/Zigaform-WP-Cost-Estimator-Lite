@@ -15,6 +15,82 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'No direct script access allowed' );
 }
 
+if ( ! function_exists( 'zgfm_cost_estimation_ensure_required_addon' ) ) {
+	function zgfm_cost_estimation_ensure_required_addon( $wpdb ) {
+		$tbname = $wpdb->prefix . 'cest_addon';
+
+		if ( (string) $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $tbname ) ) !== $tbname ) {
+			return;
+		}
+
+		$sql = "INSERT INTO $tbname (
+			`add_name`,
+			`add_title`,
+			`add_info`,
+			`add_system`,
+			`add_hasconfig`,
+			`add_version`,
+			`add_icon`,
+			`add_installed`,
+			`add_order`,
+			`add_params`,
+			`add_log`,
+			`addonscol`,
+			`flag_status`,
+			`created_date`,
+			`updated_date`,
+			`created_ip`,
+			`updated_ip`,
+			`created_by`,
+			`updated_by`,
+			`add_xml`,
+			`add_load_back`,
+			`add_load_front`,
+			`is_field`
+		) VALUES (
+			'cost_estimation',
+			'Cost Estimation',
+			'Required calculation engine for the cost estimation form builder.',
+			1,
+			0,
+			'1.0',
+			NULL,
+			1,
+			99,
+			'{\"locked\":true}',
+			NULL,
+			NULL,
+			1,
+			'2026-06-15 00:00:00',
+			'2026-06-15 00:00:00',
+			NULL,
+			NULL,
+			NULL,
+			NULL,
+			NULL,
+			1,
+			1,
+			0
+		) ON DUPLICATE KEY UPDATE
+			`add_title` = VALUES(`add_title`),
+			`add_info` = VALUES(`add_info`),
+			`add_system` = 1,
+			`add_hasconfig` = 0,
+			`add_installed` = 1,
+			`add_order` = 99,
+			`add_params` = VALUES(`add_params`),
+			`flag_status` = 1,
+			`updated_date` = VALUES(`updated_date`),
+			`add_load_back` = 1,
+			`add_load_front` = 1,
+			`is_field` = 0;";
+
+		$wpdb->query( $sql );
+	}
+}
+
+zgfm_cost_estimation_ensure_required_addon( $wpdb );
+
 if (   version_compare( $version, $install_ver, '>' ) ) {
 
 	if ( version_compare( $install_ver, '1.6', '<' ) ) {
@@ -199,7 +275,7 @@ if (   version_compare( $version, $install_ver, '>' ) ) {
 
 			 $wpdb->query( $sql );
 
-			if ( ZIGAFORM_F_LITE != 1 ) {
+			if ( ZIGAFORM_C_LITE != 1 ) {
 					 $sql = "INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
 					 $wpdb->query( $sql );
 			}
@@ -356,6 +432,6 @@ if (   version_compare( $version, $install_ver, '>' ) ) {
 			}
 		}
   }
+	zgfm_cost_estimation_ensure_required_addon( $wpdb );
 				 update_option( 'uifmcostest_version', $version );
 }
-

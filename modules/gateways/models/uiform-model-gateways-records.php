@@ -49,14 +49,16 @@ class Uiform_Model_Gateways_Records
 
     public function getRecordById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.pgr_id, uf.type_pg_id,uf.pgr_payment_status,uf.pgr_payment_amount,uf.pgr_currency,uf.pgr_data,uf.flag_status,uf.created_date,uf.updated_date,uf.fbh_id
             from %s uf
-            where uf.pgr_id=%s
+            where uf.pgr_id=%%d
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);
@@ -64,17 +66,19 @@ class Uiform_Model_Gateways_Records
 
     public function getInvoiceDataByFormRecId($id_rec)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select  f.fmb_name,f.fmb_id,f.fmb_data, f.fmb_data2, f.fmb_type, frec.fbh_total_amount,pr.pgr_id,pr.created_date,f.fmb_inv_tpl_html,f.fmb_inv_tpl_st
         from %s frec
         join %s f on f.fmb_id=frec.form_fmb_id
         join %s pr on pr.fbh_id=frec.fbh_id
         where frec.flag_status>=0
-        and frec.fbh_id=%s',
+        and frec.fbh_id=%%d',
             $this->tbform_record,
             $this->tbform,
-            $this->table,
-            $id_rec
+                $this->table
+            ),
+            (int) $id_rec
         );
         return $this->wpdb->get_row($query);
     }
@@ -211,15 +215,17 @@ class Uiform_Model_Gateways_Records
     public function deleteRecordbyFormId($form_id)
     {
 
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             DELETE from %s where pgr_id IN (
-				select fbh_id from %s where form_fmb_id=%s
+				select fbh_id from %s where form_fmb_id=%%d
 				);
             ',
             $this->table,
-            $this->tbform_record,
-            $form_id
+                $this->tbform_record
+            ),
+            (int) $form_id
         );
 
         $this->wpdb->query($query);

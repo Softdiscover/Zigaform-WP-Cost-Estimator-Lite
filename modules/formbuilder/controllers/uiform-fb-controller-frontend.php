@@ -456,7 +456,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         $resp['show_summary_title'] = __( 'Order summary', 'frocket_front' );
         if ( intval( $pdf_show_onpage ) === 1 ) {
-            if ( ZIGAFORM_F_LITE === 1 ) {
+            if ( ZIGAFORM_C_LITE === 1 ) {
                 $resp['show_summary_title'] .= '';
             } else {
                 $resp['show_summary_title'] .= ' <a class="sfdc-btn sfdc-btn-warning pull-right" onclick="javascript:rocketfm.genpdf_inforecord(' . intval( $id_rec ) . ');" href="javascript:void(0);"><i class="fa fa-file-pdf-o"></i> ' . esc_html__( 'Export to PDF', 'frocket_front' ) . '</a>';
@@ -806,7 +806,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
 
@@ -1384,7 +1384,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
     public function ajax_submit_ajaxmode()
@@ -1413,7 +1413,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
 
@@ -1446,7 +1446,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
     public function ajax_mm_get_child()
@@ -1466,7 +1466,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
     public function ajax_refresh_captcha()
@@ -1508,7 +1508,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
             // return data to ajax callback
             header('Content-Type: text/html; charset=UTF-8');
-            echo json_encode($resp);
+            Uiform_Form_Helper::send_json_legacy($resp);
             wp_die();
         }
     }
@@ -2237,7 +2237,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                         // $mail_pdf_font = (isset($form_data_onsubm['onsubm']['mail_usr_pdf_font'])) ? urldecode($form_data_onsubm['onsubm']['mail_usr_pdf_font']) : '';
                         // $data_mail['mail_usr_pdf_font']=$mail_pdf_font;
                         // $data_mail['mail_usr_pdf_charset']=(isset($form_data_onsubm['onsubm']['mail_usr_pdf_charset'])) ? $form_data_onsubm['onsubm']['mail_usr_pdf_charset'] : '';
-                        if (ZIGAFORM_F_LITE != 1) {
+                        if (ZIGAFORM_C_LITE != 1) {
                             $attachments[] = $this->process_custom_pdf($data_mail);
                         }
                     }
@@ -2692,7 +2692,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     break;
                 case 2:
                     // paypal
-                    if (ZIGAFORM_F_LITE === 1) {
+                    if (ZIGAFORM_C_LITE === 1) {
                         break 1;
                     }
                     $pg_data                    = json_decode($value->pg_data, true);
@@ -3345,7 +3345,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
      */
     public function shortcode_show_version()
     {
-        if (ZIGAFORM_F_LITE === 0) {
+        if (ZIGAFORM_C_LITE === 0) {
             $hideversion = get_option('zgfm_b_hideversion', 0);
             if (intval($hideversion) === 1) {
                 return;

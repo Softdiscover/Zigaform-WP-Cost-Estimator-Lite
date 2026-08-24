@@ -70,7 +70,7 @@ if ( ! defined('ABSPATH')) {
                     
                     <div class="uiform-listform-options-col">
                         
-                             <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+                             <?php if ( ZIGAFORM_C_LITE === 1) { ?>
                         <a class="sfdc-btn sfdc-btn-sm sfdc-btn-success" 
                            onclick="javascript:rocketform.showFeatureLocked(this);"
                             data-blocked-feature="Duplicate Form"

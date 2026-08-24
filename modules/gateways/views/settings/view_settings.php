@@ -82,7 +82,7 @@ if ( ! defined('ABSPATH')) {
                                         <?php
                                         if ( intval($row->pg_id) === 2) {
                                             ?>
-                                            <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+                                            <?php if ( ZIGAFORM_C_LITE === 1) { ?>
                                             <a class=" sfdc-btn sfdc-btn-sm sfdc-btn-info"
                                                 onclick="javascript:rocketform.showFeatureLocked(this);"
                                                data-blocked-feature="Paypal Payment"

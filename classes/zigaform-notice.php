@@ -38,6 +38,7 @@ class Zigaform_c_notice
      */
     public function notice_rated()
     {
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data              = get_option('zigaform_c_notice_1', array());
         $data['time']      = time();
@@ -45,7 +46,7 @@ class Zigaform_c_notice
         $data['rated']     = true;
 
         update_option('zigaform_c_notice_1', $data);
-        die();
+        wp_send_json_success();
     }
 
 
@@ -115,7 +116,7 @@ class Zigaform_c_notice
 
         // after 7 days, add the message
         // include(dirname(__DIR__) . '/views/help/notice-1.php');
-        if (ZIGAFORM_F_LITE === 1) {
+        if (ZIGAFORM_C_LITE === 1) {
             $notice_url          = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
             $notice_heading  = esc_html__('Thanks for using Zigaform!', 'FRocket_admin');
             $notice_content  = __('Hey, I noticed you created an estimation form with Zigaform - that’s awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'FRocket_admin');
@@ -165,6 +166,14 @@ class Zigaform_c_notice
                     UIFORM_VERSION
                 );
 
+                wp_localize_script(
+                    'zgfm-script-global-js',
+                    'zgfm_notice_vars',
+                    array(
+                        'ajax_nonce' => wp_create_nonce('zgfm_ajax_nonce'),
+                    )
+                );
+
                 // Notice JS
                 wp_enqueue_script('zgfm-script-global-js', '', array(), '', true);
     }
@@ -175,6 +184,7 @@ class Zigaform_c_notice
              */
     public function notice_dismiss()
     {
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data              = get_option('zigaform_c_notice_1', array());
         $data['time']      = time();
@@ -182,7 +192,7 @@ class Zigaform_c_notice
         $data['rated']     = false;
 
         update_option('zigaform_c_notice_1', $data);
-        die();
+        wp_send_json_success();
     }
 
 
@@ -197,7 +207,7 @@ class Zigaform_c_notice
         if ((!empty($current_screen->id) && strpos($current_screen->id, 'zgfm_form_builder') !== false)
             || (!empty($current_screen->id) && strpos($current_screen->id, 'zigaform-cost-') !== false)
         ) {
-            if (ZIGAFORM_F_LITE === 1) {
+            if (ZIGAFORM_C_LITE === 1) {
                 $url = 'https://wordpress.org/support/plugin/zigaform-calculator-cost-estimation-form-builder-lite/reviews/?filter=5#new-post';
             } else {
                 $url = 'https://shop.softdiscover.com/downloads/zigaform-wordpress-calculator-cost-estimation-form-builder/?utm_source=installed&utm_medium=referral';

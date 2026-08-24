@@ -57,7 +57,7 @@ if ( ! defined('ABSPATH')) {
                 </a>
             </li>
             
-             <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+             <?php if ( ZIGAFORM_C_LITE === 1) { ?>
             <li><a onclick="javascript:rocketform.showFeatureLocked(this);"
                   data-blocked-feature="Filter record"
                    href="javascript:void(0);">
@@ -71,7 +71,7 @@ if ( ! defined('ABSPATH')) {
              <?php } ?>
             
                 
-             <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+             <?php if ( ZIGAFORM_C_LITE === 1) { ?>
                <li><a onclick="javascript:rocketform.showFeatureLocked(this);"
                   data-blocked-feature="Custom report"
                    href="javascript:void(0);">
@@ -88,7 +88,7 @@ if ( ! defined('ABSPATH')) {
         </li>
         <li class="divider-menu"></li>
         
-         <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+         <?php if ( ZIGAFORM_C_LITE === 1) { ?>
                <li ><a onclick="javascript:rocketform.showFeatureLocked(this);"
                   data-blocked-feature="Invoice"
                    href="javascript:void(0);">

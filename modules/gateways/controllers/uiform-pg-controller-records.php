@@ -70,7 +70,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module
     public function ajax_list_invoice_updatest()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $list_ids = ( isset($_POST['id']) && $_POST['id'] ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id']) : array();
         $form_st  = ( isset($_POST['form_st']) && $_POST['form_st'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
         $is_trash  = ( isset($_POST['is_trash']) && $_POST['is_trash'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : '';
@@ -140,7 +140,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module
     public function ajax_delete_invoice()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $pgr_id = ( isset($_POST['pgr_id']) && $_POST['pgr_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['pgr_id']) : 0;
         $is_trash = ( isset($_POST['is_trash']) && $_POST['is_trash'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : 0;
@@ -165,7 +165,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module
      */
     public function ajax_invoicelist_sendfilter()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data_filter = ( isset($_POST['data_filter']) && $_POST['data_filter'] ) ? $_POST['data_filter'] : '';
 
@@ -194,7 +194,7 @@ class Uiform_Pg_Controller_Records extends Uiform_Base_Module
         $json['content'] = $result;
 
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 

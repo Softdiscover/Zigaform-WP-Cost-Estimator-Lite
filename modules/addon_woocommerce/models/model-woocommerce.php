@@ -49,19 +49,21 @@ class zfaddn_woocommerce_model
 
     public function getData($form_id, $rec_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'SELECT wc.adet_data, wf.fmb_name,wp.pgr_payment_amount
 FROM %s as wc 
 JOIN %s as wf
 JOIN %s as wr
 JOIN %s as wp
-WHERE wc.fmb_id=%s and wc.add_name="woocommerce" and wf.fmb_id=wr.form_fmb_id and wr.fbh_id=wp.fbh_id and wr.fbh_id=%s',
+WHERE wc.fmb_id=%%d and wc.add_name="woocommerce" and wf.fmb_id=wr.form_fmb_id and wr.fbh_id=wp.fbh_id and wr.fbh_id=%%d',
             $this->form_addon_details,
             $this->form,
             $this->form_records,
-            $this->form_pay_records,
-            $form_id,
-            $rec_id
+                $this->form_pay_records
+            ),
+            (int) $form_id,
+            (int) $rec_id
         );
 
         return $this->wpdb->get_row($query);

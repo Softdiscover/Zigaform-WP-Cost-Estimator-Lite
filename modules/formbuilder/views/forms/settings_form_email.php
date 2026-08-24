@@ -380,7 +380,7 @@ $default_template = ob_get_clean();
                                                     </div>
                                             </div>
                                         </div> 
-                   <?php if ( ZIGAFORM_F_LITE === 1) { ?>
+                   <?php if ( ZIGAFORM_C_LITE === 1) { ?>
                    <?php } else { ?>
                         <div class="sfdc-row">
                                         <div class="sfdc-col-md-12">

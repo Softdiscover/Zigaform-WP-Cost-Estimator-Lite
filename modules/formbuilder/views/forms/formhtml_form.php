@@ -14,6 +14,13 @@
 if ( ! defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
+$form_id_attr              = esc_attr($form_id);
+$form_id_js                = absint($form_id);
+$price_tax_st_attr         = isset($main['price_tax_st']) ? esc_attr($main['price_tax_st']) : '0';
+$price_tax_val_attr        = isset($main['price_tax_val']) ? esc_attr($main['price_tax_val']) : '0';
+$recaptchav3_active_attr   = isset($main['recaptchav3_enable']) ? esc_attr($main['recaptchav3_enable']) : '0';
+$recaptchav3_sitekey_attr  = isset($main['recaptchav3_sitekey']) ? esc_attr($main['recaptchav3_sitekey']) : '';
+$calculation_enable_attr   = isset($calculation['enable_st']) ? esc_attr($calculation['enable_st']) : '0';
 ob_start();
 ?>
 <div class="rockfm-form-container rockfm-form-container-single uiform-wrap sfdc-wrap">
@@ -23,19 +30,19 @@ ob_start();
       name="" 
       method="post" 
       data-zgfm-type="2"
-      data-zgfm-version="<?php echo UIFORM_VERSION; ?>"
-      data-zgfm-price-tax-st="<?php echo isset($main['price_tax_st']) ? $main['price_tax_st'] : '0'; ?>"
-      data-zgfm-price-tax-val="<?php echo isset($main['price_tax_val']) ? $main['price_tax_val'] : '0'; ?>"
-      data-zgfm-recaptchav3-active="<?php echo $main['recaptchav3_enable'] ?? 0; ?>"
-      data-zgfm-recaptchav3-sitekey="<?php echo $main['recaptchav3_sitekey'] ?? ''; ?>"
-      data-zgfm-recaptchav3-errmsg="<?php echo __('Recaptcha failed, refresh page and try again', 'FRocket_admin'); ?>"
+      data-zgfm-version="<?php echo esc_attr(UIFORM_VERSION); ?>"
+      data-zgfm-price-tax-st="<?php echo $price_tax_st_attr; ?>"
+      data-zgfm-price-tax-val="<?php echo $price_tax_val_attr; ?>"
+      data-zgfm-recaptchav3-active="<?php echo $recaptchav3_active_attr; ?>"
+      data-zgfm-recaptchav3-sitekey="<?php echo $recaptchav3_sitekey_attr; ?>"
+      data-zgfm-recaptchav3-errmsg="<?php echo esc_attr__('Recaptcha failed, refresh page and try again', 'FRocket_admin'); ?>"
       data-zgfm-is-ms="0"
       enctype="multipart/form-data" 
-      id="rockfm_form_<?php echo $form_id; ?>">
+      id="rockfm_form_<?php echo $form_id_attr; ?>">
      
     
-    <input type="hidden" value="<?php echo $form_id; ?>" class="_rockfm_form_id" name="_rockfm_form_id">
-    <input type="hidden" value="<?php echo $calculation['enable_st']; ?>" class="_rockfm_form_calc_math_enable" name="_rockfm_form_calc_math_enable">
+    <input type="hidden" value="<?php echo $form_id_attr; ?>" class="_rockfm_form_id" name="_rockfm_form_id">
+    <input type="hidden" value="<?php echo $calculation_enable_attr; ?>" class="_rockfm_form_calc_math_enable" name="_rockfm_form_calc_math_enable">
    
     <?php
     if ( isset($wizard['enable_st'])
@@ -90,16 +97,16 @@ ob_start();
             ?>
              
     <div  data-sticky-height=""
-          data-sticky-pos="<?php echo $tmp_sticky_pos; ?>"
+          data-sticky-pos="<?php echo esc_attr($tmp_sticky_pos); ?>"
           data-sticky-resp-pos="1"
            class="uiform-sticky-sidebar-box" 
-           data-sticky-width="<?php echo $summbox['skin_box']['box_sd_width']; ?>"
+           data-sticky-width="<?php echo esc_attr($summbox['skin_box']['box_sd_width']); ?>"
            style="display:none;"><?php echo $form_sticky_content; ?></div>
     <div class="uiform-sticky-topout-section"></div>
         <input type="hidden" value="1" 
            class="_rockfm_sticky_st" name="_rockfm_sticky_st">
     
-        <input type="hidden" value="<?php echo __('Summary', 'FRocket_admin'); ?>" 
+        <input type="hidden" value="<?php echo esc_attr__('Summary', 'FRocket_admin'); ?>" 
            class="_rockfm_sticky_cpt_modal_title" name="_rockfm_sticky_cpt_modal_title">
         <?php } else { ?>
         <input type="hidden" value="0" 
@@ -149,7 +156,7 @@ ob_start();
         
     <div class="space10"></div>
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-        <div id="blueimp-gallery<?php echo $form_id; ?>" class="blueimp-gallery">
+        <div id="blueimp-gallery<?php echo $form_id_attr; ?>" class="blueimp-gallery">
             <!-- The container for the modal slides -->
             <div class="slides"></div>
             <!-- Controls for the borderless lightbox -->
@@ -171,10 +178,10 @@ ob_start();
                         <div class="sfdc-modal-footer">
                             <button type="button" class="sfdc-btn sfdc-btn-default pull-left prev">
                                 <i class="sfdc-glyphicon sfdc-glyphicon-chevron-left"></i>
-                                <?php echo __('Previous', 'FRocket_admin'); ?>
+                                <?php echo esc_html__('Previous', 'FRocket_admin'); ?>
                             </button>
                             <button type="button" class="sfdc-btn sfdc-btn-primary next">
-                                <?php echo __('Next', 'FRocket_admin'); ?>
+                                <?php echo esc_html__('Next', 'FRocket_admin'); ?>
                                 <i class="sfdc-glyphicon sfdc-glyphicon-chevron-right"></i>
                             </button>
                         </div>
@@ -185,7 +192,7 @@ ob_start();
     <!-- calculation variables -->
     <?php if ( isset($calculation['enable_st']) && intval($calculation['enable_st']) === 1) { ?>
         <?php foreach ( $calculation['variables'] as $key => $value) { ?>  
-    <input type="hidden" value="" class="_zgfm_avars_calc_<?php echo $value['id']; ?>" name="zgfm_avars[calc][<?php echo $value['id']; ?>]">
+    <input type="hidden" value="" class="_zgfm_avars_calc_<?php echo esc_attr($value['id']); ?>" name="zgfm_avars[calc][<?php echo esc_attr($value['id']); ?>]">
         <?php } ?>
     
     <?php } ?>
@@ -205,15 +212,15 @@ ob_start();
 
     var _zgfm_front_vars = _zgfm_front_vars || {};
     _zgfm_front_vars.form = _zgfm_front_vars.form || {};
-    _zgfm_front_vars.form[<?php echo $form_id; ?>] = {};
-    _zgfm_front_vars.form[<?php echo $form_id; ?>]['calc'] = {};
-    _zgfm_front_vars.form[<?php echo $form_id; ?>]['calc']['vars_str'] = "<?php echo $calculation['vars_str']; ?>";
-    _zgfm_front_vars.form[<?php echo $form_id; ?>]['calc']['vars_num'] = <?php echo count($calculation['variables']); ?>;
+    _zgfm_front_vars.form[<?php echo $form_id_js; ?>] = {};
+    _zgfm_front_vars.form[<?php echo $form_id_js; ?>]['calc'] = {};
+    _zgfm_front_vars.form[<?php echo $form_id_js; ?>]['calc']['vars_str'] = "<?php echo esc_js($calculation['vars_str']); ?>";
+    _zgfm_front_vars.form[<?php echo $form_id_js; ?>]['calc']['vars_num'] = <?php echo absint(count($calculation['variables'])); ?>;
     <?php foreach ( $calculation['variables'] as $key => $value) { ?>
-var zgfm_<?php echo $form_id; ?>_calculation_cont<?php echo $calculation['variables'][ $key ]['id']; ?> = function(){
+	var zgfm_<?php echo esc_js(preg_replace('/[^A-Za-z0-9_]/', '', (string) $form_id)); ?>_calculation_cont<?php echo esc_js(preg_replace('/[^A-Za-z0-9_]/', '', (string) $calculation['variables'][ $key ]['id'])); ?> = function(){
         <?php
          
-        echo str_replace('[%formid%]', $form_id, urldecode($calculation['variables'][ $key ]['content_front']));
+        echo str_replace('[%formid%]', $form_id_js, urldecode($calculation['variables'][ $key ]['content_front']));
         ?>
        
 };
@@ -234,7 +241,7 @@ var zgfm_<?php echo $form_id; ?>_calculation_cont<?php echo $calculation['variab
             <div class="sfdc-modal-footer">
                 <button type="button" 
                         class="sfdc-btn sfdc-btn-default"
-                        data-dismiss="modal"><?php echo __('Close', 'FRocket_admin'); ?></button>
+                        data-dismiss="modal"><?php echo esc_html__('Close', 'FRocket_admin'); ?></button>
             </div>
         </div>
         <!-- /.sfdc-modal-content -->

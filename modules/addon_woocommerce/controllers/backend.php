@@ -83,7 +83,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module
 
     public function ajax_load_settings()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $json      = array();
         $tmp_addon = array();
@@ -98,7 +98,7 @@ class zfaddn_woocommerce_back extends Uiform_Base_Module
         $json['data'] = $tmp_addon;
           //return data to ajax callback
           header('Content-Type: application/json');
-          echo json_encode($json);
+          Uiform_Form_Helper::send_json_legacy($json);
           wp_die();
     }
 

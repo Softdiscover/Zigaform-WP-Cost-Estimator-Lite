@@ -76,35 +76,15 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
           */
     public function ajax_dev_genfieldopts()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data_render = array();
         $this->back_cache_tab_more = apply_filters('zgfm_back_field_opt_more', array());
-        $array = array( 1, 2, 3, 4, 5, 6, 8, 9, 10, 11 );
+        $array = array( 1, 6, 8, 10 );
         foreach ( $array as $type) {
             switch ( intval($type)) {
                 case 1:
                     // 1 col
-                    $field_block          = 0;
-                    $data_render[ $type ] = $this->load_field_options($type, '', $field_block);
-                    break;
-                case 2:
-                    // 2 cols
-                    $field_block          = 0;
-                    $data_render[ $type ] = $this->load_field_options($type, '', $field_block);
-                    break;
-                case 3:
-                    // 3 cols
-                    $field_block          = 0;
-                    $data_render[ $type ] = $this->load_field_options($type, '', $field_block);
-                    break;
-                case 4:
-                    // 4 cols
-                    $field_block          = 0;
-                    $data_render[ $type ] = $this->load_field_options($type, '', $field_block);
-                    break;
-                case 5:
-                    // 6 cols
                     $field_block          = 0;
                     $data_render[ $type ] = $this->load_field_options($type, '', $field_block);
                     break;
@@ -117,16 +97,8 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
                     // radio button
                     $data_render[ $type ] = $this->load_field_options($type, '', null);
                     break;
-                case 9:
-                    // checkbox
-                    $data_render[ $type ] = $this->load_field_options($type, '', null);
-                    break;
                 case 10:
                     // select
-                    $data_render[ $type ] = $this->load_field_options($type, '', null);
-                    break;
-                case 11:
-                    // multiple select
                     $data_render[ $type ] = $this->load_field_options($type, '', null);
                     break;
             }
@@ -193,7 +165,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
 
         
 
-         // echo json_encode($data_render);
+         // Uiform_Form_Helper::send_json_legacy($data_render);
          die();
     }
 
@@ -215,7 +187,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 
@@ -227,7 +199,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
     public function ajax_field_option()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $id          = ( isset($_POST['field_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['field_id'])) : '';
         $type        = ( isset($_POST['field_type']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['field_type'])) : '';
@@ -236,7 +208,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
         $json        = array();
 
         // $json['modal_header'] = self::render_template('pagebuilder/views/fields/modal_field_header.php', array(), 'always');
-        $json['modal_body'] = $this->load_field_options($type, $id, $field_block);
+        $json['modal_body'] = $this->load_field_options($type, $id, $field_block, false);
         // $json['modal_footer'] = self::render_template('pagebuilder/views/fields/modal_field_footer.php', array(), 'always');
         $json['field_id']    = $id;
         $json['field_type']  = $type;
@@ -246,7 +218,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
         // $json['addons'] = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack();
 
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 
@@ -256,7 +228,67 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
      *
      * @return json
      */
-    public function load_field_options($type, $id, $block = null)
+    public function get_field_input_partials($type)
+    {
+        $partials = array(
+            6  => array( 1 ),
+            7  => array( 1 ),
+            8  => array( 2 ),
+            9  => array( 2 ),
+            10 => array( 2 ),
+            11 => array( 2 ),
+            12 => array( 16 ),
+            13 => array( 16 ),
+            14 => array( 3 ),
+            15 => array( 1 ),
+            16 => array( 4 ),
+            17 => array( 4 ),
+            18 => array( 4 ),
+            19 => array( 4, 6 ),
+            20 => array( 1 ),
+            21 => array( 8 ),
+            22 => array( 9 ),
+            23 => array(),
+            24 => array( 4, 7 ),
+            25 => array( 7 ),
+            26 => array( 7 ),
+            27 => array( 5 ),
+            28 => array( 1 ),
+            29 => array( 1 ),
+            30 => array( 1 ),
+            31 => array( 18 ),
+            32 => array( 11 ),
+            33 => array( 1 ),
+            34 => array( 1 ),
+            35 => array( 1 ),
+            36 => array( 1 ),
+            37 => array( 1 ),
+            38 => array( 1 ),
+            39 => array( 12, 13 ),
+            40 => array( 15 ),
+            41 => array( 17 ),
+            42 => array( 17 ),
+            43 => array( 19 ),
+        );
+
+        $type = intval($type);
+        return array_key_exists($type, $partials) ? $partials[ $type ] : null;
+    }
+
+    /**
+     * Load field options by type.
+     *
+     * Static templates keep the complete legacy input panel. AJAX requests use
+     * the field contract above so the editor renders only relevant input views.
+     *
+     * @param int|string $type Field type.
+     * @param int|string $id Field identifier.
+     * @param int|null    $block Grid block.
+     * @param bool        $load_all_inputs Whether to include every legacy input partial.
+     *
+     * @return string
+     */
+    public function load_field_options($type, $id, $block = null, $load_all_inputs = true)
     {
         $output = '';
 
@@ -306,6 +338,9 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
                         break;
                 }
 
+                $input_partials          = $this->get_field_input_partials($type);
+                $data['load_all_inputs'] = (bool) $load_all_inputs || $input_partials === null;
+                $data['input_partials']  = $data['load_all_inputs'] ? array() : $input_partials;
                 //$data['modules_field_more'] = apply_filters('zgfm_back_field_opt_more', array());
                 if (intval(get_option('zgfm_fields_fastload', 0)) === 0) {
                     $data['modules_field_more'] = $this->back_cache_tab_more;
@@ -323,7 +358,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
     public function ajax_refresh_captcha()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $length  = 5;
         $charset = 'abcdefghijklmnpqrstuvwxyz123456789';
@@ -351,7 +386,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
         $resp2['rkver']  = $captcha_options;
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($resp2);
+        Uiform_Form_Helper::send_json_legacy($resp2);
         wp_die();
     }
 

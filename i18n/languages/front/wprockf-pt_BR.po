@@ -1,5 +1,5 @@
-# Copyright (C) 2026 Zigaform WP Cost Estimation Form Builder 7.6.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.6.9 package.
+# Copyright (C) 2026 Zigaform WP Cost Estimation Form Builder 7.7.19
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.7.19 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -143,8 +143,8 @@ msgid "Agree To The"
 msgstr "Concordo com os"
 
 #: modules/formbuilder/views/frontend/payment_html.php:88
-msgid "Terms &amp; Conditions"
-msgstr "Terms & Conditions"
+msgid "Terms & Conditions"
+msgstr ""
 
 #: modules/formbuilder/views/frontend/payment_html.php:99
 msgid "Complete Order"

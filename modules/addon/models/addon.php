@@ -45,9 +45,82 @@ class Uiform_Model_Addon
         $this->tbaddon_details = $wpdb->prefix . 'cest_addon_details';
     }
 
+    public function getRequiredAddonNames()
+    {
+        return array_keys($this->getRequiredAddons());
+    }
+
+    public function isRequiredAddon($addon_name)
+    {
+        $addons = $this->getRequiredAddons();
+        return isset($addons[$addon_name]);
+    }
+
+    public function ensureRequiredAddons()
+    {
+        if (! $this->addonTableExists()) {
+            return;
+        }
+
+        foreach ($this->getRequiredAddons() as $addon_name => $addon_data) {
+            if ($this->existAddon($addon_name)) {
+                $update_data = $addon_data;
+                unset($update_data['add_name'], $update_data['created_date']);
+                $this->wpdb->update(
+                    $this->table,
+                    $update_data,
+                    array(
+                        'add_name' => $addon_name,
+                    )
+                );
+            } else {
+                $this->wpdb->insert($this->table, $addon_data);
+            }
+        }
+    }
+
+    private function addonTableExists()
+    {
+        $query = $this->wpdb->prepare('SHOW TABLES LIKE %s', $this->table);
+        return (string) $this->wpdb->get_var($query) === $this->table;
+    }
+
+    private function getRequiredAddons()
+    {
+        return array(
+            'cost_estimation' => array(
+                'add_name'       => 'cost_estimation',
+                'add_title'      => 'Cost Estimation',
+                'add_info'       => 'Required calculation engine for the cost estimation form builder.',
+                'add_system'     => 1,
+                'add_hasconfig'  => 0,
+                'add_version'    => '1.0',
+                'add_icon'       => null,
+                'add_installed'  => 1,
+                'add_order'      => 99,
+                'add_params'     => '{"locked":true}',
+                'add_log'        => null,
+                'addonscol'      => null,
+                'flag_status'    => 1,
+                'created_date'   => '2026-06-15 00:00:00',
+                'updated_date'   => '2026-06-15 00:00:00',
+                'created_ip'     => null,
+                'updated_ip'     => null,
+                'created_by'     => null,
+                'updated_by'     => null,
+                'add_xml'        => null,
+                'add_load_back'  => 1,
+                'add_load_front' => 1,
+                'is_field'       => 0,
+            ),
+        );
+    }
+
 
     public function getListAddonsByBack()
     {
+        $this->ensureRequiredAddons();
+
         $query = sprintf(
             '
             select c.add_name
@@ -85,6 +158,8 @@ class Uiform_Model_Addon
 
     public function getListAddonsByFront()
     {
+        $this->ensureRequiredAddons();
+
         $query = sprintf(
             '
             select c.add_name
@@ -123,6 +198,8 @@ class Uiform_Model_Addon
 
     public function getActiveAddonsNamesOnBack()
     {
+        $this->ensureRequiredAddons();
+
         $query = sprintf(
             '
             select c.add_name
@@ -147,18 +224,22 @@ class Uiform_Model_Addon
 
     public function getAddonsNamesOnBackByForm($idform)
     {
-        $query = sprintf(
+        $this->ensureRequiredAddons();
+
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select c.add_name
             from %s c
 	    left join %s ad on ad.add_name = c.add_name
-            where c.flag_status=1 and ad.fmb_id=%s
+            where c.flag_status=1 and ad.fmb_id=%%d
             and c.add_load_back=1
             ORDER BY c.add_order desc
             ',
             $this->table,
-            $this->tbaddon_details,
-            $idform
+                $this->tbaddon_details
+            ),
+            (int) $idform
         );
 
         $tmp_result = $this->wpdb->get_results($query);
@@ -175,6 +256,8 @@ class Uiform_Model_Addon
 
     public function getListAddonsBySection($section = '')
     {
+        $this->ensureRequiredAddons();
+
         $query = sprintf(
             '
             select c.add_name
@@ -224,6 +307,8 @@ class Uiform_Model_Addon
      */
     public function getListAddons($per_page = '', $segment = '')
     {
+        $this->ensureRequiredAddons();
+
         $query = sprintf(
             '
             select  c.add_name, c.add_title, c.add_info, c.flag_status, c.add_params,

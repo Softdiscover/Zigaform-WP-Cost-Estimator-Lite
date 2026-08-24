@@ -71,7 +71,7 @@ class Uiform_Fb_Controller_Multistep extends Uiform_Base_Module
     public function ajax_load_multistep()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $json    = array();
         try {
             $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
@@ -104,14 +104,14 @@ class Uiform_Fb_Controller_Multistep extends Uiform_Base_Module
             $json['error'] = 'An error has ocurred';
         }
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_save_newform()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $json = array();
         try {
             if (!Uiform_Form_Helper::check_User_Access()) {
@@ -157,7 +157,7 @@ class Uiform_Fb_Controller_Multistep extends Uiform_Base_Module
         }
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 

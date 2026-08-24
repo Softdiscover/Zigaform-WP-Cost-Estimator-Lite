@@ -58,18 +58,20 @@ class Uiform_Model_Gateways_Logs
     public function deleteRecordbyFormId($form_id)
     {
 
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             DELETE from %s where pgr_id IN (
 				select pgr_id from %s where pgr_id IN (
-				select fbh_id from %s where form_fmb_id=%s
+				select fbh_id from %s where form_fmb_id=%%d
 				)
 				);
             ',
             $this->table,
             $this->tbpay_record,
-            $this->tbform_record,
-            $form_id
+                $this->tbform_record
+            ),
+            (int) $form_id
         );
 
         $this->wpdb->query($query);
